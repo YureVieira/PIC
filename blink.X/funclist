@@ -1,0 +1,7 @@
+_main: CODE, 32676 0 38
+_timer0_on: CODE, 32642 0 4
+__initialization: CODE, 32646 0 0
+_set_timer0: CODE, 32652 0 10
+_delay_0: CODE, 32714 0 54
+_config_timer: CODE, 32662 0 14
+Total: 120

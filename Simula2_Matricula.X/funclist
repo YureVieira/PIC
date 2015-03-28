@@ -1,0 +1,15 @@
+__interrupt: CODE, 8 0 2138
+__stringdata: SMALLCONST, 1547 0 26
+_config_display: CODE, 2566 0 10
+_putch: CODE, 2442 0 38
+_dpowers: SMALLCONST, 1537 0 10
+_print_display: CODE, 2480 0 38
+_main: CODE, 1882 0 150
+_set_int0: CODE, 2556 0 10
+_init_uart: CODE, 2518 0 24
+__initialization: CODE, 2400 0 32
+___lwdiv: CODE, 2252 0 82
+_print_vetor: CODE, 2146 0 106
+_printf: CODE, 1574 0 308
+___lwmod: CODE, 2334 0 66
+Total: 3038

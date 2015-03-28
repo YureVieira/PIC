@@ -1,0 +1,10 @@
+__stringdata: SMALLCONST, 1537 0 92
+_main: CODE, 1630 0 132
+_Serial_available: CODE, 2154 0 10
+_Serial_write_msg: CODE, 2002 0 74
+_Serial_read_byte: CODE, 1890 0 112
+_Serial_config_2400: CODE, 2076 0 38
+__initialization: CODE, 2114 0 12
+_Serial_write_byte: CODE, 2140 0 14
+__EUSART_receiver: CODE, 8 0 1882
+Total: 2366

@@ -1,0 +1,15 @@
+__stringdata: SMALLCONST, 1547 0 14
+_putch: CODE, 2204 0 12
+_dpowers: SMALLCONST, 1537 0 10
+_UART_init: CODE, 2166 0 24
+_main: CODE, 1870 0 88
+_write_PWM: CODE, 2248 0 8
+_PWM_init: CODE, 2238 0 10
+_ADC_init: CODE, 2216 0 12
+__initialization: CODE, 2228 0 0
+___lwdiv: CODE, 1958 0 82
+_read_ADC: CODE, 2106 0 60
+_printf: CODE, 1562 0 308
+___lwmod: CODE, 2040 0 66
+__newLine: CODE, 2190 0 14
+Total: 708

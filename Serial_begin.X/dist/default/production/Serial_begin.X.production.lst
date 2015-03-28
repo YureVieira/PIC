@@ -1,0 +1,1213 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.33 build 59893 
+                                                                                               Sat Feb 21 20:29:37 2015
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	18F4520
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    15                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    16                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    18                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    19  0000                     _ADCON1	set	4033
+    20  0000                     _BAUDCONbits	set	4024
+    21  0000                     _INTCONbits	set	4082
+    22  0000                     _PIE1bits	set	3997
+    23  0000                     _PORTB	set	3969
+    24  0000                     _PORTBbits	set	3969
+    25  0000                     _RCREG	set	4014
+    26  0000                     _RCSTAbits	set	4011
+    27  0000                     _SPBRG	set	4015
+    28  0000                     _TRISBbits	set	3987
+    29  0000                     _TRISCbits	set	3988
+    30  0000                     _TXREG	set	4013
+    31  0000                     _TXSTAbits	set	4012
+    32  0000                     _RCIF	set	31989
+    33                           
+    34                           	psect	smallconst
+    35  000600                     __psmallconst:
+    36                           	opt stack 0
+    37  000600  00                 	db	0
+    38  000601                     __stringdata:
+    39                           	opt stack 0
+    40  000601                     STR_1:
+    41  000601  27                 	db	39
+    42  000602  4C                 	db	76	;'L'
+    43  000603  27                 	db	39
+    44  000604  20                 	db	32
+    45  000605  70                 	db	112	;'p'
+    46  000606  61                 	db	97	;'a'
+    47  000607  72                 	db	114	;'r'
+    48  000608  61                 	db	97	;'a'
+    49  000609  20                 	db	32
+    50  00060A  4C                 	db	76	;'L'
+    51  00060B  69                 	db	105	;'i'
+    52  00060C  67                 	db	103	;'g'
+    53  00060D  61                 	db	97	;'a'
+    54  00060E  72                 	db	114	;'r'
+    55  00060F  2C                 	db	44
+    56  000610  20                 	db	32
+    57  000611  65                 	db	101	;'e'
+    58  000612  20                 	db	32
+    59  000613  27                 	db	39
+    60  000614  44                 	db	68	;'D'
+    61  000615  27                 	db	39
+    62  000616  20                 	db	32
+    63  000617  70                 	db	112	;'p'
+    64  000618  61                 	db	97	;'a'
+    65  000619  72                 	db	114	;'r'
+    66  00061A  61                 	db	97	;'a'
+    67  00061B  20                 	db	32
+    68  00061C  64                 	db	100	;'d'
+    69  00061D  65                 	db	101	;'e'
+    70  00061E  73                 	db	115	;'s'
+    71  00061F  6C                 	db	108	;'l'
+    72  000620  69                 	db	105	;'i'
+    73  000621  67                 	db	103	;'g'
+    74  000622  61                 	db	97	;'a'
+    75  000623  72                 	db	114	;'r'
+    76  000624  2E                 	db	46
+    77  000625  0A                 	db	10
+    78  000626  00                 	db	0
+    79  000627                     STR_4:
+    80  000627  45                 	db	69	;'E'
+    81  000628  72                 	db	114	;'r'
+    82  000629  72                 	db	114	;'r'
+    83  00062A  6F                 	db	111	;'o'
+    84  00062B  2C                 	db	44
+    85  00062C  20                 	db	32
+    86  00062D  63                 	db	99	;'c'
+    87  00062E  61                 	db	97	;'a'
+    88  00062F  72                 	db	114	;'r'
+    89  000630  61                 	db	97	;'a'
+    90  000631  63                 	db	99	;'c'
+    91  000632  74                 	db	116	;'t'
+    92  000633  65                 	db	101	;'e'
+    93  000634  72                 	db	114	;'r'
+    94  000635  65                 	db	101	;'e'
+    95  000636  20                 	db	32
+    96  000637  69                 	db	105	;'i'
+    97  000638  6E                 	db	110	;'n'
+    98  000639  76                 	db	118	;'v'
+    99  00063A  61                 	db	97	;'a'
+   100  00063B  6C                 	db	108	;'l'
+   101  00063C  69                 	db	105	;'i'
+   102  00063D  64                 	db	100	;'d'
+   103  00063E  6F                 	db	111	;'o'
+   104  00063F  21                 	db	33
+   105  000640  0A                 	db	10
+   106  000641  00                 	db	0
+   107  000642                     STR_3:
+   108  000642  4C                 	db	76	;'L'
+   109  000643  65                 	db	101	;'e'
+   110  000644  64                 	db	100	;'d'
+   111  000645  20                 	db	32
+   112  000646  64                 	db	100	;'d'
+   113  000647  65                 	db	101	;'e'
+   114  000648  73                 	db	115	;'s'
+   115  000649  6C                 	db	108	;'l'
+   116  00064A  69                 	db	105	;'i'
+   117  00064B  67                 	db	103	;'g'
+   118  00064C  61                 	db	97	;'a'
+   119  00064D  64                 	db	100	;'d'
+   120  00064E  6F                 	db	111	;'o'
+   121  00064F  0A                 	db	10
+   122  000650  00                 	db	0
+   123  000651                     STR_2:
+   124  000651  4C                 	db	76	;'L'
+   125  000652  65                 	db	101	;'e'
+   126  000653  64                 	db	100	;'d'
+   127  000654  20                 	db	32
+   128  000655  6C                 	db	108	;'l'
+   129  000656  69                 	db	105	;'i'
+   130  000657  67                 	db	103	;'g'
+   131  000658  61                 	db	97	;'a'
+   132  000659  64                 	db	100	;'d'
+   133  00065A  6F                 	db	111	;'o'
+   134  00065B  0A                 	db	10
+   135  00065C  00                 	db	0
+   136  00065D                     __end_of__stringdata:
+   137                           	opt stack 0
+   138  00065D  00                 	db	0	; dummy byte at the end
+   139  0000                     
+   140                           ; #config settings
+   141                           
+   142                           	psect	cinit
+   143  000842                     __pcinit:
+   144                           	opt stack 0
+   145  000842                     start_initialization:
+   146                           	opt stack 0
+   147  000842                     __initialization:
+   148                           	opt stack 0
+   149                           
+   150                           ; Clear objects allocated to COMRAM (18 bytes)
+   151  000842  EE00  F018         	lfsr	0,__pbssCOMRAM
+   152  000846  0E12               	movlw	18
+   153  000848                     clear_0:
+   154  000848  6AEE               	clrf	postinc0,c
+   155  00084A  06E8               	decf	wreg,f,c
+   156  00084C  E1FD               	bnz	clear_0
+   157  00084E                     end_of_initialization:
+   158                           	opt stack 0
+   159  00084E                     __end_of__initialization:
+   160                           	opt stack 0
+   161  00084E  0E00               	movlw	low (__Lsmallconst shr (0+16))
+   162  000850  6EF8               	movwf	tblptru,c
+   163  000852  0E06               	movlw	high __Lsmallconst
+   164  000854  6EF7               	movwf	tblptrh,c
+   165  000856  0100               	movlb	0
+   166  000858  EF2F  F003         	goto	_main	;jump to C main() function
+   167                           tblptru	equ	0xFF8
+   168                           tblptrh	equ	0xFF7
+   169                           postinc0	equ	0xFEE
+   170                           wreg	equ	0xFE8
+   171                           
+   172                           	psect	bssCOMRAM
+   173  000018                     __pbssCOMRAM:
+   174                           	opt stack 0
+   175  000018                     _buffer:
+   176                           	opt stack 0
+   177  000018                     	ds	16
+   178  000028                     _count:
+   179                           	opt stack 0
+   180  000028                     	ds	2
+   181                           tblptru	equ	0xFF8
+   182                           tblptrh	equ	0xFF7
+   183                           postinc0	equ	0xFEE
+   184                           wreg	equ	0xFE8
+   185                           
+   186                           	psect	cstackCOMRAM
+   187  000001                     __pcstackCOMRAM:
+   188                           	opt stack 0
+   189  000001                     ??__EUSART_receiver:
+   190  000001                     
+   191                           ; 1 bytes @ 0x0
+   192  000001                     	ds	14
+   193  00000F                     ??_Serial_read_byte:
+   194  00000F                     ?_Serial_available:
+   195                           	opt stack 0
+   196  00000F                     Serial_write_byte@data:
+   197                           	opt stack 0
+   198                           
+   199                           ; 1 bytes @ 0xE
+   200  00000F                     	ds	1
+   201  000010                     Serial_write_msg@str:
+   202                           	opt stack 0
+   203                           
+   204                           ; 2 bytes @ 0xF
+   205  000010                     	ds	1
+   206  000011                     
+   207                           ; 0 bytes @ 0x10
+   208  000011                     	ds	1
+   209  000012                     
+   210                           ; 0 bytes @ 0x11
+   211  000012                     	ds	2
+   212  000014                     Serial_read_byte@data:
+   213                           	opt stack 0
+   214                           
+   215                           ; 1 bytes @ 0x13
+   216  000014                     	ds	1
+   217  000015                     Serial_read_byte@i:
+   218                           	opt stack 0
+   219                           
+   220                           ; 2 bytes @ 0x14
+   221  000015                     	ds	2
+   222  000017                     main@data:
+   223                           	opt stack 0
+   224                           
+   225                           ; 1 bytes @ 0x16
+   226  000017                     	ds	1
+   227                           tblptru	equ	0xFF8
+   228                           tblptrh	equ	0xFF7
+   229                           postinc0	equ	0xFEE
+   230                           wreg	equ	0xFE8
+   231                           
+   232 ;;
+   233 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   234 ;;
+   235 ;; *************** function _main *****************
+   236 ;; Defined at:
+   237 ;;		line 169 in file "main.c"
+   238 ;; Parameters:    Size  Location     Type
+   239 ;;		None
+   240 ;; Auto vars:     Size  Location     Type
+   241 ;;  data            1   22[COMRAM] unsigned char 
+   242 ;; Return value:  Size  Location     Type
+   243 ;;		None               void
+   244 ;; Registers used:
+   245 ;;		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   246 ;; Tracked objects:
+   247 ;;		On entry : 0/0
+   248 ;;		On exit  : 0/0
+   249 ;;		Unchanged: 0/0
+   250 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   251 ;;      Params:         0       0       0       0       0       0       0
+   252 ;;      Locals:         1       0       0       0       0       0       0
+   253 ;;      Temps:          0       0       0       0       0       0       0
+   254 ;;      Totals:         1       0       0       0       0       0       0
+   255 ;;Total ram usage:        1 bytes
+   256 ;; Hardware stack levels required when called:    3
+   257 ;; This function calls:
+   258 ;;		_Serial_available
+   259 ;;		_Serial_config_2400
+   260 ;;		_Serial_read_byte
+   261 ;;		_Serial_write_msg
+   262 ;; This function is called by:
+   263 ;;		Startup code after reset
+   264 ;; This function uses a non-reentrant model
+   265 ;;
+   266                           
+   267                           	psect	text0
+   268  00065E                     __ptext0:
+   269                           	opt stack 0
+   270  00065E                     _main:
+   271                           	opt stack 28
+   272                           
+   273                           ;main.c: 172: Serial_config_2400();
+   274                           
+   275                           ;incstack = 0
+   276  00065E  EC0E  F004         	call	_Serial_config_2400	;wreg free
+   277                           
+   278                           ;main.c: 173: ADCON1 = 0x0f;
+   279  000662  0E0F               	movlw	15
+   280  000664  6EC1               	movwf	4033,c	;volatile
+   281                           
+   282                           ;main.c: 174: PORTB = 0;
+   283  000666  0E00               	movlw	0
+   284  000668  6E81               	movwf	3969,c	;volatile
+   285                           
+   286                           ;main.c: 177: TRISBbits.RB0 = 0;
+   287  00066A  9093               	bcf	3987,0,c	;volatile
+   288                           
+   289                           ;main.c: 185: Serial_write_msg("'L' para Ligar, e 'D' para desligar.\n");
+   290  00066C  0E06               	movlw	high STR_1
+   291  00066E  6E11               	movwf	Serial_write_msg@str+1,c
+   292  000670  0E01               	movlw	low STR_1
+   293  000672  6E10               	movwf	Serial_write_msg@str,c
+   294  000674  ECE9  F003         	call	_Serial_write_msg	;wreg free
+   295  000678                     l737:
+   296                           
+   297                           ;main.c: 189: {
+   298                           ;main.c: 190: if(Serial_available()>0)
+   299  000678  EC35  F004         	call	_Serial_available	;wreg free
+   300  00067C  5010               	movf	?_Serial_available+1,w,c
+   301  00067E  0A80               	xorlw	128
+   302  000680  0F80               	addlw	-128
+   303  000682  0E01               	movlw	1
+   304  000684  B4D8               	btfsc	status,2,c
+   305  000686  5C0F               	subwf	?_Serial_available,w,c
+   306  000688  A0D8               	btfss	status,0,c
+   307  00068A  D7F6               	goto	l737
+   308                           
+   309                           ;main.c: 191: {
+   310                           ;main.c: 192: char data = Serial_read_byte();
+   311  00068C  ECB1  F003         	call	_Serial_read_byte	;wreg free
+   312  000690  6E17               	movwf	main@data,c
+   313                           
+   314                           ;main.c: 193: if(data == 'L' || data == 'l')
+   315  000692  5017               	movf	main@data,w,c
+   316  000694  0A4C               	xorlw	76
+   317  000696  B4D8               	btfsc	status,2,c
+   318  000698  D004               	goto	l69
+   319  00069A  5017               	movf	main@data,w,c
+   320  00069C  0A6C               	xorlw	108
+   321  00069E  A4D8               	btfss	status,2,c
+   322  0006A0  D008               	goto	l747
+   323  0006A2                     l69:
+   324                           
+   325                           ;main.c: 194: {
+   326                           ;main.c: 195: PORTBbits.RB0 = 1;
+   327  0006A2  8081               	bsf	3969,0,c	;volatile
+   328                           
+   329                           ;main.c: 196: Serial_write_msg("Led ligado\n");
+   330  0006A4  0E06               	movlw	high STR_2
+   331  0006A6  6E11               	movwf	Serial_write_msg@str+1,c
+   332  0006A8  0E51               	movlw	low STR_2
+   333  0006AA  6E10               	movwf	Serial_write_msg@str,c
+   334  0006AC  ECE9  F003         	call	_Serial_write_msg	;wreg free
+   335                           
+   336                           ;main.c: 197: }
+   337  0006B0  D7E3               	goto	l737
+   338  0006B2                     l747:
+   339                           
+   340                           ;main.c: 198: else if(data == 'D' || data == 'd')
+   341  0006B2  5017               	movf	main@data,w,c
+   342  0006B4  0A44               	xorlw	68
+   343  0006B6  B4D8               	btfsc	status,2,c
+   344  0006B8  D004               	goto	l73
+   345  0006BA  5017               	movf	main@data,w,c
+   346  0006BC  0A64               	xorlw	100
+   347  0006BE  A4D8               	btfss	status,2,c
+   348  0006C0  D008               	goto	l71
+   349  0006C2                     l73:
+   350                           
+   351                           ;main.c: 199: {
+   352                           ;main.c: 200: PORTBbits.RB0 = 0;
+   353  0006C2  9081               	bcf	3969,0,c	;volatile
+   354                           
+   355                           ;main.c: 201: Serial_write_msg("Led desligado\n");
+   356  0006C4  0E06               	movlw	high STR_3
+   357  0006C6  6E11               	movwf	Serial_write_msg@str+1,c
+   358  0006C8  0E42               	movlw	low STR_3
+   359  0006CA  6E10               	movwf	Serial_write_msg@str,c
+   360  0006CC  ECE9  F003         	call	_Serial_write_msg	;wreg free
+   361                           
+   362                           ;main.c: 202: }
+   363  0006D0  D7D3               	goto	l737
+   364  0006D2                     l71:
+   365                           
+   366                           ;main.c: 203: else
+   367                           ;main.c: 204: {
+   368                           ;main.c: 205: PORTBbits.RB0 = 0;
+   369  0006D2  9081               	bcf	3969,0,c	;volatile
+   370                           
+   371                           ;main.c: 206: Serial_write_msg("Erro, caractere invalido!\n");
+   372  0006D4  0E06               	movlw	high STR_4
+   373  0006D6  6E11               	movwf	Serial_write_msg@str+1,c
+   374  0006D8  0E27               	movlw	low STR_4
+   375  0006DA  6E10               	movwf	Serial_write_msg@str,c
+   376  0006DC  ECE9  F003         	call	_Serial_write_msg	;wreg free
+   377  0006E0  D7CB               	goto	l737
+   378  0006E2                     __end_of_main:
+   379                           	opt stack 0
+   380                           tblptru	equ	0xFF8
+   381                           tblptrh	equ	0xFF7
+   382                           postinc0	equ	0xFEE
+   383                           wreg	equ	0xFE8
+   384                           status	equ	0xFD8
+   385                           
+   386 ;; *************** function _Serial_write_msg *****************
+   387 ;; Defined at:
+   388 ;;		line 144 in file "main.c"
+   389 ;; Parameters:    Size  Location     Type
+   390 ;;  str             2   15[COMRAM] PTR unsigned char 
+   391 ;;		 -> STR_4(27), STR_3(15), STR_2(12), STR_1(38), 
+   392 ;; Auto vars:     Size  Location     Type
+   393 ;;		None
+   394 ;; Return value:  Size  Location     Type
+   395 ;;		None               void
+   396 ;; Registers used:
+   397 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   398 ;; Tracked objects:
+   399 ;;		On entry : 0/0
+   400 ;;		On exit  : 0/0
+   401 ;;		Unchanged: 0/0
+   402 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   403 ;;      Params:         2       0       0       0       0       0       0
+   404 ;;      Locals:         0       0       0       0       0       0       0
+   405 ;;      Temps:          0       0       0       0       0       0       0
+   406 ;;      Totals:         2       0       0       0       0       0       0
+   407 ;;Total ram usage:        2 bytes
+   408 ;; Hardware stack levels used:    1
+   409 ;; Hardware stack levels required when called:    2
+   410 ;; This function calls:
+   411 ;;		_Serial_write_byte
+   412 ;; This function is called by:
+   413 ;;		_main
+   414 ;; This function uses a non-reentrant model
+   415 ;;
+   416                           
+   417                           	psect	text1
+   418  0007D2                     __ptext1:
+   419                           	opt stack 0
+   420  0007D2                     _Serial_write_msg:
+   421                           	opt stack 28
+   422                           
+   423                           ;main.c: 146: while(*str)
+   424                           
+   425                           ;incstack = 0
+   426  0007D2  D01A               	goto	l719
+   427  0007D4                     l711:
+   428                           
+   429                           ;main.c: 147: {
+   430                           ;main.c: 148: if(*str == 10)
+   431  0007D4  C010  FFF6         	movff	Serial_write_msg@str,tblptrl
+   432  0007D8  C011  FFF7         	movff	Serial_write_msg@str+1,tblptrh
+   433  0007DC                     	if	0	;tblptru may be non-zero
+   434  0007DC                     	endif
+   435  0007DC                     	if	0	;tblptru may be non-zero
+   436  0007DC                     	endif
+   437  0007DC  0008               	tblrd		*
+   438  0007DE  50F5               	movf	tablat,w,c
+   439  0007E0  0A0A               	xorlw	10
+   440  0007E2  A4D8               	btfss	status,2,c
+   441  0007E4  D007               	goto	l715
+   442                           
+   443                           ;main.c: 149: {
+   444                           ;main.c: 150: Serial_write_byte(10);
+   445  0007E6  0E0A               	movlw	10
+   446  0007E8  EC2E  F004         	call	_Serial_write_byte
+   447                           
+   448                           ;main.c: 151: Serial_write_byte(13);
+   449  0007EC  0E0D               	movlw	13
+   450  0007EE  EC2E  F004         	call	_Serial_write_byte
+   451                           
+   452                           ;main.c: 152: }
+   453  0007F2  D008               	goto	l717
+   454  0007F4                     l715:
+   455                           
+   456                           ;main.c: 153: else Serial_write_byte(*str);
+   457  0007F4  C010  FFF6         	movff	Serial_write_msg@str,tblptrl
+   458  0007F8  C011  FFF7         	movff	Serial_write_msg@str+1,tblptrh
+   459  0007FC                     	if	0	;tblptru may be non-zero
+   460  0007FC                     	endif
+   461  0007FC                     	if	0	;tblptru may be non-zero
+   462  0007FC                     	endif
+   463  0007FC  0008               	tblrd		*
+   464  0007FE  50F5               	movf	tablat,w,c
+   465  000800  EC2E  F004         	call	_Serial_write_byte
+   466  000804                     l717:
+   467                           
+   468                           ;main.c: 154: str++;
+   469  000804  4A10               	infsnz	Serial_write_msg@str,f,c
+   470  000806  2A11               	incf	Serial_write_msg@str+1,f,c
+   471  000808                     l719:
+   472  000808  C010  FFF6         	movff	Serial_write_msg@str,tblptrl
+   473  00080C  C011  FFF7         	movff	Serial_write_msg@str+1,tblptrh
+   474  000810                     	if	0	;tblptru may be non-zero
+   475  000810                     	endif
+   476  000810                     	if	0	;tblptru may be non-zero
+   477  000810                     	endif
+   478  000810  0008               	tblrd		*
+   479  000812  50F5               	movf	tablat,w,c
+   480  000814  0900               	iorlw	0
+   481  000816  B4D8               	btfsc	status,2,c
+   482  000818  0012               	return	
+   483  00081A  D7DC               	goto	l711
+   484  00081C                     __end_of_Serial_write_msg:
+   485                           	opt stack 0
+   486                           tblptru	equ	0xFF8
+   487                           tblptrh	equ	0xFF7
+   488                           tblptrl	equ	0xFF6
+   489                           tablat	equ	0xFF5
+   490                           postinc0	equ	0xFEE
+   491                           wreg	equ	0xFE8
+   492                           status	equ	0xFD8
+   493                           
+   494 ;; *************** function _Serial_write_byte *****************
+   495 ;; Defined at:
+   496 ;;		line 125 in file "main.c"
+   497 ;; Parameters:    Size  Location     Type
+   498 ;;  data            1    wreg     unsigned char 
+   499 ;; Auto vars:     Size  Location     Type
+   500 ;;  data            1   14[COMRAM] unsigned char 
+   501 ;; Return value:  Size  Location     Type
+   502 ;;		None               void
+   503 ;; Registers used:
+   504 ;;		wreg
+   505 ;; Tracked objects:
+   506 ;;		On entry : 0/0
+   507 ;;		On exit  : 0/0
+   508 ;;		Unchanged: 0/0
+   509 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   510 ;;      Params:         0       0       0       0       0       0       0
+   511 ;;      Locals:         1       0       0       0       0       0       0
+   512 ;;      Temps:          0       0       0       0       0       0       0
+   513 ;;      Totals:         1       0       0       0       0       0       0
+   514 ;;Total ram usage:        1 bytes
+   515 ;; Hardware stack levels used:    1
+   516 ;; Hardware stack levels required when called:    1
+   517 ;; This function calls:
+   518 ;;		Nothing
+   519 ;; This function is called by:
+   520 ;;		_Serial_write_msg
+   521 ;; This function uses a non-reentrant model
+   522 ;;
+   523                           
+   524                           	psect	text2
+   525  00085C                     __ptext2:
+   526                           	opt stack 0
+   527  00085C                     _Serial_write_byte:
+   528                           	opt stack 28
+   529                           
+   530                           ;incstack = 0
+   531                           ;Serial_write_byte@data stored from wreg
+   532  00085C  6E0F               	movwf	Serial_write_byte@data,c
+   533                           
+   534                           ;main.c: 127: TXSTAbits.TRMT = 0;
+   535  00085E  92AC               	bcf	4012,1,c	;volatile
+   536                           
+   537                           ;main.c: 128: TXREG = data;
+   538  000860  C00F  FFAD         	movff	Serial_write_byte@data,4013	;volatile
+   539  000864                     l41:
+   540  000864  B2AC               	btfsc	4012,1,c	;volatile
+   541  000866  0012               	return	
+   542  000868  D7FD               	goto	l41
+   543  00086A                     __end_of_Serial_write_byte:
+   544                           	opt stack 0
+   545                           tblptru	equ	0xFF8
+   546                           tblptrh	equ	0xFF7
+   547                           tblptrl	equ	0xFF6
+   548                           tablat	equ	0xFF5
+   549                           postinc0	equ	0xFEE
+   550                           wreg	equ	0xFE8
+   551                           status	equ	0xFD8
+   552                           
+   553 ;; *************** function _Serial_read_byte *****************
+   554 ;; Defined at:
+   555 ;;		line 132 in file "main.c"
+   556 ;; Parameters:    Size  Location     Type
+   557 ;;		None
+   558 ;; Auto vars:     Size  Location     Type
+   559 ;;  i               2   20[COMRAM] int 
+   560 ;;  data            1   19[COMRAM] unsigned char 
+   561 ;; Return value:  Size  Location     Type
+   562 ;;                  1    wreg      unsigned char 
+   563 ;; Registers used:
+   564 ;;		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+   565 ;; Tracked objects:
+   566 ;;		On entry : 0/0
+   567 ;;		On exit  : 0/0
+   568 ;;		Unchanged: 0/0
+   569 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   570 ;;      Params:         0       0       0       0       0       0       0
+   571 ;;      Locals:         3       0       0       0       0       0       0
+   572 ;;      Temps:          5       0       0       0       0       0       0
+   573 ;;      Totals:         8       0       0       0       0       0       0
+   574 ;;Total ram usage:        8 bytes
+   575 ;; Hardware stack levels used:    1
+   576 ;; Hardware stack levels required when called:    1
+   577 ;; This function calls:
+   578 ;;		Nothing
+   579 ;; This function is called by:
+   580 ;;		_main
+   581 ;; This function uses a non-reentrant model
+   582 ;;
+   583                           
+   584                           	psect	text3
+   585  000762                     __ptext3:
+   586                           	opt stack 0
+   587  000762                     _Serial_read_byte:
+   588                           	opt stack 29
+   589                           
+   590                           ;main.c: 134: char data = buffer[0];
+   591                           
+   592                           ;incstack = 0
+   593  000762  C018  F014         	movff	_buffer,Serial_read_byte@data
+   594                           
+   595                           ;main.c: 135: count--;
+   596  000766  0628               	decf	_count,f,c
+   597  000768  A0D8               	btfss	status,0,c
+   598  00076A  0629               	decf	_count+1,f,c
+   599                           
+   600                           ;main.c: 138: for(int i=0;i<count-1;i++)
+   601  00076C  0E00               	movlw	0
+   602  00076E  6E16               	movwf	Serial_read_byte@i+1,c
+   603  000770  0E00               	movlw	0
+   604  000772  6E15               	movwf	Serial_read_byte@i,c
+   605  000774  D016               	goto	l703
+   606  000776                     l699:
+   607                           
+   608                           ;main.c: 139: {
+   609                           ;main.c: 140: buffer[i]=buffer[i+1];
+   610  000776  0E01               	movlw	1
+   611  000778  2415               	addwf	Serial_read_byte@i,w,c
+   612  00077A  6E0F               	movwf	??_Serial_read_byte& (0+255),c
+   613  00077C  0E00               	movlw	0
+   614  00077E  2016               	addwfc	Serial_read_byte@i+1,w,c
+   615  000780  6E10               	movwf	(??_Serial_read_byte+1)& (0+255),c
+   616  000782  0E18               	movlw	low _buffer
+   617  000784  240F               	addwf	??_Serial_read_byte,w,c
+   618  000786  6ED9               	movwf	fsr2l,c
+   619  000788  0E00               	movlw	high _buffer
+   620  00078A  2010               	addwfc	??_Serial_read_byte+1,w,c
+   621  00078C  6EDA               	movwf	fsr2h,c
+   622  00078E  0E18               	movlw	low _buffer
+   623  000790  2415               	addwf	Serial_read_byte@i,w,c
+   624  000792  6EE1               	movwf	fsr1l,c
+   625  000794  0E00               	movlw	high _buffer
+   626  000796  2016               	addwfc	Serial_read_byte@i+1,w,c
+   627  000798  6EE2               	movwf	fsr1h,c
+   628  00079A  CFDF FFE7          	movff	indf2,indf1
+   629  00079E  4A15               	infsnz	Serial_read_byte@i,f,c
+   630  0007A0  2A16               	incf	Serial_read_byte@i+1,f,c
+   631  0007A2                     l703:
+   632  0007A2  0EFF               	movlw	255
+   633  0007A4  6E0F               	movwf	??_Serial_read_byte& (0+255),c
+   634  0007A6  0EFF               	movlw	255
+   635  0007A8  6E10               	movwf	(??_Serial_read_byte+1)& (0+255),c
+   636  0007AA  C028  F011         	movff	_count,??_Serial_read_byte+2
+   637  0007AE  C029  F012         	movff	_count+1,??_Serial_read_byte+3
+   638  0007B2  500F               	movf	??_Serial_read_byte,w,c
+   639  0007B4  2611               	addwf	??_Serial_read_byte+2,f,c
+   640  0007B6  5010               	movf	??_Serial_read_byte+1,w,c
+   641  0007B8  2212               	addwfc	??_Serial_read_byte+3,f,c
+   642  0007BA  5016               	movf	Serial_read_byte@i+1,w,c
+   643  0007BC  0A80               	xorlw	128
+   644  0007BE  6E13               	movwf	(??_Serial_read_byte+4)& (0+255),c
+   645  0007C0  5011               	movf	??_Serial_read_byte+2,w,c
+   646  0007C2  5C15               	subwf	Serial_read_byte@i,w,c
+   647  0007C4  5012               	movf	??_Serial_read_byte+3,w,c
+   648  0007C6  0A80               	xorlw	128
+   649  0007C8  5813               	subwfb	(??_Serial_read_byte+4)& (0+255),w,c
+   650  0007CA  A0D8               	btfss	status,0,c
+   651  0007CC  D7D4               	goto	l699
+   652                           
+   653                           ;main.c: 141: }
+   654                           ;main.c: 142: return data;
+   655  0007CE  5014               	movf	Serial_read_byte@data,w,c
+   656  0007D0  0012               	return	
+   657  0007D2                     __end_of_Serial_read_byte:
+   658                           	opt stack 0
+   659                           tblptru	equ	0xFF8
+   660                           tblptrh	equ	0xFF7
+   661                           tblptrl	equ	0xFF6
+   662                           tablat	equ	0xFF5
+   663                           postinc0	equ	0xFEE
+   664                           wreg	equ	0xFE8
+   665                           indf1	equ	0xFE7
+   666                           fsr1h	equ	0xFE2
+   667                           fsr1l	equ	0xFE1
+   668                           indf2	equ	0xFDF
+   669                           fsr2h	equ	0xFDA
+   670                           fsr2l	equ	0xFD9
+   671                           status	equ	0xFD8
+   672                           
+   673 ;; *************** function _Serial_config_2400 *****************
+   674 ;; Defined at:
+   675 ;;		line 91 in file "main.c"
+   676 ;; Parameters:    Size  Location     Type
+   677 ;;		None
+   678 ;; Auto vars:     Size  Location     Type
+   679 ;;		None
+   680 ;; Return value:  Size  Location     Type
+   681 ;;		None               void
+   682 ;; Registers used:
+   683 ;;		wreg, status,2
+   684 ;; Tracked objects:
+   685 ;;		On entry : 0/0
+   686 ;;		On exit  : 0/0
+   687 ;;		Unchanged: 0/0
+   688 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   689 ;;      Params:         0       0       0       0       0       0       0
+   690 ;;      Locals:         0       0       0       0       0       0       0
+   691 ;;      Temps:          0       0       0       0       0       0       0
+   692 ;;      Totals:         0       0       0       0       0       0       0
+   693 ;;Total ram usage:        0 bytes
+   694 ;; Hardware stack levels used:    1
+   695 ;; Hardware stack levels required when called:    1
+   696 ;; This function calls:
+   697 ;;		Nothing
+   698 ;; This function is called by:
+   699 ;;		_main
+   700 ;; This function uses a non-reentrant model
+   701 ;;
+   702                           
+   703                           	psect	text4
+   704  00081C                     __ptext4:
+   705                           	opt stack 0
+   706  00081C                     _Serial_config_2400:
+   707                           	opt stack 29
+   708                           
+   709                           ;main.c: 94: count = 0;
+   710                           
+   711                           ;incstack = 0
+   712  00081C  0E00               	movlw	0
+   713  00081E  6E29               	movwf	_count+1,c
+   714  000820  0E00               	movlw	0
+   715  000822  6E28               	movwf	_count,c
+   716                           
+   717                           ;main.c: 98: TRISCbits.RC6 = 1;
+   718  000824  8C94               	bsf	3988,6,c	;volatile
+   719                           
+   720                           ;main.c: 99: TRISCbits.RC7 = 1;
+   721  000826  8E94               	bsf	3988,7,c	;volatile
+   722                           
+   723                           ;main.c: 101: TXSTAbits.CSRC = 1;
+   724  000828  8EAC               	bsf	4012,7,c	;volatile
+   725                           
+   726                           ;main.c: 102: TXSTAbits.TXEN = 1;
+   727  00082A  8AAC               	bsf	4012,5,c	;volatile
+   728                           
+   729                           ;main.c: 103: TXSTAbits.SYNC = 0;
+   730  00082C  98AC               	bcf	4012,4,c	;volatile
+   731                           
+   732                           ;main.c: 106: RCSTAbits.SPEN = 1;
+   733  00082E  8EAB               	bsf	4011,7,c	;volatile
+   734                           
+   735                           ;main.c: 107: RCSTAbits.CREN = 1;
+   736  000830  88AB               	bsf	4011,4,c	;volatile
+   737                           
+   738                           ;main.c: 110: BAUDCONbits.BRG16 = 0;
+   739  000832  96B8               	bcf	4024,3,c	;volatile
+   740                           
+   741                           ;main.c: 111: TXSTAbits.BRGH = 0;
+   742  000834  94AC               	bcf	4012,2,c	;volatile
+   743                           
+   744                           ;main.c: 112: SPBRG = 25;
+   745  000836  0E19               	movlw	25
+   746  000838  6EAF               	movwf	4015,c	;volatile
+   747                           
+   748                           ;main.c: 115: INTCONbits.GIE = 1;
+   749  00083A  8EF2               	bsf	intcon,7,c	;volatile
+   750                           
+   751                           ;main.c: 116: INTCONbits.PEIE = 1;
+   752  00083C  8CF2               	bsf	intcon,6,c	;volatile
+   753                           
+   754                           ;main.c: 117: PIE1bits.RCIE = 1;
+   755  00083E  8A9D               	bsf	3997,5,c	;volatile
+   756  000840  0012               	return	
+   757  000842                     __end_of_Serial_config_2400:
+   758                           	opt stack 0
+   759                           tblptru	equ	0xFF8
+   760                           tblptrh	equ	0xFF7
+   761                           tblptrl	equ	0xFF6
+   762                           tablat	equ	0xFF5
+   763                           intcon	equ	0xFF2
+   764                           postinc0	equ	0xFEE
+   765                           wreg	equ	0xFE8
+   766                           indf1	equ	0xFE7
+   767                           fsr1h	equ	0xFE2
+   768                           fsr1l	equ	0xFE1
+   769                           indf2	equ	0xFDF
+   770                           fsr2h	equ	0xFDA
+   771                           fsr2l	equ	0xFD9
+   772                           status	equ	0xFD8
+   773                           
+   774 ;; *************** function _Serial_available *****************
+   775 ;; Defined at:
+   776 ;;		line 120 in file "main.c"
+   777 ;; Parameters:    Size  Location     Type
+   778 ;;		None
+   779 ;; Auto vars:     Size  Location     Type
+   780 ;;		None
+   781 ;; Return value:  Size  Location     Type
+   782 ;;                  2   14[COMRAM] int 
+   783 ;; Registers used:
+   784 ;;		None
+   785 ;; Tracked objects:
+   786 ;;		On entry : 0/0
+   787 ;;		On exit  : 0/0
+   788 ;;		Unchanged: 0/0
+   789 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   790 ;;      Params:         2       0       0       0       0       0       0
+   791 ;;      Locals:         0       0       0       0       0       0       0
+   792 ;;      Temps:          0       0       0       0       0       0       0
+   793 ;;      Totals:         2       0       0       0       0       0       0
+   794 ;;Total ram usage:        2 bytes
+   795 ;; Hardware stack levels used:    1
+   796 ;; Hardware stack levels required when called:    1
+   797 ;; This function calls:
+   798 ;;		Nothing
+   799 ;; This function is called by:
+   800 ;;		_main
+   801 ;; This function uses a non-reentrant model
+   802 ;;
+   803                           
+   804                           	psect	text5
+   805  00086A                     __ptext5:
+   806                           	opt stack 0
+   807  00086A                     _Serial_available:
+   808                           	opt stack 29
+   809                           
+   810                           ;main.c: 122: return count;
+   811                           
+   812                           ;incstack = 0
+   813  00086A  C028  F00F         	movff	_count,?_Serial_available
+   814  00086E  C029  F010         	movff	_count+1,?_Serial_available+1
+   815  000872  0012               	return	
+   816  000874                     __end_of_Serial_available:
+   817                           	opt stack 0
+   818                           tblptru	equ	0xFF8
+   819                           tblptrh	equ	0xFF7
+   820                           tblptrl	equ	0xFF6
+   821                           tablat	equ	0xFF5
+   822                           intcon	equ	0xFF2
+   823                           postinc0	equ	0xFEE
+   824                           wreg	equ	0xFE8
+   825                           indf1	equ	0xFE7
+   826                           fsr1h	equ	0xFE2
+   827                           fsr1l	equ	0xFE1
+   828                           indf2	equ	0xFDF
+   829                           fsr2h	equ	0xFDA
+   830                           fsr2l	equ	0xFD9
+   831                           status	equ	0xFD8
+   832                           
+   833 ;; *************** function __EUSART_receiver *****************
+   834 ;; Defined at:
+   835 ;;		line 158 in file "main.c"
+   836 ;; Parameters:    Size  Location     Type
+   837 ;;		None
+   838 ;; Auto vars:     Size  Location     Type
+   839 ;;		None
+   840 ;; Return value:  Size  Location     Type
+   841 ;;		None               void
+   842 ;; Registers used:
+   843 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   844 ;; Tracked objects:
+   845 ;;		On entry : 0/0
+   846 ;;		On exit  : 0/0
+   847 ;;		Unchanged: 0/0
+   848 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   849 ;;      Params:         0       0       0       0       0       0       0
+   850 ;;      Locals:         0       0       0       0       0       0       0
+   851 ;;      Temps:         14       0       0       0       0       0       0
+   852 ;;      Totals:        14       0       0       0       0       0       0
+   853 ;;Total ram usage:       14 bytes
+   854 ;; Hardware stack levels used:    1
+   855 ;; This function calls:
+   856 ;;		Nothing
+   857 ;; This function is called by:
+   858 ;;		Interrupt level 2
+   859 ;; This function uses a non-reentrant model
+   860 ;;
+   861                           
+   862                           	psect	intcode
+   863  000008                     __pintcode:
+   864                           	opt stack 0
+   865  000008                     __EUSART_receiver:
+   866                           	opt stack 28
+   867                           
+   868                           ;incstack = 0
+   869  000008  CFFA F001          	movff	pclath,??__EUSART_receiver
+   870  00000C  CFFB F002          	movff	pclatu,??__EUSART_receiver+1
+   871  000010  CFE9 F003          	movff	fsr0l,??__EUSART_receiver+2
+   872  000014  ED71  F003         	call	int_func,f	;refresh shadow registers
+   873                           pclatu	equ	0xFFB
+   874                           pclath	equ	0xFFA
+   875                           tblptru	equ	0xFF8
+   876                           tblptrh	equ	0xFF7
+   877                           tblptrl	equ	0xFF6
+   878                           tablat	equ	0xFF5
+   879                           intcon	equ	0xFF2
+   880                           postinc0	equ	0xFEE
+   881                           fsr0l	equ	0xFE9
+   882                           wreg	equ	0xFE8
+   883                           indf1	equ	0xFE7
+   884                           fsr1h	equ	0xFE2
+   885                           fsr1l	equ	0xFE1
+   886                           indf2	equ	0xFDF
+   887                           fsr2h	equ	0xFDA
+   888                           fsr2l	equ	0xFD9
+   889                           status	equ	0xFD8
+   890                           
+   891                           	psect	intcode_body
+   892  0006E2                     __pintcode_body:
+   893                           	opt stack 28
+   894  0006E2                     int_func:
+   895                           	opt stack 28
+   896  0006E2  0006               	pop		; remove dummy address from shadow register refresh
+   897  0006E4  CFEA F004          	movff	fsr0h,??__EUSART_receiver+3
+   898  0006E8  CFE1 F005          	movff	fsr1l,??__EUSART_receiver+4
+   899  0006EC  CFE2 F006          	movff	fsr1h,??__EUSART_receiver+5
+   900  0006F0  CFD9 F007          	movff	fsr2l,??__EUSART_receiver+6
+   901  0006F4  CFDA F008          	movff	fsr2h,??__EUSART_receiver+7
+   902  0006F8  CFF3 F009          	movff	prodl,??__EUSART_receiver+8
+   903  0006FC  CFF4 F00A          	movff	prodh,??__EUSART_receiver+9
+   904  000700  CFF6 F00B          	movff	tblptrl,??__EUSART_receiver+10
+   905  000704  CFF7 F00C          	movff	tblptrh,??__EUSART_receiver+11
+   906  000708  CFF8 F00D          	movff	tblptru,??__EUSART_receiver+12
+   907  00070C  CFF5 F00E          	movff	tablat,??__EUSART_receiver+13
+   908                           
+   909                           ;main.c: 160: if(RCIF)
+   910  000710  AA9E               	btfss	3998,5,c	;volatile
+   911  000712  D00A               	goto	i2l62
+   912                           
+   913                           ;main.c: 161: {
+   914                           ;main.c: 162: buffer[count] = RCREG;
+   915  000714  0E18               	movlw	low _buffer
+   916  000716  2428               	addwf	_count,w,c
+   917  000718  6ED9               	movwf	fsr2l,c
+   918  00071A  0E00               	movlw	high _buffer
+   919  00071C  2029               	addwfc	_count+1,w,c
+   920  00071E  6EDA               	movwf	fsr2h,c
+   921  000720  CFAE FFDF          	movff	4014,indf2	;volatile
+   922                           
+   923                           ;main.c: 163: count++;
+   924  000724  4A28               	infsnz	_count,f,c
+   925  000726  2A29               	incf	_count+1,f,c
+   926  000728                     i2l62:
+   927  000728  C00E  FFF5         	movff	??__EUSART_receiver+13,tablat
+   928  00072C  C00D  FFF8         	movff	??__EUSART_receiver+12,tblptru
+   929  000730  C00C  FFF7         	movff	??__EUSART_receiver+11,tblptrh
+   930  000734  C00B  FFF6         	movff	??__EUSART_receiver+10,tblptrl
+   931  000738  C00A  FFF4         	movff	??__EUSART_receiver+9,prodh
+   932  00073C  C009  FFF3         	movff	??__EUSART_receiver+8,prodl
+   933  000740  C008  FFDA         	movff	??__EUSART_receiver+7,fsr2h
+   934  000744  C007  FFD9         	movff	??__EUSART_receiver+6,fsr2l
+   935  000748  C006  FFE2         	movff	??__EUSART_receiver+5,fsr1h
+   936  00074C  C005  FFE1         	movff	??__EUSART_receiver+4,fsr1l
+   937  000750  C004  FFEA         	movff	??__EUSART_receiver+3,fsr0h
+   938  000754  C003  FFE9         	movff	??__EUSART_receiver+2,fsr0l
+   939  000758  C002  FFFB         	movff	??__EUSART_receiver+1,pclatu
+   940  00075C  C001  FFFA         	movff	??__EUSART_receiver,pclath
+   941  000760  0011               	retfie		f
+   942  000762                     __end_of__EUSART_receiver:
+   943                           	opt stack 0
+   944                           pclatu	equ	0xFFB
+   945                           pclath	equ	0xFFA
+   946                           tblptru	equ	0xFF8
+   947                           tblptrh	equ	0xFF7
+   948                           tblptrl	equ	0xFF6
+   949                           tablat	equ	0xFF5
+   950                           prodh	equ	0xFF4
+   951                           prodl	equ	0xFF3
+   952                           intcon	equ	0xFF2
+   953                           postinc0	equ	0xFEE
+   954                           fsr0h	equ	0xFEA
+   955                           fsr0l	equ	0xFE9
+   956                           wreg	equ	0xFE8
+   957                           indf1	equ	0xFE7
+   958                           fsr1h	equ	0xFE2
+   959                           fsr1l	equ	0xFE1
+   960                           indf2	equ	0xFDF
+   961                           fsr2h	equ	0xFDA
+   962                           fsr2l	equ	0xFD9
+   963                           status	equ	0xFD8
+   964                           pclatu	equ	0xFFB
+   965                           pclath	equ	0xFFA
+   966                           tblptru	equ	0xFF8
+   967                           tblptrh	equ	0xFF7
+   968                           tblptrl	equ	0xFF6
+   969                           tablat	equ	0xFF5
+   970                           prodh	equ	0xFF4
+   971                           prodl	equ	0xFF3
+   972                           intcon	equ	0xFF2
+   973                           postinc0	equ	0xFEE
+   974                           fsr0h	equ	0xFEA
+   975                           fsr0l	equ	0xFE9
+   976                           wreg	equ	0xFE8
+   977                           indf1	equ	0xFE7
+   978                           fsr1h	equ	0xFE2
+   979                           fsr1l	equ	0xFE1
+   980                           indf2	equ	0xFDF
+   981                           fsr2h	equ	0xFDA
+   982                           fsr2l	equ	0xFD9
+   983                           status	equ	0xFD8
+   984                           
+   985                           	psect	rparam
+   986  0000                     pclatu	equ	0xFFB
+   987                           pclath	equ	0xFFA
+   988                           tblptru	equ	0xFF8
+   989                           tblptrh	equ	0xFF7
+   990                           tblptrl	equ	0xFF6
+   991                           tablat	equ	0xFF5
+   992                           prodh	equ	0xFF4
+   993                           prodl	equ	0xFF3
+   994                           intcon	equ	0xFF2
+   995                           postinc0	equ	0xFEE
+   996                           fsr0h	equ	0xFEA
+   997                           fsr0l	equ	0xFE9
+   998                           wreg	equ	0xFE8
+   999                           indf1	equ	0xFE7
+  1000                           fsr1h	equ	0xFE2
+  1001                           fsr1l	equ	0xFE1
+  1002                           indf2	equ	0xFDF
+  1003                           fsr2h	equ	0xFDA
+  1004                           fsr2l	equ	0xFD9
+  1005                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     92
+    Constant    0
+    Data        0
+    BSS         18
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     23      41
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    Serial_write_msg@str	PTR unsigned char  size(2) Largest target is 38
+		 -> STR_4(CODE[27]), STR_3(CODE[15]), STR_2(CODE[12]), STR_1(CODE[38]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_Serial_read_byte
+    _Serial_write_msg->_Serial_write_byte
+
+Critical Paths under __EUSART_receiver in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under __EUSART_receiver in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under __EUSART_receiver in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under __EUSART_receiver in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under __EUSART_receiver in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under __EUSART_receiver in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under __EUSART_receiver in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0     352
+                                             22 COMRAM     1     1      0
+                   _Serial_available
+                 _Serial_config_2400
+                   _Serial_read_byte
+                   _Serial_write_msg
+ ---------------------------------------------------------------------------------
+ (1) _Serial_write_msg                                     2     0      2     232
+                                             15 COMRAM     2     0      2
+                  _Serial_write_byte
+ ---------------------------------------------------------------------------------
+ (2) _Serial_write_byte                                    1     1      0      15
+                                             14 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _Serial_read_byte                                     8     8      0      60
+                                             14 COMRAM     8     8      0
+ ---------------------------------------------------------------------------------
+ (1) _Serial_config_2400                                   0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Serial_available                                     2     0      2       0
+                                             14 COMRAM     2     0      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (3) __EUSART_receiver                                    14    14      0       0
+                                              0 COMRAM    14    14      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Serial_available
+   _Serial_config_2400
+   _Serial_read_byte
+   _Serial_write_msg
+     _Serial_write_byte
+
+ __EUSART_receiver (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      17        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      16        0.0%
+BANK5              100      0       0      14        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F     17      29       1       32.3%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      29      15        0.0%
+DATA                 0      0      29       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Sat Feb 21 20:29:37 2015
+
+                         l41 0864                           l71 06D2                           l73 06C2  
+                         l69 06A2                          l703 07A2                          l711 07D4  
+                        l715 07F4                          l717 0804                          l719 0808  
+                        l737 0678                          l747 06B2                          l699 0776  
+                        wreg 000FE8                         STR_1 0601                         STR_2 0651  
+                       STR_3 0642                         STR_4 0627                         _RCIF 007CF5  
+                       i2l62 0728                         _main 065E                         fsr0h 000FEA  
+                       fsr1h 000FE2                         fsr0l 000FE9                         fsr2h 000FDA  
+                       indf1 000FE7                         fsr1l 000FE1                         indf2 000FDF  
+                       fsr2l 000FD9                         pclat 000FFA                         prodh 000FF4  
+                       prodl 000FF3                         start 0018            ?_Serial_available 000F  
+         ??_Serial_available 0011                        ?_main 0001                        _RCREG 000FAE  
+                      _SPBRG 000FAF                        _PORTB 000F81                        _TXREG 000FAD  
+                      _count 0028            ?_Serial_read_byte 0001                        tablat 000FF5  
+         ??_Serial_read_byte 000F                        status 000FD8              __initialization 0842  
+               __end_of_main 06E2                       ??_main 0017                __activetblptr 000001  
+  __size_of__EUSART_receiver 075A                       _ADCON1 000FC1            ?_Serial_write_msg 0010  
+         ??_Serial_write_msg 0012                       _buffer 0018                       clear_0 0848  
+               __mediumconst 0000                       tblptrh 000FF7                       tblptrl 000FF6  
+                     tblptru 000FF8                   __accesstop 0080      __end_of__initialization 084E  
+             __pcstackCOMRAM 0001           _Serial_config_2400 081C          ?_Serial_config_2400 0001  
+          _Serial_write_byte 085C         ??_Serial_config_2400 000F           ?_Serial_write_byte 0001  
+           __EUSART_receiver 0008          ??_Serial_write_byte 000F    __size_of_Serial_available 000A  
+  __end_of_Serial_write_byte 086A                      __Hparam 0000                      __Lparam 0000  
+  __size_of_Serial_read_byte 0070                 __psmallconst 0600                      __pcinit 0842  
+                    __ramtop 0600                      __ptext0 065E                      __ptext1 07D2  
+                    __ptext2 085C                      __ptext3 0762                      __ptext4 081C  
+                    __ptext5 086A               __pintcode_body 06E2         end_of_initialization 084E  
+                    int_func 06E2                    _RCSTAbits 000FAB    __size_of_Serial_write_msg 004A  
+                    postinc0 000FEE                    _PORTBbits 000F81                    _TRISBbits 000F93  
+                  _TRISCbits 000F94                    _TXSTAbits 000FAC   __size_of_Serial_write_byte 000E  
+                _BAUDCONbits 000FB8          start_initialization 0842             _Serial_available 086A  
+   __end_of__EUSART_receiver 0762             _Serial_read_byte 0762                  __pbssCOMRAM 0018  
+        __end_of__stringdata 065D             _Serial_write_msg 07D2                    __pintcode 0008  
+__size_of_Serial_config_2400 0026                  __smallconst 0600                     _PIE1bits 000F9D  
+          Serial_read_byte@i 0015                  __stringdata 0601                     __Hrparam 0000  
+                   __Lrparam 0000                 __Lsmallconst 0600     __end_of_Serial_available 0874  
+   __end_of_Serial_read_byte 07D2                __size_of_main 0084         Serial_read_byte@data 0014  
+          ?__EUSART_receiver 0001           ??__EUSART_receiver 0001                     main@data 0017  
+                 _INTCONbits 000FF2     __end_of_Serial_write_msg 081C                     intlevel2 0000  
+      Serial_write_byte@data 000F          Serial_write_msg@str 0010   __end_of_Serial_config_2400 0842  

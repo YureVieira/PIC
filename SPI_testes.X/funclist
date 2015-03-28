@@ -1,0 +1,15 @@
+_SPI_init: CODE, 547 0 11
+__stringtab: STRING, 432 0 6
+__stringdata: STRING, 448 0 16
+_putch: CODE, 491 0 23
+_dpowers: STRING, 438 0 10
+_UART_init: CODE, 514 0 17
+__ISR: CODE, 464 0 27
+_main: CODE, 323 0 55
+__initialization: CODE, 17 0 7
+___lwdiv: CODE, 259 0 64
+_set_CS: CODE, 531 0 16
+_printf: CODE, 26 0 164
+___lwmod: CODE, 378 0 54
+_SPI_transfer: CODE, 190 0 69
+Total: 539

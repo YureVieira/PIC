@@ -1,0 +1,16 @@
+_strcpy: CODE, 1250 0 48
+__stringdata: MEDIUMCONST, 32359 0 407
+_putch: CODE, 1338 0 38
+_set_CCP1: CODE, 1376 0 38
+_UART_init: CODE, 1414 0 30
+__ISR: CODE, 8 0 908
+_UART_available: CODE, 1466 0 10
+_main: CODE, 916 0 122
+_UART_read_byte: CODE, 1038 0 88
+__initialization: CODE, 1444 0 12
+_SERVO_write: CODE, 1192 0 58
+_DEVICES_set: CODE, 28 0 524
+_printf: CODE, 552 0 210
+_strcat: CODE, 1126 0 66
+_SERVO_init: CODE, 1298 0 40
+Total: 2599

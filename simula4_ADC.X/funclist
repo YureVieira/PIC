@@ -1,0 +1,15 @@
+___awdiv: CODE, 31422 0 164
+_MOTOR_step_right: CODE, 31104 0 34
+___ftpack: CODE, 31586 0 168
+_cvt_toVoltage: CODE, 31212 0 66
+_main: CODE, 32446 0 322
+_corrige_motor: CODE, 32194 0 252
+_ADC_init: CODE, 31054 0 24
+_MOTOR_step_left: CODE, 31138 0 36
+__initialization: CODE, 31078 0 20
+_read_ADC: CODE, 31350 0 72
+___ftmul: CODE, 31966 0 228
+___awtoft: CODE, 31278 0 72
+___wmul: CODE, 31174 0 38
+___fttol: CODE, 31754 0 212
+Total: 1708

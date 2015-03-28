@@ -1,0 +1,9 @@
+_main: CODE, 32550 0 218
+_clear_display: CODE, 32306 0 6
+___lmul: CODE, 32358 0 86
+__initialization: CODE, 32324 0 10
+_print_correct: CODE, 32312 0 6
+_srand: CODE, 32340 0 18
+_rand: CODE, 32444 0 106
+_print_error: CODE, 32318 0 6
+Total: 456

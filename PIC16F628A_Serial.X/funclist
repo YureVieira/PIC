@@ -1,0 +1,10 @@
+__stringtab: STRING, 1 0 6
+__stringdata: STRING, 15 0 39
+_putch: CODE, 1768 0 23
+_UART_init: CODE, 1751 0 17
+_main: CODE, 1791 0 55
+__initialization: CODE, 2046 0 0
+___lwdiv: CODE, 1846 0 62
+_hexpowers: STRING, 7 0 8
+_printf: CODE, 1908 0 138
+Total: 348
