@@ -74,7 +74,7 @@ void interrupt _ISR()
 #define SCK_PIN 7
 #define MOSI_PIN 6
 #define MISO_PIN 5
-//#define CS_PIN 4
+#define CS_PIN 4
 
 inline void set_SCK(unsigned char a)
 {
@@ -96,7 +96,7 @@ inline unsigned char get_MISO()
 
 void SPI_init()
 {
-    SPI_TRIS &= ~(1<<SCK_PIN | 1<<MOSI_PIN | 1<<CS_PIN);
+    SPI_TRIS &= ~(1<<SCK_PIN | 1<<MOSI_PIN);
     SPI_TRIS |= (1<<MISO_PIN);
     SPI_PORT |= (1<<SCK_PIN);             //Subida do clock
 }
@@ -142,19 +142,7 @@ unsigned char SPI_transfer(unsigned char data)
 }
 /******************************************************************************/
 /******************************************************************************/
-#ifndef MFRC522_CS_Direction
-#define MFRC522_CS TRISBbits.TRISB4
-#endif
-#ifndef MFRC522_Rst_Direction
-#define MFRC522_Rst TRISBbits.TRISB3
-#endif
-#ifndef MFRC522_CS
-#define MFRC522_CS PORTBbits.RB4
-#endif
-#ifndef MFRC522_Rst
-#define MFRC522_Rst PORTBbits.RB3
-#endif
-
+#define SPI_RST_PIN 3
 //MF522 Command word
 #define PCD_IDLE              0x00               //NO action; Cancel the current command
 #define PCD_AUTHENT           0x0E               //Authentication Key
@@ -252,18 +240,18 @@ unsigned char SPI_transfer(unsigned char data)
 #define     RESERVED34            0x3F
 static void MFRC522_Wr( char addr, char value )
 {
-        MFRC522_CS = 0;
+        SPI_PORT&=~(1<<CS_PIN);
         SPI_transfer( ( addr << 1 ) & 0x7E );
         SPI_transfer( value );
-        MFRC522_CS = 1;
+        SPI_PORT|=(1<<CS_PIN);
 }
 static char MFRC522_Rd( char addr )
 {
 char value;
-        MFRC522_CS = 0;
+        SPI_PORT&=~(1<<CS_PIN);
         SPI_transfer( (( addr << 1 ) & 0x7E) | 0x80 );
         value = SPI_transfer( 0x00 );
-        MFRC522_CS = 1;
+        SPI_PORT|=(1<<CS_PIN);
         return value;
 }
 static void MFRC522_Clear_Bit( char addr, char mask )
@@ -286,12 +274,11 @@ void MFRC522_AntennaOff()
 {
  MFRC522_Clear_Bit( TXCONTROLREG, 0x03 );
 }
-void MFRC522_Init(unsigned char cs,unsigned char rst)
+void MFRC522_Init()
 {
-     MFRC522_CS_Direction = 0;
-     MFRC522_Rst_Direction = 0;
-     MFRC522_CS = 1;
-     MFRC522_Rst = 1;
+     SPI_TRIS &=~(1<<CS_PIN | 1<<SPI_RST_PIN);
+     SPI_PORT|=(1<<CS_PIN);
+     SPI_PORT|=(1<<SPI_RST_PIN);
 
      SPI_init();
      MFRC522_Reset();
@@ -623,14 +610,93 @@ char _status;
 /******************************************************************************/
 /******************************************************************************/
 
+//void main()
+//{
+//    UART_init();
+//    SPI_init();
+//
+//    while(1)
+//    {
+//    }
+//}
+
+//O Teste foi feito com cartões MIFARE 1K
+//sbit MFRC522_CS at RD4_Bit;
+//sbit MFRC522_Rst at RD3_Bit;
+//sbit SoftSPI_SDO at RD1_Bit;
+//sbit SoftSPI_CLK at RD0_Bit;
+//sbit SoftSPI_SDI at RD2_Bit;
+//sbit MFRC522_CS_Direction at TRISD4_Bit;
+//sbit MFRC522_Rst_Direction at TRISD3_Bit;
+//sbit SoftSPI_SDO_Direction at TRISD1_Bit;
+//sbit SoftSPI_CLK_Direction at TRISD0_Bit;
+//sbit SoftSPI_SDI_Direction at TRISD2_Bit;
+char key[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+char writeData[] = "Microcontrolandos";
 void main()
 {
-    UART_init();
-    SPI_init();
+char msg[12];
+char UID[6];
+unsigned int TagType;
+char size;
+char i;
+     //Inicializa Soft SPI
+     SPI_init();
+     //Inicializa display
+     UART_init();
 
-    while(1)
-    {
-    }
+     //inicializa o modulo RFID
+     MFRC522_Init();
+
+     while(1)
+     {
+     //Verifica se há algum cartão
+     if( MFRC522_isCard( &TagType ) )
+     {
+         //Exibe o tipo do cartão no display
+//         ByteToHex( Lo(TagType), msg );
+//         ByteToHex( Hi(TagType), msg+2 );
+//         Lcd_Out( 1, 1, "TAG TYPE: " );
+//         Lcd_Out_CP( msg );
+         printf("Tipo de Tag: %d\n",TagType);
+         //Faz a leitura do numero de serie
+         if( MFRC522_ReadCardSerial( &UID ) )
+         {
+             printf("Codigo: ");
+             for( i=0; i < 5; i++)
+             {
+                 printf("%c",UID[i]);
+             }
+             printf("\n");
+             size = MFRC522_SelectTag( &UID );
+         }
+//         //Tenta realizar a autenticação A do setor 1( blocos: 4 - 7 )
+//         //bloco de autenticação é o 7
+//         if( MFRC522_Auth( PICC_AUTHENT1A, 7, &key, &UID ) == 0 )
+//         {
+//             //Escreve algo no bloco 4
+//             MFRC522_Write( 4, &writeData );
+//         }
+//         else if( MFRC522_Auth( PICC_AUTHENT1B, 7, &key, &UID ) == 0 )
+//         {
+//             //Escreve algo no bloco 4
+//             MFRC522_Write( 4, &writeData );
+//         }
+//         else
+//         {
+//            printf( "Erro" );
+//            continue;
+//         }
+//
+//         //Faz a leitura do bloco 4
+//         if( MFRC522_Read( 4, &writeData ) == 0 )
+//         {
+//           Lcd_Out( 2, 1, &writeData );
+//         }
+         //Estado de hibernação
+         MFRC522_Halt();
+     }
+  }
 }
 
 
