@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"1520 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
+"1520 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
 [v _TXIF `Vb ~T0 @X0 0 e@100 ]
 "729
 [v _TXREG `Vuc ~T0 @X0 0 e@25 ]
@@ -41,10 +41,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "940
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 [v F663 `(v ~T0 @X0 1 tf1`ul ]
-"154 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
+"154 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
 [v __delay `JF663 ~T0 @X0 0 e ]
 [p i __delay ]
-"206 C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h
+"206 D:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [p mainexit ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
@@ -83,7 +83,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16f628a.h: 47: extern volatile unsigned char INDF @ 0x000;
-"49 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
+"49 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
 [; ;pic16f628a.h: 49: asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
 [; ;pic16f628a.h: 53: extern volatile unsigned char TMR0 @ 0x001;
@@ -2379,14 +2379,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "668
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "669
+[v _lol `b ~T0 @X0 1 a ]
+"670
 }
 [e :U 168 ]
 "646
 [e $U 169  ]
 [e :U 170 ]
-[; ;main.c: 669: }
+[; ;main.c: 669: bit lol;
 [; ;main.c: 670: }
-"670
+[; ;main.c: 671: }
+"671
 [e :UE 167 ]
 }
 [p f _printf 8913024 ]
