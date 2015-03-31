@@ -2,6 +2,18 @@
 #include <xc.h>
 #define _XTAL_FREQ 4000000
 /*****************************************************************************
+ * FUSES
+ ****************************************************************************/
+// CONFIG
+#pragma config FOSC = INTOSCIO  // Oscillator Selection bits (INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
+#pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
+#pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
+#pragma config MCLRE = OFF      // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD)
+#pragma config BOREN = ON       // Brown-out Detect Enable bit (BOD enabled)
+#pragma config LVP = ON         // Low-Voltage Programming Enable bit (RB4/PGM pin has PGM function, low-voltage programming enabled)
+#pragma config CPD = OFF        // Data EE Memory Code Protection bit (Data memory code protection off)
+#pragma config CP = OFF         // Flash Program Memory Code Protection bit (Code protection off)
+/*****************************************************************************
  *Porta Serial
  ****************************************************************************/
 char buffer[16];    //Buffer
@@ -74,7 +86,7 @@ void interrupt _ISR()
 #define SCK_PIN 7
 #define MOSI_PIN 6
 #define MISO_PIN 5
-#define CS_PIN 4
+#define CS_PIN 0
 
 inline void set_SCK(unsigned char a)
 {
@@ -100,19 +112,39 @@ void SPI_init()
     SPI_TRIS |= (1<<MISO_PIN);
     SPI_PORT |= (1<<SCK_PIN);             //Subida do clock
 }
+unsigned char SPI_transfer(unsigned char data)
+{
+    unsigned char ret;
+    for(int i=0;i<8;i++)
+    {
+        //Coloca o bit no pino
+        if(data & 0x80)SPI_PORT |= (1<<MOSI_PIN);
+        else SPI_PORT &= ~(1<<MOSI_PIN);
+
+        SPI_PORT &= ~(1<<SCK_PIN);             //Descida do clock
+        if(SPI_PORT & (1<<MISO_PIN))ret|=1;    //Lê o pino miso
+        __delay_us(10);
+         SPI_PORT |= (1<<SCK_PIN);             //Subida do clock
+
+        ret<<=1;
+        data<<=1;
+        __delay_us(10);
+    }
+    return ret;
+}
 //unsigned char SPI_transfer(unsigned char data)
 //{
 //    unsigned char ret;
 //    for(int i=0;i<8;i++)
 //    {
-//        //Coloca o bit no pino
-//        if(data & 0x80)PORTB |= (1<<MOSI_PIN);
-//        else PORTB &= ~(1<<MOSI_PIN);
 //
-//        PORTB &= ~(1<<SCK_PIN);             //Descida do clock
-//        if(PORTB & (1<<MISO_PIN))ret|=1;    //Lê o pino miso
+//        if(SPI_PORT & (1<<MISO_PIN))ret|=1;    //Lê o pino miso
+//        SPI_PORT &= ~(1<<SCK_PIN);             //Descida do clock
+//         //Coloca o bit no pino
+//        if(data & 0x80)SPI_PORT |= (1<<MOSI_PIN);
+//        else SPI_PORT &= ~(1<<MOSI_PIN);
 //        __delay_us(25);
-//        PORTB |= (1<<SCK_PIN);             //Subida do clock
+//        SPI_PORT |= (1<<SCK_PIN);             //Subida do clock
 //
 //        ret<<=1;
 //        data<<=1;
@@ -120,26 +152,6 @@ void SPI_init()
 //    }
 //    return ret;
 //}
-unsigned char SPI_transfer(unsigned char data)
-{
-    unsigned char ret;
-    for(int i=0;i<8;i++)
-    {
-
-        if(SPI_PORT & (1<<MISO_PIN))ret|=1;    //Lê o pino miso
-        SPI_PORT &= ~(1<<SCK_PIN);             //Descida do clock
-         //Coloca o bit no pino
-        if(data & 0x80)SPI_PORT |= (1<<MOSI_PIN);
-        else SPI_PORT &= ~(1<<MOSI_PIN);
-        __delay_us(25);
-        SPI_PORT |= (1<<SCK_PIN);             //Subida do clock
-
-        ret<<=1;
-        data<<=1;
-        __delay_us(5);
-    }
-    return ret;
-}
 /******************************************************************************/
 /******************************************************************************/
 #define SPI_RST_PIN 3
@@ -276,7 +288,8 @@ void MFRC522_AntennaOff()
 }
 void MFRC522_Init()
 {
-     SPI_TRIS &=~(1<<CS_PIN | 1<<SPI_RST_PIN);
+     SPI_TRIS &=~(1<<CS_PIN);
+     SPI_TRIS &=~(1<<SPI_RST_PIN);
      SPI_PORT|=(1<<CS_PIN);
      SPI_PORT|=(1<<SPI_RST_PIN);
 
@@ -404,12 +417,16 @@ char MFRC522_Request( char reqMode, char *TagType )
   char _status;
   unsigned backBits;            //The received data bits
   MFRC522_Wr( BITFRAMINGREG, 0x07 ); //TxLastBists = BitFramingReg[2..0]   ???
+  printf("1");
   TagType[0] = reqMode;
   _status = MFRC522_ToCard( PCD_TRANSCEIVE, TagType, 1, TagType, &backBits );
+  int lol=8;
   if ( (_status != MI_OK) || (backBits != 0x10) )
   {
+      lol = 0;
     _status = MI_ERR;
   }
+  printf("2");
   return _status;
 }
 void MFRC522_CRC( char *dataIn, char length, char *dataOut )
@@ -609,94 +626,47 @@ char _status;
 
 /******************************************************************************/
 /******************************************************************************/
-
-//void main()
-//{
-//    UART_init();
-//    SPI_init();
-//
-//    while(1)
-//    {
-//    }
-//}
-
-//O Teste foi feito com cartões MIFARE 1K
-//sbit MFRC522_CS at RD4_Bit;
-//sbit MFRC522_Rst at RD3_Bit;
-//sbit SoftSPI_SDO at RD1_Bit;
-//sbit SoftSPI_CLK at RD0_Bit;
-//sbit SoftSPI_SDI at RD2_Bit;
-//sbit MFRC522_CS_Direction at TRISD4_Bit;
-//sbit MFRC522_Rst_Direction at TRISD3_Bit;
-//sbit SoftSPI_SDO_Direction at TRISD1_Bit;
-//sbit SoftSPI_CLK_Direction at TRISD0_Bit;
-//sbit SoftSPI_SDI_Direction at TRISD2_Bit;
 char key[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 char writeData[] = "Microcontrolandos";
 void main()
 {
-char msg[12];
-char UID[6];
-unsigned int TagType;
-char size;
-char i;
-     //Inicializa Soft SPI
-     SPI_init();
-     //Inicializa display
-     UART_init();
+    char msg[12];
+    char UID[6];
+    unsigned int TagType;
+    char size;
+    char i;
+    //Inicializa Soft SPI
+    SPI_init();
+    //Inicializa display
+    UART_init();
+    //inicializa o modulo RFID
+    MFRC522_Init();
 
-     //inicializa o modulo RFID
-     MFRC522_Init();
-
-     while(1)
-     {
-     //Verifica se há algum cartão
-     if( MFRC522_isCard( &TagType ) )
-     {
-         //Exibe o tipo do cartão no display
-//         ByteToHex( Lo(TagType), msg );
-//         ByteToHex( Hi(TagType), msg+2 );
-//         Lcd_Out( 1, 1, "TAG TYPE: " );
-//         Lcd_Out_CP( msg );
-         printf("Tipo de Tag: %d\n",TagType);
-         //Faz a leitura do numero de serie
-         if( MFRC522_ReadCardSerial( &UID ) )
-         {
-             printf("Codigo: ");
-             for( i=0; i < 5; i++)
-             {
-                 printf("%c",UID[i]);
-             }
-             printf("\n");
-             size = MFRC522_SelectTag( &UID );
-         }
-//         //Tenta realizar a autenticação A do setor 1( blocos: 4 - 7 )
-//         //bloco de autenticação é o 7
-//         if( MFRC522_Auth( PICC_AUTHENT1A, 7, &key, &UID ) == 0 )
-//         {
-//             //Escreve algo no bloco 4
-//             MFRC522_Write( 4, &writeData );
-//         }
-//         else if( MFRC522_Auth( PICC_AUTHENT1B, 7, &key, &UID ) == 0 )
-//         {
-//             //Escreve algo no bloco 4
-//             MFRC522_Write( 4, &writeData );
-//         }
-//         else
-//         {
-//            printf( "Erro" );
-//            continue;
-//         }
-//
-//         //Faz a leitura do bloco 4
-//         if( MFRC522_Read( 4, &writeData ) == 0 )
-//         {
-//           Lcd_Out( 2, 1, &writeData );
-//         }
-         //Estado de hibernação
-         MFRC522_Halt();
-     }
-  }
+    printf("Programa em funcionamento!\n");
+    while(1)
+    {
+        printf(".\n");
+        //Verifica se há algum cartão
+        if( MFRC522_isCard( &TagType ) )
+        {
+            //Exibe o tipo do cartão no display
+            printf("Tipo de Tag: %d\n",TagType);
+            //Faz a leitura do numero de serie
+            if( MFRC522_ReadCardSerial( &UID ) )
+            {
+                printf("Codigo: ");
+                for( i=0; i < 5; i++)
+                {
+                    printf("%c",UID[i]);
+                }
+                printf("\n");
+                size = MFRC522_SelectTag( &UID );
+            }
+            //Estado de hibernação
+            MFRC522_Halt();
+        }
+        __delay_ms(100);
+    }
 }
 
 

@@ -876,7 +876,18 @@ extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsi
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 7 "main.c"
+
+# 8 "main.c"
+#pragma config FOSC = INTOSCIO
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config BOREN = ON
+#pragma config LVP = ON
+#pragma config CPD = OFF
+#pragma config CP = OFF
+
+# 19
 char buffer[16];
 int count=0;
 void putch(char data)
@@ -941,7 +952,7 @@ count++;
 }
 }
 
-# 79
+# 91
 inline void set_SCK(unsigned char a)
 {
 a==1 ? PORTB|=1<<7 : PORTB&=~(1<<7);
@@ -966,44 +977,42 @@ TRISB &= ~(1<<7 | 1<<6);
 TRISB |= (1<<5);
 PORTB |= (1<<7);
 }
-
-# 123
 unsigned char SPI_transfer(unsigned char data)
 {
 unsigned char ret;
 for(int i=0;i<8;i++)
 {
 
-if(PORTB & (1<<5))ret|=1;
-PORTB &= ~(1<<7);
-
 if(data & 0x80)PORTB |= (1<<6);
 else PORTB &= ~(1<<6);
-_delay((unsigned long)((25)*(4000000/4000000.0)));
+
+PORTB &= ~(1<<7);
+if(PORTB & (1<<5))ret|=1;
+_delay((unsigned long)((10)*(4000000/4000000.0)));
 PORTB |= (1<<7);
 
 ret<<=1;
 data<<=1;
-_delay((unsigned long)((5)*(4000000/4000000.0)));
+_delay((unsigned long)((10)*(4000000/4000000.0)));
 }
 return ret;
 }
 
-# 241
+# 253
 static void MFRC522_Wr( char addr, char value )
 {
-PORTB&=~(1<<4);
+PORTB&=~(1<<0);
 SPI_transfer( ( addr << 1 ) & 0x7E );
 SPI_transfer( value );
-PORTB|=(1<<4);
+PORTB|=(1<<0);
 }
 static char MFRC522_Rd( char addr )
 {
 char value;
-PORTB&=~(1<<4);
+PORTB&=~(1<<0);
 SPI_transfer( (( addr << 1 ) & 0x7E) | 0x80 );
 value = SPI_transfer( 0x00 );
-PORTB|=(1<<4);
+PORTB|=(1<<0);
 return value;
 }
 static void MFRC522_Clear_Bit( char addr, char mask )
@@ -1028,8 +1037,9 @@ MFRC522_Clear_Bit( 0x14, 0x03 );
 }
 void MFRC522_Init()
 {
-TRISB &=~(1<<4 | 1<<3);
-PORTB|=(1<<4);
+TRISB &=~(1<<0);
+TRISB &=~(1<<3);
+PORTB|=(1<<0);
 PORTB|=(1<<3);
 
 SPI_init();
@@ -1156,12 +1166,16 @@ char MFRC522_Request( char reqMode, char *TagType )
 char _status;
 unsigned backBits;
 MFRC522_Wr( 0x0D, 0x07 );
+printf("1");
 TagType[0] = reqMode;
 _status = MFRC522_ToCard( 0x0C, TagType, 1, TagType, &backBits );
+int lol=8;
 if ( (_status != 0) || (backBits != 0x10) )
 {
+lol = 0;
 _status = 2;
 }
+printf("2");
 return _status;
 }
 void MFRC522_CRC( char *dataIn, char length, char *dataOut )
@@ -1337,7 +1351,7 @@ _status = 2;
 return _status;
 }
 
-# 592
+# 609
 char MFRC522_isCard( char *TagType )
 {
 if (MFRC522_Request( 0x26, TagType ) == 0)
@@ -1356,7 +1370,8 @@ else
 return 0;
 }
 
-# 634
+
+
 char key[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 char writeData[] = "Microcontrolandos";
 void main()
@@ -1371,16 +1386,16 @@ SPI_init();
 
 UART_init();
 
-
 MFRC522_Init();
 
+printf("Programa em funcionamento!\n");
 while(1)
 {
+printf(".\n");
 
 if( MFRC522_isCard( &TagType ) )
 {
 
-# 661
 printf("Tipo de Tag: %d\n",TagType);
 
 if( MFRC522_ReadCardSerial( &UID ) )
@@ -1394,9 +1409,9 @@ printf("\n");
 size = MFRC522_SelectTag( &UID );
 }
 
-# 697
 MFRC522_Halt();
 }
+_delay((unsigned long)((100)*(4000000/4000.0)));
 }
 }
 

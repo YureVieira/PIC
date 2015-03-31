@@ -105,65 +105,65 @@
 [v ___fltoee __fltoee `(d  1 e 3 0 ]
 "49 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"9 E:\PIC\Projeto_RFID.X\main.c
+"21 E:\PIC\Projeto_RFID.X\main.c
 [v _putch putch `(v  1 e 0 0 ]
-"25
+"37
 [v _UART_init UART_init `(v  1 e 0 0 ]
-"44
+"56
 [v _UART_available UART_available `(i  1 e 2 0 ]
-"48
+"60
 [v _UART_read_byte UART_read_byte `(uc  1 e 1 0 ]
-"61
+"73
 [v __ISR _ISR `II(v  1 e 0 0 ]
-"79
-[v _set_SCK set_SCK `T(v  1 e 0 0 ]
-"87
-[v _set_MOSI set_MOSI `T(v  1 e 0 0 ]
 "91
+[v _set_SCK set_SCK `T(v  1 e 0 0 ]
+"99
+[v _set_MOSI set_MOSI `T(v  1 e 0 0 ]
+"103
 [v _get_MISO get_MISO `T(uc  1 e 1 0 ]
-"97
+"109
 [v _SPI_init SPI_init `(v  1 e 0 0 ]
-"123
+"115
 [v _SPI_transfer SPI_transfer `(uc  1 e 1 0 ]
-"241
+"253
 [v _MFRC522_Wr MFRC522_Wr `(v  1 s 0 MFRC522_Wr ]
-"248
+"260
 [v _MFRC522_Rd MFRC522_Rd `(uc  1 s 1 MFRC522_Rd ]
-"257
-[v _MFRC522_Clear_Bit MFRC522_Clear_Bit `(v  1 s 0 MFRC522_Clear_Bit ]
-"261
-[v _MFRC522_Set_Bit MFRC522_Set_Bit `(v  1 s 0 MFRC522_Set_Bit ]
-"265
-[v _MFRC522_Reset MFRC522_Reset `(v  1 e 0 0 ]
 "269
-[v _MFRC522_AntennaOn MFRC522_AntennaOn `(v  1 e 0 0 ]
+[v _MFRC522_Clear_Bit MFRC522_Clear_Bit `(v  1 s 0 MFRC522_Clear_Bit ]
 "273
-[v _MFRC522_AntennaOff MFRC522_AntennaOff `(v  1 e 0 0 ]
+[v _MFRC522_Set_Bit MFRC522_Set_Bit `(v  1 s 0 MFRC522_Set_Bit ]
 "277
+[v _MFRC522_Reset MFRC522_Reset `(v  1 e 0 0 ]
+"281
+[v _MFRC522_AntennaOn MFRC522_AntennaOn `(v  1 e 0 0 ]
+"285
+[v _MFRC522_AntennaOff MFRC522_AntennaOff `(v  1 e 0 0 ]
+"289
 [v _MFRC522_Init MFRC522_Init `(v  1 e 0 0 ]
-"299
+"312
 [v _MFRC522_ToCard MFRC522_ToCard `(uc  1 e 1 0 ]
-"402
-[v _MFRC522_Request MFRC522_Request `(uc  1 e 1 0 ]
 "415
+[v _MFRC522_Request MFRC522_Request `(uc  1 e 1 0 ]
+"432
 [v _MFRC522_CRC MFRC522_CRC `(v  1 e 0 0 ]
-"441
+"458
 [v _MFRC522_SelectTag MFRC522_SelectTag `(uc  1 e 1 0 ]
-"473
+"490
 [v _MFRC522_Halt MFRC522_Halt `(v  1 e 0 0 ]
-"485
+"502
 [v _MFRC522_Auth MFRC522_Auth `(uc  1 e 1 0 ]
-"515
+"532
 [v _MFRC522_Write MFRC522_Write `(uc  1 e 1 0 ]
-"546
+"563
 [v _MFRC522_Read MFRC522_Read `(uc  1 e 1 0 ]
-"562
+"579
 [v _MFRC522_AntiColl MFRC522_AntiColl `(uc  1 e 1 0 ]
-"592
+"609
 [v _MFRC522_isCard MFRC522_isCard `(uc  1 e 1 0 ]
-"599
+"616
 [v _MFRC522_ReadCardSerial MFRC522_ReadCardSerial `(uc  1 e 1 0 ]
-"636
+"631
 [v _main main `(v  1 e 0 0 ]
 "219 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
@@ -228,35 +228,66 @@
 [v _WREN WREN `VEb  1 e 0 @1250 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
-"7 E:\PIC\Projeto_RFID.X\main.c
+"19 E:\PIC\Projeto_RFID.X\main.c
 [v _buffer buffer `[16]uc  1 e 16 0 ]
-"8
+"20
 [v _count count `i  1 e 2 0 ]
-"634
+"629
 [v _key key `[6]uc  1 e 6 0 ]
-"635
+"630
 [v _writeData writeData `[18]uc  1 e 18 0 ]
-"636
+"631
 [v _main main `(v  1 e 0 0 ]
 {
-"639
+"634
 [v main@UID UID `[6]uc  1 a 6 54 ]
-"640
+"635
 [v main@TagType TagType `ui  1 a 2 61 ]
-"642
+"637
 [v main@i i `uc  1 a 1 60 ]
-"641
+"636
 [v main@size size `uc  1 a 1 53 ]
-"700
+"670
+} 0
+"37
+[v _UART_init UART_init `(v  1 e 0 0 ]
+{
+"55
+} 0
+"609
+[v _MFRC522_isCard MFRC522_isCard `(uc  1 e 1 0 ]
+{
+[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 wreg ]
+[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 wreg ]
+"611
+[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 43 ]
+"615
+} 0
+"415
+[v _MFRC522_Request MFRC522_Request `(uc  1 e 1 0 ]
+{
+[v MFRC522_Request@reqMode reqMode `uc  1 a 1 wreg ]
+"418
+[v MFRC522_Request@backBits backBits `ui  1 a 2 40 ]
+"423
+[v MFRC522_Request@lol lol `i  1 a 2 36 ]
+"417
+[v MFRC522_Request@_status _status `uc  1 a 1 39 ]
+"415
+[v MFRC522_Request@reqMode reqMode `uc  1 a 1 wreg ]
+[v MFRC522_Request@TagType TagType `*.4uc  1 p 1 31 ]
+"419
+[v MFRC522_Request@reqMode reqMode `uc  1 a 1 38 ]
+"431
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 [v printf@f f `*.24DCCuc  1 a 1 wreg ]
-[s S283 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
+[s S288 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
 "533
-[u S286 . 4 `ui 1 _val 2 0 `S283 1 _str 4 0 ]
-[v printf@_val _val `S286  1 a 4 21 ]
+[u S291 . 4 `ui 1 _val 2 0 `S288 1 _str 4 0 ]
+[v printf@_val _val `S291  1 a 4 20 ]
 "499
 [v printf@c c `c  1 a 1 25 ]
 "466
@@ -268,17 +299,17 @@
 "464
 [v printf@f f `*.24DCCuc  1 a 1 wreg ]
 "542
-[v printf@f f `*.24DCCuc  1 a 1 20 ]
+[v printf@f f `*.24DCCuc  1 a 1 24 ]
 "1550
 } 0
-"9 E:\PIC\Projeto_RFID.X\main.c
+"21 E:\PIC\Projeto_RFID.X\main.c
 [v _putch putch `(v  1 e 0 0 ]
 {
 [v putch@data data `uc  1 a 1 wreg ]
 [v putch@data data `uc  1 a 1 wreg ]
-"11
+"23
 [v putch@data data `uc  1 a 1 5 ]
-"24
+"36
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -302,212 +333,183 @@
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "31
 } 0
-"25 E:\PIC\Projeto_RFID.X\main.c
-[v _UART_init UART_init `(v  1 e 0 0 ]
-{
-"43
-} 0
-"592
-[v _MFRC522_isCard MFRC522_isCard `(uc  1 e 1 0 ]
-{
-[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 wreg ]
-[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 wreg ]
-"594
-[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 41 ]
-"598
-} 0
-"402
-[v _MFRC522_Request MFRC522_Request `(uc  1 e 1 0 ]
-{
-[v MFRC522_Request@reqMode reqMode `uc  1 a 1 wreg ]
-"405
-[v MFRC522_Request@backBits backBits `ui  1 a 2 38 ]
-"404
-[v MFRC522_Request@_status _status `uc  1 a 1 37 ]
-"402
-[v MFRC522_Request@reqMode reqMode `uc  1 a 1 wreg ]
-[v MFRC522_Request@TagType TagType `*.4uc  1 p 1 31 ]
-"406
-[v MFRC522_Request@reqMode reqMode `uc  1 a 1 36 ]
-"414
-} 0
-"441
+"458 E:\PIC\Projeto_RFID.X\main.c
 [v _MFRC522_SelectTag MFRC522_SelectTag `(uc  1 e 1 0 ]
 {
 [v MFRC522_SelectTag@serNum serNum `*.4uc  1 a 1 wreg ]
-"446
+"463
 [v MFRC522_SelectTag@buffer buffer `[9]uc  1 a 9 36 ]
 [v MFRC522_SelectTag@recvBits recvBits `ui  1 a 2 48 ]
-"443
+"460
 [v MFRC522_SelectTag@i i `uc  1 a 1 50 ]
-"445
+"462
 [v MFRC522_SelectTag@size size `uc  1 a 1 47 ]
-"444
+"461
 [v MFRC522_SelectTag@_status _status `uc  1 a 1 45 ]
-"441
+"458
 [v MFRC522_SelectTag@serNum serNum `*.4uc  1 a 1 wreg ]
-"451
+"468
 [v MFRC522_SelectTag@serNum serNum `*.4uc  1 a 1 46 ]
-"471
+"488
 } 0
-"599
+"616
 [v _MFRC522_ReadCardSerial MFRC522_ReadCardSerial `(uc  1 e 1 0 ]
 {
 [v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 wreg ]
-"601
+"618
 [v MFRC522_ReadCardSerial@_status _status `uc  1 a 1 43 ]
-"599
+"616
 [v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 wreg ]
-"602
+"619
 [v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 44 ]
-"608
+"625
 } 0
-"562
+"579
 [v _MFRC522_AntiColl MFRC522_AntiColl `(uc  1 e 1 0 ]
 {
 [v MFRC522_AntiColl@serNum serNum `*.4uc  1 a 1 wreg ]
-"567
+"584
 [v MFRC522_AntiColl@unLen unLen `ui  1 a 2 37 ]
-"565
+"582
 [v MFRC522_AntiColl@i i `uc  1 a 1 40 ]
-"564
+"581
 [v MFRC522_AntiColl@_status _status `uc  1 a 1 39 ]
-"566
+"583
 [v MFRC522_AntiColl@serNumCheck serNumCheck `uc  1 a 1 36 ]
-"562
+"579
 [v MFRC522_AntiColl@serNum serNum `*.4uc  1 a 1 wreg ]
-"566
+"583
 [v MFRC522_AntiColl@serNum serNum `*.4uc  1 a 1 41 ]
-"586
+"603
 } 0
-"277
+"289
 [v _MFRC522_Init MFRC522_Init `(v  1 e 0 0 ]
 {
-"298
+"311
 } 0
-"97
+"109
 [v _SPI_init SPI_init `(v  1 e 0 0 ]
 {
-"102
+"114
 } 0
-"265
+"277
 [v _MFRC522_Reset MFRC522_Reset `(v  1 e 0 0 ]
 {
-"268
+"280
 } 0
-"269
+"281
 [v _MFRC522_AntennaOn MFRC522_AntennaOn `(v  1 e 0 0 ]
 {
-"272
+"284
 } 0
-"473
+"490
 [v _MFRC522_Halt MFRC522_Halt `(v  1 e 0 0 ]
 {
-"476
+"493
 [v MFRC522_Halt@buff buff `[4]uc  1 a 4 35 ]
-"475
+"492
 [v MFRC522_Halt@unLen unLen `ui  1 a 2 39 ]
-"484
+"501
 } 0
-"299
+"312
 [v _MFRC522_ToCard MFRC522_ToCard `(uc  1 e 1 0 ]
 {
 [v MFRC522_ToCard@command command `uc  1 a 1 wreg ]
-"306
+"319
 [v MFRC522_ToCard@i i `ui  1 a 2 28 ]
-"305
+"318
 [v MFRC522_ToCard@n n `uc  1 a 1 30 ]
-"302
+"315
 [v MFRC522_ToCard@irqEn irqEn `uc  1 a 1 26 ]
-"304
+"317
 [v MFRC522_ToCard@lastBits lastBits `uc  1 a 1 25 ]
-"301
+"314
 [v MFRC522_ToCard@_status _status `uc  1 a 1 24 ]
-"303
+"316
 [v MFRC522_ToCard@waitIRq waitIRq `uc  1 a 1 23 ]
-"299
+"312
 [v MFRC522_ToCard@command command `uc  1 a 1 wreg ]
 [v MFRC522_ToCard@sendData sendData `*.4uc  1 p 1 13 ]
 [v MFRC522_ToCard@sendLen sendLen `uc  1 p 1 14 ]
 [v MFRC522_ToCard@backData backData `*.4uc  1 p 1 15 ]
 [v MFRC522_ToCard@backLen backLen `*.4ui  1 p 1 16 ]
-"301
+"314
 [v MFRC522_ToCard@command command `uc  1 a 1 27 ]
-"401
+"414
 } 0
-"415
+"432
 [v _MFRC522_CRC MFRC522_CRC `(v  1 e 0 0 ]
 {
 [v MFRC522_CRC@dataIn dataIn `*.4uc  1 a 1 wreg ]
-"417
+"434
 [v MFRC522_CRC@i i `uc  1 a 1 18 ]
 [v MFRC522_CRC@n n `uc  1 a 1 16 ]
-"415
+"432
 [v MFRC522_CRC@dataIn dataIn `*.4uc  1 a 1 wreg ]
 [v MFRC522_CRC@length length `uc  1 p 1 13 ]
 [v MFRC522_CRC@dataOut dataOut `*.4uc  1 p 1 14 ]
-"418
+"435
 [v MFRC522_CRC@dataIn dataIn `*.4uc  1 a 1 17 ]
-"440
+"457
 } 0
-"261
+"273
 [v _MFRC522_Set_Bit MFRC522_Set_Bit `(v  1 s 0 MFRC522_Set_Bit ]
 {
 [v MFRC522_Set_Bit@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Set_Bit@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Set_Bit@mask mask `uc  1 p 1 9 ]
-"263
+"275
 [v MFRC522_Set_Bit@addr addr `uc  1 a 1 11 ]
-"264
+"276
 } 0
-"257
+"269
 [v _MFRC522_Clear_Bit MFRC522_Clear_Bit `(v  1 s 0 MFRC522_Clear_Bit ]
 {
 [v MFRC522_Clear_Bit@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Clear_Bit@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Clear_Bit@mask mask `uc  1 p 1 9 ]
-"259
+"271
 [v MFRC522_Clear_Bit@addr addr `uc  1 a 1 12 ]
-"260
+"272
 } 0
-"241
+"253
 [v _MFRC522_Wr MFRC522_Wr `(v  1 s 0 MFRC522_Wr ]
 {
 [v MFRC522_Wr@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Wr@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Wr@value value `uc  1 p 1 6 ]
-"243
+"255
 [v MFRC522_Wr@addr addr `uc  1 a 1 8 ]
-"247
+"259
 } 0
-"248
+"260
 [v _MFRC522_Rd MFRC522_Rd `(uc  1 s 1 MFRC522_Rd ]
 {
 [v MFRC522_Rd@addr addr `uc  1 a 1 wreg ]
-"250
+"262
 [v MFRC522_Rd@value value `uc  1 a 1 5 ]
-"248
+"260
 [v MFRC522_Rd@addr addr `uc  1 a 1 wreg ]
-"251
+"263
 [v MFRC522_Rd@addr addr `uc  1 a 1 4 ]
-"256
+"268
 } 0
-"123
+"115
 [v _SPI_transfer SPI_transfer `(uc  1 e 1 0 ]
 {
 [v SPI_transfer@data data `uc  1 a 1 wreg ]
-"126
+"118
 [v SPI_transfer@i i `i  1 a 2 2 ]
-"125
+"117
 [v SPI_transfer@ret ret `uc  1 a 1 1 ]
-"123
+"115
 [v SPI_transfer@data data `uc  1 a 1 wreg ]
-"126
+"118
 [v SPI_transfer@data data `uc  1 a 1 0 ]
-"142
+"134
 } 0
-"61
+"73
 [v __ISR _ISR `II(v  1 e 0 0 ]
 {
-"69
+"81
 } 0
