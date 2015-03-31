@@ -1,3 +1,7 @@
-_main: CODE, 2045 0 1
-__initialization: CODE, 2046 0 0
-Total: 1
+_SPI_init: CODE, 26 0 30
+_UART_init: CODE, 75 0 17
+__ISR: CODE, 92 0 14
+_main: CODE, 114 0 4
+__initialization: CODE, 17 0 7
+__ISR_UART: CODE, 56 0 19
+Total: 91
