@@ -34,7 +34,7 @@
  * Constructor.
  * Prepares the output pins.
  */
-void RFID_init() {
+inline void RFID_init() {
 	// Set the chipSelectPin as digital output, do not select the slave yet
 	SPI_TRIS&=~(1<<RFID_CS);
 	SPI_PORT|=(1<<RFID_CS) ;
@@ -627,7 +627,7 @@ unsigned char PICC_Select(	Uid *uid,			///< Pointer to Uid struct. Normally outp
 		
 		// How many UID bits are known in this Cascade Level?
 		currentLevelKnownBits = validBits - (8 * uidIndex);
-		if (currentLevelKnownBits < 0) {
+		if (currentLevelKnownBits <= 1 ) {
 			currentLevelKnownBits = 0;
 		}
 		// Copy the known bits from uid->uidunsigned char[] to buffer[]
@@ -642,7 +642,7 @@ unsigned char PICC_Select(	Uid *uid,			///< Pointer to Uid struct. Normally outp
 				bytesToCopy = maxbytes;
 			}
 			for (count = 0; count < bytesToCopy; count++) {
-				buffer[index++] = uid->uidbyte[uidIndex + count];
+				buffer[index++] = uid->uidByte[uidIndex + count];
 			}
 		}
 		// Now that the data has been copied we need to include the 8 bits in CT in currentLevelKnownBits
@@ -728,7 +728,7 @@ unsigned char PICC_Select(	Uid *uid,			///< Pointer to Uid struct. Normally outp
 		index = (buffer[2] == PICC_CMD_CT) ? 3 : 2; // source index in buffer[]
 		bytesToCopy = (buffer[2] == PICC_CMD_CT) ? 3 : 4;
 		for (count = 0; count < bytesToCopy; count++) {
-			uid->uidbyte[uidIndex + count] = buffer[index++];
+			uid->uidByte[uidIndex + count] = buffer[index++];
 		}
 		
 		// Check response SAK (Select Acknowledge)
@@ -823,7 +823,7 @@ unsigned char PCD_Authenticate(unsigned char command,		///< PICC_CMD_MF_AUTH_KEY
 		sendData[2+i] = key->keybyte[i];
 	}
     for (unsigned char i = 0; i < 4; i++) {				// The first 4 unsigned chars of the UID
-		sendData[8+i] = uid->uidbyte[i];
+		sendData[8+i] = uid->uidByte[i];
 	}
 	
 	// Start the authentication.
@@ -1239,17 +1239,17 @@ void PICC_DumpToSerial(Uid *uid	///< Pointer to Uid struct returned from a succe
 	MIFARE_Key key;
 	
 	// UID
-	printf("Card UID:\n");
+	//printf("Card UID:\n");
     for (unsigned char i = 0; i < uid->size; i++) {
-		printf("%s",uid->uidbyte[i] < 0x10 ? " 0" : " ");
-		printf("%x",uid->uidbyte[i]);
+		//printf("%s",uid->uidByte[i] < 0x10 ? " 0" : " ");
+		//printf("%x",uid->uidByte[i]);
 	} 
-	printf("\n");
+	//printf("\n");
 
 	// PICC type
     unsigned char piccType = PICC_GetType(uid->sak);
-	printf("PICC type: ");
-	printf("%s\n",PICC_GetTypeName(piccType));
+	//printf("PICC type: ");
+	//printf("%s\n",PICC_GetTypeName(piccType));
 	
 	// Dump contents
 	switch (piccType) {
@@ -1271,7 +1271,7 @@ void PICC_DumpToSerial(Uid *uid	///< Pointer to Uid struct returned from a succe
 		case PICC_TYPE_ISO_18092:
 		case PICC_TYPE_MIFARE_PLUS:
 		case PICC_TYPE_TNP3XXX:
-			printf("Dumping memory contents not implemented for that PICC type.");
+			//printf("Dumping memory contents not implemented for that PICC type.");
 			break;
 			
 		case PICC_TYPE_UNKNOWN:
@@ -1280,7 +1280,7 @@ void PICC_DumpToSerial(Uid *uid	///< Pointer to Uid struct returned from a succe
 			break; // No memory dump here
 	}
 
-	printf("\n");
+	//printf("\n");
 	PICC_HaltA(); // Already done if it was a MIFARE Classic PICC.
 } // End PICC_DumpToSerial()
 
@@ -1289,10 +1289,11 @@ void PICC_DumpToSerial(Uid *uid	///< Pointer to Uid struct returned from a succe
  * On success the PICC is halted after dumping the data.
  */
 void PICC_DumpMifareClassicToSerial(	Uid *uid,		///< Pointer to Uid struct returned from a successful PICC_Select().
-                                                unsigned char piccType,	///< One of the PICC_Type enums.
-												MIFARE_Key *key	///< Key A used for all sectors.
+                                        unsigned char piccType,	///< One of the PICC_Type enums.
+					MIFARE_Key *key	///< Key A used for all sectors.
 											) {
-    unsigned char no_of_sectors = 0;
+    signed char no_of_sectors = 0;
+
 	switch (piccType) {
 		case PICC_TYPE_MIFARE_MINI:
 			// Has 5 sectors * 4 blocks/sector * 16 unsigned chars/block = 320 unsigned chars.
@@ -1315,8 +1316,10 @@ void PICC_DumpMifareClassicToSerial(	Uid *uid,		///< Pointer to Uid struct retur
 	
 	// Dump sectors, highest address first.
 	if (no_of_sectors) {
-		printf("Sector Block   0  1  2  3   4  5  6  7   8  9 10 11  12 13 14 15  AccessBits\n");
-		for (char i = no_of_sectors - 1; i >= 0; i--) {
+		//printf("Sector Block   0  1  2  3   4  5  6  7   8  9 10 11  12 13 14 15  AccessBits\n");
+
+		for(signed char i = no_of_sectors - 1; i >=0; i--)
+                {
 			PICC_DumpMifareClassicSectorToSerial(uid, key, i);
 		}
 	}
@@ -1335,7 +1338,7 @@ void PICC_DumpMifareClassicSectorToSerial(Uid *uid,			///< Pointer to Uid struct
 													) {
     unsigned char status;
     unsigned char firstBlock;		// Address of lowest address to dump actually last block dumped)
-    unsigned char no_of_blocks;		// Number of blocks in sector
+    char no_of_blocks;		// Number of blocks in sector
     unsigned char isSectorTrailer;	// Set to 1 while handling the "last" (ie highest address) in the sector.
 
 	// The access bits are stored in a peculiar fashion.
@@ -1371,27 +1374,27 @@ void PICC_DumpMifareClassicSectorToSerial(Uid *uid,			///< Pointer to Uid struct
     unsigned char buffer[18];
     unsigned char blockAddr;
     isSectorTrailer = 1;
-	for (char blockOffset = no_of_blocks - 1; blockOffset >= 0; blockOffset--) {
+	for (signed char blockOffset = no_of_blocks - 1; blockOffset >= 0; blockOffset--) {
 		blockAddr = firstBlock + blockOffset;
 		// Sector number - only on first line
 		if (isSectorTrailer) {
-			printf("%s",sector < 10 ? "   " : "  "); // Pad with spaces
-			printf("%d",sector);
-			printf("   ");
+			//printf("%s",sector < 10 ? "   " : "  "); // Pad with spaces
+			//printf("%d",sector);
+			//printf("   ");
 		}
 		else {
-			printf("       ");
+			//printf("       ");
 		}
 		// Block number
-		printf("%s",blockAddr < 10 ? "   " : (blockAddr < 100 ? "  "	 : " ")); // Pad with spaces
-		printf("%d",blockAddr);
-		printf("  ");
+		//printf("%s",blockAddr < 10 ? "   " : (blockAddr < 100 ? "  "	 : " ")); // Pad with spaces
+		//printf("%d",blockAddr);
+		//printf("  ");
 		// Establish encrypted communications before reading the first block
 		if (isSectorTrailer) {
 			status = PCD_Authenticate(PICC_CMD_MF_AUTH_KEY_A, firstBlock, key, uid);
 			if (status != STATUS_OK) {
-				printf("PCD_Authenticate() failed: ");
-				printf("%s\n",GetStatusCodeName(status));
+				//printf("PCD_Authenticate() failed: ");
+				//printf("%s\n",GetStatusCodeName(status));
 				return;
 			}
 		}
@@ -1399,16 +1402,16 @@ void PICC_DumpMifareClassicSectorToSerial(Uid *uid,			///< Pointer to Uid struct
 		byteCount = sizeof(buffer);
 		status = MIFARE_Read(blockAddr, buffer, &byteCount);
 		if (status != STATUS_OK) {
-			printf("MIFARE_Read() failed: ");
-			printf("%s\n",GetStatusCodeName(status));
+			//printf("MIFARE_Read() failed: ");
+			//printf("%s\n",GetStatusCodeName(status));
 			continue;
 		}
 		// Dump data
         for (unsigned char index = 0; index < 16; index++) {
-			printf("%s",buffer[index] < 0x10 ? " 0" : " ");
-			printf("%x",buffer[index]);
+			//printf("%s",buffer[index] < 0x10 ? " 0" : " ");
+			//printf("%x",buffer[index]);
 			if ((index % 4) == 3) {
-				printf(" ");
+				//printf(" ");
 			}
 		}
 		// Parse sector trailer data
@@ -1439,22 +1442,22 @@ void PICC_DumpMifareClassicSectorToSerial(Uid *uid,			///< Pointer to Uid struct
 		
 		if (firstInGroup) {
 			// Print access bits
-			printf(" [ ");
-			printf("%d ",(g[group] >> 2) & 1);
-			printf("%d" ,(g[group] >> 1) & 1);
-			printf("%d",(g[group] >> 0) & 1);
-			printf(" ] ");
+			//printf(" [ ");
+			//printf("%d ",(g[group] >> 2) & 1);
+			//printf("%d" ,(g[group] >> 1) & 1);
+			//printf("%d",(g[group] >> 0) & 1);
+			//printf(" ] ");
 			if (invertedError) {
-				printf(" Inverted access bits did not match! ");
+				//printf(" Inverted access bits did not match! ");
 			}
 		}
 		
 		if (group != 3 && (g[group] == 1 || g[group] == 6)) { // Not a sector trailer, a value block
 			long value = ((long)buffer[3]<<24) | ((long)buffer[2]<<16) | ((long)buffer[1]<<8) | (long)buffer[0];
-			printf(" Value=0x%x",value);
-		        printf(" Adr=0x%x",buffer[12]);
+			//printf(" Value=0x%x",value);
+		        //printf(" Adr=0x%x",buffer[12]);
 		}
-                printf("\n");
+                //printf("\n");
 	}
 	
 	return;
@@ -1469,29 +1472,29 @@ void PICC_DumpMifareUltralightToSerial() {
     unsigned char buffer[18];
     unsigned char i;
 
-	printf("Page  0  1  2  3");
+	//printf("Page  0  1  2  3");
 	// Try the mpages of the original Ultralight. Ultralight C has more pages.
     for (unsigned char page = 0; page < 16; page +=4) { // Read returns data for 4 pages at a time.
 		// Read pages
 		byteCount = sizeof(buffer);
 		status = MIFARE_Read(page, buffer, &byteCount);
 		if (status != STATUS_OK) {
-			printf("MIFARE_Read() failed: ");
-			printf("%s\n",GetStatusCodeName(status));
+			//printf("MIFARE_Read() failed: ");
+			//printf("%s\n",GetStatusCodeName(status));
 			break;
 		}
 		// Dump data
         for (unsigned char offset = 0; offset < 4; offset++) {
 			i = page + offset;
-			printf("%s",i < 10 ? "  " : " "); // Pad with spaces
-			printf("%d",i);
-			printf("  ");
+			//printf("%s",i < 10 ? "  " : " "); // Pad with spaces
+			//printf("%d",i);
+			//printf("  ");
             for (unsigned char index = 0; index < 4; index++) {
 				i = 4 * offset + index;
-				printf("%s",buffer[i] < 0x10 ? " 0" : " ");
-				printf("%x",buffer[i]);
+				//printf("%s",buffer[i] < 0x10 ? " 0" : " ");
+				//printf("%x",buffer[i]);
 			}
-			printf("\n");
+			//printf("\n");
 		}
 	}
 } // End PICC_DumpMifareUltralightToSerial()
@@ -1545,19 +1548,19 @@ unsigned char MIFARE_OpenUidBackdoor(unsigned char logErrors) {
     unsigned char status = PCD_TransceiveData(&cmd, (unsigned char)1, response, &received, &validBits, (unsigned char)0, 0); // 40
     if( status != STATUS_OK ) {
         if( logErrors ) {
-            printf("Card did not respond to 0x40 after HALT command. Are you sure it is a UID changeable one?");
-            printf("Error name: ");
-            printf("%s\n",GetStatusCodeName(status));
+            //printf("Card did not respond to 0x40 after HALT command. Are you sure it is a UID changeable one?");
+            //printf("Error name: ");
+            //printf("%s\n",GetStatusCodeName(status));
         }
         return 0;
     }
     if ( received != 1 || response[0] != 0x0A ) {
         if ( logErrors ) {
-            printf("Got bad response on backdoor 0x40 command: ");
-            printf("%x",response[0]);
-            printf(" (");
-            printf("%d",validBits);
-            printf(" valid bits)\r\n");
+            //printf("Got bad response on backdoor 0x40 command: ");
+            //printf("%x",response[0]);
+            //printf(" (");
+            //printf("%d",validBits);
+            //printf(" valid bits)\r\n");
         }
         return 0;
     }
@@ -1567,19 +1570,19 @@ unsigned char MIFARE_OpenUidBackdoor(unsigned char logErrors) {
     status = PCD_TransceiveData(&cmd, (unsigned char)1, response, &received, &validBits, (unsigned char)0, 0); // 43
     if( status != STATUS_OK ) {
         if( logErrors ) {
-            printf("Error in communication at command 0x43, after successfully executing 0x40");
-            printf("Error name: ");
-            printf("%s\n",GetStatusCodeName(status));
+            //printf("Error in communication at command 0x43, after successfully executing 0x40");
+            //printf("Error name: ");
+            //printf("%s\n",GetStatusCodeName(status));
         }
         return 0;
     }
     if ( received != 1 || response[0] != 0x0A ) {
         if ( logErrors ) {
-            printf("Got bad response on backdoor 0x43 command: ");
-            printf("%x\n",response[0]);
-            printf(" (");
-            printf("%d",validBits);
-            printf(" valid bits)\r\n");
+            //printf("Got bad response on backdoor 0x43 command: ");
+            //printf("%x\n",response[0]);
+            //printf(" (");
+            //printf("%d",validBits);
+            //printf(" valid bits)\r\n");
         }
         return 0;
     }
@@ -1601,7 +1604,7 @@ unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsign
     // UID + BCC unsigned char can not be larger than 16 together
     if ( !newUid || !uidSize || uidSize > 15) {
         if ( logErrors ) {
-            printf("New UID buffer empty, size 0, or size > 15 given");
+            //printf("New UID buffer empty, size 0, or size > 15 given");
         }
         return 0;
     }
@@ -1620,7 +1623,7 @@ unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsign
 //            PICC_WakeupA(atqa_answer, &atqa_size);
             
             if ( !PICC_IsNewCardPresent() || !PICC_ReadCardSerial() ) {
-                printf("No card was previously selected, and none are available. Failed to set UID.");
+                //printf("No card was previously selected, and none are available. Failed to set UID.");
                 return 0;
             }
             
@@ -1628,16 +1631,16 @@ unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsign
             if ( status != STATUS_OK ) {
                 // We tried, time to give up
                 if ( logErrors ) {
-                    printf("Failed to authenticate to card for reading, could not set UID: ");
-                    printf("%s\n",GetStatusCodeName(status));
+                    //printf("Failed to authenticate to card for reading, could not set UID: ");
+                    //printf("%s\n",GetStatusCodeName(status));
                 }
                 return 0;
             }
         }
         else {
             if ( logErrors ) {
-                printf("PCD_Authenticate() failed: ");
-                printf("%s\n",GetStatusCodeName(status));
+                //printf("PCD_Authenticate() failed: ");
+                //printf("%s\n",GetStatusCodeName(status));
             }
             return 0;
         }
@@ -1649,9 +1652,9 @@ unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsign
     status = MIFARE_Read(0, block0_buffer, &byteCount);
     if ( status != STATUS_OK ) {
         if ( logErrors ) {
-            printf("MIFARE_Read() failed: ");
-            printf("%s\n",GetStatusCodeName(status));
-            printf("Are you sure your KEY A for sector 0 is 0xFFFFFFFFFFFF?");
+            //printf("MIFARE_Read() failed: ");
+            //printf("%s\n",GetStatusCodeName(status));
+            //printf("Are you sure your KEY A for sector 0 is 0xFFFFFFFFFFFF?");
         }
         return 0;
     }
@@ -1672,7 +1675,7 @@ unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsign
     // Activate UID backdoor
     if ( !MIFARE_OpenUidBackdoor(logErrors) ) {
         if ( logErrors ) {
-            printf("Activating the UID backdoor failed.\n");
+            //printf("Activating the UID backdoor failed.\n");
         }
         return 0;
     }
@@ -1681,8 +1684,8 @@ unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsign
     status = MIFARE_Write((unsigned char)0, block0_buffer, (unsigned char)16);
     if (status != STATUS_OK) {
         if ( logErrors ) {
-            printf("MIFARE_Write() failed: ");
-            printf("%s\n",GetStatusCodeName(status));
+            //printf("MIFARE_Write() failed: ");
+            //printf("%s\n",GetStatusCodeName(status));
         }
         return 0;
     }
@@ -1707,8 +1710,8 @@ unsigned char MIFARE_UnbrickUidSector(unsigned char logErrors) {
     unsigned char status = MIFARE_Write((unsigned char)0, block0_buffer, (unsigned char)16);
     if (status != STATUS_OK) {
         if ( logErrors ) {
-            printf("MIFARE_Write() failed: ");
-            printf("%s\n",GetStatusCodeName(status));
+            //printf("MIFARE_Write() failed: ");
+            //printf("%s\n",GetStatusCodeName(status));
         }
         return 0;
     }

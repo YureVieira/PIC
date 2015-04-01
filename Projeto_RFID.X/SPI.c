@@ -29,7 +29,7 @@
 #define SPI_MODE3 3
 
 unsigned char _mode;
-void SPI_init(unsigned char mode)
+inline void SPI_init(unsigned char mode)
 {
     _mode = mode;
     SPI_TRIS &= ~(1<<SCK_PIN | 1<<MOSI_PIN);

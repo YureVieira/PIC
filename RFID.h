@@ -1,8 +1,9 @@
-#ifndef MFRC522_h
-#define MFRC522_h
+#ifndef RFID_h
+#define RFID_h
 #include "SPI.h"
-	// MFRC522 registers. Described in chapter 9 of the datasheet.
-	// When using SPI all addresses are shifted one bit left in the "SPI address byte" (section 8.1.2.3)
+#include <stdio.h>
+		// MFRC522 registers. Described in chapter 9 of the datasheet.
+	// When using SPI all addresses are shifted one bit left in the "SPI address unsigned char" (section 8.1.2.3)
 	enum PCD_Register {
 		// Page 0: Command and status
 		//						  0x00			// reserved for future use
@@ -11,20 +12,20 @@
 		DivIEnReg				= 0x03 << 1,	// enable and disable interrupt request control bits
 		ComIrqReg				= 0x04 << 1,	// interrupt request bits
 		DivIrqReg				= 0x05 << 1,	// interrupt request bits
-		ErrorReg				= 0x06 << 1,	// error bits showing the error status of the last command executed 
+		ErrorReg				= 0x06 << 1,	// error bits showing the error status of the last command executed
 		Status1Reg				= 0x07 << 1,	// communication status bits
 		Status2Reg				= 0x08 << 1,	// receiver and transmitter status bits
         FIFODataReg				= 0x09 << 1,	// input and output of 64 unsigned char FIFO buffer
-		FIFOLevelReg			= 0x0A << 1,	// number of bytes stored in the FIFO buffer
+		FIFOLevelReg			= 0x0A << 1,	// number of unsigned chars stored in the FIFO buffer
 		WaterLevelReg			= 0x0B << 1,	// level for FIFO underflow and overflow warning
 		ControlReg				= 0x0C << 1,	// miscellaneous control registers
 		BitFramingReg			= 0x0D << 1,	// adjustments for bit-oriented frames
 		CollReg					= 0x0E << 1,	// bit position of the first bit-collision detected on the RF interface
 		//						  0x0F			// reserved for future use
-		
+
 		// Page 1: Command
 		// 						  0x10			// reserved for future use
-		ModeReg					= 0x11 << 1,	// defines general modes for transmitting and receiving 
+		ModeReg					= 0x11 << 1,	// defines general modes for transmitting and receiving
 		TxModeReg				= 0x12 << 1,	// defines transmission data rate and framing
 		RxModeReg				= 0x13 << 1,	// defines reception data rate and framing
 		TxControlReg			= 0x14 << 1,	// controls the logical behavior of the antenna driver pins TX1 and TX2
@@ -39,7 +40,7 @@
 		MfRxReg					= 0x1D << 1,	// controls some MIFARE communication receive parameters
 		// 						  0x1E			// reserved for future use
 		SerialSpeedReg			= 0x1F << 1,	// selects the speed of the serial UART interface
-		
+
 		// Page 2: Configuration
 		// 						  0x20			// reserved for future use
 		CRCResultRegH			= 0x21 << 1,	// shows the MSB and LSB values of the CRC calculation
@@ -48,7 +49,7 @@
 		ModWidthReg				= 0x24 << 1,	// controls the ModWidth setting?
 		// 						  0x25			// reserved for future use
 		RFCfgReg				= 0x26 << 1,	// configures the receiver gain
-		GsNReg					= 0x27 << 1,	// selects the conductance of the antenna driver pins TX1 and TX2 for modulation 
+		GsNReg					= 0x27 << 1,	// selects the conductance of the antenna driver pins TX1 and TX2 for modulation
 		CWGsPReg				= 0x28 << 1,	// defines the conductance of the p-driver output during periods of no modulation
 		ModGsPReg				= 0x29 << 1,	// defines the conductance of the p-driver output during periods of modulation
 		TModeReg				= 0x2A << 1,	// defines settings for the internal timer
@@ -57,7 +58,7 @@
 		TReloadRegL				= 0x2D << 1,
 		TCounterValueRegH		= 0x2E << 1,	// shows the 16-bit timer value
 		TCounterValueRegL		= 0x2F << 1,
-		
+
 		// Page 3: Test Registers
 		// 						  0x30			// reserved for future use
 		TestSel1Reg				= 0x31 << 1,	// general test signal configuration
@@ -76,11 +77,11 @@
 		// 						  0x3E			// reserved for production tests
 		// 						  0x3F			// reserved for production tests
 	};
-	
+
 	// MFRC522 commands. Described in chapter 10 of the datasheet.
 	enum PCD_Command {
 		PCD_Idle				= 0x00,		// no action, cancels current command execution
-		PCD_Mem					= 0x01,		// stores 25 bytes into the internal buffer
+		PCD_Mem					= 0x01,		// stores 25 unsigned chars into the internal buffer
         PCD_GenerateRandomID	= 0x02,		// generates a 10-unsigned char random ID number
 		PCD_CalcCRC				= 0x03,		// activates the CRC coprocessor or performs a self test
 		PCD_Transmit			= 0x04,		// transmits data from the FIFO buffer
@@ -90,7 +91,7 @@
 		PCD_MFAuthent 			= 0x0E,		// performs the MIFARE standard authentication as a reader
 		PCD_SoftReset			= 0x0F		// resets the MFRC522
 	};
-	
+
 	// MFRC522 RxGain[2:0] masks, defines the receiver's signal voltage gain factor (on the PCD).
 	// Described in 9.3.3.6 / table 98 of the datasheet at http://www.nxp.com/documents/data_sheet/MFRC522.pdf
 	enum PCD_RxGain {
@@ -106,7 +107,7 @@
 		RxGain_avg				= 0x04 << 4,	// 100b - 33 dB, average, convenience for RxGain_33dB
 		RxGain_max				= 0x07 << 4		// 111b - 48 dB, maximum, convenience for RxGain_48dB
 	};
-	
+
 	// Commands sent to the PICC.
 	enum PICC_Command {
 		// The commands used by the PCD to manage communication with several PICCs (ISO 14443-3, Type A, section 6.4)
@@ -132,19 +133,19 @@
 		// The PICC_CMD_MF_READ and PICC_CMD_MF_WRITE can also be used for MIFARE Ultralight.
         PICC_CMD_UL_WRITE		= 0xA2		// Writes one 4 unsigned char page to the PICC.
 	};
-	
+
 	// MIFARE constants that does not fit anywhere else
 	enum MIFARE_Misc {
 		MF_ACK					= 0xA,		// The MIFARE Classic uses a 4 bit ACK/NAK. Any other value than 0xA is NAK.
-		MF_KEY_SIZE				= 6			// A Mifare Crypto1 key is 6 bytes.
+		MF_KEY_SIZE				= 6			// A Mifare Crypto1 key is 6 unsigned chars.
 	};
 
 	// PICC types we can detect. Remember to update PICC_GetTypeName() if you add more.
 	enum PICC_Type {
 		PICC_TYPE_UNKNOWN		= 0,
-		PICC_TYPE_ISO_14443_4	= 1,	// PICC compliant with ISO/IEC 14443-4 
+		PICC_TYPE_ISO_14443_4	= 1,	// PICC compliant with ISO/IEC 14443-4
 		PICC_TYPE_ISO_18092		= 2, 	// PICC compliant with ISO/IEC 18092 (NFC)
-		PICC_TYPE_MIFARE_MINI	= 3,	// MIFARE Classic protocol, 320 bytes
+		PICC_TYPE_MIFARE_MINI	= 3,	// MIFARE Classic protocol, 320 unsigned chars
 		PICC_TYPE_MIFARE_1K		= 4,	// MIFARE Classic protocol, 1KB
 		PICC_TYPE_MIFARE_4K		= 5,	// MIFARE Classic protocol, 4KB
 		PICC_TYPE_MIFARE_UL		= 6,	// MIFARE Ultralight or Ultralight C
@@ -152,7 +153,7 @@
 		PICC_TYPE_TNP3XXX		= 8,	// Only mentioned in NXP AN 10833 MIFARE Type Identification Procedure
 		PICC_TYPE_NOT_COMPLETE	= 255	// SAK indicates UID is not complete.
 	};
-	
+
 	// Return codes from the functions in this class. Remember to update GetStatusCodeName() if you add more.
 	enum StatusCode {
 		STATUS_OK				= 1,	// Success
@@ -165,99 +166,99 @@
 		STATUS_CRC_WRONG		= 8,	// The CRC_A does not match
 		STATUS_MIFARE_NACK		= 9		// A MIFARE PICC responded with NAK.
 	};
-	
+
 	// A struct used for passing the UID of a PICC.
 	typedef struct {
-		byte		size;			// Number of bytes in the UID. 4, 7 or 10.
-		byte		uidByte[10];
-        byte		sak;			// The SAK (Select acknowledge) unsigned char returned from the PICC after successful selection.
+		unsigned char		size;			// Number of unsigned chars in the UID. 4, 7 or 10.
+		unsigned char		uidbyte[10];
+        unsigned char		sak;			// The SAK (Select acknowledge) unsigned char returned from the PICC after successful selection.
 	} Uid;
-	
+
 	// A struct used for passing a MIFARE Crypto1 key
 	typedef struct {
-		byte		keyByte[MF_KEY_SIZE];
+		unsigned char		keybyte[MF_KEY_SIZE];
 	} MIFARE_Key;
-	
+
 	// Member variables
 	Uid uid;								// Used by PICC_ReadCardSerial().
-	
+
 	// Size of the MFRC522 FIFO
-    static const unsigned char FIFO_SIZE = 64;		// The FIFO is 64 bytes.
-	
-	/////////////////////////////////////////////////////////////////////////////////////
-	// Functions for setting up the Arduino
-	/////////////////////////////////////////////////////////////////////////////////////
-    void MFRC522_init();
-    void MFRC522_setSPIConfig();
-	
-	/////////////////////////////////////////////////////////////////////////////////////
-	// Basic interface functions for communicating with the MFRC522
-	/////////////////////////////////////////////////////////////////////////////////////
-    void MFRC522_PCD_WriteRegister(unsigned char reg, unsigned char value);
-    void MFRC522_PCD_WriteRegister(unsigned char reg, unsigned char count, unsigned char *values);
-    unsigned char MFRC522_PCD_ReadRegister(unsigned char reg);
-    void MFRC522_PCD_ReadRegister(unsigned char reg, unsigned char count, unsigned char *values, unsigned char rxAlign = 0);
-    void MFRC522_setBitMask(unsigned char reg, unsigned char mask);
-    void MFRC522_PCD_SetRegisterBitMask(unsigned char reg, unsigned char mask);
-    void MFRC522_PCD_ClearRegisterBitMask(unsigned char reg, unsigned char mask);
-    unsigned char MFRC522_PCD_CalculateCRC(unsigned char *data, unsigned char length, unsigned char *result);
+    static const unsigned char FIFO_SIZE = 64;		// The FIFO is 64 unsigned chars.
 
 	/////////////////////////////////////////////////////////////////////////////////////
-	// Functions for manipulating the MFRC522
+	// Functions for setting up the PIC
 	/////////////////////////////////////////////////////////////////////////////////////
-    void MFRC522_PCD_Init();
-    void MFRC522_PCD_Reset();
-    void MFRC522_PCD_AntennaOn();
-    void MFRC522_PCD_AntennaOff();
-    unsigned char MFRC522_PCD_GetAntennaGain();
-    void MFRC522_PCD_SetAntennaGain(unsigned char mask);
-    unsigned char MFRC522_PCD_PerformSelfTest();
+    void RFID_init();
+//    void _setSPIConfig();
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	// Basic interface functions for communicating with the 
+	/////////////////////////////////////////////////////////////////////////////////////
+    void PCD_WriteRegister(unsigned char reg, unsigned char value);
+    void PCD_WriteRegisterVector(unsigned char reg, unsigned char count, unsigned char *values);
+    unsigned char PCD_ReadRegister(unsigned char reg);
+    void PCD_ReadRegisterVector(unsigned char reg, unsigned char count, unsigned char *values, unsigned char rxAlign);
+    void setBitMask(unsigned char reg, unsigned char mask);
+    void PCD_SetRegisterBitMask(unsigned char reg, unsigned char mask);
+    void PCD_ClearRegisterBitMask(unsigned char reg, unsigned char mask);
+    unsigned char PCD_CalculateCRC(unsigned char *data, unsigned char length, unsigned char *result);
+
+	/////////////////////////////////////////////////////////////////////////////////////
+	// Functions for manipulating the 
+	/////////////////////////////////////////////////////////////////////////////////////
+    void _PCD_Init();
+    void _PCD_Reset();
+    void _PCD_AntennaOn();
+    void _PCD_AntennaOff();
+    unsigned char _PCD_GetAntennaGain();
+    void _PCD_SetAntennaGain(unsigned char mask);
+    unsigned char _PCD_PerformSelfTest();
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Functions for communicating with PICCs
 	/////////////////////////////////////////////////////////////////////////////////////
-    unsigned char MFRC522_PCD_TransceiveData(unsigned char *sendData, unsigned char sendLen, unsigned char *backData, unsigned char *backLen, unsigned char *validBits = NULL, unsigned char rxAlign = 0, unsigned char checkCRC = false);
-    unsigned char MFRC522_PCD_CommunicateWithPICC(unsigned char command, unsigned char waitIRq, unsigned char *sendData, unsigned char sendLen, unsigned char *backData = NULL, unsigned char *backLen = NULL, unsigned char *validBits = NULL, unsigned char rxAlign = 0, unsigned char checkCRC = false);
+    unsigned char PCD_TransceiveData(unsigned char *sendData, unsigned char sendLen, unsigned char *backData, unsigned char *backLen, unsigned char *validBits, unsigned char rxAlign, unsigned char checkCRC);
+    unsigned char PCD_CommunicateWithPICC(unsigned char command, unsigned char waitIRq, unsigned char *sendData, unsigned char sendLen, unsigned char *backData, unsigned char *backLen, unsigned char *validBits , unsigned char rxAlign , unsigned char checkCRC);
 
-    unsigned char MFRC522_PICC_RequestA(unsigned char *bufferATQA, unsigned char *bufferSize);
-    unsigned char MFRC522_PICC_WakeupA(unsigned char *bufferATQA, unsigned char *bufferSize);
-    unsigned char MFRC522_PICC_REQA_or_WUPA(unsigned char command, unsigned char *bufferATQA, unsigned char *bufferSize);
-    unsigned char MFRC522_PICC_Select(Uid *uid, unsigned char validBits = 0);
-    unsigned char MFRC522_PICC_HaltA();
+    unsigned char PICC_RequestA(unsigned char *bufferATQA, unsigned char *bufferSize);
+    unsigned char PICC_WakeupA(unsigned char *bufferATQA, unsigned char *bufferSize);
+    unsigned char PICC_REQA_or_WUPA(unsigned char command, unsigned char *bufferATQA, unsigned char *bufferSize);
+    unsigned char PICC_Select(Uid *uid, unsigned char validBits);
+    unsigned char PICC_HaltA();
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Functions for communicating with MIFARE PICCs
 	/////////////////////////////////////////////////////////////////////////////////////
-    unsigned char MFRC522_PCD_Authenticate(unsigned char command, unsigned char blockAddr, MIFARE_Key *key, Uid *uid);
-    void MFRC522_PCD_StopCrypto1();
-    unsigned char MFRC522_MIFARE_Read(unsigned char blockAddr, unsigned char *buffer, unsigned char *bufferSize);
-    unsigned char MFRC522_MIFARE_Write(unsigned char blockAddr, unsigned char *buffer, unsigned char bufferSize);
-    unsigned char MFRC522_MIFARE_Decrement(unsigned char blockAddr, long delta);
-    unsigned char MFRC522_MIFARE_Increment(unsigned char blockAddr, long delta);
-    unsigned char MFRC522_MIFARE_Restore(unsigned char blockAddr);
-    unsigned char MFRC522_MIFARE_Transfer(unsigned char blockAddr);
-    unsigned char MFRC522_MIFARE_Ultralight_Write(unsigned char page, unsigned char *buffer, unsigned char bufferSize);
-    unsigned char MFRC522_MIFARE_GetValue(unsigned char blockAddr, long *value);
-    unsigned char MFRC522_MIFARE_SetValue(unsigned char blockAddr, long value);
+    unsigned char _PCD_Authenticate(unsigned char command, unsigned char blockAddr, MIFARE_Key *key, Uid *uid);
+    void _PCD_StopCrypto1();
+    unsigned char MIFARE_Read(unsigned char blockAddr, unsigned char *buffer, unsigned char *bufferSize);
+    unsigned char MIFARE_Write(unsigned char blockAddr, unsigned char *buffer, unsigned char bufferSize);
+    unsigned char MIFARE_Decrement(unsigned char blockAddr, long delta);
+    unsigned char MIFARE_Increment(unsigned char blockAddr, long delta);
+    unsigned char MIFARE_Restore(unsigned char blockAddr);
+    unsigned char MIFARE_Transfer(unsigned char blockAddr);
+    unsigned char MIFARE_Ultralight_Write(unsigned char page, unsigned char *buffer, unsigned char bufferSize);
+    unsigned char MIFARE_GetValue(unsigned char blockAddr, long *value);
+    unsigned char MIFARE_SetValue(unsigned char blockAddr, long value);
 
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Support functions
 	/////////////////////////////////////////////////////////////////////////////////////
-    unsigned char PCD_MIFARE_Transceive(unsigned char *sendData, unsigned char sendLen, unsigned char acceptTimeout = false);
+    unsigned char PCD_MIFARE_Transceive(unsigned char *sendData, unsigned char sendLen, unsigned char acceptTimeout);
 	// old function used too much memory, now name moved to flash; if you need char, copy from flash to memory
     //const char *GetStatusCodeName(unsigned char code);
-    const __FlashStringHelper *GetStatusCodeName(unsigned char code);
+    const unsigned char *GetStatusCodeName(unsigned char code);
     unsigned char PICC_GetType(unsigned char sak);
 	// old function used too much memory, now name moved to flash; if you need char, copy from flash to memory
     //const char *PICC_GetTypeName(unsigned char type);
-    const __FlashStringHelper *PICC_GetTypeName(unsigned char type);
+    const unsigned char *PICC_GetTypeName(unsigned char type);
 	void PICC_DumpToSerial(Uid *uid);
     void PICC_DumpMifareClassicToSerial(Uid *uid, unsigned char piccType, MIFARE_Key *key);
     void PICC_DumpMifareClassicSectorToSerial(Uid *uid, MIFARE_Key *key, unsigned char sector);
 	void PICC_DumpMifareUltralightToSerial();
     void MIFARE_SetAccessBits(unsigned char *accessBitBuffer, unsigned char g0, unsigned char g1, unsigned char g2, unsigned char g3);
     unsigned char MIFARE_OpenUidBackdoor(unsigned char logErrors);
-    unsigned char MIFARE_SetUid(byte* newUid, unsigned char uidSize, unsigned char logErrors);
+    unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsigned char logErrors);
     unsigned char MIFARE_UnbrickUidSector(unsigned char logErrors);
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -269,3 +270,4 @@
     unsigned char MIFARE_TwoStepHelper(unsigned char command, unsigned char blockAddr, long data);
 
 
+#endif

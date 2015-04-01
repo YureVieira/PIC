@@ -46,23 +46,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p i __delay ]
 "171 RFID.h
 [s S91 `uc 1 `uc -> 10 `i `uc 1 ]
-[n S91 . size uidbyte sak ]
+[n S91 . size uidByte sak ]
 "177 RFID.c
-[c E775 2 4 6 8 10 12 14 16 18 20 22 24 26 28 34 36 38 40 42 44 46 48 50 56 58 62 66 68 72 76 78 80 82 84 86 88 90 92 94 98 100 102 104 106 108 110 112 114 116 118 .. ]
-[n E775 PCD_Register CommandReg ComIEnReg DivIEnReg ComIrqReg DivIrqReg ErrorReg Status1Reg Status2Reg FIFODataReg FIFOLevelReg WaterLevelReg ControlReg BitFramingReg CollReg ModeReg TxModeReg RxModeReg TxControlReg TxASKReg TxSelReg RxSelReg RxThresholdReg DemodReg MfTxReg MfRxReg SerialSpeedReg CRCResultRegH CRCResultRegL ModWidthReg RFCfgReg GsNReg CWGsPReg ModGsPReg TModeReg TPrescalerReg TReloadRegH TReloadRegL TCounterValueRegH TCounterValueRegL TestSel1Reg TestSel2Reg TestPinEnReg TestPinValueReg TestBusReg AutoTestReg VersionReg AnalogTestReg TestDAC1Reg TestDAC2Reg TestADCReg  ]
-[c E826 0 1 2 3 4 7 8 12 14 15 .. ]
-[n E826 PCD_Command PCD_Idle PCD_Mem PCD_GenerateRandomID PCD_CalcCRC PCD_Transmit PCD_NoCmdChange PCD_Receive PCD_Transceive PCD_MFAuthent PCD_SoftReset  ]
+[c E779 2 4 6 8 10 12 14 16 18 20 22 24 26 28 34 36 38 40 42 44 46 48 50 56 58 62 66 68 72 76 78 80 82 84 86 88 90 92 94 98 100 102 104 106 108 110 112 114 116 118 .. ]
+[n E779 PCD_Register CommandReg ComIEnReg DivIEnReg ComIrqReg DivIrqReg ErrorReg Status1Reg Status2Reg FIFODataReg FIFOLevelReg WaterLevelReg ControlReg BitFramingReg CollReg ModeReg TxModeReg RxModeReg TxControlReg TxASKReg TxSelReg RxSelReg RxThresholdReg DemodReg MfTxReg MfRxReg SerialSpeedReg CRCResultRegH CRCResultRegL ModWidthReg RFCfgReg GsNReg CWGsPReg ModGsPReg TModeReg TPrescalerReg TReloadRegH TReloadRegL TCounterValueRegH TCounterValueRegL TestSel1Reg TestSel2Reg TestPinEnReg TestPinValueReg TestBusReg AutoTestReg VersionReg AnalogTestReg TestDAC1Reg TestDAC2Reg TestADCReg  ]
+[c E830 0 1 2 3 4 7 8 12 14 15 .. ]
+[n E830 PCD_Command PCD_Idle PCD_Mem PCD_GenerateRandomID PCD_CalcCRC PCD_Transmit PCD_NoCmdChange PCD_Receive PCD_Transceive PCD_MFAuthent PCD_SoftReset  ]
 "192
-[c E880 1 2 3 4 5 6 7 8 9 .. ]
-[n E880 StatusCode STATUS_OK STATUS_ERROR STATUS_COLLISION STATUS_TIMEOUT STATUS_NO_ROOM STATUS_INTERNAL_ERROR STATUS_INVALID STATUS_CRC_WRONG STATUS_MIFARE_NACK  ]
+[c E884 1 2 3 4 5 6 7 8 9 .. ]
+[n E884 StatusCode STATUS_OK STATUS_ERROR STATUS_COLLISION STATUS_TIMEOUT STATUS_NO_ROOM STATUS_INTERNAL_ERROR STATUS_INVALID STATUS_CRC_WRONG STATUS_MIFARE_NACK  ]
 "518
-[c E849 38 82 136 147 149 151 80 96 97 48 160 192 193 194 176 162 .. ]
-[n E849 PICC_Command PICC_CMD_REQA PICC_CMD_WUPA PICC_CMD_CT PICC_CMD_SEL_CL1 PICC_CMD_SEL_CL2 PICC_CMD_SEL_CL3 PICC_CMD_HLTA PICC_CMD_MF_AUTH_KEY_A PICC_CMD_MF_AUTH_KEY_B PICC_CMD_MF_READ PICC_CMD_MF_WRITE PICC_CMD_MF_DECREMENT PICC_CMD_MF_INCREMENT PICC_CMD_MF_RESTORE PICC_CMD_MF_TRANSFER PICC_CMD_UL_WRITE  ]
+[c E853 38 82 136 147 149 151 80 96 97 48 160 192 193 194 176 162 .. ]
+[n E853 PICC_Command PICC_CMD_REQA PICC_CMD_WUPA PICC_CMD_CT PICC_CMD_SEL_CL1 PICC_CMD_SEL_CL2 PICC_CMD_SEL_CL3 PICC_CMD_HLTA PICC_CMD_MF_AUTH_KEY_A PICC_CMD_MF_AUTH_KEY_B PICC_CMD_MF_READ PICC_CMD_MF_WRITE PICC_CMD_MF_DECREMENT PICC_CMD_MF_INCREMENT PICC_CMD_MF_RESTORE PICC_CMD_MF_TRANSFER PICC_CMD_UL_WRITE  ]
 "815
-[c E866 10 6 .. ]
-[n E866 MIFARE_Misc MF_ACK MF_KEY_SIZE  ]
+[c E870 10 6 .. ]
+[n E870 MIFARE_Misc MF_ACK MF_KEY_SIZE  ]
 "178 RFID.h
-[s S92 `uc . `E866 1 ]
+[s S92 `uc . `E870 1 ]
 [n S92 . keybyte ]
 "247
 [v _PCD_MIFARE_Transceive `(uc ~T0 @X0 0 ef3`*uc`uc`uc ]
@@ -71,10 +71,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "270 RFID.h
 [v _MIFARE_TwoStepHelper `(uc ~T0 @X0 0 ef3`uc`uc`l ]
 "1185 RFID.c
-[c E869 0 1 2 3 4 5 6 7 8 255 .. ]
-[n E869 PICC_Type PICC_TYPE_UNKNOWN PICC_TYPE_ISO_14443_4 PICC_TYPE_ISO_18092 PICC_TYPE_MIFARE_MINI PICC_TYPE_MIFARE_1K PICC_TYPE_MIFARE_4K PICC_TYPE_MIFARE_UL PICC_TYPE_MIFARE_PLUS PICC_TYPE_TNP3XXX PICC_TYPE_NOT_COMPLETE  ]
-"206 D:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+[c E873 0 1 2 3 4 5 6 7 8 255 .. ]
+[n E873 PICC_Type PICC_TYPE_UNKNOWN PICC_TYPE_ISO_14443_4 PICC_TYPE_ISO_18092 PICC_TYPE_MIFARE_MINI PICC_TYPE_MIFARE_1K PICC_TYPE_MIFARE_4K PICC_TYPE_MIFARE_UL PICC_TYPE_MIFARE_PLUS PICC_TYPE_TNP3XXX PICC_TYPE_NOT_COMPLETE  ]
 "256 RFID.h
 [v _PICC_DumpMifareClassicToSerial `(v ~T0 @X0 0 ef3`*S91`uc`*S92 ]
 "258
@@ -684,7 +682,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
 [; ;UART.h: 4: void putch(char data);
-[; ;UART.h: 5: void UART_init();
+[; ;UART.h: 5: inline void UART_init();
 [; ;UART.h: 6: int UART_available();
 [; ;UART.h: 7: char UART_read_byte();
 [; ;UART.h: 8: inline void _ISR_UART();
@@ -767,11 +765,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "23
 [e :UE 53 ]
 }
+[v F666 `(v ~T0 @X0 1 tf ]
 "24
-[v _UART_init `(v ~T0 @X0 1 ef ]
+[v _UART_init `TF666 ~T0 @X0 1 e ]
 "25
 {
-[; ;UART.c: 24: void UART_init()
+[; ;UART.c: 24: inline void UART_init()
 [; ;UART.c: 25: {
 [e :U _UART_init ]
 [f ]
@@ -868,9 +867,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "58
 [e :UE 66 ]
 }
-[v F669 `(v ~T0 @X0 1 tf ]
+[v F670 `(v ~T0 @X0 1 tf ]
 "60
-[v __ISR_UART `TF669 ~T0 @X0 1 e ]
+[v __ISR_UART `TF670 ~T0 @X0 1 e ]
 "61
 {
 [; ;UART.c: 60: inline void _ISR_UART()
@@ -897,16 +896,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "67
 [e :UE 71 ]
 }
-[; ;SPI.h: 4: void SPI_init(unsigned char mode);
+[; ;SPI.h: 4: inline void SPI_init(unsigned char mode);
 [; ;SPI.h: 5: unsigned char SPI_transfer(unsigned char data);
 "31 SPI.c
 [v __mode `uc ~T0 @X0 1 e ]
 [; ;SPI.c: 31: unsigned char _mode;
+[v F680 `(v ~T0 @X0 1 tf1`uc ]
 "32
-[v _SPI_init `(v ~T0 @X0 1 ef1`uc ]
+[v _SPI_init `TF680 ~T0 @X0 1 e ]
 "33
 {
-[; ;SPI.c: 32: void SPI_init(unsigned char mode)
+[; ;SPI.c: 32: inline void SPI_init(unsigned char mode)
 [; ;SPI.c: 33: {
 [e :U _SPI_init ]
 "32
@@ -1240,7 +1240,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.h: 168: };
 [; ;RFID.h: 171: typedef struct {
 [; ;RFID.h: 172: unsigned char size;
-[; ;RFID.h: 173: unsigned char uidbyte[10];
+[; ;RFID.h: 173: unsigned char uidByte[10];
 [; ;RFID.h: 174: unsigned char sak;
 [; ;RFID.h: 175: } Uid;
 [; ;RFID.h: 178: typedef struct {
@@ -1255,7 +1255,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 64 `i `uc
 ]
 [; ;RFID.h: 186: static const unsigned char FIFO_SIZE = 64;
-[; ;RFID.h: 191: void RFID_init();
+[; ;RFID.h: 191: inline void RFID_init();
 [; ;RFID.h: 197: void PCD_WriteRegister(unsigned char reg, unsigned char value);
 [; ;RFID.h: 198: void PCD_WriteRegisterVector(unsigned char reg, unsigned char count, unsigned char *values);
 [; ;RFID.h: 199: unsigned char PCD_ReadRegister(unsigned char reg);
@@ -1304,10 +1304,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.h: 267: unsigned char PICC_IsNewCardPresent();
 [; ;RFID.h: 268: unsigned char PICC_ReadCardSerial();
 [; ;RFID.h: 270: unsigned char MIFARE_TwoStepHelper(unsigned char command, unsigned char blockAddr, long data);
+[v F905 `(v ~T0 @X0 1 tf ]
 "37 RFID.c
-[v _RFID_init `(v ~T0 @X0 1 ef ]
+[v _RFID_init `TF905 ~T0 @X0 1 e ]
 {
-[; ;RFID.c: 37: void RFID_init() {
+[; ;RFID.c: 37: inline void RFID_init() {
 [e :U _RFID_init ]
 [f ]
 [; ;RFID.c: 39: TRISA&=~(1<<4);
@@ -1636,19 +1637,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 177: PCD_WriteRegister(CommandReg, PCD_Idle);
 "177
-[e ( _PCD_WriteRegister (2 , -> . `E775 0 `uc -> . `E826 0 `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 0 `uc -> . `E830 0 `uc ]
 [; ;RFID.c: 178: PCD_WriteRegister(DivIrqReg, 0x04);
 "178
-[e ( _PCD_WriteRegister (2 , -> . `E775 4 `uc -> -> 4 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 4 `uc -> -> 4 `i `uc ]
 [; ;RFID.c: 179: PCD_SetRegisterBitMask(FIFOLevelReg, 0x80);
 "179
-[e ( _PCD_SetRegisterBitMask (2 , -> . `E775 9 `uc -> -> 128 `i `uc ]
+[e ( _PCD_SetRegisterBitMask (2 , -> . `E779 9 `uc -> -> 128 `i `uc ]
 [; ;RFID.c: 180: PCD_WriteRegisterVector(FIFODataReg, length, data);
 "180
-[e ( _PCD_WriteRegisterVector (3 , , -> . `E775 8 `uc _length _data ]
+[e ( _PCD_WriteRegisterVector (3 , , -> . `E779 8 `uc _length _data ]
 [; ;RFID.c: 181: PCD_WriteRegister(CommandReg, PCD_CalcCRC);
 "181
-[e ( _PCD_WriteRegister (2 , -> . `E775 0 `uc -> . `E826 3 `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 0 `uc -> . `E830 3 `uc ]
 "184
 [v _i `ui ~T0 @X0 1 a ]
 [; ;RFID.c: 184: unsigned int i = 5000;
@@ -1662,7 +1663,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 187: n = PCD_ReadRegister(DivIrqReg);
 "187
-[e = _n ( _PCD_ReadRegister (1 -> . `E775 4 `uc ]
+[e = _n ( _PCD_ReadRegister (1 -> . `E779 4 `uc ]
 [; ;RFID.c: 188: if (n & 0x04) {
 "188
 [e $ ! != & -> _n `i -> 4 `i -> 0 `i 117  ]
@@ -1680,7 +1681,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 192: return STATUS_TIMEOUT;
 "192
-[e ) -> . `E880 3 `uc ]
+[e ) -> . `E884 3 `uc ]
 [e $UE 113  ]
 "193
 }
@@ -1695,16 +1696,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 194: }
 [; ;RFID.c: 195: PCD_WriteRegister(CommandReg, PCD_Idle);
 "195
-[e ( _PCD_WriteRegister (2 , -> . `E775 0 `uc -> . `E826 0 `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 0 `uc -> . `E830 0 `uc ]
 [; ;RFID.c: 198: result[0] = PCD_ReadRegister(CRCResultRegL);
 "198
-[e = *U + _result * -> -> 0 `i `x -> -> # *U _result `i `x ( _PCD_ReadRegister (1 -> . `E775 27 `uc ]
+[e = *U + _result * -> -> 0 `i `x -> -> # *U _result `i `x ( _PCD_ReadRegister (1 -> . `E779 27 `uc ]
 [; ;RFID.c: 199: result[1] = PCD_ReadRegister(CRCResultRegH);
 "199
-[e = *U + _result * -> -> 1 `i `x -> -> # *U _result `i `x ( _PCD_ReadRegister (1 -> . `E775 26 `uc ]
+[e = *U + _result * -> -> 1 `i `x -> -> # *U _result `i `x ( _PCD_ReadRegister (1 -> . `E779 26 `uc ]
 [; ;RFID.c: 200: return STATUS_OK;
 "200
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 113  ]
 [; ;RFID.c: 201: }
 "201
@@ -1718,7 +1719,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 211: PCD_WriteRegister(CommandReg, PCD_SoftReset);
 "211
-[e ( _PCD_WriteRegister (2 , -> . `E775 0 `uc -> . `E826 9 `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 0 `uc -> . `E830 9 `uc ]
 [; ;RFID.c: 215: _delay((unsigned long)((50)*(4000000/4000.0)));
 "215
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
@@ -1731,7 +1732,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 120 ]
 "217
-[e $ != & -> ( _PCD_ReadRegister (1 -> . `E775 0 `uc `i << -> 1 `i -> 4 `i -> 0 `i 121  ]
+[e $ != & -> ( _PCD_ReadRegister (1 -> . `E779 0 `uc `i << -> 1 `i -> 4 `i -> 0 `i 121  ]
 [e :U 122 ]
 [; ;RFID.c: 219: }
 [; ;RFID.c: 220: }
@@ -1747,14 +1748,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 "226
 [v _value `uc ~T0 @X0 1 a ]
 [; ;RFID.c: 226: unsigned char value = PCD_ReadRegister(TxControlReg);
-[e = _value ( _PCD_ReadRegister (1 -> . `E775 17 `uc ]
+[e = _value ( _PCD_ReadRegister (1 -> . `E779 17 `uc ]
 [; ;RFID.c: 227: if ((value & 0x03) != 0x03) {
 "227
 [e $ ! != & -> _value `i -> 3 `i -> 3 `i 124  ]
 {
 [; ;RFID.c: 228: PCD_WriteRegister(TxControlReg, value | 0x03);
 "228
-[e ( _PCD_WriteRegister (2 , -> . `E775 17 `uc -> | -> _value `i -> 3 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 17 `uc -> | -> _value `i -> 3 `i `uc ]
 "229
 }
 [e :U 124 ]
@@ -1771,7 +1772,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 236: PCD_ClearRegisterBitMask(TxControlReg, 0x03);
 "236
-[e ( _PCD_ClearRegisterBitMask (2 , -> . `E775 17 `uc -> -> 3 `i `uc ]
+[e ( _PCD_ClearRegisterBitMask (2 , -> . `E779 17 `uc -> -> 3 `i `uc ]
 [; ;RFID.c: 237: }
 "237
 [e :UE 125 ]
@@ -1784,7 +1785,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 247: return PCD_ReadRegister(RFCfgReg) & (0x07<<4);
 "247
-[e ) -> & -> ( _PCD_ReadRegister (1 -> . `E775 29 `uc `i << -> 7 `i -> 4 `i `uc ]
+[e ) -> & -> ( _PCD_ReadRegister (1 -> . `E779 29 `uc `i << -> 7 `i -> 4 `i `uc ]
 [e $UE 126  ]
 [; ;RFID.c: 248: }
 "248
@@ -1823,22 +1824,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 260: }
 [; ;RFID.c: 265: PCD_WriteRegister(TModeReg, 0x80);
 "265
-[e ( _PCD_WriteRegister (2 , -> . `E775 33 `uc -> -> 128 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 33 `uc -> -> 128 `i `uc ]
 [; ;RFID.c: 266: PCD_WriteRegister(TPrescalerReg, 0xA9);
 "266
-[e ( _PCD_WriteRegister (2 , -> . `E775 34 `uc -> -> 169 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 34 `uc -> -> 169 `i `uc ]
 [; ;RFID.c: 267: PCD_WriteRegister(TReloadRegH, 0x03);
 "267
-[e ( _PCD_WriteRegister (2 , -> . `E775 35 `uc -> -> 3 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 35 `uc -> -> 3 `i `uc ]
 [; ;RFID.c: 268: PCD_WriteRegister(TReloadRegL, 0xE8);
 "268
-[e ( _PCD_WriteRegister (2 , -> . `E775 36 `uc -> -> 232 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 36 `uc -> -> 232 `i `uc ]
 [; ;RFID.c: 270: PCD_WriteRegister(TxASKReg, 0x40);
 "270
-[e ( _PCD_WriteRegister (2 , -> . `E775 18 `uc -> -> 64 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 18 `uc -> -> 64 `i `uc ]
 [; ;RFID.c: 271: PCD_WriteRegister(ModeReg, 0x3D);
 "271
-[e ( _PCD_WriteRegister (2 , -> . `E775 14 `uc -> -> 61 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 14 `uc -> -> 61 `i `uc ]
 [; ;RFID.c: 272: PCD_AntennaOn();
 "272
 [e ( _PCD_AntennaOn ..  ]
@@ -1859,10 +1860,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 282: PCD_ClearRegisterBitMask(RFCfgReg, (0x07<<4));
 "282
-[e ( _PCD_ClearRegisterBitMask (2 , -> . `E775 29 `uc -> << -> 7 `i -> 4 `i `uc ]
+[e ( _PCD_ClearRegisterBitMask (2 , -> . `E779 29 `uc -> << -> 7 `i -> 4 `i `uc ]
 [; ;RFID.c: 283: PCD_SetRegisterBitMask(RFCfgReg, mask & (0x07<<4));
 "283
-[e ( _PCD_SetRegisterBitMask (2 , -> . `E775 29 `uc -> & -> _mask `i << -> 7 `i -> 4 `i `uc ]
+[e ( _PCD_SetRegisterBitMask (2 , -> . `E779 29 `uc -> & -> _mask `i << -> 7 `i -> 4 `i `uc ]
 "284
 }
 [e :U 131 ]
@@ -1923,29 +1924,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _bitFraming -> + << -> _rxAlign `i -> 4 `i -> _txLastBits `i `uc ]
 [; ;RFID.c: 387: PCD_WriteRegister(CommandReg, PCD_Idle);
 "387
-[e ( _PCD_WriteRegister (2 , -> . `E775 0 `uc -> . `E826 0 `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 0 `uc -> . `E830 0 `uc ]
 [; ;RFID.c: 388: PCD_WriteRegister(ComIrqReg, 0x7F);
 "388
-[e ( _PCD_WriteRegister (2 , -> . `E775 3 `uc -> -> 127 `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 3 `uc -> -> 127 `i `uc ]
 [; ;RFID.c: 389: PCD_SetRegisterBitMask(FIFOLevelReg, 0x80);
 "389
-[e ( _PCD_SetRegisterBitMask (2 , -> . `E775 9 `uc -> -> 128 `i `uc ]
+[e ( _PCD_SetRegisterBitMask (2 , -> . `E779 9 `uc -> -> 128 `i `uc ]
 [; ;RFID.c: 390: PCD_WriteRegisterVector(FIFODataReg, sendLen, sendData);
 "390
-[e ( _PCD_WriteRegisterVector (3 , , -> . `E775 8 `uc _sendLen _sendData ]
+[e ( _PCD_WriteRegisterVector (3 , , -> . `E779 8 `uc _sendLen _sendData ]
 [; ;RFID.c: 391: PCD_WriteRegister(BitFramingReg, bitFraming);
 "391
-[e ( _PCD_WriteRegister (2 , -> . `E775 12 `uc _bitFraming ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 12 `uc _bitFraming ]
 [; ;RFID.c: 392: PCD_WriteRegister(CommandReg, command);
 "392
-[e ( _PCD_WriteRegister (2 , -> . `E775 0 `uc _command ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 0 `uc _command ]
 [; ;RFID.c: 393: if (command == PCD_Transceive) {
 "393
-[e $ ! == -> _command `i -> . `E826 7 `i 133  ]
+[e $ ! == -> _command `i -> . `E830 7 `i 133  ]
 {
 [; ;RFID.c: 394: PCD_SetRegisterBitMask(BitFramingReg, 0x80);
 "394
-[e ( _PCD_SetRegisterBitMask (2 , -> . `E775 12 `uc -> -> 128 `i `uc ]
+[e ( _PCD_SetRegisterBitMask (2 , -> . `E779 12 `uc -> -> 128 `i `uc ]
 "395
 }
 [e :U 133 ]
@@ -1959,7 +1960,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 402: n = PCD_ReadRegister(ComIrqReg);
 "402
-[e = _n ( _PCD_ReadRegister (1 -> . `E775 3 `uc ]
+[e = _n ( _PCD_ReadRegister (1 -> . `E779 3 `uc ]
 [; ;RFID.c: 403: if (n & waitIRq) {
 "403
 [e $ ! != & -> _n `i -> _waitIRq `i -> 0 `i 137  ]
@@ -1977,7 +1978,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 407: return STATUS_TIMEOUT;
 "407
-[e ) -> . `E880 3 `uc ]
+[e ) -> . `E884 3 `uc ]
 [e $UE 132  ]
 "408
 }
@@ -1989,7 +1990,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 410: return STATUS_TIMEOUT;
 "410
-[e ) -> . `E880 3 `uc ]
+[e ) -> . `E884 3 `uc ]
 [e $UE 132  ]
 "411
 }
@@ -2005,14 +2006,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 411: }
 [; ;RFID.c: 412: }
 [; ;RFID.c: 415: unsigned char errorRegValue = PCD_ReadRegister(ErrorReg);
-[e = _errorRegValue ( _PCD_ReadRegister (1 -> . `E775 5 `uc ]
+[e = _errorRegValue ( _PCD_ReadRegister (1 -> . `E779 5 `uc ]
 [; ;RFID.c: 416: if (errorRegValue & 0x13) {
 "416
 [e $ ! != & -> _errorRegValue `i -> 19 `i -> 0 `i 140  ]
 {
 [; ;RFID.c: 417: return STATUS_ERROR;
 "417
-[e ) -> . `E880 1 `uc ]
+[e ) -> . `E884 1 `uc ]
 [e $UE 132  ]
 "418
 }
@@ -2024,14 +2025,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 422: n = PCD_ReadRegister(FIFOLevelReg);
 "422
-[e = _n ( _PCD_ReadRegister (1 -> . `E775 9 `uc ]
+[e = _n ( _PCD_ReadRegister (1 -> . `E779 9 `uc ]
 [; ;RFID.c: 423: if (n > *backLen) {
 "423
 [e $ ! > -> _n `i -> *U _backLen `i 142  ]
 {
 [; ;RFID.c: 424: return STATUS_NO_ROOM;
 "424
-[e ) -> . `E880 4 `uc ]
+[e ) -> . `E884 4 `uc ]
 [e $UE 132  ]
 "425
 }
@@ -2042,10 +2043,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U _backLen _n ]
 [; ;RFID.c: 427: PCD_ReadRegisterVector(FIFODataReg, n, backData, rxAlign);
 "427
-[e ( _PCD_ReadRegisterVector (4 , , , -> . `E775 8 `uc _n _backData _rxAlign ]
+[e ( _PCD_ReadRegisterVector (4 , , , -> . `E779 8 `uc _n _backData _rxAlign ]
 [; ;RFID.c: 428: _validBits = PCD_ReadRegister(ControlReg) & 0x07;
 "428
-[e = __validBits -> & -> ( _PCD_ReadRegister (1 -> . `E775 11 `uc `i -> 7 `i `uc ]
+[e = __validBits -> & -> ( _PCD_ReadRegister (1 -> . `E779 11 `uc `i -> 7 `i `uc ]
 [; ;RFID.c: 429: if (validBits) {
 "429
 [e $ ! != _validBits -> -> 0 `i `*uc 143  ]
@@ -2067,7 +2068,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 436: return STATUS_COLLISION;
 "436
-[e ) -> . `E880 2 `uc ]
+[e ) -> . `E884 2 `uc ]
 [e $UE 132  ]
 "437
 }
@@ -2083,7 +2084,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 443: return STATUS_MIFARE_NACK;
 "443
-[e ) -> . `E880 8 `uc ]
+[e ) -> . `E884 8 `uc ]
 [e $UE 132  ]
 "444
 }
@@ -2095,7 +2096,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 447: return STATUS_CRC_WRONG;
 "447
-[e ) -> . `E880 7 `uc ]
+[e ) -> . `E884 7 `uc ]
 [e $UE 132  ]
 "448
 }
@@ -2109,7 +2110,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _n ( _PCD_CalculateCRC (3 , , &U *U + _backData * -> -> 0 `i `x -> -> # *U _backData `i `x -> - -> *U _backLen `i -> 2 `i `uc &U *U + &U _controlBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _controlBuffer `ui `ux ]
 [; ;RFID.c: 452: if (n != STATUS_OK) {
 "452
-[e $ ! != -> _n `i -> . `E880 0 `i 148  ]
+[e $ ! != -> _n `i -> . `E884 0 `i 148  ]
 {
 [; ;RFID.c: 453: return n;
 "453
@@ -2125,7 +2126,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 456: return STATUS_CRC_WRONG;
 "456
-[e ) -> . `E880 7 `uc ]
+[e ) -> . `E884 7 `uc ]
 [e $UE 132  ]
 "457
 }
@@ -2137,7 +2138,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 458: }
 [; ;RFID.c: 460: return STATUS_OK;
 "460
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 132  ]
 [; ;RFID.c: 461: }
 "461
@@ -2178,7 +2179,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _waitIRq -> -> 48 `i `uc ]
 [; ;RFID.c: 478: return PCD_CommunicateWithPICC(PCD_Transceive, waitIRq, sendData, sendLen, backData, backLen, validBits, rxAlign, checkCRC);
 "478
-[e ) ( _PCD_CommunicateWithPICC (4 , , , , , , , , -> . `E826 7 `uc _waitIRq _sendData _sendLen _backData _backLen _validBits _rxAlign _checkCRC ]
+[e ) ( _PCD_CommunicateWithPICC (4 , , , , , , , , -> . `E830 7 `uc _waitIRq _sendData _sendLen _backData _backLen _validBits _rxAlign _checkCRC ]
 [e $UE 150  ]
 [; ;RFID.c: 479: }
 "479
@@ -2213,7 +2214,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 495: return STATUS_NO_ROOM;
 "495
-[e ) -> . `E880 4 `uc ]
+[e ) -> . `E884 4 `uc ]
 [e $UE 151  ]
 "496
 }
@@ -2221,7 +2222,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 496: }
 [; ;RFID.c: 497: PCD_ClearRegisterBitMask(CollReg, 0x80);
 "497
-[e ( _PCD_ClearRegisterBitMask (2 , -> . `E775 13 `uc -> -> 128 `i `uc ]
+[e ( _PCD_ClearRegisterBitMask (2 , -> . `E779 13 `uc -> -> 128 `i `uc ]
 [; ;RFID.c: 498: validBits = 7;
 "498
 [e = _validBits -> -> 7 `i `uc ]
@@ -2230,7 +2231,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _status ( _PCD_TransceiveData (4 , , , , , , &U _command -> -> 1 `i `uc _bufferATQA _bufferSize &U _validBits -> -> 0 `i `uc -> -> 0 `i `uc ]
 [; ;RFID.c: 500: if (status != STATUS_OK) {
 "500
-[e $ ! != -> _status `i -> . `E880 0 `i 153  ]
+[e $ ! != -> _status `i -> . `E884 0 `i 153  ]
 {
 [; ;RFID.c: 501: return status;
 "501
@@ -2246,7 +2247,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 504: return STATUS_ERROR;
 "504
-[e ) -> . `E880 1 `uc ]
+[e ) -> . `E884 1 `uc ]
 [e $UE 151  ]
 "505
 }
@@ -2254,7 +2255,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 505: }
 [; ;RFID.c: 506: return STATUS_OK;
 "506
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 151  ]
 [; ;RFID.c: 507: }
 "507
@@ -2276,7 +2277,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 518: return PICC_REQA_or_WUPA(PICC_CMD_REQA, bufferATQA, bufferSize);
 "518
-[e ) ( _PICC_REQA_or_WUPA (3 , , -> . `E849 0 `uc _bufferATQA _bufferSize ]
+[e ) ( _PICC_REQA_or_WUPA (3 , , -> . `E853 0 `uc _bufferATQA _bufferSize ]
 [e $UE 155  ]
 [; ;RFID.c: 519: }
 "519
@@ -2298,7 +2299,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 530: return PICC_REQA_or_WUPA(PICC_CMD_WUPA, bufferATQA, bufferSize);
 "530
-[e ) ( _PICC_REQA_or_WUPA (3 , , -> . `E849 1 `uc _bufferATQA _bufferSize ]
+[e ) ( _PICC_REQA_or_WUPA (3 , , -> . `E853 1 `uc _bufferATQA _bufferSize ]
 [e $UE 156  ]
 [; ;RFID.c: 531: }
 "531
@@ -2367,7 +2368,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 594: return STATUS_INVALID;
 "594
-[e ) -> . `E880 6 `uc ]
+[e ) -> . `E884 6 `uc ]
 [e $UE 157  ]
 "595
 }
@@ -2375,7 +2376,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 595: }
 [; ;RFID.c: 598: PCD_ClearRegisterBitMask(CollReg, 0x80);
 "598
-[e ( _PCD_ClearRegisterBitMask (2 , -> . `E775 13 `uc -> -> 128 `i `uc ]
+[e ( _PCD_ClearRegisterBitMask (2 , -> . `E779 13 `uc -> -> 128 `i `uc ]
 [; ;RFID.c: 601: uidComplete = 0;
 "601
 [e = _uidComplete -> -> 0 `i `uc ]
@@ -2393,7 +2394,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 164 ]
 [; ;RFID.c: 606: buffer[0] = PICC_CMD_SEL_CL1;
 "606
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E849 3 `uc ]
+[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E853 3 `uc ]
 [; ;RFID.c: 607: uidIndex = 0;
 "607
 [e = _uidIndex -> -> 0 `i `uc ]
@@ -2408,7 +2409,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 165 ]
 [; ;RFID.c: 612: buffer[0] = PICC_CMD_SEL_CL2;
 "612
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E849 4 `uc ]
+[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E853 4 `uc ]
 [; ;RFID.c: 613: uidIndex = 3;
 "613
 [e = _uidIndex -> -> 3 `i `uc ]
@@ -2423,7 +2424,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 166 ]
 [; ;RFID.c: 618: buffer[0] = PICC_CMD_SEL_CL3;
 "618
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E849 5 `uc ]
+[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E853 5 `uc ]
 [; ;RFID.c: 619: uidIndex = 6;
 "619
 [e = _uidIndex -> -> 6 `i `uc ]
@@ -2438,7 +2439,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 167 ]
 [; ;RFID.c: 624: return STATUS_INTERNAL_ERROR;
 "624
-[e ) -> . `E880 5 `uc ]
+[e ) -> . `E884 5 `uc ]
 [e $UE 157  ]
 [; ;RFID.c: 625: break;
 "625
@@ -2458,9 +2459,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 629: currentLevelKnownBits = validBits - (8 * uidIndex);
 "629
 [e = _currentLevelKnownBits -> - -> _validBits `i * -> 8 `i -> _uidIndex `i `uc ]
-[; ;RFID.c: 630: if (currentLevelKnownBits < 0) {
+[; ;RFID.c: 630: if (currentLevelKnownBits <= 1 ) {
 "630
-[e $ ! < -> _currentLevelKnownBits `i -> 0 `i 168  ]
+[e $ ! <= -> _currentLevelKnownBits `i -> 1 `i 168  ]
 {
 [; ;RFID.c: 631: currentLevelKnownBits = 0;
 "631
@@ -2478,7 +2479,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 636: buffer[index++] = PICC_CMD_CT;
 "636
-[e = *U + &U _buffer * -> ++ _index -> -> 1 `i `uc `ux -> -> # *U &U _buffer `ui `ux -> . `E849 2 `uc ]
+[e = *U + &U _buffer * -> ++ _index -> -> 1 `i `uc `ux -> -> # *U &U _buffer `ui `ux -> . `E853 2 `uc ]
 "637
 }
 [e :U 169 ]
@@ -2513,7 +2514,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 175  ]
 [e :U 172 ]
 {
-[; ;RFID.c: 645: buffer[index++] = uid->uidbyte[uidIndex + count];
+[; ;RFID.c: 645: buffer[index++] = uid->uidByte[uidIndex + count];
 "645
 [e = *U + &U _buffer * -> ++ _index -> -> 1 `i `uc `ux -> -> # *U &U _buffer `ui `ux *U + &U . *U _uid 1 * -> -> + -> _uidIndex `i -> _count `i `ui `ux -> -> # *U &U . *U _uid 1 `ui `ux ]
 "646
@@ -2564,7 +2565,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_CalculateCRC (3 , , &U _buffer -> -> 7 `i `uc &U *U + &U _buffer * -> -> -> 7 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
 [; ;RFID.c: 664: if (result != STATUS_OK) {
 "664
-[e $ ! != -> _result `i -> . `E880 0 `i 181  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 181  ]
 {
 [; ;RFID.c: 665: return result;
 "665
@@ -2624,24 +2625,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _rxAlign _txLastBits ]
 [; ;RFID.c: 687: PCD_WriteRegister(BitFramingReg, (rxAlign << 4) + txLastBits);
 "687
-[e ( _PCD_WriteRegister (2 , -> . `E775 12 `uc -> + << -> _rxAlign `i -> 4 `i -> _txLastBits `i `uc ]
+[e ( _PCD_WriteRegister (2 , -> . `E779 12 `uc -> + << -> _rxAlign `i -> 4 `i -> _txLastBits `i `uc ]
 [; ;RFID.c: 690: result = PCD_TransceiveData(buffer, bufferUsed, responseBuffer, &responseLength, &txLastBits, rxAlign,0);
 "690
 [e = _result ( _PCD_TransceiveData (4 , , , , , , &U _buffer _bufferUsed _responseBuffer &U _responseLength &U _txLastBits _rxAlign -> -> 0 `i `uc ]
 [; ;RFID.c: 691: if (result == STATUS_COLLISION) {
 "691
-[e $ ! == -> _result `i -> . `E880 2 `i 183  ]
+[e $ ! == -> _result `i -> . `E884 2 `i 183  ]
 {
 [; ;RFID.c: 692: result = PCD_ReadRegister(CollReg);
 "692
-[e = _result ( _PCD_ReadRegister (1 -> . `E775 13 `uc ]
+[e = _result ( _PCD_ReadRegister (1 -> . `E779 13 `uc ]
 [; ;RFID.c: 693: if (result & 0x20) {
 "693
 [e $ ! != & -> _result `i -> 32 `i -> 0 `i 184  ]
 {
 [; ;RFID.c: 694: return STATUS_COLLISION;
 "694
-[e ) -> . `E880 2 `uc ]
+[e ) -> . `E884 2 `uc ]
 [e $UE 157  ]
 "695
 }
@@ -2668,7 +2669,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 701: return STATUS_INTERNAL_ERROR;
 "701
-[e ) -> . `E880 5 `uc ]
+[e ) -> . `E884 5 `uc ]
 [e $UE 157  ]
 "702
 }
@@ -2693,7 +2694,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "709
 [e :U 183 ]
 [; ;RFID.c: 709: else if (result != STATUS_OK) {
-[e $ ! != -> _result `i -> . `E880 0 `i 188  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 188  ]
 {
 [; ;RFID.c: 710: return result;
 "710
@@ -2743,10 +2744,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 723: }
 [; ;RFID.c: 728: index = (buffer[2] == PICC_CMD_CT) ? 3 : 2;
 "728
-[e = _index -> ? == -> *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> . `E849 2 `i : -> 3 `i -> 2 `i `uc ]
+[e = _index -> ? == -> *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> . `E853 2 `i : -> 3 `i -> 2 `i `uc ]
 [; ;RFID.c: 729: bytesToCopy = (buffer[2] == PICC_CMD_CT) ? 3 : 4;
 "729
-[e = _bytesToCopy -> ? == -> *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> . `E849 2 `i : -> 3 `i -> 4 `i `uc ]
+[e = _bytesToCopy -> ? == -> *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> . `E853 2 `i : -> 3 `i -> 4 `i `uc ]
 [; ;RFID.c: 730: for (count = 0; count < bytesToCopy; count++) {
 "730
 {
@@ -2754,7 +2755,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 195  ]
 [e :U 192 ]
 {
-[; ;RFID.c: 731: uid->uidbyte[uidIndex + count] = buffer[index++];
+[; ;RFID.c: 731: uid->uidByte[uidIndex + count] = buffer[index++];
 "731
 [e = *U + &U . *U _uid 1 * -> -> + -> _uidIndex `i -> _count `i `ui `ux -> -> # *U &U . *U _uid 1 `ui `ux *U + &U _buffer * -> ++ _index -> -> 1 `i `uc `ux -> -> # *U &U _buffer `ui `ux ]
 "732
@@ -2773,7 +2774,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 736: return STATUS_ERROR;
 "736
-[e ) -> . `E880 1 `uc ]
+[e ) -> . `E884 1 `uc ]
 [e $UE 157  ]
 "737
 }
@@ -2784,7 +2785,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_CalculateCRC (3 , , _responseBuffer -> -> 1 `i `uc &U *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
 [; ;RFID.c: 740: if (result != STATUS_OK) {
 "740
-[e $ ! != -> _result `i -> . `E880 0 `i 197  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 197  ]
 {
 [; ;RFID.c: 741: return result;
 "741
@@ -2800,7 +2801,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 744: return STATUS_CRC_WRONG;
 "744
-[e ) -> . `E880 7 `uc ]
+[e ) -> . `E884 7 `uc ]
 [e $UE 157  ]
 "745
 }
@@ -2843,7 +2844,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _uid 0 -> + * -> 3 `i -> _cascadeLevel `i -> 1 `i `uc ]
 [; ;RFID.c: 758: return STATUS_OK;
 "758
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 157  ]
 [; ;RFID.c: 759: }
 "759
@@ -2862,7 +2863,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 768: unsigned char buffer[4];
 [; ;RFID.c: 771: buffer[0] = PICC_CMD_HLTA;
 "771
-[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E849 6 `uc ]
+[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> . `E853 6 `uc ]
 [; ;RFID.c: 772: buffer[1] = 0;
 "772
 [e = *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `i `uc ]
@@ -2871,7 +2872,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_CalculateCRC (3 , , &U _buffer -> -> 2 `i `uc &U *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux ]
 [; ;RFID.c: 775: if (result != STATUS_OK) {
 "775
-[e $ ! != -> _result `i -> . `E880 0 `i 202  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 202  ]
 {
 [; ;RFID.c: 776: return result;
 "776
@@ -2886,11 +2887,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_TransceiveData (4 , , , , , , &U _buffer -> -> # _buffer `ui `uc -> -> 0 `i `*uc -> -> 0 `i `*uc -> -> 0 `i `*uc -> -> 0 `i `uc -> -> 0 `i `uc ]
 [; ;RFID.c: 785: if (result == STATUS_TIMEOUT) {
 "785
-[e $ ! == -> _result `i -> . `E880 3 `i 203  ]
+[e $ ! == -> _result `i -> . `E884 3 `i 203  ]
 {
 [; ;RFID.c: 786: return STATUS_OK;
 "786
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 201  ]
 "787
 }
@@ -2898,11 +2899,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 787: }
 [; ;RFID.c: 788: if (result == STATUS_OK) {
 "788
-[e $ ! == -> _result `i -> . `E880 0 `i 204  ]
+[e $ ! == -> _result `i -> . `E884 0 `i 204  ]
 {
 [; ;RFID.c: 789: return STATUS_ERROR;
 "789
-[e ) -> . `E880 1 `uc ]
+[e ) -> . `E884 1 `uc ]
 [e $UE 201  ]
 "790
 }
@@ -2953,7 +2954,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> . `E866 1 `i 206  ]
+[e $ < -> _i `i -> . `E870 1 `i 206  ]
 [e $U 207  ]
 [e :U 206 ]
 {
@@ -2964,7 +2965,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "822
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> . `E866 1 `i 206  ]
+[e $ < -> _i `i -> . `E870 1 `i 206  ]
 [e :U 207 ]
 "824
 }
@@ -2978,7 +2979,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 210  ]
 [e :U 209 ]
 {
-[; ;RFID.c: 826: sendData[8+i] = uid->uidbyte[i];
+[; ;RFID.c: 826: sendData[8+i] = uid->uidByte[i];
 "826
 [e = *U + &U _sendData * -> -> + -> 8 `i -> _i `i `ui `ux -> -> # *U &U _sendData `ui `ux *U + &U . *U _uid 1 * -> _i `ux -> -> # *U &U . *U _uid 1 `ui `ux ]
 "827
@@ -2992,7 +2993,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 827: }
 [; ;RFID.c: 830: return PCD_CommunicateWithPICC(PCD_MFAuthent, waitIRq, &sendData[0], sizeof(sendData),(0),(0),(0),0,0);
 "830
-[e ) ( _PCD_CommunicateWithPICC (4 , , , , , , , , -> . `E826 8 `uc _waitIRq &U *U + &U _sendData * -> -> -> 0 `i `ui `ux -> -> # *U &U _sendData `ui `ux -> -> # _sendData `ui `uc -> -> 0 `i `*uc -> -> 0 `i `*uc -> -> 0 `i `*uc -> -> 0 `i `uc -> -> 0 `i `uc ]
+[e ) ( _PCD_CommunicateWithPICC (4 , , , , , , , , -> . `E830 8 `uc _waitIRq &U *U + &U _sendData * -> -> -> 0 `i `ui `ux -> -> # *U &U _sendData `ui `ux -> -> # _sendData `ui `uc -> -> 0 `i `*uc -> -> 0 `i `*uc -> -> 0 `i `*uc -> -> 0 `i `uc -> -> 0 `i `uc ]
 [e $UE 205  ]
 [; ;RFID.c: 831: }
 "831
@@ -3006,7 +3007,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 839: PCD_ClearRegisterBitMask(Status2Reg, 0x08);
 "839
-[e ( _PCD_ClearRegisterBitMask (2 , -> . `E775 7 `uc -> -> 8 `i `uc ]
+[e ( _PCD_ClearRegisterBitMask (2 , -> . `E779 7 `uc -> -> 8 `i `uc ]
 [; ;RFID.c: 840: }
 "840
 [e :UE 212 ]
@@ -3036,7 +3037,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 866: return STATUS_NO_ROOM;
 "866
-[e ) -> . `E880 4 `uc ]
+[e ) -> . `E884 4 `uc ]
 [e $UE 213  ]
 "867
 }
@@ -3044,7 +3045,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 867: }
 [; ;RFID.c: 870: buffer[0] = PICC_CMD_MF_READ;
 "870
-[e = *U + _buffer * -> -> 0 `i `x -> -> # *U _buffer `i `x -> . `E849 9 `uc ]
+[e = *U + _buffer * -> -> 0 `i `x -> -> # *U _buffer `i `x -> . `E853 9 `uc ]
 [; ;RFID.c: 871: buffer[1] = blockAddr;
 "871
 [e = *U + _buffer * -> -> 1 `i `x -> -> # *U _buffer `i `x _blockAddr ]
@@ -3053,7 +3054,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_CalculateCRC (3 , , _buffer -> -> 2 `i `uc &U *U + _buffer * -> -> 2 `i `x -> -> # *U _buffer `i `x ]
 [; ;RFID.c: 874: if (result != STATUS_OK) {
 "874
-[e $ ! != -> _result `i -> . `E880 0 `i 215  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 215  ]
 {
 [; ;RFID.c: 875: return result;
 "875
@@ -3096,7 +3097,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 901: return STATUS_INVALID;
 "901
-[e ) -> . `E880 6 `uc ]
+[e ) -> . `E884 6 `uc ]
 [e $UE 216  ]
 "902
 }
@@ -3107,7 +3108,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 906: unsigned char cmdBuffer[2];
 [; ;RFID.c: 907: cmdBuffer[0] = PICC_CMD_MF_WRITE;
 "907
-[e = *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux -> . `E849 10 `uc ]
+[e = *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux -> . `E853 10 `uc ]
 [; ;RFID.c: 908: cmdBuffer[1] = blockAddr;
 "908
 [e = *U + &U _cmdBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux _blockAddr ]
@@ -3116,7 +3117,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_MIFARE_Transceive (3 , , &U _cmdBuffer -> -> 2 `i `uc -> -> 0 `i `uc ]
 [; ;RFID.c: 910: if (result != STATUS_OK) {
 "910
-[e $ ! != -> _result `i -> . `E880 0 `i 218  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 218  ]
 {
 [; ;RFID.c: 911: return result;
 "911
@@ -3131,7 +3132,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_MIFARE_Transceive (3 , , _buffer _bufferSize -> -> 0 `i `uc ]
 [; ;RFID.c: 916: if (result != STATUS_OK) {
 "916
-[e $ ! != -> _result `i -> . `E880 0 `i 219  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 219  ]
 {
 [; ;RFID.c: 917: return result;
 "917
@@ -3143,7 +3144,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 918: }
 [; ;RFID.c: 920: return STATUS_OK;
 "920
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 216  ]
 [; ;RFID.c: 921: }
 "921
@@ -3174,7 +3175,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 936: return STATUS_INVALID;
 "936
-[e ) -> . `E880 6 `uc ]
+[e ) -> . `E884 6 `uc ]
 [e $UE 220  ]
 "937
 }
@@ -3185,7 +3186,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 940: unsigned char cmdBuffer[6];
 [; ;RFID.c: 941: cmdBuffer[0] = PICC_CMD_UL_WRITE;
 "941
-[e = *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux -> . `E849 15 `uc ]
+[e = *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux -> . `E853 15 `uc ]
 [; ;RFID.c: 942: cmdBuffer[1] = page;
 "942
 [e = *U + &U _cmdBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux _page ]
@@ -3197,7 +3198,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_MIFARE_Transceive (3 , , &U _cmdBuffer -> -> 6 `i `uc -> -> 0 `i `uc ]
 [; ;RFID.c: 947: if (result != STATUS_OK) {
 "947
-[e $ ! != -> _result `i -> . `E880 0 `i 222  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 222  ]
 {
 [; ;RFID.c: 948: return result;
 "948
@@ -3209,7 +3210,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 949: }
 [; ;RFID.c: 950: return STATUS_OK;
 "950
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 220  ]
 [; ;RFID.c: 951: }
 "951
@@ -3231,7 +3232,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 964: return MIFARE_TwoStepHelper(PICC_CMD_MF_DECREMENT, blockAddr, delta);
 "964
-[e ) ( _MIFARE_TwoStepHelper (3 , , -> . `E849 11 `uc _blockAddr _delta ]
+[e ) ( _MIFARE_TwoStepHelper (3 , , -> . `E853 11 `uc _blockAddr _delta ]
 [e $UE 223  ]
 [; ;RFID.c: 965: }
 "965
@@ -3253,7 +3254,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 978: return MIFARE_TwoStepHelper(PICC_CMD_MF_INCREMENT, blockAddr, delta);
 "978
-[e ) ( _MIFARE_TwoStepHelper (3 , , -> . `E849 12 `uc _blockAddr _delta ]
+[e ) ( _MIFARE_TwoStepHelper (3 , , -> . `E853 12 `uc _blockAddr _delta ]
 [e $UE 224  ]
 [; ;RFID.c: 979: }
 "979
@@ -3272,7 +3273,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;RFID.c: 993: return MIFARE_TwoStepHelper(PICC_CMD_MF_RESTORE, blockAddr, 0L);
 "993
-[e ) ( _MIFARE_TwoStepHelper (3 , , -> . `E849 13 `uc _blockAddr -> 0 `l ]
+[e ) ( _MIFARE_TwoStepHelper (3 , , -> . `E853 13 `uc _blockAddr -> 0 `l ]
 [e $UE 225  ]
 [; ;RFID.c: 994: }
 "994
@@ -3312,7 +3313,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_MIFARE_Transceive (3 , , &U _cmdBuffer -> -> 2 `i `uc -> -> 0 `i `uc ]
 [; ;RFID.c: 1012: if (result != STATUS_OK) {
 "1012
-[e $ ! != -> _result `i -> . `E880 0 `i 227  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 227  ]
 {
 [; ;RFID.c: 1013: return result;
 "1013
@@ -3327,7 +3328,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_MIFARE_Transceive (3 , , -> &U _data `*uc -> -> 4 `i `uc -> -> 1 `i `uc ]
 [; ;RFID.c: 1018: if (result != STATUS_OK) {
 "1018
-[e $ ! != -> _result `i -> . `E880 0 `i 228  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 228  ]
 {
 [; ;RFID.c: 1019: return result;
 "1019
@@ -3339,7 +3340,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1020: }
 [; ;RFID.c: 1022: return STATUS_OK;
 "1022
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 226  ]
 [; ;RFID.c: 1023: }
 "1023
@@ -3364,7 +3365,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1035: unsigned char cmdBuffer[2];
 [; ;RFID.c: 1038: cmdBuffer[0] = PICC_CMD_MF_TRANSFER;
 "1038
-[e = *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux -> . `E849 14 `uc ]
+[e = *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux -> . `E853 14 `uc ]
 [; ;RFID.c: 1039: cmdBuffer[1] = blockAddr;
 "1039
 [e = *U + &U _cmdBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux _blockAddr ]
@@ -3373,7 +3374,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_MIFARE_Transceive (3 , , &U _cmdBuffer -> -> 2 `i `uc -> -> 0 `i `uc ]
 [; ;RFID.c: 1041: if (result != STATUS_OK) {
 "1041
-[e $ ! != -> _result `i -> . `E880 0 `i 230  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 230  ]
 {
 [; ;RFID.c: 1042: return result;
 "1042
@@ -3385,7 +3386,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1043: }
 [; ;RFID.c: 1044: return STATUS_OK;
 "1044
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 229  ]
 [; ;RFID.c: 1045: }
 "1045
@@ -3413,7 +3414,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _status ( _MIFARE_Read (3 , , _blockAddr &U _buffer &U _size ]
 [; ;RFID.c: 1065: if (status == STATUS_OK) {
 "1065
-[e $ ! == -> _status `i -> . `E880 0 `i 232  ]
+[e $ ! == -> _status `i -> . `E884 0 `i 232  ]
 {
 [; ;RFID.c: 1068: *value = ((long)buffer[3]<<24) | ((long)buffer[2]<<16) | ((long)buffer[1]<<8) | (long)buffer[0];
 "1068
@@ -3507,7 +3508,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 1124: return STATUS_INVALID;
 "1124
-[e ) -> . `E880 6 `uc ]
+[e ) -> . `E884 6 `uc ]
 [e $UE 234  ]
 "1125
 }
@@ -3521,7 +3522,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _result ( _PCD_CalculateCRC (3 , , &U _cmdBuffer _sendLen &U *U + &U _cmdBuffer * -> _sendLen `ux -> -> # *U &U _cmdBuffer `ui `ux ]
 [; ;RFID.c: 1130: if (result != STATUS_OK) {
 "1130
-[e $ ! != -> _result `i -> . `E880 0 `i 236  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 236  ]
 {
 [; ;RFID.c: 1131: return result;
 "1131
@@ -3548,14 +3549,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _validBits -> -> 0 `i `uc ]
 [; ;RFID.c: 1139: result = PCD_CommunicateWithPICC(PCD_Transceive, waitIRq, cmdBuffer, sendLen, cmdBuffer, &cmdBufferSize, &validBits,0,0);
 "1139
-[e = _result ( _PCD_CommunicateWithPICC (4 , , , , , , , , -> . `E826 7 `uc _waitIRq &U _cmdBuffer _sendLen &U _cmdBuffer &U _cmdBufferSize &U _validBits -> -> 0 `i `uc -> -> 0 `i `uc ]
+[e = _result ( _PCD_CommunicateWithPICC (4 , , , , , , , , -> . `E830 7 `uc _waitIRq &U _cmdBuffer _sendLen &U _cmdBuffer &U _cmdBufferSize &U _validBits -> -> 0 `i `uc -> -> 0 `i `uc ]
 [; ;RFID.c: 1140: if (acceptTimeout && result == STATUS_TIMEOUT) {
 "1140
-[e $ ! && != -> _acceptTimeout `i -> -> -> 0 `i `uc `i == -> _result `i -> . `E880 3 `i 237  ]
+[e $ ! && != -> _acceptTimeout `i -> -> -> 0 `i `uc `i == -> _result `i -> . `E884 3 `i 237  ]
 {
 [; ;RFID.c: 1141: return STATUS_OK;
 "1141
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 234  ]
 "1142
 }
@@ -3563,7 +3564,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1142: }
 [; ;RFID.c: 1143: if (result != STATUS_OK) {
 "1143
-[e $ ! != -> _result `i -> . `E880 0 `i 238  ]
+[e $ ! != -> _result `i -> . `E884 0 `i 238  ]
 {
 [; ;RFID.c: 1144: return result;
 "1144
@@ -3579,7 +3580,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 1148: return STATUS_ERROR;
 "1148
-[e ) -> . `E880 1 `uc ]
+[e ) -> . `E884 1 `uc ]
 [e $UE 234  ]
 "1149
 }
@@ -3587,11 +3588,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1149: }
 [; ;RFID.c: 1150: if (cmdBuffer[0] != MF_ACK) {
 "1150
-[e $ ! != -> *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux `i -> . `E866 0 `i 240  ]
+[e $ ! != -> *U + &U _cmdBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cmdBuffer `ui `ux `i -> . `E870 0 `i 240  ]
 {
 [; ;RFID.c: 1151: return STATUS_MIFARE_NACK;
 "1151
-[e ) -> . `E880 8 `uc ]
+[e ) -> . `E884 8 `uc ]
 [e $UE 234  ]
 "1152
 }
@@ -3599,7 +3600,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1152: }
 [; ;RFID.c: 1153: return STATUS_OK;
 "1153
-[e ) -> . `E880 0 `uc ]
+[e ) -> . `E884 0 `uc ]
 [e $UE 234  ]
 [; ;RFID.c: 1154: }
 "1154
@@ -3686,15 +3687,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 242  ]
 "1162
 [e :U 243 ]
-[e [\ _code , $ -> . `E880 0 `uc 244
- , $ -> . `E880 1 `uc 245
- , $ -> . `E880 2 `uc 246
- , $ -> . `E880 3 `uc 247
- , $ -> . `E880 4 `uc 248
- , $ -> . `E880 5 `uc 249
- , $ -> . `E880 6 `uc 250
- , $ -> . `E880 7 `uc 251
- , $ -> . `E880 8 `uc 252
+[e [\ _code , $ -> . `E884 0 `uc 244
+ , $ -> . `E884 1 `uc 245
+ , $ -> . `E884 2 `uc 246
+ , $ -> . `E884 3 `uc 247
+ , $ -> . `E884 4 `uc 248
+ , $ -> . `E884 5 `uc 249
+ , $ -> . `E884 6 `uc 250
+ , $ -> . `E884 7 `uc 251
+ , $ -> . `E884 8 `uc 252
  253 ]
 "1173
 [e :U 242 ]
@@ -3723,7 +3724,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 1185: return PICC_TYPE_NOT_COMPLETE;
 "1185
-[e ) -> . `E869 9 `uc ]
+[e ) -> . `E873 9 `uc ]
 [e $UE 254  ]
 "1186
 }
@@ -3736,25 +3737,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1189: case 0x09: return PICC_TYPE_MIFARE_MINI; break;
 "1189
 [e :U 258 ]
-[e ) -> . `E869 3 `uc ]
+[e ) -> . `E873 3 `uc ]
 [e $UE 254  ]
 [e $U 256  ]
 [; ;RFID.c: 1190: case 0x08: return PICC_TYPE_MIFARE_1K; break;
 "1190
 [e :U 259 ]
-[e ) -> . `E869 4 `uc ]
+[e ) -> . `E873 4 `uc ]
 [e $UE 254  ]
 [e $U 256  ]
 [; ;RFID.c: 1191: case 0x18: return PICC_TYPE_MIFARE_4K; break;
 "1191
 [e :U 260 ]
-[e ) -> . `E869 5 `uc ]
+[e ) -> . `E873 5 `uc ]
 [e $UE 254  ]
 [e $U 256  ]
 [; ;RFID.c: 1192: case 0x00: return PICC_TYPE_MIFARE_UL; break;
 "1192
 [e :U 261 ]
-[e ) -> . `E869 6 `uc ]
+[e ) -> . `E873 6 `uc ]
 [e $UE 254  ]
 [e $U 256  ]
 [; ;RFID.c: 1193: case 0x10:
@@ -3763,13 +3764,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "1194
 [e :U 263 ]
 [; ;RFID.c: 1194: case 0x11: return PICC_TYPE_MIFARE_PLUS; break;
-[e ) -> . `E869 7 `uc ]
+[e ) -> . `E873 7 `uc ]
 [e $UE 254  ]
 [e $U 256  ]
 [; ;RFID.c: 1195: case 0x01: return PICC_TYPE_TNP3XXX; break;
 "1195
 [e :U 264 ]
-[e ) -> . `E869 8 `uc ]
+[e ) -> . `E873 8 `uc ]
 [e $UE 254  ]
 [e $U 256  ]
 [; ;RFID.c: 1196: default: break;
@@ -3798,7 +3799,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 1200: return PICC_TYPE_ISO_14443_4;
 "1200
-[e ) -> . `E869 1 `uc ]
+[e ) -> . `E873 1 `uc ]
 [e $UE 254  ]
 "1201
 }
@@ -3810,7 +3811,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;RFID.c: 1204: return PICC_TYPE_ISO_18092;
 "1204
-[e ) -> . `E869 2 `uc ]
+[e ) -> . `E873 2 `uc ]
 [e $UE 254  ]
 "1205
 }
@@ -3818,7 +3819,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1205: }
 [; ;RFID.c: 1207: return PICC_TYPE_UNKNOWN;
 "1207
-[e ) -> . `E869 0 `uc ]
+[e ) -> . `E873 0 `uc ]
 [e $UE 254  ]
 [; ;RFID.c: 1208: }
 "1208
@@ -3908,16 +3909,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 269  ]
 "1216
 [e :U 270 ]
-[e [\ _piccType , $ -> . `E869 1 `uc 271
- , $ -> . `E869 2 `uc 272
- , $ -> . `E869 3 `uc 273
- , $ -> . `E869 4 `uc 274
- , $ -> . `E869 5 `uc 275
- , $ -> . `E869 6 `uc 276
- , $ -> . `E869 7 `uc 277
- , $ -> . `E869 8 `uc 278
- , $ -> . `E869 9 `uc 279
- , $ -> . `E869 0 `uc 280
+[e [\ _piccType , $ -> . `E873 1 `uc 271
+ , $ -> . `E873 2 `uc 272
+ , $ -> . `E873 3 `uc 273
+ , $ -> . `E873 4 `uc 274
+ , $ -> . `E873 5 `uc 275
+ , $ -> . `E873 6 `uc 276
+ , $ -> . `E873 7 `uc 277
+ , $ -> . `E873 8 `uc 278
+ , $ -> . `E873 9 `uc 279
+ , $ -> . `E873 0 `uc 280
  281 ]
 "1228
 [e :U 269 ]
@@ -3941,9 +3942,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "1239
 [v _key `S92 ~T0 @X0 1 a ]
 [; ;RFID.c: 1239: MIFARE_Key key;
-[; ;RFID.c: 1242: printf("Card UID:\n");
-"1242
-[e ( _printf :s 21C ]
 [; ;RFID.c: 1243: for (unsigned char i = 0; i < uid->size; i++) {
 "1243
 {
@@ -3952,12 +3950,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 286  ]
 [e :U 283 ]
 {
-[; ;RFID.c: 1244: printf("%s",uid->uidbyte[i] < 0x10 ? " 0" : " ");
-"1244
-[e ( _printf , (. :s 22C ? < -> *U + &U . *U _uid 1 * -> _i `ux -> -> # *U &U . *U _uid 1 `ui `ux `i -> 16 `i : :s 23C :s 24C ]
-[; ;RFID.c: 1245: printf("%x",uid->uidbyte[i]);
-"1245
-[e ( _printf , (. :s 25C -> *U + &U . *U _uid 1 * -> _i `ux -> -> # *U &U . *U _uid 1 `ui `ux `i ]
 "1246
 }
 "1243
@@ -3967,20 +3959,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 284 ]
 "1246
 }
-[; ;RFID.c: 1246: }
-[; ;RFID.c: 1247: printf("\n");
-"1247
-[e ( _printf :s 26C ]
 "1250
 [v _piccType `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1246: }
 [; ;RFID.c: 1250: unsigned char piccType = PICC_GetType(uid->sak);
 [e = _piccType ( _PICC_GetType (1 . *U _uid 2 ]
-[; ;RFID.c: 1251: printf("PICC type: ");
-"1251
-[e ( _printf :s 27C ]
-[; ;RFID.c: 1252: printf("%s\n",PICC_GetTypeName(piccType));
-"1252
-[e ( _printf , (. :s 28C ( _PICC_GetTypeName (1 _piccType ]
 [; ;RFID.c: 1255: switch (piccType) {
 "1255
 [e $U 288  ]
@@ -4042,9 +4025,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID.c: 1271: case PICC_TYPE_ISO_18092:
 [; ;RFID.c: 1272: case PICC_TYPE_MIFARE_PLUS:
 [; ;RFID.c: 1273: case PICC_TYPE_TNP3XXX:
-[; ;RFID.c: 1274: printf("Dumping memory contents not implemented for that PICC type.");
-"1274
-[e ( _printf :s 29C ]
 [; ;RFID.c: 1275: break;
 "1275
 [e $U 287  ]
@@ -4066,22 +4046,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 287  ]
 "1255
 [e :U 288 ]
-[e [\ _piccType , $ -> . `E869 3 `uc 289
- , $ -> . `E869 4 `uc 290
- , $ -> . `E869 5 `uc 291
- , $ -> . `E869 6 `uc 295
- , $ -> . `E869 1 `uc 296
- , $ -> . `E869 2 `uc 297
- , $ -> . `E869 7 `uc 298
- , $ -> . `E869 8 `uc 299
- , $ -> . `E869 0 `uc 300
- , $ -> . `E869 9 `uc 301
+[e [\ _piccType , $ -> . `E873 3 `uc 289
+ , $ -> . `E873 4 `uc 290
+ , $ -> . `E873 5 `uc 291
+ , $ -> . `E873 6 `uc 295
+ , $ -> . `E873 1 `uc 296
+ , $ -> . `E873 2 `uc 297
+ , $ -> . `E873 7 `uc 298
+ , $ -> . `E873 8 `uc 299
+ , $ -> . `E873 0 `uc 300
+ , $ -> . `E873 9 `uc 301
  302 ]
 "1281
 [e :U 287 ]
-[; ;RFID.c: 1283: printf("\n");
-"1283
-[e ( _printf :s 30C ]
 [; ;RFID.c: 1284: PICC_HaltA();
 "1284
 [e ( _PICC_HaltA ..  ]
@@ -4106,304 +4083,270 @@ Version 3.2 HI-TECH Software Intermediate Code
 "1294
 [f ]
 "1295
-[v _no_of_sectors `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1295: unsigned char no_of_sectors = 0;
-[e = _no_of_sectors -> -> 0 `i `uc ]
-[; ;RFID.c: 1296: switch (piccType) {
-"1296
+[v _no_of_sectors `c ~T0 @X0 1 a ]
+[; ;RFID.c: 1295: signed char no_of_sectors = 0;
+[e = _no_of_sectors -> -> 0 `i `c ]
+[; ;RFID.c: 1297: switch (piccType) {
+"1297
 [e $U 305  ]
 {
-[; ;RFID.c: 1297: case PICC_TYPE_MIFARE_MINI:
-"1297
+[; ;RFID.c: 1298: case PICC_TYPE_MIFARE_MINI:
+"1298
 [e :U 306 ]
-[; ;RFID.c: 1299: no_of_sectors = 5;
-"1299
-[e = _no_of_sectors -> -> 5 `i `uc ]
-[; ;RFID.c: 1300: break;
+[; ;RFID.c: 1300: no_of_sectors = 5;
 "1300
+[e = _no_of_sectors -> -> 5 `i `c ]
+[; ;RFID.c: 1301: break;
+"1301
 [e $U 304  ]
-[; ;RFID.c: 1302: case PICC_TYPE_MIFARE_1K:
-"1302
+[; ;RFID.c: 1303: case PICC_TYPE_MIFARE_1K:
+"1303
 [e :U 307 ]
-[; ;RFID.c: 1304: no_of_sectors = 16;
-"1304
-[e = _no_of_sectors -> -> 16 `i `uc ]
-[; ;RFID.c: 1305: break;
+[; ;RFID.c: 1305: no_of_sectors = 16;
 "1305
+[e = _no_of_sectors -> -> 16 `i `c ]
+[; ;RFID.c: 1306: break;
+"1306
 [e $U 304  ]
-[; ;RFID.c: 1307: case PICC_TYPE_MIFARE_4K:
-"1307
+[; ;RFID.c: 1308: case PICC_TYPE_MIFARE_4K:
+"1308
 [e :U 308 ]
-[; ;RFID.c: 1309: no_of_sectors = 40;
-"1309
-[e = _no_of_sectors -> -> 40 `i `uc ]
-[; ;RFID.c: 1310: break;
+[; ;RFID.c: 1310: no_of_sectors = 40;
 "1310
+[e = _no_of_sectors -> -> 40 `i `c ]
+[; ;RFID.c: 1311: break;
+"1311
 [e $U 304  ]
-[; ;RFID.c: 1312: default:
-"1312
-[e :U 309 ]
-[; ;RFID.c: 1313: break;
+[; ;RFID.c: 1313: default:
 "1313
-[e $U 304  ]
+[e :U 309 ]
+[; ;RFID.c: 1314: break;
 "1314
+[e $U 304  ]
+"1315
 }
-[; ;RFID.c: 1314: }
+[; ;RFID.c: 1315: }
 [e $U 304  ]
-"1296
+"1297
 [e :U 305 ]
-[e [\ _piccType , $ -> . `E869 3 `uc 306
- , $ -> . `E869 4 `uc 307
- , $ -> . `E869 5 `uc 308
+[e [\ _piccType , $ -> . `E873 3 `uc 306
+ , $ -> . `E873 4 `uc 307
+ , $ -> . `E873 5 `uc 308
  309 ]
-"1314
+"1315
 [e :U 304 ]
-[; ;RFID.c: 1317: if (no_of_sectors) {
-"1317
-[e $ ! != -> _no_of_sectors `i -> -> -> 0 `i `uc `i 310  ]
-{
-[; ;RFID.c: 1318: printf("Sector Block   0  1  2  3   4  5  6  7   8  9 10 11  12 13 14 15  AccessBits\n");
+[; ;RFID.c: 1318: if (no_of_sectors) {
 "1318
-[e ( _printf :s 31C ]
-[; ;RFID.c: 1319: for (char i = no_of_sectors - 1; i >= 0; i--) {
-"1319
+[e $ ! != -> _no_of_sectors `i -> -> -> 0 `i `c `i 310  ]
 {
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> - -> _no_of_sectors `i -> 1 `i `uc ]
+[; ;RFID.c: 1321: for(signed char i = no_of_sectors - 1; i >=0; i--)
+"1321
+{
+[v _i `c ~T0 @X0 1 a ]
+[e = _i -> - -> _no_of_sectors `i -> 1 `i `c ]
 [e $ >= -> _i `i -> 0 `i 311  ]
 [e $U 312  ]
+"1322
 [e :U 311 ]
+[; ;RFID.c: 1322: {
 {
-[; ;RFID.c: 1320: PICC_DumpMifareClassicSectorToSerial(uid, key, i);
-"1320
-[e ( _PICC_DumpMifareClassicSectorToSerial (3 , , _uid _key _i ]
-"1321
+[; ;RFID.c: 1323: PICC_DumpMifareClassicSectorToSerial(uid, key, i);
+"1323
+[e ( _PICC_DumpMifareClassicSectorToSerial (3 , , _uid _key -> _i `uc ]
+"1324
 }
-"1319
-[e -- _i -> -> 1 `i `uc ]
+"1321
+[e -- _i -> -> 1 `i `c ]
 [e $ >= -> _i `i -> 0 `i 311  ]
 [e :U 312 ]
-"1321
+"1324
 }
-"1322
+"1325
 }
 [e :U 310 ]
-[; ;RFID.c: 1321: }
-[; ;RFID.c: 1322: }
-[; ;RFID.c: 1323: PICC_HaltA();
-"1323
-[e ( _PICC_HaltA ..  ]
-[; ;RFID.c: 1324: PCD_StopCrypto1();
-"1324
-[e ( _PCD_StopCrypto1 ..  ]
+[; ;RFID.c: 1324: }
 [; ;RFID.c: 1325: }
-"1325
+[; ;RFID.c: 1326: PICC_HaltA();
+"1326
+[e ( _PICC_HaltA ..  ]
+[; ;RFID.c: 1327: PCD_StopCrypto1();
+"1327
+[e ( _PCD_StopCrypto1 ..  ]
+[; ;RFID.c: 1328: }
+"1328
 [e :UE 303 ]
 }
-"1332
-[v _PICC_DumpMifareClassicSectorToSerial `(v ~T0 @X0 1 ef3`*S91`*S92`uc ]
 "1335
+[v _PICC_DumpMifareClassicSectorToSerial `(v ~T0 @X0 1 ef3`*S91`*S92`uc ]
+"1338
 {
-[; ;RFID.c: 1332: void PICC_DumpMifareClassicSectorToSerial(Uid *uid,
-[; ;RFID.c: 1333: MIFARE_Key *key,
-[; ;RFID.c: 1334: unsigned char sector
-[; ;RFID.c: 1335: ) {
+[; ;RFID.c: 1335: void PICC_DumpMifareClassicSectorToSerial(Uid *uid,
+[; ;RFID.c: 1336: MIFARE_Key *key,
+[; ;RFID.c: 1337: unsigned char sector
+[; ;RFID.c: 1338: ) {
 [e :U _PICC_DumpMifareClassicSectorToSerial ]
 [v _uid `*S91 ~T0 @X0 1 r1 ]
-"1333
-[v _key `*S92 ~T0 @X0 1 r2 ]
-"1334
-[v _sector `uc ~T0 @X0 1 r3 ]
-"1335
-[f ]
 "1336
-[v _status `uc ~T0 @X0 1 a ]
+[v _key `*S92 ~T0 @X0 1 r2 ]
 "1337
-[v _firstBlock `uc ~T0 @X0 1 a ]
+[v _sector `uc ~T0 @X0 1 r3 ]
 "1338
-[v _no_of_blocks `uc ~T0 @X0 1 a ]
+[f ]
 "1339
+[v _status `uc ~T0 @X0 1 a ]
+"1340
+[v _firstBlock `uc ~T0 @X0 1 a ]
+"1341
+[v _no_of_blocks `uc ~T0 @X0 1 a ]
+"1342
 [v _isSectorTrailer `uc ~T0 @X0 1 a ]
-"1349
+"1352
 [v _c1 `uc ~T0 @X0 1 a ]
 [v _c2 `uc ~T0 @X0 1 a ]
 [v _c3 `uc ~T0 @X0 1 a ]
-"1350
+"1353
 [v _c1_ `uc ~T0 @X0 1 a ]
 [v _c2_ `uc ~T0 @X0 1 a ]
 [v _c3_ `uc ~T0 @X0 1 a ]
-"1351
-[v _invertedError `uc ~T0 @X0 1 a ]
-"1352
-[v _g `uc ~T0 @X0 -> 4 `i a ]
-"1353
-[v _group `uc ~T0 @X0 1 a ]
 "1354
-[v _firstInGroup `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1336: unsigned char status;
-[; ;RFID.c: 1337: unsigned char firstBlock;
-[; ;RFID.c: 1338: unsigned char no_of_blocks;
-[; ;RFID.c: 1339: unsigned char isSectorTrailer;
-[; ;RFID.c: 1349: unsigned char c1, c2, c3;
-[; ;RFID.c: 1350: unsigned char c1_, c2_, c3_;
-[; ;RFID.c: 1351: unsigned char invertedError;
-[; ;RFID.c: 1352: unsigned char g[4];
-[; ;RFID.c: 1353: unsigned char group;
-[; ;RFID.c: 1354: unsigned char firstInGroup;
-[; ;RFID.c: 1357: if (sector < 32) {
+[v _invertedError `uc ~T0 @X0 1 a ]
+"1355
+[v _g `uc ~T0 @X0 -> 4 `i a ]
+"1356
+[v _group `uc ~T0 @X0 1 a ]
 "1357
+[v _firstInGroup `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1339: unsigned char status;
+[; ;RFID.c: 1340: unsigned char firstBlock;
+[; ;RFID.c: 1341: char no_of_blocks;
+[; ;RFID.c: 1342: unsigned char isSectorTrailer;
+[; ;RFID.c: 1352: unsigned char c1, c2, c3;
+[; ;RFID.c: 1353: unsigned char c1_, c2_, c3_;
+[; ;RFID.c: 1354: unsigned char invertedError;
+[; ;RFID.c: 1355: unsigned char g[4];
+[; ;RFID.c: 1356: unsigned char group;
+[; ;RFID.c: 1357: unsigned char firstInGroup;
+[; ;RFID.c: 1360: if (sector < 32) {
+"1360
 [e $ ! < -> _sector `i -> 32 `i 315  ]
 {
-[; ;RFID.c: 1358: no_of_blocks = 4;
-"1358
-[e = _no_of_blocks -> -> 4 `i `uc ]
-[; ;RFID.c: 1359: firstBlock = sector * no_of_blocks;
-"1359
-[e = _firstBlock -> * -> _sector `i -> _no_of_blocks `i `uc ]
-"1360
-}
-[; ;RFID.c: 1360: }
-[e $U 316  ]
+[; ;RFID.c: 1361: no_of_blocks = 4;
 "1361
+[e = _no_of_blocks -> -> 4 `i `uc ]
+[; ;RFID.c: 1362: firstBlock = sector * no_of_blocks;
+"1362
+[e = _firstBlock -> * -> _sector `i -> _no_of_blocks `i `uc ]
+"1363
+}
+[; ;RFID.c: 1363: }
+[e $U 316  ]
+"1364
 [e :U 315 ]
-[; ;RFID.c: 1361: else if (sector < 40) {
+[; ;RFID.c: 1364: else if (sector < 40) {
 [e $ ! < -> _sector `i -> 40 `i 317  ]
 {
-[; ;RFID.c: 1362: no_of_blocks = 16;
-"1362
-[e = _no_of_blocks -> -> 16 `i `uc ]
-[; ;RFID.c: 1363: firstBlock = 128 + (sector - 32) * no_of_blocks;
-"1363
-[e = _firstBlock -> + -> 128 `i * - -> _sector `i -> 32 `i -> _no_of_blocks `i `uc ]
-"1364
-}
-[; ;RFID.c: 1364: }
-[e $U 318  ]
+[; ;RFID.c: 1365: no_of_blocks = 16;
 "1365
-[e :U 317 ]
-[; ;RFID.c: 1365: else {
-{
-[; ;RFID.c: 1366: return;
+[e = _no_of_blocks -> -> 16 `i `uc ]
+[; ;RFID.c: 1366: firstBlock = 128 + (sector - 32) * no_of_blocks;
 "1366
-[e $UE 314  ]
+[e = _firstBlock -> + -> 128 `i * - -> _sector `i -> 32 `i -> _no_of_blocks `i `uc ]
 "1367
+}
+[; ;RFID.c: 1367: }
+[e $U 318  ]
+"1368
+[e :U 317 ]
+[; ;RFID.c: 1368: else {
+{
+[; ;RFID.c: 1369: return;
+"1369
+[e $UE 314  ]
+"1370
 }
 [e :U 318 ]
 [e :U 316 ]
-"1370
+"1373
 [v _byteCount `uc ~T0 @X0 1 a ]
 [v _buffer `uc ~T0 @X0 -> 18 `i a ]
-"1372
+"1375
 [v _blockAddr `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1367: }
-[; ;RFID.c: 1370: unsigned char byteCount;
-[; ;RFID.c: 1371: unsigned char buffer[18];
-[; ;RFID.c: 1372: unsigned char blockAddr;
-[; ;RFID.c: 1373: isSectorTrailer = 1;
-"1373
+[; ;RFID.c: 1370: }
+[; ;RFID.c: 1373: unsigned char byteCount;
+[; ;RFID.c: 1374: unsigned char buffer[18];
+[; ;RFID.c: 1375: unsigned char blockAddr;
+[; ;RFID.c: 1376: isSectorTrailer = 1;
+"1376
 [e = _isSectorTrailer -> -> 1 `i `uc ]
-[; ;RFID.c: 1374: for (char blockOffset = no_of_blocks - 1; blockOffset >= 0; blockOffset--) {
-"1374
+[; ;RFID.c: 1377: for (signed char blockOffset = no_of_blocks - 1; blockOffset >= 0; blockOffset--) {
+"1377
 {
-[v _blockOffset `uc ~T0 @X0 1 a ]
-[e = _blockOffset -> - -> _no_of_blocks `i -> 1 `i `uc ]
+[v _blockOffset `c ~T0 @X0 1 a ]
+[e = _blockOffset -> - -> _no_of_blocks `i -> 1 `i `c ]
 [e $ >= -> _blockOffset `i -> 0 `i 319  ]
 [e $U 320  ]
 [e :U 319 ]
 {
-[; ;RFID.c: 1375: blockAddr = firstBlock + blockOffset;
-"1375
+[; ;RFID.c: 1378: blockAddr = firstBlock + blockOffset;
+"1378
 [e = _blockAddr -> + -> _firstBlock `i -> _blockOffset `i `uc ]
-[; ;RFID.c: 1377: if (isSectorTrailer) {
-"1377
+[; ;RFID.c: 1380: if (isSectorTrailer) {
+"1380
 [e $ ! != -> _isSectorTrailer `i -> -> -> 0 `i `uc `i 322  ]
 {
-[; ;RFID.c: 1378: printf("%s",sector < 10 ? "   " : "  ");
-"1378
-[e ( _printf , (. :s 32C ? < -> _sector `i -> 10 `i : :s 33C :s 34C ]
-[; ;RFID.c: 1379: printf("%d",sector);
-"1379
-[e ( _printf , (. :s 35C -> _sector `i ]
-[; ;RFID.c: 1380: printf("   ");
-"1380
-[e ( _printf :s 36C ]
-"1381
-}
-[; ;RFID.c: 1381: }
-[e $U 323  ]
-"1382
-[e :U 322 ]
-[; ;RFID.c: 1382: else {
-{
-[; ;RFID.c: 1383: printf("       ");
-"1383
-[e ( _printf :s 37C ]
 "1384
 }
-[e :U 323 ]
 [; ;RFID.c: 1384: }
-[; ;RFID.c: 1386: printf("%s",blockAddr < 10 ? "   " : (blockAddr < 100 ? "  " : " "));
-"1386
-[e ( _printf , (. :s 38C ? < -> _blockAddr `i -> 10 `i : :s 39C ? < -> _blockAddr `i -> 100 `i : :s 40C :s 41C ]
-[; ;RFID.c: 1387: printf("%d",blockAddr);
+[e $U 323  ]
+"1385
+[e :U 322 ]
+[; ;RFID.c: 1385: else {
+{
 "1387
-[e ( _printf , (. :s 42C -> _blockAddr `i ]
-[; ;RFID.c: 1388: printf("  ");
-"1388
-[e ( _printf :s 43C ]
-[; ;RFID.c: 1390: if (isSectorTrailer) {
-"1390
+}
+[e :U 323 ]
+[; ;RFID.c: 1387: }
+[; ;RFID.c: 1393: if (isSectorTrailer) {
+"1393
 [e $ ! != -> _isSectorTrailer `i -> -> -> 0 `i `uc `i 324  ]
 {
-[; ;RFID.c: 1391: status = PCD_Authenticate(PICC_CMD_MF_AUTH_KEY_A, firstBlock, key, uid);
-"1391
-[e = _status ( _PCD_Authenticate (4 , , , -> . `E849 7 `uc _firstBlock _key _uid ]
-[; ;RFID.c: 1392: if (status != STATUS_OK) {
-"1392
-[e $ ! != -> _status `i -> . `E880 0 `i 325  ]
-{
-[; ;RFID.c: 1393: printf("PCD_Authenticate() failed: ");
-"1393
-[e ( _printf :s 44C ]
-[; ;RFID.c: 1394: printf("%s\n",GetStatusCodeName(status));
+[; ;RFID.c: 1394: status = PCD_Authenticate(PICC_CMD_MF_AUTH_KEY_A, firstBlock, key, uid);
 "1394
-[e ( _printf , (. :s 45C ( _GetStatusCodeName (1 _status ]
-[; ;RFID.c: 1395: return;
+[e = _status ( _PCD_Authenticate (4 , , , -> . `E853 7 `uc _firstBlock _key _uid ]
+[; ;RFID.c: 1395: if (status != STATUS_OK) {
 "1395
+[e $ ! != -> _status `i -> . `E884 0 `i 325  ]
+{
+[; ;RFID.c: 1398: return;
+"1398
 [e $UE 314  ]
-"1396
+"1399
 }
 [e :U 325 ]
-"1397
+"1400
 }
 [e :U 324 ]
-[; ;RFID.c: 1396: }
-[; ;RFID.c: 1397: }
-[; ;RFID.c: 1399: byteCount = sizeof(buffer);
-"1399
-[e = _byteCount -> -> # _buffer `ui `uc ]
-[; ;RFID.c: 1400: status = MIFARE_Read(blockAddr, buffer, &byteCount);
-"1400
-[e = _status ( _MIFARE_Read (3 , , _blockAddr &U _buffer &U _byteCount ]
-[; ;RFID.c: 1401: if (status != STATUS_OK) {
-"1401
-[e $ ! != -> _status `i -> . `E880 0 `i 326  ]
-{
-[; ;RFID.c: 1402: printf("MIFARE_Read() failed: ");
+[; ;RFID.c: 1399: }
+[; ;RFID.c: 1400: }
+[; ;RFID.c: 1402: byteCount = sizeof(buffer);
 "1402
-[e ( _printf :s 46C ]
-[; ;RFID.c: 1403: printf("%s\n",GetStatusCodeName(status));
+[e = _byteCount -> -> # _buffer `ui `uc ]
+[; ;RFID.c: 1403: status = MIFARE_Read(blockAddr, buffer, &byteCount);
 "1403
-[e ( _printf , (. :s 47C ( _GetStatusCodeName (1 _status ]
-[; ;RFID.c: 1404: continue;
+[e = _status ( _MIFARE_Read (3 , , _blockAddr &U _buffer &U _byteCount ]
+[; ;RFID.c: 1404: if (status != STATUS_OK) {
 "1404
+[e $ ! != -> _status `i -> . `E884 0 `i 326  ]
+{
+[; ;RFID.c: 1407: continue;
+"1407
 [e $U 321  ]
-"1405
+"1408
 }
 [e :U 326 ]
-[; ;RFID.c: 1405: }
-[; ;RFID.c: 1407: for (unsigned char index = 0; index < 16; index++) {
-"1407
+[; ;RFID.c: 1408: }
+[; ;RFID.c: 1410: for (unsigned char index = 0; index < 16; index++) {
+"1410
 {
 [v _index `uc ~T0 @X0 1 a ]
 [e = _index -> -> 0 `i `uc ]
@@ -4411,198 +4354,159 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 328  ]
 [e :U 327 ]
 {
-[; ;RFID.c: 1408: printf("%s",buffer[index] < 0x10 ? " 0" : " ");
-"1408
-[e ( _printf , (. :s 48C ? < -> *U + &U _buffer * -> _index `ux -> -> # *U &U _buffer `ui `ux `i -> 16 `i : :s 49C :s 50C ]
-[; ;RFID.c: 1409: printf("%x",buffer[index]);
-"1409
-[e ( _printf , (. :s 51C -> *U + &U _buffer * -> _index `ux -> -> # *U &U _buffer `ui `ux `i ]
-[; ;RFID.c: 1410: if ((index % 4) == 3) {
-"1410
+[; ;RFID.c: 1413: if ((index % 4) == 3) {
+"1413
 [e $ ! == % -> _index `i -> 4 `i -> 3 `i 330  ]
 {
-[; ;RFID.c: 1411: printf(" ");
-"1411
-[e ( _printf :s 52C ]
-"1412
+"1415
 }
 [e :U 330 ]
-"1413
+"1416
 }
-"1407
+"1410
 [e ++ _index -> -> 1 `i `uc ]
 [e $ < -> _index `i -> 16 `i 327  ]
 [e :U 328 ]
-"1413
+"1416
 }
-[; ;RFID.c: 1412: }
-[; ;RFID.c: 1413: }
-[; ;RFID.c: 1415: if (isSectorTrailer) {
-"1415
+[; ;RFID.c: 1415: }
+[; ;RFID.c: 1416: }
+[; ;RFID.c: 1418: if (isSectorTrailer) {
+"1418
 [e $ ! != -> _isSectorTrailer `i -> -> -> 0 `i `uc `i 331  ]
 {
-[; ;RFID.c: 1416: c1 = buffer[7] >> 4;
-"1416
-[e = _c1 -> >> -> *U + &U _buffer * -> -> -> 7 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 4 `i `uc ]
-[; ;RFID.c: 1417: c2 = buffer[8] & 0xF;
-"1417
-[e = _c2 -> & -> *U + &U _buffer * -> -> -> 8 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 15 `i `uc ]
-[; ;RFID.c: 1418: c3 = buffer[8] >> 4;
-"1418
-[e = _c3 -> >> -> *U + &U _buffer * -> -> -> 8 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 4 `i `uc ]
-[; ;RFID.c: 1419: c1_ = buffer[6] & 0xF;
+[; ;RFID.c: 1419: c1 = buffer[7] >> 4;
 "1419
-[e = _c1_ -> & -> *U + &U _buffer * -> -> -> 6 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 15 `i `uc ]
-[; ;RFID.c: 1420: c2_ = buffer[6] >> 4;
+[e = _c1 -> >> -> *U + &U _buffer * -> -> -> 7 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 4 `i `uc ]
+[; ;RFID.c: 1420: c2 = buffer[8] & 0xF;
 "1420
-[e = _c2_ -> >> -> *U + &U _buffer * -> -> -> 6 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 4 `i `uc ]
-[; ;RFID.c: 1421: c3_ = buffer[7] & 0xF;
+[e = _c2 -> & -> *U + &U _buffer * -> -> -> 8 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 15 `i `uc ]
+[; ;RFID.c: 1421: c3 = buffer[8] >> 4;
 "1421
-[e = _c3_ -> & -> *U + &U _buffer * -> -> -> 7 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 15 `i `uc ]
-[; ;RFID.c: 1422: invertedError = (c1 != (~c1_ & 0xF)) || (c2 != (~c2_ & 0xF)) || (c3 != (~c3_ & 0xF));
+[e = _c3 -> >> -> *U + &U _buffer * -> -> -> 8 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 4 `i `uc ]
+[; ;RFID.c: 1422: c1_ = buffer[6] & 0xF;
 "1422
-[e = _invertedError -> -> || || != -> _c1 `i & ~ -> _c1_ `i -> 15 `i != -> _c2 `i & ~ -> _c2_ `i -> 15 `i != -> _c3 `i & ~ -> _c3_ `i -> 15 `i `i `uc ]
-[; ;RFID.c: 1423: g[0] = ((c1 & 1) << 2) | ((c2 & 1) << 1) | ((c3 & 1) << 0);
+[e = _c1_ -> & -> *U + &U _buffer * -> -> -> 6 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 15 `i `uc ]
+[; ;RFID.c: 1423: c2_ = buffer[6] >> 4;
 "1423
-[e = *U + &U _g * -> -> -> 0 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | << & -> _c1 `i -> 1 `i -> 2 `i << & -> _c2 `i -> 1 `i -> 1 `i << & -> _c3 `i -> 1 `i -> 0 `i `uc ]
-[; ;RFID.c: 1424: g[1] = ((c1 & 2) << 1) | ((c2 & 2) << 0) | ((c3 & 2) >> 1);
+[e = _c2_ -> >> -> *U + &U _buffer * -> -> -> 6 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 4 `i `uc ]
+[; ;RFID.c: 1424: c3_ = buffer[7] & 0xF;
 "1424
-[e = *U + &U _g * -> -> -> 1 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | << & -> _c1 `i -> 2 `i -> 1 `i << & -> _c2 `i -> 2 `i -> 0 `i >> & -> _c3 `i -> 2 `i -> 1 `i `uc ]
-[; ;RFID.c: 1425: g[2] = ((c1 & 4) << 0) | ((c2 & 4) >> 1) | ((c3 & 4) >> 2);
+[e = _c3_ -> & -> *U + &U _buffer * -> -> -> 7 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i -> 15 `i `uc ]
+[; ;RFID.c: 1425: invertedError = (c1 != (~c1_ & 0xF)) || (c2 != (~c2_ & 0xF)) || (c3 != (~c3_ & 0xF));
 "1425
-[e = *U + &U _g * -> -> -> 2 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | << & -> _c1 `i -> 4 `i -> 0 `i >> & -> _c2 `i -> 4 `i -> 1 `i >> & -> _c3 `i -> 4 `i -> 2 `i `uc ]
-[; ;RFID.c: 1426: g[3] = ((c1 & 8) >> 1) | ((c2 & 8) >> 2) | ((c3 & 8) >> 3);
+[e = _invertedError -> -> || || != -> _c1 `i & ~ -> _c1_ `i -> 15 `i != -> _c2 `i & ~ -> _c2_ `i -> 15 `i != -> _c3 `i & ~ -> _c3_ `i -> 15 `i `i `uc ]
+[; ;RFID.c: 1426: g[0] = ((c1 & 1) << 2) | ((c2 & 1) << 1) | ((c3 & 1) << 0);
 "1426
-[e = *U + &U _g * -> -> -> 3 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | >> & -> _c1 `i -> 8 `i -> 1 `i >> & -> _c2 `i -> 8 `i -> 2 `i >> & -> _c3 `i -> 8 `i -> 3 `i `uc ]
-[; ;RFID.c: 1427: isSectorTrailer = 0;
+[e = *U + &U _g * -> -> -> 0 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | << & -> _c1 `i -> 1 `i -> 2 `i << & -> _c2 `i -> 1 `i -> 1 `i << & -> _c3 `i -> 1 `i -> 0 `i `uc ]
+[; ;RFID.c: 1427: g[1] = ((c1 & 2) << 1) | ((c2 & 2) << 0) | ((c3 & 2) >> 1);
 "1427
-[e = _isSectorTrailer -> -> 0 `i `uc ]
+[e = *U + &U _g * -> -> -> 1 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | << & -> _c1 `i -> 2 `i -> 1 `i << & -> _c2 `i -> 2 `i -> 0 `i >> & -> _c3 `i -> 2 `i -> 1 `i `uc ]
+[; ;RFID.c: 1428: g[2] = ((c1 & 4) << 0) | ((c2 & 4) >> 1) | ((c3 & 4) >> 2);
 "1428
+[e = *U + &U _g * -> -> -> 2 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | << & -> _c1 `i -> 4 `i -> 0 `i >> & -> _c2 `i -> 4 `i -> 1 `i >> & -> _c3 `i -> 4 `i -> 2 `i `uc ]
+[; ;RFID.c: 1429: g[3] = ((c1 & 8) >> 1) | ((c2 & 8) >> 2) | ((c3 & 8) >> 3);
+"1429
+[e = *U + &U _g * -> -> -> 3 `i `ui `ux -> -> # *U &U _g `ui `ux -> | | >> & -> _c1 `i -> 8 `i -> 1 `i >> & -> _c2 `i -> 8 `i -> 2 `i >> & -> _c3 `i -> 8 `i -> 3 `i `uc ]
+[; ;RFID.c: 1430: isSectorTrailer = 0;
+"1430
+[e = _isSectorTrailer -> -> 0 `i `uc ]
+"1431
 }
 [e :U 331 ]
-[; ;RFID.c: 1428: }
-[; ;RFID.c: 1431: if (no_of_blocks == 4) {
-"1431
+[; ;RFID.c: 1431: }
+[; ;RFID.c: 1434: if (no_of_blocks == 4) {
+"1434
 [e $ ! == -> _no_of_blocks `i -> 4 `i 332  ]
 {
-[; ;RFID.c: 1432: group = blockOffset;
-"1432
-[e = _group _blockOffset ]
-[; ;RFID.c: 1433: firstInGroup = 1;
-"1433
-[e = _firstInGroup -> -> 1 `i `uc ]
-"1434
-}
-[; ;RFID.c: 1434: }
-[e $U 333  ]
+[; ;RFID.c: 1435: group = blockOffset;
 "1435
-[e :U 332 ]
-[; ;RFID.c: 1435: else {
-{
-[; ;RFID.c: 1436: group = blockOffset / 5;
+[e = _group -> _blockOffset `uc ]
+[; ;RFID.c: 1436: firstInGroup = 1;
 "1436
-[e = _group -> / -> _blockOffset `i -> 5 `i `uc ]
-[; ;RFID.c: 1437: firstInGroup = (group == 3) || (group != (blockOffset + 1) / 5);
+[e = _firstInGroup -> -> 1 `i `uc ]
 "1437
-[e = _firstInGroup -> -> || == -> _group `i -> 3 `i != -> _group `i / + -> _blockOffset `i -> 1 `i -> 5 `i `i `uc ]
+}
+[; ;RFID.c: 1437: }
+[e $U 333  ]
 "1438
+[e :U 332 ]
+[; ;RFID.c: 1438: else {
+{
+[; ;RFID.c: 1439: group = blockOffset / 5;
+"1439
+[e = _group -> / -> _blockOffset `i -> 5 `i `uc ]
+[; ;RFID.c: 1440: firstInGroup = (group == 3) || (group != (blockOffset + 1) / 5);
+"1440
+[e = _firstInGroup -> -> || == -> _group `i -> 3 `i != -> _group `i / + -> _blockOffset `i -> 1 `i -> 5 `i `i `uc ]
+"1441
 }
 [e :U 333 ]
-[; ;RFID.c: 1438: }
-[; ;RFID.c: 1440: if (firstInGroup) {
-"1440
+[; ;RFID.c: 1441: }
+[; ;RFID.c: 1443: if (firstInGroup) {
+"1443
 [e $ ! != -> _firstInGroup `i -> -> -> 0 `i `uc `i 334  ]
 {
-[; ;RFID.c: 1442: printf(" [ ");
-"1442
-[e ( _printf :s 53C ]
-[; ;RFID.c: 1443: printf("%d ",(g[group] >> 2) & 1);
-"1443
-[e ( _printf , (. :s 54C & >> -> *U + &U _g * -> _group `ux -> -> # *U &U _g `ui `ux `i -> 2 `i -> 1 `i ]
-[; ;RFID.c: 1444: printf("%d" ,(g[group] >> 1) & 1);
-"1444
-[e ( _printf , (. :s 55C & >> -> *U + &U _g * -> _group `ux -> -> # *U &U _g `ui `ux `i -> 1 `i -> 1 `i ]
-[; ;RFID.c: 1445: printf("%d",(g[group] >> 0) & 1);
-"1445
-[e ( _printf , (. :s 56C & >> -> *U + &U _g * -> _group `ux -> -> # *U &U _g `ui `ux `i -> 0 `i -> 1 `i ]
-[; ;RFID.c: 1446: printf(" ] ");
-"1446
-[e ( _printf :s 57C ]
-[; ;RFID.c: 1447: if (invertedError) {
-"1447
+[; ;RFID.c: 1450: if (invertedError) {
+"1450
 [e $ ! != -> _invertedError `i -> -> -> 0 `i `uc `i 335  ]
 {
-[; ;RFID.c: 1448: printf(" Inverted access bits did not match! ");
-"1448
-[e ( _printf :s 58C ]
-"1449
+"1452
 }
 [e :U 335 ]
-"1450
+"1453
 }
 [e :U 334 ]
-[; ;RFID.c: 1449: }
-[; ;RFID.c: 1450: }
-[; ;RFID.c: 1452: if (group != 3 && (g[group] == 1 || g[group] == 6)) {
-"1452
+[; ;RFID.c: 1452: }
+[; ;RFID.c: 1453: }
+[; ;RFID.c: 1455: if (group != 3 && (g[group] == 1 || g[group] == 6)) {
+"1455
 [e $ ! && != -> _group `i -> 3 `i || == -> *U + &U _g * -> _group `ux -> -> # *U &U _g `ui `ux `i -> 1 `i == -> *U + &U _g * -> _group `ux -> -> # *U &U _g `ui `ux `i -> 6 `i 336  ]
 {
-"1453
-[v _value `l ~T0 @X0 1 a ]
-[; ;RFID.c: 1453: long value = ((long)buffer[3]<<24) | ((long)buffer[2]<<16) | ((long)buffer[1]<<8) | (long)buffer[0];
-[e = _value | | | << -> *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l -> 24 `i << -> *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l -> 16 `i << -> *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l -> 8 `i -> *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l ]
-[; ;RFID.c: 1454: printf(" Value=0x%x",value);
-"1454
-[e ( _printf , (. :s 59C _value ]
-[; ;RFID.c: 1455: printf(" Adr=0x%x",buffer[12]);
-"1455
-[e ( _printf , (. :s 60C -> *U + &U _buffer * -> -> -> 12 `i `ui `ux -> -> # *U &U _buffer `ui `ux `i ]
 "1456
+[v _value `l ~T0 @X0 1 a ]
+[; ;RFID.c: 1456: long value = ((long)buffer[3]<<24) | ((long)buffer[2]<<16) | ((long)buffer[1]<<8) | (long)buffer[0];
+[e = _value | | | << -> *U + &U _buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l -> 24 `i << -> *U + &U _buffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l -> 16 `i << -> *U + &U _buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l -> 8 `i -> *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux `l ]
+"1459
 }
 [e :U 336 ]
-[; ;RFID.c: 1456: }
-[; ;RFID.c: 1457: printf("\n");
-"1457
-[e ( _printf :s 61C ]
-"1458
+"1461
 }
-"1374
+"1377
 [e :U 321 ]
-[e -- _blockOffset -> -> 1 `i `uc ]
+[e -- _blockOffset -> -> 1 `i `c ]
 [e $ >= -> _blockOffset `i -> 0 `i 319  ]
 [e :U 320 ]
-"1458
-}
-[; ;RFID.c: 1458: }
-[; ;RFID.c: 1460: return;
-"1460
-[e $UE 314  ]
-[; ;RFID.c: 1461: }
 "1461
+}
+[; ;RFID.c: 1459: }
+[; ;RFID.c: 1461: }
+[; ;RFID.c: 1463: return;
+"1463
+[e $UE 314  ]
+[; ;RFID.c: 1464: }
+"1464
 [e :UE 314 ]
 }
-"1466
+"1469
 [v _PICC_DumpMifareUltralightToSerial `(v ~T0 @X0 1 ef ]
 {
-[; ;RFID.c: 1466: void PICC_DumpMifareUltralightToSerial() {
+[; ;RFID.c: 1469: void PICC_DumpMifareUltralightToSerial() {
 [e :U _PICC_DumpMifareUltralightToSerial ]
 [f ]
-"1467
+"1470
 [v _status `uc ~T0 @X0 1 a ]
-"1468
+"1471
 [v _byteCount `uc ~T0 @X0 1 a ]
 [v _buffer `uc ~T0 @X0 -> 18 `i a ]
-"1470
+"1473
 [v _i `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1467: unsigned char status;
-[; ;RFID.c: 1468: unsigned char byteCount;
-[; ;RFID.c: 1469: unsigned char buffer[18];
-[; ;RFID.c: 1470: unsigned char i;
-[; ;RFID.c: 1472: printf("Page  0  1  2  3");
-"1472
-[e ( _printf :s 62C ]
-[; ;RFID.c: 1474: for (unsigned char page = 0; page < 16; page +=4) {
-"1474
+[; ;RFID.c: 1470: unsigned char status;
+[; ;RFID.c: 1471: unsigned char byteCount;
+[; ;RFID.c: 1472: unsigned char buffer[18];
+[; ;RFID.c: 1473: unsigned char i;
+[; ;RFID.c: 1477: for (unsigned char page = 0; page < 16; page +=4) {
+"1477
 {
 [v _page `uc ~T0 @X0 1 a ]
 [e = _page -> -> 0 `i `uc ]
@@ -4610,31 +4514,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 339  ]
 [e :U 338 ]
 {
-[; ;RFID.c: 1476: byteCount = sizeof(buffer);
-"1476
-[e = _byteCount -> -> # _buffer `ui `uc ]
-[; ;RFID.c: 1477: status = MIFARE_Read(page, buffer, &byteCount);
-"1477
-[e = _status ( _MIFARE_Read (3 , , _page &U _buffer &U _byteCount ]
-[; ;RFID.c: 1478: if (status != STATUS_OK) {
-"1478
-[e $ ! != -> _status `i -> . `E880 0 `i 341  ]
-{
-[; ;RFID.c: 1479: printf("MIFARE_Read() failed: ");
+[; ;RFID.c: 1479: byteCount = sizeof(buffer);
 "1479
-[e ( _printf :s 63C ]
-[; ;RFID.c: 1480: printf("%s\n",GetStatusCodeName(status));
+[e = _byteCount -> -> # _buffer `ui `uc ]
+[; ;RFID.c: 1480: status = MIFARE_Read(page, buffer, &byteCount);
 "1480
-[e ( _printf , (. :s 64C ( _GetStatusCodeName (1 _status ]
-[; ;RFID.c: 1481: break;
+[e = _status ( _MIFARE_Read (3 , , _page &U _buffer &U _byteCount ]
+[; ;RFID.c: 1481: if (status != STATUS_OK) {
 "1481
+[e $ ! != -> _status `i -> . `E884 0 `i 341  ]
+{
+[; ;RFID.c: 1484: break;
+"1484
 [e $U 339  ]
-"1482
+"1485
 }
 [e :U 341 ]
-[; ;RFID.c: 1482: }
-[; ;RFID.c: 1484: for (unsigned char offset = 0; offset < 4; offset++) {
-"1484
+[; ;RFID.c: 1485: }
+[; ;RFID.c: 1487: for (unsigned char offset = 0; offset < 4; offset++) {
+"1487
 {
 [v _offset `uc ~T0 @X0 1 a ]
 [e = _offset -> -> 0 `i `uc ]
@@ -4642,20 +4540,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 343  ]
 [e :U 342 ]
 {
-[; ;RFID.c: 1485: i = page + offset;
-"1485
-[e = _i -> + -> _page `i -> _offset `i `uc ]
-[; ;RFID.c: 1486: printf("%s",i < 10 ? "  " : " ");
-"1486
-[e ( _printf , (. :s 65C ? < -> _i `i -> 10 `i : :s 66C :s 67C ]
-[; ;RFID.c: 1487: printf("%d",i);
-"1487
-[e ( _printf , (. :s 68C -> _i `i ]
-[; ;RFID.c: 1488: printf("  ");
+[; ;RFID.c: 1488: i = page + offset;
 "1488
-[e ( _printf :s 69C ]
-[; ;RFID.c: 1489: for (unsigned char index = 0; index < 4; index++) {
-"1489
+[e = _i -> + -> _page `i -> _offset `i `uc ]
+[; ;RFID.c: 1492: for (unsigned char index = 0; index < 4; index++) {
+"1492
 {
 [v _index `uc ~T0 @X0 1 a ]
 [e = _index -> -> 0 `i `uc ]
@@ -4663,305 +4552,245 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 346  ]
 [e :U 345 ]
 {
-[; ;RFID.c: 1490: i = 4 * offset + index;
-"1490
-[e = _i -> + * -> 4 `i -> _offset `i -> _index `i `uc ]
-[; ;RFID.c: 1491: printf("%s",buffer[i] < 0x10 ? " 0" : " ");
-"1491
-[e ( _printf , (. :s 70C ? < -> *U + &U _buffer * -> _i `ux -> -> # *U &U _buffer `ui `ux `i -> 16 `i : :s 71C :s 72C ]
-[; ;RFID.c: 1492: printf("%x",buffer[i]);
-"1492
-[e ( _printf , (. :s 73C -> *U + &U _buffer * -> _i `ux -> -> # *U &U _buffer `ui `ux `i ]
+[; ;RFID.c: 1493: i = 4 * offset + index;
 "1493
+[e = _i -> + * -> 4 `i -> _offset `i -> _index `i `uc ]
+"1496
 }
-"1489
+"1492
 [e ++ _index -> -> 1 `i `uc ]
 [e $ < -> _index `i -> 4 `i 345  ]
 [e :U 346 ]
-"1493
+"1496
 }
-[; ;RFID.c: 1493: }
-[; ;RFID.c: 1494: printf("\n");
-"1494
-[e ( _printf :s 74C ]
-"1495
+"1498
 }
-"1484
+"1487
 [e ++ _offset -> -> 1 `i `uc ]
 [e $ < -> _offset `i -> 4 `i 342  ]
 [e :U 343 ]
-"1495
+"1498
 }
-"1496
+"1499
 }
-"1474
+"1477
 [e =+ _page -> -> 4 `i `uc ]
 [e $ < -> _page `i -> 16 `i 338  ]
 [e :U 339 ]
-"1496
+"1499
 }
-[; ;RFID.c: 1495: }
 [; ;RFID.c: 1496: }
-[; ;RFID.c: 1497: }
-"1497
+[; ;RFID.c: 1498: }
+[; ;RFID.c: 1499: }
+[; ;RFID.c: 1500: }
+"1500
 [e :UE 337 ]
 }
-"1502
-[v _MIFARE_SetAccessBits `(v ~T0 @X0 1 ef5`*uc`uc`uc`uc`uc ]
-"1507
-{
-[; ;RFID.c: 1502: void MIFARE_SetAccessBits( unsigned char *accessBitBuffer,
-[; ;RFID.c: 1503: unsigned char g0,
-[; ;RFID.c: 1504: unsigned char g1,
-[; ;RFID.c: 1505: unsigned char g2,
-[; ;RFID.c: 1506: unsigned char g3
-[; ;RFID.c: 1507: ) {
-[e :U _MIFARE_SetAccessBits ]
-"1502
-[v _accessBitBuffer `*uc ~T0 @X0 1 r1 ]
-"1503
-[v _g0 `uc ~T0 @X0 1 r2 ]
-"1504
-[v _g1 `uc ~T0 @X0 1 r3 ]
 "1505
-[v _g2 `uc ~T0 @X0 1 r4 ]
-"1506
-[v _g3 `uc ~T0 @X0 1 r5 ]
-"1507
-[f ]
-"1508
-[v _c1 `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1508: unsigned char c1 = ((g3 & 4) << 1) | ((g2 & 4) << 0) | ((g1 & 4) >> 1) | ((g0 & 4) >> 2);
-[e = _c1 -> | | | << & -> _g3 `i -> 4 `i -> 1 `i << & -> _g2 `i -> 4 `i -> 0 `i >> & -> _g1 `i -> 4 `i -> 1 `i >> & -> _g0 `i -> 4 `i -> 2 `i `uc ]
-"1509
-[v _c2 `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1509: unsigned char c2 = ((g3 & 2) << 2) | ((g2 & 2) << 1) | ((g1 & 2) << 0) | ((g0 & 2) >> 1);
-[e = _c2 -> | | | << & -> _g3 `i -> 2 `i -> 2 `i << & -> _g2 `i -> 2 `i -> 1 `i << & -> _g1 `i -> 2 `i -> 0 `i >> & -> _g0 `i -> 2 `i -> 1 `i `uc ]
+[v _MIFARE_SetAccessBits `(v ~T0 @X0 1 ef5`*uc`uc`uc`uc`uc ]
 "1510
-[v _c3 `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1510: unsigned char c3 = ((g3 & 1) << 3) | ((g2 & 1) << 2) | ((g1 & 1) << 1) | ((g0 & 1) << 0);
-[e = _c3 -> | | | << & -> _g3 `i -> 1 `i -> 3 `i << & -> _g2 `i -> 1 `i -> 2 `i << & -> _g1 `i -> 1 `i -> 1 `i << & -> _g0 `i -> 1 `i -> 0 `i `uc ]
-[; ;RFID.c: 1512: accessBitBuffer[0] = (~c2 & 0xF) << 4 | (~c1 & 0xF);
+{
+[; ;RFID.c: 1505: void MIFARE_SetAccessBits( unsigned char *accessBitBuffer,
+[; ;RFID.c: 1506: unsigned char g0,
+[; ;RFID.c: 1507: unsigned char g1,
+[; ;RFID.c: 1508: unsigned char g2,
+[; ;RFID.c: 1509: unsigned char g3
+[; ;RFID.c: 1510: ) {
+[e :U _MIFARE_SetAccessBits ]
+"1505
+[v _accessBitBuffer `*uc ~T0 @X0 1 r1 ]
+"1506
+[v _g0 `uc ~T0 @X0 1 r2 ]
+"1507
+[v _g1 `uc ~T0 @X0 1 r3 ]
+"1508
+[v _g2 `uc ~T0 @X0 1 r4 ]
+"1509
+[v _g3 `uc ~T0 @X0 1 r5 ]
+"1510
+[f ]
+"1511
+[v _c1 `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1511: unsigned char c1 = ((g3 & 4) << 1) | ((g2 & 4) << 0) | ((g1 & 4) >> 1) | ((g0 & 4) >> 2);
+[e = _c1 -> | | | << & -> _g3 `i -> 4 `i -> 1 `i << & -> _g2 `i -> 4 `i -> 0 `i >> & -> _g1 `i -> 4 `i -> 1 `i >> & -> _g0 `i -> 4 `i -> 2 `i `uc ]
 "1512
-[e = *U + _accessBitBuffer * -> -> 0 `i `x -> -> # *U _accessBitBuffer `i `x -> | << & ~ -> _c2 `i -> 15 `i -> 4 `i & ~ -> _c1 `i -> 15 `i `uc ]
-[; ;RFID.c: 1513: accessBitBuffer[1] = c1 << 4 | (~c3 & 0xF);
+[v _c2 `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1512: unsigned char c2 = ((g3 & 2) << 2) | ((g2 & 2) << 1) | ((g1 & 2) << 0) | ((g0 & 2) >> 1);
+[e = _c2 -> | | | << & -> _g3 `i -> 2 `i -> 2 `i << & -> _g2 `i -> 2 `i -> 1 `i << & -> _g1 `i -> 2 `i -> 0 `i >> & -> _g0 `i -> 2 `i -> 1 `i `uc ]
 "1513
-[e = *U + _accessBitBuffer * -> -> 1 `i `x -> -> # *U _accessBitBuffer `i `x -> | << -> _c1 `i -> 4 `i & ~ -> _c3 `i -> 15 `i `uc ]
-[; ;RFID.c: 1514: accessBitBuffer[2] = c3 << 4 | c2;
-"1514
-[e = *U + _accessBitBuffer * -> -> 2 `i `x -> -> # *U _accessBitBuffer `i `x -> | << -> _c3 `i -> 4 `i -> _c2 `i `uc ]
-[; ;RFID.c: 1515: }
+[v _c3 `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1513: unsigned char c3 = ((g3 & 1) << 3) | ((g2 & 1) << 2) | ((g1 & 1) << 1) | ((g0 & 1) << 0);
+[e = _c3 -> | | | << & -> _g3 `i -> 1 `i -> 3 `i << & -> _g2 `i -> 1 `i -> 2 `i << & -> _g1 `i -> 1 `i -> 1 `i << & -> _g0 `i -> 1 `i -> 0 `i `uc ]
+[; ;RFID.c: 1515: accessBitBuffer[0] = (~c2 & 0xF) << 4 | (~c1 & 0xF);
 "1515
+[e = *U + _accessBitBuffer * -> -> 0 `i `x -> -> # *U _accessBitBuffer `i `x -> | << & ~ -> _c2 `i -> 15 `i -> 4 `i & ~ -> _c1 `i -> 15 `i `uc ]
+[; ;RFID.c: 1516: accessBitBuffer[1] = c1 << 4 | (~c3 & 0xF);
+"1516
+[e = *U + _accessBitBuffer * -> -> 1 `i `x -> -> # *U _accessBitBuffer `i `x -> | << -> _c1 `i -> 4 `i & ~ -> _c3 `i -> 15 `i `uc ]
+[; ;RFID.c: 1517: accessBitBuffer[2] = c3 << 4 | c2;
+"1517
+[e = *U + _accessBitBuffer * -> -> 2 `i `x -> -> # *U _accessBitBuffer `i `x -> | << -> _c3 `i -> 4 `i -> _c2 `i `uc ]
+[; ;RFID.c: 1518: }
+"1518
 [e :UE 348 ]
 }
-"1529
+"1532
 [v _MIFARE_OpenUidBackdoor `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;RFID.c: 1529: unsigned char MIFARE_OpenUidBackdoor(unsigned char logErrors) {
+[; ;RFID.c: 1532: unsigned char MIFARE_OpenUidBackdoor(unsigned char logErrors) {
 [e :U _MIFARE_OpenUidBackdoor ]
 [v _logErrors `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;RFID.c: 1538: PICC_HaltA();
-"1538
-[e ( _PICC_HaltA ..  ]
-"1540
-[v _cmd `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1540: unsigned char cmd = 0x40;
-[e = _cmd -> -> 64 `i `uc ]
+[; ;RFID.c: 1541: PICC_HaltA();
 "1541
-[v _validBits `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1541: unsigned char validBits = 7;
-[e = _validBits -> -> 7 `i `uc ]
+[e ( _PICC_HaltA ..  ]
 "1543
-[v _response `uc ~T0 @X0 -> 32 `i a ]
+[v _cmd `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1543: unsigned char cmd = 0x40;
+[e = _cmd -> -> 64 `i `uc ]
 "1544
-[v _received `uc ~T0 @X0 1 a ]
-"1545
-[v _status `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1543: unsigned char response[32];
-[; ;RFID.c: 1544: unsigned char received;
-[; ;RFID.c: 1545: unsigned char status = PCD_TransceiveData(&cmd, (unsigned char)1, response, &received, &validBits, (unsigned char)0, 0);
-[e = _status ( _PCD_TransceiveData (4 , , , , , , &U _cmd -> -> 1 `i `uc &U _response &U _received &U _validBits -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;RFID.c: 1546: if( status != STATUS_OK ) {
+[v _validBits `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1544: unsigned char validBits = 7;
+[e = _validBits -> -> 7 `i `uc ]
 "1546
-[e $ ! != -> _status `i -> . `E880 0 `i 350  ]
-{
-[; ;RFID.c: 1547: if( logErrors ) {
+[v _response `uc ~T0 @X0 -> 32 `i a ]
 "1547
+[v _received `uc ~T0 @X0 1 a ]
+"1548
+[v _status `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1546: unsigned char response[32];
+[; ;RFID.c: 1547: unsigned char received;
+[; ;RFID.c: 1548: unsigned char status = PCD_TransceiveData(&cmd, (unsigned char)1, response, &received, &validBits, (unsigned char)0, 0);
+[e = _status ( _PCD_TransceiveData (4 , , , , , , &U _cmd -> -> 1 `i `uc &U _response &U _received &U _validBits -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;RFID.c: 1549: if( status != STATUS_OK ) {
+"1549
+[e $ ! != -> _status `i -> . `E884 0 `i 350  ]
+{
+[; ;RFID.c: 1550: if( logErrors ) {
+"1550
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 351  ]
 {
-[; ;RFID.c: 1548: printf("Card did not respond to 0x40 after HALT command. Are you sure it is a UID changeable one?");
-"1548
-[e ( _printf :s 75C ]
-[; ;RFID.c: 1549: printf("Error name: ");
-"1549
-[e ( _printf :s 76C ]
-[; ;RFID.c: 1550: printf("%s\n",GetStatusCodeName(status));
-"1550
-[e ( _printf , (. :s 77C ( _GetStatusCodeName (1 _status ]
-"1551
+"1554
 }
 [e :U 351 ]
-[; ;RFID.c: 1551: }
-[; ;RFID.c: 1552: return 0;
-"1552
+[; ;RFID.c: 1554: }
+[; ;RFID.c: 1555: return 0;
+"1555
 [e ) -> -> 0 `i `uc ]
 [e $UE 349  ]
-"1553
+"1556
 }
 [e :U 350 ]
-[; ;RFID.c: 1553: }
-[; ;RFID.c: 1554: if ( received != 1 || response[0] != 0x0A ) {
-"1554
+[; ;RFID.c: 1556: }
+[; ;RFID.c: 1557: if ( received != 1 || response[0] != 0x0A ) {
+"1557
 [e $ ! || != -> _received `i -> 1 `i != -> *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> 10 `i 352  ]
 {
-[; ;RFID.c: 1555: if ( logErrors ) {
-"1555
+[; ;RFID.c: 1558: if ( logErrors ) {
+"1558
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 353  ]
 {
-[; ;RFID.c: 1556: printf("Got bad response on backdoor 0x40 command: ");
-"1556
-[e ( _printf :s 78C ]
-[; ;RFID.c: 1557: printf("%x",response[0]);
-"1557
-[e ( _printf , (. :s 79C -> *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux `i ]
-[; ;RFID.c: 1558: printf(" (");
-"1558
-[e ( _printf :s 80C ]
-[; ;RFID.c: 1559: printf("%d",validBits);
-"1559
-[e ( _printf , (. :s 81C -> _validBits `i ]
-[; ;RFID.c: 1560: printf(" valid bits)\r\n");
-"1560
-[e ( _printf :s 82C ]
-"1561
+"1564
 }
 [e :U 353 ]
-[; ;RFID.c: 1561: }
-[; ;RFID.c: 1562: return 0;
-"1562
+[; ;RFID.c: 1564: }
+[; ;RFID.c: 1565: return 0;
+"1565
 [e ) -> -> 0 `i `uc ]
 [e $UE 349  ]
-"1563
+"1566
 }
 [e :U 352 ]
-[; ;RFID.c: 1563: }
-[; ;RFID.c: 1565: cmd = 0x43;
-"1565
-[e = _cmd -> -> 67 `i `uc ]
-[; ;RFID.c: 1566: validBits = 8;
-"1566
-[e = _validBits -> -> 8 `i `uc ]
-[; ;RFID.c: 1567: status = PCD_TransceiveData(&cmd, (unsigned char)1, response, &received, &validBits, (unsigned char)0, 0);
-"1567
-[e = _status ( _PCD_TransceiveData (4 , , , , , , &U _cmd -> -> 1 `i `uc &U _response &U _received &U _validBits -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;RFID.c: 1568: if( status != STATUS_OK ) {
+[; ;RFID.c: 1566: }
+[; ;RFID.c: 1568: cmd = 0x43;
 "1568
-[e $ ! != -> _status `i -> . `E880 0 `i 354  ]
-{
-[; ;RFID.c: 1569: if( logErrors ) {
+[e = _cmd -> -> 67 `i `uc ]
+[; ;RFID.c: 1569: validBits = 8;
 "1569
+[e = _validBits -> -> 8 `i `uc ]
+[; ;RFID.c: 1570: status = PCD_TransceiveData(&cmd, (unsigned char)1, response, &received, &validBits, (unsigned char)0, 0);
+"1570
+[e = _status ( _PCD_TransceiveData (4 , , , , , , &U _cmd -> -> 1 `i `uc &U _response &U _received &U _validBits -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;RFID.c: 1571: if( status != STATUS_OK ) {
+"1571
+[e $ ! != -> _status `i -> . `E884 0 `i 354  ]
+{
+[; ;RFID.c: 1572: if( logErrors ) {
+"1572
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 355  ]
 {
-[; ;RFID.c: 1570: printf("Error in communication at command 0x43, after successfully executing 0x40");
-"1570
-[e ( _printf :s 83C ]
-[; ;RFID.c: 1571: printf("Error name: ");
-"1571
-[e ( _printf :s 84C ]
-[; ;RFID.c: 1572: printf("%s\n",GetStatusCodeName(status));
-"1572
-[e ( _printf , (. :s 85C ( _GetStatusCodeName (1 _status ]
-"1573
+"1576
 }
 [e :U 355 ]
-[; ;RFID.c: 1573: }
-[; ;RFID.c: 1574: return 0;
-"1574
+[; ;RFID.c: 1576: }
+[; ;RFID.c: 1577: return 0;
+"1577
 [e ) -> -> 0 `i `uc ]
 [e $UE 349  ]
-"1575
+"1578
 }
 [e :U 354 ]
-[; ;RFID.c: 1575: }
-[; ;RFID.c: 1576: if ( received != 1 || response[0] != 0x0A ) {
-"1576
+[; ;RFID.c: 1578: }
+[; ;RFID.c: 1579: if ( received != 1 || response[0] != 0x0A ) {
+"1579
 [e $ ! || != -> _received `i -> 1 `i != -> *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux `i -> 10 `i 356  ]
 {
-[; ;RFID.c: 1577: if ( logErrors ) {
-"1577
+[; ;RFID.c: 1580: if ( logErrors ) {
+"1580
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 357  ]
 {
-[; ;RFID.c: 1578: printf("Got bad response on backdoor 0x43 command: ");
-"1578
-[e ( _printf :s 86C ]
-[; ;RFID.c: 1579: printf("%x\n",response[0]);
-"1579
-[e ( _printf , (. :s 87C -> *U + &U _response * -> -> -> 0 `i `ui `ux -> -> # *U &U _response `ui `ux `i ]
-[; ;RFID.c: 1580: printf(" (");
-"1580
-[e ( _printf :s 88C ]
-[; ;RFID.c: 1581: printf("%d",validBits);
-"1581
-[e ( _printf , (. :s 89C -> _validBits `i ]
-[; ;RFID.c: 1582: printf(" valid bits)\r\n");
-"1582
-[e ( _printf :s 90C ]
-"1583
+"1586
 }
 [e :U 357 ]
-[; ;RFID.c: 1583: }
-[; ;RFID.c: 1584: return 0;
-"1584
+[; ;RFID.c: 1586: }
+[; ;RFID.c: 1587: return 0;
+"1587
 [e ) -> -> 0 `i `uc ]
 [e $UE 349  ]
-"1585
+"1588
 }
 [e :U 356 ]
-[; ;RFID.c: 1585: }
-[; ;RFID.c: 1588: return 1;
-"1588
+[; ;RFID.c: 1588: }
+[; ;RFID.c: 1591: return 1;
+"1591
 [e ) -> -> 1 `i `uc ]
 [e $UE 349  ]
-[; ;RFID.c: 1589: }
-"1589
+[; ;RFID.c: 1592: }
+"1592
 [e :UE 349 ]
 }
-"1599
+"1602
 [v _MIFARE_SetUid `(uc ~T0 @X0 1 ef3`*uc`uc`uc ]
 {
-[; ;RFID.c: 1599: unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsigned char logErrors) {
+[; ;RFID.c: 1602: unsigned char MIFARE_SetUid(unsigned char* newUid, unsigned char uidSize, unsigned char logErrors) {
 [e :U _MIFARE_SetUid ]
 [v _newUid `*uc ~T0 @X0 1 r1 ]
 [v _uidSize `uc ~T0 @X0 1 r2 ]
 [v _logErrors `uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;RFID.c: 1602: if ( !newUid || !uidSize || uidSize > 15) {
-"1602
+[; ;RFID.c: 1605: if ( !newUid || !uidSize || uidSize > 15) {
+"1605
 [e $ ! || || ! != _newUid -> -> 0 `i `*uc ! != -> _uidSize `i -> -> -> 0 `i `uc `i > -> _uidSize `i -> 15 `i 359  ]
 {
-[; ;RFID.c: 1603: if ( logErrors ) {
-"1603
+[; ;RFID.c: 1606: if ( logErrors ) {
+"1606
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 360  ]
 {
-[; ;RFID.c: 1604: printf("New UID buffer empty, size 0, or size > 15 given");
-"1604
-[e ( _printf :s 91C ]
-"1605
+"1608
 }
 [e :U 360 ]
-[; ;RFID.c: 1605: }
-[; ;RFID.c: 1606: return 0;
-"1606
+[; ;RFID.c: 1608: }
+[; ;RFID.c: 1609: return 0;
+"1609
 [e ) -> -> 0 `i `uc ]
 [e $UE 358  ]
-"1607
+"1610
 }
 [e :U 359 ]
-"1610
+"1613
 [v _key `S92 ~T0 @X0 1 a ]
-[v F1263 `S92 ~T0 @X0 1 s ]
-[i F1263
+[v F1269 `S92 ~T0 @X0 1 s ]
+[i F1269
 :U ..
 :U ..
 :U ..
@@ -4975,256 +4804,223 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;RFID.c: 1607: }
-[; ;RFID.c: 1610: MIFARE_Key key = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-[e = _key F1263 ]
-"1611
-[v _status `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1611: unsigned char status = PCD_Authenticate(PICC_CMD_MF_AUTH_KEY_A, (unsigned char)1, &key, &uid);
-[e = _status ( _PCD_Authenticate (4 , , , -> . `E849 7 `uc -> -> 1 `i `uc &U _key &U _uid ]
-[; ;RFID.c: 1612: if ( status != STATUS_OK ) {
-"1612
-[e $ ! != -> _status `i -> . `E880 0 `i 361  ]
-{
-[; ;RFID.c: 1614: if ( status == STATUS_TIMEOUT ) {
+[; ;RFID.c: 1610: }
+[; ;RFID.c: 1613: MIFARE_Key key = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+[e = _key F1269 ]
 "1614
-[e $ ! == -> _status `i -> . `E880 3 `i 362  ]
+[v _status `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1614: unsigned char status = PCD_Authenticate(PICC_CMD_MF_AUTH_KEY_A, (unsigned char)1, &key, &uid);
+[e = _status ( _PCD_Authenticate (4 , , , -> . `E853 7 `uc -> -> 1 `i `uc &U _key &U _uid ]
+[; ;RFID.c: 1615: if ( status != STATUS_OK ) {
+"1615
+[e $ ! != -> _status `i -> . `E884 0 `i 361  ]
 {
-[; ;RFID.c: 1622: if ( !PICC_IsNewCardPresent() || !PICC_ReadCardSerial() ) {
-"1622
+[; ;RFID.c: 1617: if ( status == STATUS_TIMEOUT ) {
+"1617
+[e $ ! == -> _status `i -> . `E884 3 `i 362  ]
+{
+[; ;RFID.c: 1625: if ( !PICC_IsNewCardPresent() || !PICC_ReadCardSerial() ) {
+"1625
 [e $ ! || ! != -> ( _PICC_IsNewCardPresent ..  `i -> -> -> 0 `i `uc `i ! != -> ( _PICC_ReadCardSerial ..  `i -> -> -> 0 `i `uc `i 363  ]
 {
-[; ;RFID.c: 1623: printf("No card was previously selected, and none are available. Failed to set UID.");
-"1623
-[e ( _printf :s 92C ]
-[; ;RFID.c: 1624: return 0;
-"1624
+[; ;RFID.c: 1627: return 0;
+"1627
 [e ) -> -> 0 `i `uc ]
 [e $UE 358  ]
-"1625
+"1628
 }
 [e :U 363 ]
-[; ;RFID.c: 1625: }
-[; ;RFID.c: 1627: status = PCD_Authenticate(PICC_CMD_MF_AUTH_KEY_A, (unsigned char)1, &key, &uid);
-"1627
-[e = _status ( _PCD_Authenticate (4 , , , -> . `E849 7 `uc -> -> 1 `i `uc &U _key &U _uid ]
-[; ;RFID.c: 1628: if ( status != STATUS_OK ) {
-"1628
-[e $ ! != -> _status `i -> . `E880 0 `i 364  ]
-{
-[; ;RFID.c: 1630: if ( logErrors ) {
+[; ;RFID.c: 1628: }
+[; ;RFID.c: 1630: status = PCD_Authenticate(PICC_CMD_MF_AUTH_KEY_A, (unsigned char)1, &key, &uid);
 "1630
+[e = _status ( _PCD_Authenticate (4 , , , -> . `E853 7 `uc -> -> 1 `i `uc &U _key &U _uid ]
+[; ;RFID.c: 1631: if ( status != STATUS_OK ) {
+"1631
+[e $ ! != -> _status `i -> . `E884 0 `i 364  ]
+{
+[; ;RFID.c: 1633: if ( logErrors ) {
+"1633
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 365  ]
 {
-[; ;RFID.c: 1631: printf("Failed to authenticate to card for reading, could not set UID: ");
-"1631
-[e ( _printf :s 93C ]
-[; ;RFID.c: 1632: printf("%s\n",GetStatusCodeName(status));
-"1632
-[e ( _printf , (. :s 94C ( _GetStatusCodeName (1 _status ]
-"1633
-}
-[e :U 365 ]
-[; ;RFID.c: 1633: }
-[; ;RFID.c: 1634: return 0;
-"1634
-[e ) -> -> 0 `i `uc ]
-[e $UE 358  ]
-"1635
-}
-[e :U 364 ]
 "1636
 }
-[; ;RFID.c: 1635: }
+[e :U 365 ]
 [; ;RFID.c: 1636: }
-[e $U 366  ]
+[; ;RFID.c: 1637: return 0;
 "1637
-[e :U 362 ]
-[; ;RFID.c: 1637: else {
-{
-[; ;RFID.c: 1638: if ( logErrors ) {
+[e ) -> -> 0 `i `uc ]
+[e $UE 358  ]
 "1638
+}
+[e :U 364 ]
+"1639
+}
+[; ;RFID.c: 1638: }
+[; ;RFID.c: 1639: }
+[e $U 366  ]
+"1640
+[e :U 362 ]
+[; ;RFID.c: 1640: else {
+{
+[; ;RFID.c: 1641: if ( logErrors ) {
+"1641
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 367  ]
 {
-[; ;RFID.c: 1639: printf("PCD_Authenticate() failed: ");
-"1639
-[e ( _printf :s 95C ]
-[; ;RFID.c: 1640: printf("%s\n",GetStatusCodeName(status));
-"1640
-[e ( _printf , (. :s 96C ( _GetStatusCodeName (1 _status ]
-"1641
-}
-[e :U 367 ]
-[; ;RFID.c: 1641: }
-[; ;RFID.c: 1642: return 0;
-"1642
-[e ) -> -> 0 `i `uc ]
-[e $UE 358  ]
-"1643
-}
-[e :U 366 ]
 "1644
 }
-[e :U 361 ]
-"1647
-[v _block0_buffer `uc ~T0 @X0 -> 18 `i a ]
-"1648
-[v _byteCount `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1643: }
+[e :U 367 ]
 [; ;RFID.c: 1644: }
-[; ;RFID.c: 1647: unsigned char block0_buffer[18];
-[; ;RFID.c: 1648: unsigned char byteCount = sizeof(block0_buffer);
-[e = _byteCount -> -> # _block0_buffer `ui `uc ]
-[; ;RFID.c: 1649: status = MIFARE_Read(0, block0_buffer, &byteCount);
-"1649
-[e = _status ( _MIFARE_Read (3 , , -> -> 0 `i `uc &U _block0_buffer &U _byteCount ]
-[; ;RFID.c: 1650: if ( status != STATUS_OK ) {
-"1650
-[e $ ! != -> _status `i -> . `E880 0 `i 368  ]
-{
-[; ;RFID.c: 1651: if ( logErrors ) {
-"1651
-[e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 369  ]
-{
-[; ;RFID.c: 1652: printf("MIFARE_Read() failed: ");
-"1652
-[e ( _printf :s 97C ]
-[; ;RFID.c: 1653: printf("%s\n",GetStatusCodeName(status));
-"1653
-[e ( _printf , (. :s 98C ( _GetStatusCodeName (1 _status ]
-[; ;RFID.c: 1654: printf("Are you sure your KEY A for sector 0 is 0xFFFFFFFFFFFF?");
-"1654
-[e ( _printf :s 99C ]
-"1655
-}
-[e :U 369 ]
-[; ;RFID.c: 1655: }
-[; ;RFID.c: 1656: return 0;
-"1656
+[; ;RFID.c: 1645: return 0;
+"1645
 [e ) -> -> 0 `i `uc ]
 [e $UE 358  ]
-"1657
+"1646
+}
+[e :U 366 ]
+"1647
+}
+[e :U 361 ]
+"1650
+[v _block0_buffer `uc ~T0 @X0 -> 18 `i a ]
+"1651
+[v _byteCount `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1646: }
+[; ;RFID.c: 1647: }
+[; ;RFID.c: 1650: unsigned char block0_buffer[18];
+[; ;RFID.c: 1651: unsigned char byteCount = sizeof(block0_buffer);
+[e = _byteCount -> -> # _block0_buffer `ui `uc ]
+[; ;RFID.c: 1652: status = MIFARE_Read(0, block0_buffer, &byteCount);
+"1652
+[e = _status ( _MIFARE_Read (3 , , -> -> 0 `i `uc &U _block0_buffer &U _byteCount ]
+[; ;RFID.c: 1653: if ( status != STATUS_OK ) {
+"1653
+[e $ ! != -> _status `i -> . `E884 0 `i 368  ]
+{
+[; ;RFID.c: 1654: if ( logErrors ) {
+"1654
+[e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 369  ]
+{
+"1658
+}
+[e :U 369 ]
+[; ;RFID.c: 1658: }
+[; ;RFID.c: 1659: return 0;
+"1659
+[e ) -> -> 0 `i `uc ]
+[e $UE 358  ]
+"1660
 }
 [e :U 368 ]
-"1660
+"1663
 [v _bcc `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1657: }
-[; ;RFID.c: 1660: unsigned char bcc = 0;
+[; ;RFID.c: 1660: }
+[; ;RFID.c: 1663: unsigned char bcc = 0;
 [e = _bcc -> -> 0 `i `uc ]
-[; ;RFID.c: 1661: for ( int i = 0; i < uidSize; i++ ) {
-"1661
+[; ;RFID.c: 1664: for ( int i = 0; i < uidSize; i++ ) {
+"1664
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
 [e $U 373  ]
 [e :U 370 ]
 {
-[; ;RFID.c: 1662: block0_buffer[i] = newUid[i];
-"1662
+[; ;RFID.c: 1665: block0_buffer[i] = newUid[i];
+"1665
 [e = *U + &U _block0_buffer * -> -> _i `ui `ux -> -> # *U &U _block0_buffer `ui `ux *U + _newUid * -> _i `x -> -> # *U _newUid `i `x ]
-[; ;RFID.c: 1663: bcc ^= newUid[i];
-"1663
+[; ;RFID.c: 1666: bcc ^= newUid[i];
+"1666
 [e =^ _bcc *U + _newUid * -> _i `x -> -> # *U _newUid `i `x ]
-"1664
+"1667
 }
-"1661
+"1664
 [e ++ _i -> 1 `i ]
 [e :U 373 ]
 [e $ < _i -> _uidSize `i 370  ]
 [e :U 371 ]
-"1664
-}
-[; ;RFID.c: 1664: }
-[; ;RFID.c: 1667: block0_buffer[uidSize] = bcc;
 "1667
-[e = *U + &U _block0_buffer * -> _uidSize `ux -> -> # *U &U _block0_buffer `ui `ux _bcc ]
-[; ;RFID.c: 1670: PCD_StopCrypto1();
+}
+[; ;RFID.c: 1667: }
+[; ;RFID.c: 1670: block0_buffer[uidSize] = bcc;
 "1670
-[e ( _PCD_StopCrypto1 ..  ]
-[; ;RFID.c: 1673: if ( !MIFARE_OpenUidBackdoor(logErrors) ) {
+[e = *U + &U _block0_buffer * -> _uidSize `ux -> -> # *U &U _block0_buffer `ui `ux _bcc ]
+[; ;RFID.c: 1673: PCD_StopCrypto1();
 "1673
+[e ( _PCD_StopCrypto1 ..  ]
+[; ;RFID.c: 1676: if ( !MIFARE_OpenUidBackdoor(logErrors) ) {
+"1676
 [e $ ! ! != -> ( _MIFARE_OpenUidBackdoor (1 _logErrors `i -> -> -> 0 `i `uc `i 374  ]
 {
-[; ;RFID.c: 1674: if ( logErrors ) {
-"1674
+[; ;RFID.c: 1677: if ( logErrors ) {
+"1677
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 375  ]
 {
-[; ;RFID.c: 1675: printf("Activating the UID backdoor failed.\n");
-"1675
-[e ( _printf :s 100C ]
-"1676
+"1679
 }
 [e :U 375 ]
-[; ;RFID.c: 1676: }
-[; ;RFID.c: 1677: return 0;
-"1677
+[; ;RFID.c: 1679: }
+[; ;RFID.c: 1680: return 0;
+"1680
 [e ) -> -> 0 `i `uc ]
 [e $UE 358  ]
-"1678
+"1681
 }
 [e :U 374 ]
-[; ;RFID.c: 1678: }
-[; ;RFID.c: 1681: status = MIFARE_Write((unsigned char)0, block0_buffer, (unsigned char)16);
-"1681
+[; ;RFID.c: 1681: }
+[; ;RFID.c: 1684: status = MIFARE_Write((unsigned char)0, block0_buffer, (unsigned char)16);
+"1684
 [e = _status ( _MIFARE_Write (3 , , -> -> 0 `i `uc &U _block0_buffer -> -> 16 `i `uc ]
-[; ;RFID.c: 1682: if (status != STATUS_OK) {
-"1682
-[e $ ! != -> _status `i -> . `E880 0 `i 376  ]
+[; ;RFID.c: 1685: if (status != STATUS_OK) {
+"1685
+[e $ ! != -> _status `i -> . `E884 0 `i 376  ]
 {
-[; ;RFID.c: 1683: if ( logErrors ) {
-"1683
+[; ;RFID.c: 1686: if ( logErrors ) {
+"1686
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 377  ]
 {
-[; ;RFID.c: 1684: printf("MIFARE_Write() failed: ");
-"1684
-[e ( _printf :s 101C ]
-[; ;RFID.c: 1685: printf("%s\n",GetStatusCodeName(status));
-"1685
-[e ( _printf , (. :s 102C ( _GetStatusCodeName (1 _status ]
-"1686
+"1689
 }
 [e :U 377 ]
-[; ;RFID.c: 1686: }
-[; ;RFID.c: 1687: return 0;
-"1687
+[; ;RFID.c: 1689: }
+[; ;RFID.c: 1690: return 0;
+"1690
 [e ) -> -> 0 `i `uc ]
 [e $UE 358  ]
-"1688
+"1691
 }
 [e :U 376 ]
-"1691
+"1694
 [v _atqa_answer `uc ~T0 @X0 -> 2 `i a ]
-"1692
-[v _atqa_size `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1688: }
-[; ;RFID.c: 1691: unsigned char atqa_answer[2];
-[; ;RFID.c: 1692: unsigned char atqa_size = 2;
-[e = _atqa_size -> -> 2 `i `uc ]
-[; ;RFID.c: 1693: PICC_WakeupA(atqa_answer, &atqa_size);
-"1693
-[e ( _PICC_WakeupA (2 , &U _atqa_answer &U _atqa_size ]
-[; ;RFID.c: 1695: return 1;
 "1695
+[v _atqa_size `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1691: }
+[; ;RFID.c: 1694: unsigned char atqa_answer[2];
+[; ;RFID.c: 1695: unsigned char atqa_size = 2;
+[e = _atqa_size -> -> 2 `i `uc ]
+[; ;RFID.c: 1696: PICC_WakeupA(atqa_answer, &atqa_size);
+"1696
+[e ( _PICC_WakeupA (2 , &U _atqa_answer &U _atqa_size ]
+[; ;RFID.c: 1698: return 1;
+"1698
 [e ) -> -> 1 `i `uc ]
 [e $UE 358  ]
-[; ;RFID.c: 1696: }
-"1696
+[; ;RFID.c: 1699: }
+"1699
 [e :UE 358 ]
 }
-"1701
+"1704
 [v _MIFARE_UnbrickUidSector `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;RFID.c: 1701: unsigned char MIFARE_UnbrickUidSector(unsigned char logErrors) {
+[; ;RFID.c: 1704: unsigned char MIFARE_UnbrickUidSector(unsigned char logErrors) {
 [e :U _MIFARE_UnbrickUidSector ]
 [v _logErrors `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;RFID.c: 1702: MIFARE_OpenUidBackdoor( logErrors );
-"1702
+[; ;RFID.c: 1705: MIFARE_OpenUidBackdoor( logErrors );
+"1705
 [e ( _MIFARE_OpenUidBackdoor (1 _logErrors ]
-[v F1277 `uc ~T0 @X0 -> 0 `x s ]
-[i F1277
+[v F1283 `uc ~T0 @X0 -> 0 `x s ]
+[i F1283
 :U ..
-"1704
+"1707
 -> -> 1 `i `uc
 -> -> 2 `i `uc
 -> -> 3 `i `uc
@@ -5244,87 +5040,81 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _block0_buffer `uc ~T0 @X0 16  a ]
-[; ;RFID.c: 1704: unsigned char block0_buffer[] = {0x01, 0x02, 0x03, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-[e = _block0_buffer F1277 ]
-"1707
+[; ;RFID.c: 1707: unsigned char block0_buffer[] = {0x01, 0x02, 0x03, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+[e = _block0_buffer F1283 ]
+"1710
 [v _status `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1707: unsigned char status = MIFARE_Write((unsigned char)0, block0_buffer, (unsigned char)16);
+[; ;RFID.c: 1710: unsigned char status = MIFARE_Write((unsigned char)0, block0_buffer, (unsigned char)16);
 [e = _status ( _MIFARE_Write (3 , , -> -> 0 `i `uc &U _block0_buffer -> -> 16 `i `uc ]
-[; ;RFID.c: 1708: if (status != STATUS_OK) {
-"1708
-[e $ ! != -> _status `i -> . `E880 0 `i 379  ]
+[; ;RFID.c: 1711: if (status != STATUS_OK) {
+"1711
+[e $ ! != -> _status `i -> . `E884 0 `i 379  ]
 {
-[; ;RFID.c: 1709: if ( logErrors ) {
-"1709
+[; ;RFID.c: 1712: if ( logErrors ) {
+"1712
 [e $ ! != -> _logErrors `i -> -> -> 0 `i `uc `i 380  ]
 {
-[; ;RFID.c: 1710: printf("MIFARE_Write() failed: ");
-"1710
-[e ( _printf :s 103C ]
-[; ;RFID.c: 1711: printf("%s\n",GetStatusCodeName(status));
-"1711
-[e ( _printf , (. :s 104C ( _GetStatusCodeName (1 _status ]
-"1712
+"1715
 }
 [e :U 380 ]
-[; ;RFID.c: 1712: }
-[; ;RFID.c: 1713: return 0;
-"1713
+[; ;RFID.c: 1715: }
+[; ;RFID.c: 1716: return 0;
+"1716
 [e ) -> -> 0 `i `uc ]
 [e $UE 378  ]
-"1714
+"1717
 }
 [e :U 379 ]
-[; ;RFID.c: 1714: }
-[; ;RFID.c: 1715: return 0;
-"1715
+[; ;RFID.c: 1717: }
+[; ;RFID.c: 1718: return 0;
+"1718
 [e ) -> -> 0 `i `uc ]
 [e $UE 378  ]
-[; ;RFID.c: 1716: }
-"1716
+[; ;RFID.c: 1719: }
+"1719
 [e :UE 378 ]
 }
-"1728
+"1731
 [v _PICC_IsNewCardPresent `(uc ~T0 @X0 1 ef ]
 {
-[; ;RFID.c: 1728: unsigned char PICC_IsNewCardPresent() {
+[; ;RFID.c: 1731: unsigned char PICC_IsNewCardPresent() {
 [e :U _PICC_IsNewCardPresent ]
 [f ]
-"1729
-[v _bufferATQA `uc ~T0 @X0 -> 2 `i a ]
-"1730
-[v _bufferSize `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1729: unsigned char bufferATQA[2];
-[; ;RFID.c: 1730: unsigned char bufferSize = sizeof(bufferATQA);
-[e = _bufferSize -> -> # _bufferATQA `ui `uc ]
-"1731
-[v _result `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1731: unsigned char result = PICC_RequestA(bufferATQA, &bufferSize);
-[e = _result ( _PICC_RequestA (2 , &U _bufferATQA &U _bufferSize ]
-[; ;RFID.c: 1732: return (result == STATUS_OK || result == STATUS_COLLISION);
 "1732
-[e ) -> -> || == -> _result `i -> . `E880 0 `i == -> _result `i -> . `E880 2 `i `i `uc ]
-[e $UE 381  ]
-[; ;RFID.c: 1733: }
+[v _bufferATQA `uc ~T0 @X0 -> 2 `i a ]
 "1733
+[v _bufferSize `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1732: unsigned char bufferATQA[2];
+[; ;RFID.c: 1733: unsigned char bufferSize = sizeof(bufferATQA);
+[e = _bufferSize -> -> # _bufferATQA `ui `uc ]
+"1734
+[v _result `uc ~T0 @X0 1 a ]
+[; ;RFID.c: 1734: unsigned char result = PICC_RequestA(bufferATQA, &bufferSize);
+[e = _result ( _PICC_RequestA (2 , &U _bufferATQA &U _bufferSize ]
+[; ;RFID.c: 1735: return (result == STATUS_OK || result == STATUS_COLLISION);
+"1735
+[e ) -> -> || == -> _result `i -> . `E884 0 `i == -> _result `i -> . `E884 2 `i `i `uc ]
+[e $UE 381  ]
+[; ;RFID.c: 1736: }
+"1736
 [e :UE 381 ]
 }
-"1743
+"1746
 [v _PICC_ReadCardSerial `(uc ~T0 @X0 1 ef ]
 {
-[; ;RFID.c: 1743: unsigned char PICC_ReadCardSerial() {
+[; ;RFID.c: 1746: unsigned char PICC_ReadCardSerial() {
 [e :U _PICC_ReadCardSerial ]
 [f ]
-"1744
+"1747
 [v _result `uc ~T0 @X0 1 a ]
-[; ;RFID.c: 1744: unsigned char result = PICC_Select(&uid,0);
+[; ;RFID.c: 1747: unsigned char result = PICC_Select(&uid,0);
 [e = _result ( _PICC_Select (2 , &U _uid -> -> 0 `i `uc ]
-[; ;RFID.c: 1745: return (result == STATUS_OK);
-"1745
-[e ) -> -> == -> _result `i -> . `E880 0 `i `i `uc ]
+[; ;RFID.c: 1748: return (result == STATUS_OK);
+"1748
+[e ) -> -> == -> _result `i -> . `E884 0 `i `i `uc ]
 [e $UE 382  ]
-[; ;RFID.c: 1746: }
-"1746
+[; ;RFID.c: 1749: }
+"1749
 [e :UE 382 ]
 }
 "22 main.c
@@ -5366,70 +5156,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 38: {
 "38
 {
-"40
+[; ;main.c: 39: inicio:
+"39
+[e :U 387 ]
+[; ;main.c: 46: if (PICC_ReadCardSerial()!=0)
+"46
+[e $ ! != -> ( _PICC_ReadCardSerial ..  `i -> 0 `i 388  ]
+[; ;main.c: 47: {
+"47
+{
+[; ;main.c: 48: goto inicio;
+"48
+[e $U 387  ]
+"49
+}
+[e :U 388 ]
+"58
 }
 [e :U 384 ]
 "37
 [e $U 385  ]
 [e :U 386 ]
-[; ;main.c: 40: }
-[; ;main.c: 41: }
-"41
+[; ;main.c: 49: }
+[; ;main.c: 58: }
+[; ;main.c: 59: }
+"59
 [e :UE 383 ]
 }
-[v F1287 `(v ~T0 @X0 1 tf ]
-"43
-[v __ISR `IF1287 ~T0 @X0 1 e ]
-"44
+[v F1295 `(v ~T0 @X0 1 tf ]
+"61
+[v __ISR `IF1295 ~T0 @X0 1 e ]
+"62
 {
-[; ;main.c: 43: void interrupt _ISR()
-[; ;main.c: 44: {
+[; ;main.c: 61: void interrupt _ISR()
+[; ;main.c: 62: {
 [e :U __ISR ]
 [f ]
-[; ;main.c: 45: _ISR_UART();
-"45
+[; ;main.c: 63: _ISR_UART();
+"63
 [e ( __ISR_UART ..  ]
-[; ;main.c: 46: }
-"46
-[e :UE 387 ]
+[; ;main.c: 64: }
+"64
+[e :UE 389 ]
 }
-[p f _printf 12845184 ]
-[a 60C 32 65 100 114 61 48 120 37 120 0 ]
-[a 59C 32 86 97 108 117 101 61 48 120 37 120 0 ]
-[a 25C 37 120 0 ]
-[a 51C 37 120 0 ]
-[a 73C 37 120 0 ]
-[a 79C 37 120 0 ]
 [a 17C 77 73 70 65 82 69 32 80 108 117 115 0 ]
 [a 13C 77 73 70 65 82 69 32 77 105 110 105 44 32 51 50 48 32 117 110 115 105 103 110 101 100 32 99 104 97 114 115 0 ]
-[a 22C 37 115 0 ]
-[a 32C 37 115 0 ]
-[a 38C 37 115 0 ]
-[a 48C 37 115 0 ]
-[a 65C 37 115 0 ]
-[a 70C 37 115 0 ]
 [a 10C 85 110 107 110 111 119 110 32 101 114 114 111 114 0 ]
-[a 91C 78 101 119 32 85 73 68 32 98 117 102 102 101 114 32 101 109 112 116 121 44 32 115 105 122 101 32 48 44 32 111 114 32 115 105 122 101 32 62 32 49 53 32 103 105 118 101 110 0 ]
 [a 20C 85 110 107 110 111 119 110 32 116 121 112 101 0 ]
-[a 35C 37 100 0 ]
-[a 42C 37 100 0 ]
-[a 55C 37 100 0 ]
-[a 56C 37 100 0 ]
-[a 68C 37 100 0 ]
-[a 81C 37 100 0 ]
-[a 89C 37 100 0 ]
 [a 18C 77 73 70 65 82 69 32 84 78 80 51 88 88 88 0 ]
 [a 16C 77 73 70 65 82 69 32 85 108 116 114 97 108 105 103 104 116 32 111 114 32 85 108 116 114 97 108 105 103 104 116 32 67 0 ]
 [a 15C 77 73 70 65 82 69 32 52 75 66 0 ]
 [a 14C 77 73 70 65 82 69 32 49 75 66 0 ]
-[a 75C 67 97 114 100 32 100 105 100 32 110 111 116 32 114 101 115 112 111 110 100 32 116 111 32 48 120 52 48 32 97 102 116 101 114 32 72 65 76 84 32 99 111 109 109 97 110 100 46 32 65 114 101 32 121 111 117 32 115 117 114 101 32 105 116 32 105 115 32 97 32 85 73 68 32 99 104 97 110 103 101 97 98 108 101 32 111 110 101 63 0 ]
-[a 99C 65 114 101 32 121 111 117 32 115 117 114 101 32 121 111 117 114 32 75 69 89 32 65 32 102 111 114 32 115 101 99 116 111 114 32 48 32 105 115 32 48 120 70 70 70 70 70 70 70 70 70 70 70 70 63 0 ]
 [a 11C 80 73 67 67 32 99 111 109 112 108 105 97 110 116 32 119 105 116 104 32 73 83 79 47 73 69 67 32 49 52 52 52 51 45 52 0 ]
-[a 62C 80 97 103 101 32 32 48 32 32 49 32 32 50 32 32 51 0 ]
-[a 83C 69 114 114 111 114 32 105 110 32 99 111 109 109 117 110 105 99 97 116 105 111 110 32 97 116 32 99 111 109 109 97 110 100 32 48 120 52 51 44 32 97 102 116 101 114 32 115 117 99 99 101 115 115 102 117 108 108 121 32 101 120 101 99 117 116 105 110 103 32 48 120 52 48 0 ]
-[a 23C 32 48 0 ]
-[a 49C 32 48 0 ]
-[a 71C 32 48 0 ]
 [a 7C 73 110 118 97 108 105 100 32 97 114 103 117 109 101 110 116 46 0 ]
 [a 1C 83 117 99 99 101 115 115 46 0 ]
 [a 4C 84 105 109 101 111 117 116 32 105 110 32 99 111 109 109 117 110 105 99 97 116 105 111 110 46 0 ]
@@ -5438,63 +5216,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 5C 65 32 98 117 102 102 101 114 32 105 115 32 110 111 116 32 98 105 103 32 101 110 111 117 103 104 46 0 ]
 [a 8C 84 104 101 32 67 82 67 95 65 32 100 111 101 115 32 110 111 116 32 109 97 116 99 104 46 0 ]
 [a 19C 83 65 75 32 105 110 100 105 99 97 116 101 115 32 85 73 68 32 105 115 32 110 111 116 32 99 111 109 112 108 101 116 101 46 0 ]
-[a 29C 68 117 109 112 105 110 103 32 109 101 109 111 114 121 32 99 111 110 116 101 110 116 115 32 110 111 116 32 105 109 112 108 101 109 101 110 116 101 100 32 102 111 114 32 116 104 97 116 32 80 73 67 67 32 116 121 112 101 46 0 ]
 [a 3C 67 111 108 108 105 115 115 105 111 110 32 100 101 116 101 99 116 101 100 46 0 ]
 [a 9C 65 32 77 73 70 65 82 69 32 80 73 67 67 32 114 101 115 112 111 110 100 101 100 32 119 105 116 104 32 78 65 75 46 0 ]
-[a 92C 78 111 32 99 97 114 100 32 119 97 115 32 112 114 101 118 105 111 117 115 108 121 32 115 101 108 101 99 116 101 100 44 32 97 110 100 32 110 111 110 101 32 97 114 101 32 97 118 97 105 108 97 98 108 101 46 32 70 97 105 108 101 100 32 116 111 32 115 101 116 32 85 73 68 46 0 ]
 [a 12C 80 73 67 67 32 99 111 109 112 108 105 97 110 116 32 119 105 116 104 32 73 83 79 47 73 69 67 32 49 56 48 57 50 32 40 78 70 67 41 0 ]
-[a 80C 32 40 0 ]
-[a 88C 32 40 0 ]
-[a 54C 37 100 32 0 ]
-[a 57C 32 93 32 0 ]
-[a 53C 32 91 32 0 ]
-[a 27C 80 73 67 67 32 116 121 112 101 58 32 0 ]
-[a 76C 69 114 114 111 114 32 110 97 109 101 58 32 0 ]
-[a 84C 69 114 114 111 114 32 110 97 109 101 58 32 0 ]
-[a 86C 71 111 116 32 98 97 100 32 114 101 115 112 111 110 115 101 32 111 110 32 98 97 99 107 100 111 111 114 32 48 120 52 51 32 99 111 109 109 97 110 100 58 32 0 ]
-[a 78C 71 111 116 32 98 97 100 32 114 101 115 112 111 110 115 101 32 111 110 32 98 97 99 107 100 111 111 114 32 48 120 52 48 32 99 111 109 109 97 110 100 58 32 0 ]
-[a 101C 77 73 70 65 82 69 95 87 114 105 116 101 40 41 32 102 97 105 108 101 100 58 32 0 ]
-[a 103C 77 73 70 65 82 69 95 87 114 105 116 101 40 41 32 102 97 105 108 101 100 58 32 0 ]
-[a 44C 80 67 68 95 65 117 116 104 101 110 116 105 99 97 116 101 40 41 32 102 97 105 108 101 100 58 32 0 ]
-[a 95C 80 67 68 95 65 117 116 104 101 110 116 105 99 97 116 101 40 41 32 102 97 105 108 101 100 58 32 0 ]
-[a 46C 77 73 70 65 82 69 95 82 101 97 100 40 41 32 102 97 105 108 101 100 58 32 0 ]
-[a 63C 77 73 70 65 82 69 95 82 101 97 100 40 41 32 102 97 105 108 101 100 58 32 0 ]
-[a 97C 77 73 70 65 82 69 95 82 101 97 100 40 41 32 102 97 105 108 101 100 58 32 0 ]
-[a 93C 70 97 105 108 101 100 32 116 111 32 97 117 116 104 101 110 116 105 99 97 116 101 32 116 111 32 99 97 114 100 32 102 111 114 32 114 101 97 100 105 110 103 44 32 99 111 117 108 100 32 110 111 116 32 115 101 116 32 85 73 68 58 32 0 ]
-[a 58C 32 73 110 118 101 114 116 101 100 32 97 99 99 101 115 115 32 98 105 116 115 32 100 105 100 32 110 111 116 32 109 97 116 99 104 33 32 0 ]
-[a 37C 32 32 32 32 32 32 32 0 ]
-[a 33C 32 32 32 0 ]
-[a 36C 32 32 32 0 ]
-[a 39C 32 32 32 0 ]
-[a 34C 32 32 0 ]
-[a 40C 32 32 0 ]
-[a 43C 32 32 0 ]
-[a 66C 32 32 0 ]
-[a 69C 32 32 0 ]
-[a 24C 32 0 ]
-[a 41C 32 0 ]
-[a 50C 32 0 ]
-[a 52C 32 0 ]
-[a 67C 32 0 ]
-[a 72C 32 0 ]
-[a 87C 37 120 10 0 ]
-[a 31C 83 101 99 116 111 114 32 66 108 111 99 107 32 32 32 48 32 32 49 32 32 50 32 32 51 32 32 32 52 32 32 53 32 32 54 32 32 55 32 32 32 56 32 32 57 32 49 48 32 49 49 32 32 49 50 32 49 51 32 49 52 32 49 53 32 32 65 99 99 101 115 115 66 105 116 115 10 0 ]
-[a 28C 37 115 10 0 ]
-[a 45C 37 115 10 0 ]
-[a 47C 37 115 10 0 ]
-[a 64C 37 115 10 0 ]
-[a 77C 37 115 10 0 ]
-[a 85C 37 115 10 0 ]
-[a 94C 37 115 10 0 ]
-[a 96C 37 115 10 0 ]
-[a 98C 37 115 10 0 ]
-[a 102C 37 115 10 0 ]
-[a 104C 37 115 10 0 ]
-[a 21C 67 97 114 100 32 85 73 68 58 10 0 ]
-[a 100C 65 99 116 105 118 97 116 105 110 103 32 116 104 101 32 85 73 68 32 98 97 99 107 100 111 111 114 32 102 97 105 108 101 100 46 10 0 ]
-[a 82C 32 118 97 108 105 100 32 98 105 116 115 41 13 10 0 ]
-[a 90C 32 118 97 108 105 100 32 98 105 116 115 41 13 10 0 ]
-[a 26C 10 0 ]
-[a 30C 10 0 ]
-[a 61C 10 0 ]
-[a 74C 10 0 ]

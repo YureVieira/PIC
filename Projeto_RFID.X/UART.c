@@ -21,7 +21,7 @@ void putch(char data)
         continue;
     TXREG = data;
 }
-void UART_init()
+inline void UART_init()
 {
     //Configura??o de pinos
     TRISBbits.TRISB1 = 1;

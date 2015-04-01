@@ -4,7 +4,7 @@
 [d chip 16F628A ]
 [d frameptr 6 ]
 "177 D:\PIC\PIC\Projeto_RFID.X\RFID.c
-[e E775 PCD_Register `uc
+[e E779 PCD_Register `uc
 CommandReg 2
 ComIEnReg 4
 DivIEnReg 6
@@ -56,7 +56,7 @@ TestDAC1Reg 114
 TestDAC2Reg 116
 TestADCReg 118
 ]
-[e E826 PCD_Command `uc
+[e E830 PCD_Command `uc
 PCD_Idle 0
 PCD_Mem 1
 PCD_GenerateRandomID 2
@@ -69,7 +69,7 @@ PCD_MFAuthent 14
 PCD_SoftReset 15
 ]
 "192
-[e E880 StatusCode `uc
+[e E884 StatusCode `uc
 STATUS_OK 1
 STATUS_ERROR 2
 STATUS_COLLISION 3
@@ -81,7 +81,7 @@ STATUS_CRC_WRONG 8
 STATUS_MIFARE_NACK 9
 ]
 "518
-[e E849 PICC_Command `uc
+[e E853 PICC_Command `uc
 PICC_CMD_REQA 38
 PICC_CMD_WUPA 82
 PICC_CMD_CT 136
@@ -100,12 +100,12 @@ PICC_CMD_MF_TRANSFER 176
 PICC_CMD_UL_WRITE 162
 ]
 "815
-[e E866 MIFARE_Misc `uc
+[e E870 MIFARE_Misc `uc
 MF_ACK 10
 MF_KEY_SIZE 6
 ]
 "1185
-[e E869 PICC_Type `uc
+[e E873 PICC_Type `uc
 PICC_TYPE_UNKNOWN 0
 PICC_TYPE_ISO_14443_4 1
 PICC_TYPE_ISO_18092 2
@@ -141,8 +141,6 @@ PICC_TYPE_NOT_COMPLETE 255
 [v ___awmod __awmod `(i  1 e 2 0 ]
 "32 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
-"464 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
-[v _printf printf `(i  1 e 2 0 ]
 "62 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftadd.c
@@ -223,10 +221,10 @@ PICC_TYPE_NOT_COMPLETE 255
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 "31 D:\PIC\PIC\Projeto_RFID.X\main.c
 [v _main main `(v  1 e 0 0 ]
-"43
+"61
 [v __ISR _ISR `II(v  1 e 0 0 ]
 "37 D:\PIC\PIC\Projeto_RFID.X\RFID.c
-[v _RFID_init RFID_init `(v  1 e 0 0 ]
+[v _RFID_init RFID_init `T(v  1 e 0 0 ]
 "67
 [v _PCD_WriteRegister PCD_WriteRegister `(v  1 e 0 0 ]
 "80
@@ -303,30 +301,30 @@ PICC_TYPE_NOT_COMPLETE 255
 [v _PICC_DumpToSerial PICC_DumpToSerial `(v  1 e 0 0 ]
 "1291
 [v _PICC_DumpMifareClassicToSerial PICC_DumpMifareClassicToSerial `(v  1 e 0 0 ]
-"1332
+"1335
 [v _PICC_DumpMifareClassicSectorToSerial PICC_DumpMifareClassicSectorToSerial `(v  1 e 0 0 ]
-"1466
+"1469
 [v _PICC_DumpMifareUltralightToSerial PICC_DumpMifareUltralightToSerial `(v  1 e 0 0 ]
-"1502
+"1505
 [v _MIFARE_SetAccessBits MIFARE_SetAccessBits `(v  1 e 0 0 ]
-"1529
+"1532
 [v _MIFARE_OpenUidBackdoor MIFARE_OpenUidBackdoor `(uc  1 e 1 0 ]
-"1599
+"1602
 [v _MIFARE_SetUid MIFARE_SetUid `(uc  1 e 1 0 ]
-"1701
+"1704
 [v _MIFARE_UnbrickUidSector MIFARE_UnbrickUidSector `(uc  1 e 1 0 ]
-"1728
+"1731
 [v _PICC_IsNewCardPresent PICC_IsNewCardPresent `(uc  1 e 1 0 ]
-"1743
+"1746
 [v _PICC_ReadCardSerial PICC_ReadCardSerial `(uc  1 e 1 0 ]
 "32 D:\PIC\PIC\Projeto_RFID.X\SPI.c
-[v _SPI_init SPI_init `(v  1 e 0 0 ]
+[v _SPI_init SPI_init `T(v  1 e 0 0 ]
 "42
 [v _SPI_transfer SPI_transfer `(uc  1 e 1 0 ]
 "8 D:\PIC\PIC\Projeto_RFID.X\UART.c
 [v _putch putch `(v  1 e 0 0 ]
 "24
-[v _UART_init UART_init `(v  1 e 0 0 ]
+[v _UART_init UART_init `T(v  1 e 0 0 ]
 "43
 [v _UART_available UART_available `(i  1 e 2 0 ]
 "47
@@ -394,11 +392,7 @@ PICC_TYPE_NOT_COMPLETE 255
 [v _WR WR `VEb  1 e 0 @1249 ]
 "1538
 [v _WREN WREN `VEb  1 e 0 @1250 ]
-"354 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
-[v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
-"362
-[v _hexpowers hexpowers `DCC[4]ui  1 s 8 hexpowers ]
-[s S102 . 12 `uc 1 size 1 0 `[10]uc 1 uidbyte 10 1 `uc 1 sak 1 11 ]
+[s S102 . 12 `uc 1 size 1 0 `[10]uc 1 uidByte 10 1 `uc 1 sak 1 11 ]
 "183 D:\PIC\PIC\Projeto_RFID.X\RFID.h
 [v _uid uid `S102  1 e 12 0 ]
 "186
@@ -412,31 +406,299 @@ PICC_TYPE_NOT_COMPLETE 255
 "31 D:\PIC\PIC\Projeto_RFID.X\main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"41
+"59
 } 0
 "24 D:\PIC\PIC\Projeto_RFID.X\UART.c
-[v _UART_init UART_init `(v  1 e 0 0 ]
+[v _UART_init UART_init `T(v  1 e 0 0 ]
 {
 "42
 } 0
 "32 D:\PIC\PIC\Projeto_RFID.X\SPI.c
-[v _SPI_init SPI_init `(v  1 e 0 0 ]
+[v _SPI_init SPI_init `T(v  1 e 0 0 ]
 {
 [v SPI_init@mode mode `uc  1 a 1 wreg ]
 [v SPI_init@mode mode `uc  1 a 1 wreg ]
 "34
-[v SPI_init@mode mode `uc  1 a 1 0 ]
+[v SPI_init@mode mode `uc  1 a 1 6 ]
 "41
 } 0
 "37 D:\PIC\PIC\Projeto_RFID.X\RFID.c
-[v _RFID_init RFID_init `(v  1 e 0 0 ]
+[v _RFID_init RFID_init `T(v  1 e 0 0 ]
 {
 "48
 } 0
-"43 D:\PIC\PIC\Projeto_RFID.X\main.c
+"1746
+[v _PICC_ReadCardSerial PICC_ReadCardSerial `(uc  1 e 1 0 ]
+{
+"1747
+[v PICC_ReadCardSerial@result result `uc  1 a 1 34 ]
+"1749
+} 0
+"551
+[v _PICC_Select PICC_Select `(uc  1 e 1 0 ]
+{
+"696
+[v PICC_Select@collisionPos collisionPos `uc  1 a 1 23 ]
+"640
+[v PICC_Select@maxbytes maxbytes `uc  1 a 1 12 ]
+"638
+[v PICC_Select@bytesToCopy bytesToCopy `uc  1 a 1 26 ]
+"562
+[v PICC_Select@buffer buffer `[9]uc  1 a 9 14 ]
+[v PICC_Select@currentLevelKnownBits currentLevelKnownBits `uc  1 a 1 33 ]
+"558
+[v PICC_Select@result result `uc  1 a 1 32 ]
+"560
+[v PICC_Select@index index `uc  1 a 1 31 ]
+"558
+[v PICC_Select@count count `uc  1 a 1 30 ]
+"566
+[v PICC_Select@txLastBits txLastBits `uc  1 a 1 29 ]
+"567
+[v PICC_Select@responseBuffer responseBuffer `*.4uc  1 a 1 28 ]
+"568
+[v PICC_Select@responseLength responseLength `uc  1 a 1 27 ]
+"561
+[v PICC_Select@uidIndex uidIndex `uc  1 a 1 25 ]
+"556
+[v PICC_Select@useCascadeTag useCascadeTag `uc  1 a 1 24 ]
+"557
+[v PICC_Select@cascadeLevel cascadeLevel `uc  1 a 1 13 ]
+"565
+[v PICC_Select@rxAlign rxAlign `uc  1 a 1 11 ]
+"564
+[v PICC_Select@bufferUsed bufferUsed `uc  1 a 1 8 ]
+"555
+[v PICC_Select@selectDone selectDone `uc  1 a 1 7 ]
+"554
+[v PICC_Select@uidComplete uidComplete `uc  1 a 1 6 ]
+[s S102 . 12 `uc 1 size 1 0 `[10]uc 1 uidByte 10 1 `uc 1 sak 1 11 ]
+"553
+[v PICC_Select@uid uid `*.4S102  1 p 1 60 ]
+"552
+[v PICC_Select@validBits validBits `uc  1 p 1 61 ]
+"759
+} 0
+"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 0 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 5 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 1 ]
+"51
+} 0
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"6
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"42
+} 0
+"469 D:\PIC\PIC\Projeto_RFID.X\RFID.c
+[v _PCD_TransceiveData PCD_TransceiveData `(uc  1 e 1 0 ]
+{
+[v PCD_TransceiveData@sendData sendData `*.4uc  1 a 1 wreg ]
+"477
+[v PCD_TransceiveData@waitIRq waitIRq `uc  1 a 1 58 ]
+"469
+[v PCD_TransceiveData@sendData sendData `*.4uc  1 a 1 wreg ]
+"470
+[v PCD_TransceiveData@sendLen sendLen `uc  1 p 1 44 ]
+"471
+[v PCD_TransceiveData@backData backData `*.4uc  1 p 1 45 ]
+"472
+[v PCD_TransceiveData@backLen backLen `*.4uc  1 p 1 46 ]
+"473
+[v PCD_TransceiveData@validBits validBits `*.4uc  1 p 1 47 ]
+"474
+[v PCD_TransceiveData@rxAlign rxAlign `uc  1 p 1 48 ]
+"475
+[v PCD_TransceiveData@checkCRC checkCRC `uc  1 p 1 49 ]
+"477
+[v PCD_TransceiveData@sendData sendData `*.4uc  1 a 1 59 ]
+"479
+} 0
+"370
+[v _PCD_CommunicateWithPICC PCD_CommunicateWithPICC `(uc  1 e 1 0 ]
+{
+[v PCD_CommunicateWithPICC@command command `uc  1 a 1 wreg ]
+"450
+[v PCD_CommunicateWithPICC@controlBuffer controlBuffer `[2]uc  1 a 2 39 ]
+"381
+[v PCD_CommunicateWithPICC@i i `ui  1 a 2 32 ]
+"380
+[v PCD_CommunicateWithPICC@n n `uc  1 a 1 43 ]
+[v PCD_CommunicateWithPICC@_validBits _validBits `uc  1 a 1 42 ]
+"415
+[v PCD_CommunicateWithPICC@errorRegValue errorRegValue `uc  1 a 1 41 ]
+"385
+[v PCD_CommunicateWithPICC@bitFraming bitFraming `uc  1 a 1 35 ]
+"384
+[v PCD_CommunicateWithPICC@txLastBits txLastBits `uc  1 a 1 34 ]
+"370
+[v PCD_CommunicateWithPICC@command command `uc  1 a 1 wreg ]
+"371
+[v PCD_CommunicateWithPICC@waitIRq waitIRq `uc  1 p 1 21 ]
+"372
+[v PCD_CommunicateWithPICC@sendData sendData `*.4uc  1 p 1 22 ]
+"373
+[v PCD_CommunicateWithPICC@sendLen sendLen `uc  1 p 1 23 ]
+"374
+[v PCD_CommunicateWithPICC@backData backData `*.4uc  1 p 1 24 ]
+"375
+[v PCD_CommunicateWithPICC@backLen backLen `*.4uc  1 p 1 25 ]
+"376
+[v PCD_CommunicateWithPICC@validBits validBits `*.4uc  1 p 1 26 ]
+"377
+[v PCD_CommunicateWithPICC@rxAlign rxAlign `uc  1 p 1 27 ]
+"378
+[v PCD_CommunicateWithPICC@checkCRC checkCRC `uc  1 p 1 28 ]
+"384
+[v PCD_CommunicateWithPICC@command command `uc  1 a 1 38 ]
+"461
+} 0
+"110
+[v _PCD_ReadRegisterVector PCD_ReadRegisterVector `(v  1 e 0 0 ]
+{
+[v PCD_ReadRegisterVector@reg reg `uc  1 a 1 wreg ]
+"128
+[v PCD_ReadRegisterVector@i i `uc  1 a 1 17 ]
+"127
+[v PCD_ReadRegisterVector@mask mask `uc  1 a 1 15 ]
+"132
+[v PCD_ReadRegisterVector@value value `uc  1 a 1 14 ]
+"120
+[v PCD_ReadRegisterVector@index index `uc  1 a 1 18 ]
+"119
+[v PCD_ReadRegisterVector@address address `uc  1 a 1 16 ]
+"110
+[v PCD_ReadRegisterVector@reg reg `uc  1 a 1 wreg ]
+[v PCD_ReadRegisterVector@count count `uc  1 p 1 7 ]
+"112
+[v PCD_ReadRegisterVector@values values `*.4uc  1 p 1 8 ]
+"113
+[v PCD_ReadRegisterVector@rxAlign rxAlign `uc  1 p 1 9 ]
+"115
+[v PCD_ReadRegisterVector@reg reg `uc  1 a 1 13 ]
+"143
+} 0
+"173
+[v _PCD_CalculateCRC PCD_CalculateCRC `(uc  1 e 1 0 ]
+{
+[v PCD_CalculateCRC@data data `*.4uc  1 a 1 wreg ]
+"184
+[v PCD_CalculateCRC@i i `ui  1 a 2 17 ]
+"185
+[v PCD_CalculateCRC@n n `uc  1 a 1 19 ]
+"173
+[v PCD_CalculateCRC@data data `*.4uc  1 a 1 wreg ]
+"174
+[v PCD_CalculateCRC@length length `uc  1 p 1 13 ]
+"175
+[v PCD_CalculateCRC@result result `*.4uc  1 p 1 14 ]
+"177
+[v PCD_CalculateCRC@data data `*.4uc  1 a 1 20 ]
+"201
+} 0
+"80
+[v _PCD_WriteRegisterVector PCD_WriteRegisterVector `(v  1 e 0 0 ]
+{
+[v PCD_WriteRegisterVector@reg reg `uc  1 a 1 wreg ]
+"86
+[v PCD_WriteRegisterVector@index index `uc  1 a 1 10 ]
+"80
+[v PCD_WriteRegisterVector@reg reg `uc  1 a 1 wreg ]
+[v PCD_WriteRegisterVector@count count `uc  1 p 1 7 ]
+"82
+[v PCD_WriteRegisterVector@values values `*.4uc  1 p 1 8 ]
+"84
+[v PCD_WriteRegisterVector@reg reg `uc  1 a 1 9 ]
+"90
+} 0
+"148
+[v _PCD_SetRegisterBitMask PCD_SetRegisterBitMask `(v  1 e 0 0 ]
+{
+[v PCD_SetRegisterBitMask@reg reg `uc  1 a 1 wreg ]
+"151
+[v PCD_SetRegisterBitMask@tmp tmp `uc  1 a 1 11 ]
+"148
+[v PCD_SetRegisterBitMask@reg reg `uc  1 a 1 wreg ]
+"149
+[v PCD_SetRegisterBitMask@mask mask `uc  1 p 1 9 ]
+"152
+[v PCD_SetRegisterBitMask@reg reg `uc  1 a 1 12 ]
+"154
+} 0
+"159
+[v _PCD_ClearRegisterBitMask PCD_ClearRegisterBitMask `(v  1 e 0 0 ]
+{
+[v PCD_ClearRegisterBitMask@reg reg `uc  1 a 1 wreg ]
+"162
+[v PCD_ClearRegisterBitMask@tmp tmp `uc  1 a 1 11 ]
+"159
+[v PCD_ClearRegisterBitMask@reg reg `uc  1 a 1 wreg ]
+"160
+[v PCD_ClearRegisterBitMask@mask mask `uc  1 p 1 9 ]
+"163
+[v PCD_ClearRegisterBitMask@reg reg `uc  1 a 1 12 ]
+"165
+} 0
+"67
+[v _PCD_WriteRegister PCD_WriteRegister `(v  1 e 0 0 ]
+{
+[v PCD_WriteRegister@reg reg `uc  1 a 1 wreg ]
+[v PCD_WriteRegister@reg reg `uc  1 a 1 wreg ]
+"68
+[v PCD_WriteRegister@value value `uc  1 p 1 6 ]
+"70
+[v PCD_WriteRegister@reg reg `uc  1 a 1 8 ]
+"74
+} 0
+"96
+[v _PCD_ReadRegister PCD_ReadRegister `(uc  1 e 1 0 ]
+{
+[v PCD_ReadRegister@reg reg `uc  1 a 1 wreg ]
+"98
+[v PCD_ReadRegister@value value `uc  1 a 1 8 ]
+"96
+[v PCD_ReadRegister@reg reg `uc  1 a 1 wreg ]
+"99
+[v PCD_ReadRegister@reg reg `uc  1 a 1 7 ]
+"104
+} 0
+"42 D:\PIC\PIC\Projeto_RFID.X\SPI.c
+[v _SPI_transfer SPI_transfer `(uc  1 e 1 0 ]
+{
+[v SPI_transfer@data data `uc  1 a 1 wreg ]
+"66
+[v SPI_transfer@i_303 i `i  1 a 2 4 ]
+"47
+[v SPI_transfer@i i `i  1 a 2 2 ]
+"64
+[v SPI_transfer@ret_302 ret `uc  1 a 1 0 ]
+"44
+[v SPI_transfer@ret ret `uc  1 a 1 1 ]
+"42
+[v SPI_transfer@data data `uc  1 a 1 wreg ]
+"45
+[v SPI_transfer@data data `uc  1 a 1 6 ]
+"84
+} 0
+"61 D:\PIC\PIC\Projeto_RFID.X\main.c
 [v __ISR _ISR `II(v  1 e 0 0 ]
 {
-"46
+"64
 } 0
 "60 D:\PIC\PIC\Projeto_RFID.X\UART.c
 [v __ISR_UART _ISR_UART `T(v  1 e 0 0 ]

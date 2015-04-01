@@ -170,7 +170,7 @@
 	// A struct used for passing the UID of a PICC.
 	typedef struct {
 		unsigned char		size;			// Number of unsigned chars in the UID. 4, 7 or 10.
-		unsigned char		uidbyte[10];
+		unsigned char		uidByte[10];
         unsigned char		sak;			// The SAK (Select acknowledge) unsigned char returned from the PICC after successful selection.
 	} Uid;
 
@@ -188,7 +188,7 @@
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Functions for setting up the PIC
 	/////////////////////////////////////////////////////////////////////////////////////
-    void RFID_init();
+    inline void RFID_init();
 //    void _setSPIConfig();
 	
 	/////////////////////////////////////////////////////////////////////////////////////

@@ -36,7 +36,25 @@ void main()
 //    MFRC522_PCD_Init();
     while(1)
     {
-        
+        inicio:
+        // Look for new cards
+        if ( PICC_IsNewCardPresent()!=0 )
+        {
+            goto inicio;
+        }
+        // Select one of the cards
+        if (PICC_ReadCardSerial()!=0)
+        {
+            goto inicio;
+        }
+//  //Mostra UID na serial
+//  printf("UID da tag :");
+//  for (unsigned char i = 0; i < uid.size; i++)
+//  {
+//    printf("%s",uid.uidByte[i] < 0x10 ? " 0" : " ");
+//    printf("%x",uid.uidByte[i]);
+//  }
+//  printf("\nMensagem : ");
     }
 }
 
