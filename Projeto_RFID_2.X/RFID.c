@@ -703,7 +703,7 @@ unsigned char PICC_REQA_or_WUPA(	unsigned char command, 		///< The command to se
 	}
 	PCD_ClearRegisterBitMask(CollReg, 0x80);		// ValuesAfterColl=1 => Bits received after collision are cleared.
 	validBits = 7;									// For REQA and WUPA we need the short frame format - transmit only 7 bits of the last (and only) unsigned char. TxLastBits = BitFramingReg[2..0]
-	status = PCD_TransceiveData(&command, 1, bufferATQA, bufferSize, &validBits);
+	status = PCD_TransceiveData(&command, 1, bufferATQA, bufferSize, &validBits,NULL,0,0);
 	if (status != STATUS_OK) {
 		return status;
 	}
@@ -869,7 +869,7 @@ unsigned char PICC_Select(	Uid *uid,			///< Pointer to Uid struct. Normally outp
 			PCD_WriteRegister(BitFramingReg, (rxAlign << 4) + txLastBits);	// RxAlign = BitFramingReg[6..4]. TxLastBits = BitFramingReg[2..0]
 
 			// Transmit the buffer and receive the response.
-			result = PCD_TransceiveData(buffer, bufferUsed, responseBuffer, &responseLength, &txLastBits, rxAlign);			
+			result = PCD_TransceiveData(buffer, bufferUsed, responseBuffer, &responseLength, &txLastBits, rxAlign,0);
 			if (result == STATUS_COLLISION) { // More than one PICC in the field => collision.
 				result = PCD_ReadRegister(CollReg); // CollReg[7..0] bits are: ValuesAfterColl reserved CollPosNotValid CollPos[4:0]
 				if (result & 0x20) { // CollPosNotValid
@@ -963,7 +963,7 @@ unsigned char PICC_HaltA() {
 	//		If the PICC responds with any modulation during a period of 1 ms after the end of the frame containing the
 	//		HLTA command, this response shall be interpreted as 'not acknowledge'.
 	// We interpret that this way: Only STATUS_TIMEOUT is an success.
-	result = PCD_TransceiveData(buffer, sizeof(buffer), NULL, 0);
+	result = PCD_TransceiveData(buffer, sizeof(buffer), NULL, 0,NULL,0,0);
 	if (result == STATUS_TIMEOUT) {
 		return STATUS_OK;
 	}
@@ -1009,7 +1009,7 @@ unsigned char PCD_Authenticate(unsigned char command,		///< PICC_CMD_MF_AUTH_KEY
 	}
 	
 	// Start the authentication.
-	return PCD_CommunicateWithPICC(PCD_MFAuthent, waitIRq, &sendData[0], sizeof(sendData));
+	return PCD_CommunicateWithPICC(PCD_MFAuthent, waitIRq, &sendData[0], sizeof(sendData),NULL,NULL,NULL,0,0);
 } // End PCD_Authenticate()
 
 /**
@@ -1317,7 +1317,7 @@ unsigned char PCD_MIFARE_Transceive(	unsigned char *sendData,		///< Pointer to t
     unsigned char waitIRq = 0x30;		// RxIRq and IdleIRq
     unsigned char cmdBufferSize = sizeof(cmdBuffer);
     unsigned char validBits = 0;
-	result = PCD_CommunicateWithPICC(PCD_Transceive, waitIRq, cmdBuffer, sendLen, cmdBuffer, &cmdBufferSize, &validBits);
+	result = PCD_CommunicateWithPICC(PCD_Transceive, waitIRq, cmdBuffer, sendLen, cmdBuffer, &cmdBufferSize, &validBits,0,0);
 	if (acceptTimeout && result == STATUS_TIMEOUT) {
 		return STATUS_OK;
 	}
@@ -1919,7 +1919,7 @@ unsigned char PICC_IsNewCardPresent() {
  * @return bool
  */
 unsigned char PICC_ReadCardSerial() {
-    unsigned char result = PICC_Select(&uid);
+    unsigned char result = PICC_Select(&uid,0);
 	return (result == STATUS_OK);
 } // End PICC_ReadCardSerial()
 

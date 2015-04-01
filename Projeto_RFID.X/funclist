@@ -1,7 +1,13 @@
-_SPI_init: CODE, 26 0 30
-_UART_init: CODE, 75 0 17
-__ISR: CODE, 92 0 14
-_main: CODE, 114 0 4
-__initialization: CODE, 17 0 7
-__ISR_UART: CODE, 56 0 19
-Total: 91
+_SPI_init: CODE, 1718 0 31
+__stringtab: STRCODE, 256 0 18
+__stringdata: STRCODE, 293 0 1425
+_dpowers: STRCODE, 274 0 10
+_UART_init: CODE, 1812 0 17
+__ISR: CODE, 1829 0 14
+_main: CODE, 1851 0 5
+_FIFO_SIZE: STRCODE, 292 0 1
+__initialization: CODE, 17 0 51
+__ISR_UART: CODE, 1793 0 19
+_RFID_init: CODE, 1771 0 22
+_hexpowers: STRCODE, 284 0 8
+Total: 1621

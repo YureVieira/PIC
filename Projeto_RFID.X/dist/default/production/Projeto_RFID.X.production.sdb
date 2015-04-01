@@ -1,0 +1,445 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F628A ]
+[d frameptr 6 ]
+"177 D:\PIC\PIC\Projeto_RFID.X\RFID.c
+[e E775 PCD_Register `uc
+CommandReg 2
+ComIEnReg 4
+DivIEnReg 6
+ComIrqReg 8
+DivIrqReg 10
+ErrorReg 12
+Status1Reg 14
+Status2Reg 16
+FIFODataReg 18
+FIFOLevelReg 20
+WaterLevelReg 22
+ControlReg 24
+BitFramingReg 26
+CollReg 28
+ModeReg 34
+TxModeReg 36
+RxModeReg 38
+TxControlReg 40
+TxASKReg 42
+TxSelReg 44
+RxSelReg 46
+RxThresholdReg 48
+DemodReg 50
+MfTxReg 56
+MfRxReg 58
+SerialSpeedReg 62
+CRCResultRegH 66
+CRCResultRegL 68
+ModWidthReg 72
+RFCfgReg 76
+GsNReg 78
+CWGsPReg 80
+ModGsPReg 82
+TModeReg 84
+TPrescalerReg 86
+TReloadRegH 88
+TReloadRegL 90
+TCounterValueRegH 92
+TCounterValueRegL 94
+TestSel1Reg 98
+TestSel2Reg 100
+TestPinEnReg 102
+TestPinValueReg 104
+TestBusReg 106
+AutoTestReg 108
+VersionReg 110
+AnalogTestReg 112
+TestDAC1Reg 114
+TestDAC2Reg 116
+TestADCReg 118
+]
+[e E826 PCD_Command `uc
+PCD_Idle 0
+PCD_Mem 1
+PCD_GenerateRandomID 2
+PCD_CalcCRC 3
+PCD_Transmit 4
+PCD_NoCmdChange 7
+PCD_Receive 8
+PCD_Transceive 12
+PCD_MFAuthent 14
+PCD_SoftReset 15
+]
+"192
+[e E880 StatusCode `uc
+STATUS_OK 1
+STATUS_ERROR 2
+STATUS_COLLISION 3
+STATUS_TIMEOUT 4
+STATUS_NO_ROOM 5
+STATUS_INTERNAL_ERROR 6
+STATUS_INVALID 7
+STATUS_CRC_WRONG 8
+STATUS_MIFARE_NACK 9
+]
+"518
+[e E849 PICC_Command `uc
+PICC_CMD_REQA 38
+PICC_CMD_WUPA 82
+PICC_CMD_CT 136
+PICC_CMD_SEL_CL1 147
+PICC_CMD_SEL_CL2 149
+PICC_CMD_SEL_CL3 151
+PICC_CMD_HLTA 80
+PICC_CMD_MF_AUTH_KEY_A 96
+PICC_CMD_MF_AUTH_KEY_B 97
+PICC_CMD_MF_READ 48
+PICC_CMD_MF_WRITE 160
+PICC_CMD_MF_DECREMENT 192
+PICC_CMD_MF_INCREMENT 193
+PICC_CMD_MF_RESTORE 194
+PICC_CMD_MF_TRANSFER 176
+PICC_CMD_UL_WRITE 162
+]
+"815
+[e E866 MIFARE_Misc `uc
+MF_ACK 10
+MF_KEY_SIZE 6
+]
+"1185
+[e E869 PICC_Type `uc
+PICC_TYPE_UNKNOWN 0
+PICC_TYPE_ISO_14443_4 1
+PICC_TYPE_ISO_18092 2
+PICC_TYPE_MIFARE_MINI 3
+PICC_TYPE_MIFARE_1K 4
+PICC_TYPE_MIFARE_4K 5
+PICC_TYPE_MIFARE_UL 6
+PICC_TYPE_MIFARE_PLUS 7
+PICC_TYPE_TNP3XXX 8
+PICC_TYPE_NOT_COMPLETE 255
+]
+"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abdiv.c
+[v ___abdiv __abdiv `(c  1 e 1 0 ]
+"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abmod.c
+[v ___abmod __abmod `(c  1 e 1 0 ]
+"33 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abtoft.c
+[v ___abtoft __abtoft `(f  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"5 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"42 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\atdiv.c
+[v ___atdiv __atdiv `(m  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\atmod.c
+[v ___atmod __atmod `(m  1 e 3 0 ]
+"37 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\attoft.c
+[v ___attoft __attoft `(f  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"32 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+"464 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
+[v _printf printf `(i  1 e 2 0 ]
+"62 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+"62 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+"18 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"27 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"35 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ltdiv.c
+[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ltmod.c
+[v ___ltmod __ltmod `(um  1 e 3 0 ]
+"30 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lttoft.c
+[v ___lttoft __lttoft `(f  1 e 3 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"28 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"11 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c
+[v _memcpy memcpy `(*.4v  1 e 1 0 ]
+"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul24.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"48
+[v ___eetoc __eetoc `(uc  1 e 1 0 ]
+"56
+[v ___eetoi __eetoi `(ui  1 e 2 0 ]
+"64
+[v ___eetom __eetom `(um  1 e 3 0 ]
+"72
+[v ___eetol __eetol `(ul  1 e 4 0 ]
+"80
+[v ___ctoee __ctoee `(uc  1 e 1 0 ]
+"87
+[v ___itoee __itoee `(ui  1 e 2 0 ]
+"94
+[v ___mtoee __mtoee `(um  1 e 3 0 ]
+"101
+[v ___ltoee __ltoee `(ul  1 e 4 0 ]
+"108
+[v ___eetoft __eetoft `(f  1 e 3 0 ]
+"116
+[v ___eetofl __eetofl `(d  1 e 3 0 ]
+"124
+[v ___fttoee __fttoee `(f  1 e 3 0 ]
+"131
+[v ___fltoee __fltoee `(d  1 e 3 0 ]
+"49 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"31 D:\PIC\PIC\Projeto_RFID.X\main.c
+[v _main main `(v  1 e 0 0 ]
+"43
+[v __ISR _ISR `II(v  1 e 0 0 ]
+"37 D:\PIC\PIC\Projeto_RFID.X\RFID.c
+[v _RFID_init RFID_init `(v  1 e 0 0 ]
+"67
+[v _PCD_WriteRegister PCD_WriteRegister `(v  1 e 0 0 ]
+"80
+[v _PCD_WriteRegisterVector PCD_WriteRegisterVector `(v  1 e 0 0 ]
+"96
+[v _PCD_ReadRegister PCD_ReadRegister `(uc  1 e 1 0 ]
+"110
+[v _PCD_ReadRegisterVector PCD_ReadRegisterVector `(v  1 e 0 0 ]
+"148
+[v _PCD_SetRegisterBitMask PCD_SetRegisterBitMask `(v  1 e 0 0 ]
+"159
+[v _PCD_ClearRegisterBitMask PCD_ClearRegisterBitMask `(v  1 e 0 0 ]
+"173
+[v _PCD_CalculateCRC PCD_CalculateCRC `(uc  1 e 1 0 ]
+"210
+[v _PCD_Reset PCD_Reset `(v  1 e 0 0 ]
+"225
+[v _PCD_AntennaOn PCD_AntennaOn `(v  1 e 0 0 ]
+"235
+[v _PCD_AntennaOff PCD_AntennaOff `(v  1 e 0 0 ]
+"246
+[v _PCD_GetAntennaGain PCD_GetAntennaGain `(uc  1 e 1 0 ]
+"252
+[v _PCD_Init PCD_Init `(v  1 e 0 0 ]
+"280
+[v _PCD_SetAntennaGain PCD_SetAntennaGain `(v  1 e 0 0 ]
+"370
+[v _PCD_CommunicateWithPICC PCD_CommunicateWithPICC `(uc  1 e 1 0 ]
+"469
+[v _PCD_TransceiveData PCD_TransceiveData `(uc  1 e 1 0 ]
+"487
+[v _PICC_REQA_or_WUPA PICC_REQA_or_WUPA `(uc  1 e 1 0 ]
+"515
+[v _PICC_RequestA PICC_RequestA `(uc  1 e 1 0 ]
+"527
+[v _PICC_WakeupA PICC_WakeupA `(uc  1 e 1 0 ]
+"551
+[v _PICC_Select PICC_Select `(uc  1 e 1 0 ]
+"766
+[v _PICC_HaltA PICC_HaltA `(uc  1 e 1 0 ]
+"811
+[v _PCD_Authenticate PCD_Authenticate `(uc  1 e 1 0 ]
+"837
+[v _PCD_StopCrypto1 PCD_StopCrypto1 `(v  1 e 0 0 ]
+"858
+[v _MIFARE_Read MIFARE_Read `(uc  1 e 1 0 ]
+"893
+[v _MIFARE_Write MIFARE_Write `(uc  1 e 1 0 ]
+"928
+[v _MIFARE_Ultralight_Write MIFARE_Ultralight_Write `(uc  1 e 1 0 ]
+"961
+[v _MIFARE_Decrement MIFARE_Decrement `(uc  1 e 1 0 ]
+"975
+[v _MIFARE_Increment MIFARE_Increment `(uc  1 e 1 0 ]
+"989
+[v _MIFARE_Restore MIFARE_Restore `(uc  1 e 1 0 ]
+"1001
+[v _MIFARE_TwoStepHelper MIFARE_TwoStepHelper `(uc  1 e 1 0 ]
+"1032
+[v _MIFARE_Transfer MIFARE_Transfer `(uc  1 e 1 0 ]
+"1058
+[v _MIFARE_GetValue MIFARE_GetValue `(uc  1 e 1 0 ]
+"1084
+[v _MIFARE_SetValue MIFARE_SetValue `(uc  1 e 1 0 ]
+"1115
+[v _PCD_MIFARE_Transceive PCD_MIFARE_Transceive `(uc  1 e 1 0 ]
+"1160
+[v _GetStatusCodeName GetStatusCodeName `(*.25DCCuc  1 e 1 0 ]
+"1182
+[v _PICC_GetType PICC_GetType `(uc  1 e 1 0 ]
+"1214
+[v _PICC_GetTypeName PICC_GetTypeName `(*.25DCCuc  1 e 1 0 ]
+"1237
+[v _PICC_DumpToSerial PICC_DumpToSerial `(v  1 e 0 0 ]
+"1291
+[v _PICC_DumpMifareClassicToSerial PICC_DumpMifareClassicToSerial `(v  1 e 0 0 ]
+"1332
+[v _PICC_DumpMifareClassicSectorToSerial PICC_DumpMifareClassicSectorToSerial `(v  1 e 0 0 ]
+"1466
+[v _PICC_DumpMifareUltralightToSerial PICC_DumpMifareUltralightToSerial `(v  1 e 0 0 ]
+"1502
+[v _MIFARE_SetAccessBits MIFARE_SetAccessBits `(v  1 e 0 0 ]
+"1529
+[v _MIFARE_OpenUidBackdoor MIFARE_OpenUidBackdoor `(uc  1 e 1 0 ]
+"1599
+[v _MIFARE_SetUid MIFARE_SetUid `(uc  1 e 1 0 ]
+"1701
+[v _MIFARE_UnbrickUidSector MIFARE_UnbrickUidSector `(uc  1 e 1 0 ]
+"1728
+[v _PICC_IsNewCardPresent PICC_IsNewCardPresent `(uc  1 e 1 0 ]
+"1743
+[v _PICC_ReadCardSerial PICC_ReadCardSerial `(uc  1 e 1 0 ]
+"32 D:\PIC\PIC\Projeto_RFID.X\SPI.c
+[v _SPI_init SPI_init `(v  1 e 0 0 ]
+"42
+[v _SPI_transfer SPI_transfer `(uc  1 e 1 0 ]
+"8 D:\PIC\PIC\Projeto_RFID.X\UART.c
+[v _putch putch `(v  1 e 0 0 ]
+"24
+[v _UART_init UART_init `(v  1 e 0 0 ]
+"43
+[v _UART_available UART_available `(i  1 e 2 0 ]
+"47
+[v _UART_read_byte UART_read_byte `(uc  1 e 1 0 ]
+"60
+[v __ISR_UART _ISR_UART `T(v  1 e 0 0 ]
+"158 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+[s S63 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"680
+[s S72 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADDEN 1 0 :1:3 
+]
+[u S75 . 1 `S63 1 . 1 0 `S72 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES75  1 e 1 @24 ]
+"729
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"735
+[v _RCREG RCREG `VEuc  1 e 1 @26 ]
+"879
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+[s S21 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"957
+[u S30 . 1 `S21 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES30  1 e 1 @134 ]
+"1128
+[v _TXSTAbits TXSTAbits `VES30  1 e 1 @152 ]
+"1167
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"1173
+[v _EEDATA EEDATA `VEuc  1 e 1 @154 ]
+"1179
+[v _EEADR EEADR `VEuc  1 e 1 @155 ]
+"1185
+[v _EECON1 EECON1 `VEuc  1 e 1 @156 ]
+"1222
+[v _EECON2 EECON2 `VEuc  1 e 1 @157 ]
+"1312
+[v _CARRY CARRY `VEb  1 e 0 @24 ]
+"1354
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"1416
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"1418
+[v _RD RD `VEb  1 e 0 @1248 ]
+"1520
+[v _TXIF TXIF `VEb  1 e 0 @100 ]
+"1536
+[v _WR WR `VEb  1 e 0 @1249 ]
+"1538
+[v _WREN WREN `VEb  1 e 0 @1250 ]
+"354 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
+[v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
+"362
+[v _hexpowers hexpowers `DCC[4]ui  1 s 8 hexpowers ]
+[s S102 . 12 `uc 1 size 1 0 `[10]uc 1 uidbyte 10 1 `uc 1 sak 1 11 ]
+"183 D:\PIC\PIC\Projeto_RFID.X\RFID.h
+[v _uid uid `S102  1 e 12 0 ]
+"186
+[v _FIFO_SIZE FIFO_SIZE `DCCuc  1 s 1 FIFO_SIZE ]
+"31 D:\PIC\PIC\Projeto_RFID.X\SPI.c
+[v __mode _mode `uc  1 e 1 0 ]
+"6 D:\PIC\PIC\Projeto_RFID.X\UART.c
+[v _buffer buffer `[16]uc  1 e 16 0 ]
+"7
+[v _count count `i  1 e 2 0 ]
+"31 D:\PIC\PIC\Projeto_RFID.X\main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"41
+} 0
+"24 D:\PIC\PIC\Projeto_RFID.X\UART.c
+[v _UART_init UART_init `(v  1 e 0 0 ]
+{
+"42
+} 0
+"32 D:\PIC\PIC\Projeto_RFID.X\SPI.c
+[v _SPI_init SPI_init `(v  1 e 0 0 ]
+{
+[v SPI_init@mode mode `uc  1 a 1 wreg ]
+[v SPI_init@mode mode `uc  1 a 1 wreg ]
+"34
+[v SPI_init@mode mode `uc  1 a 1 0 ]
+"41
+} 0
+"37 D:\PIC\PIC\Projeto_RFID.X\RFID.c
+[v _RFID_init RFID_init `(v  1 e 0 0 ]
+{
+"48
+} 0
+"43 D:\PIC\PIC\Projeto_RFID.X\main.c
+[v __ISR _ISR `II(v  1 e 0 0 ]
+{
+"46
+} 0
+"60 D:\PIC\PIC\Projeto_RFID.X\UART.c
+[v __ISR_UART _ISR_UART `T(v  1 e 0 0 ]
+{
+"67
+} 0

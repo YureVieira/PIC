@@ -1,9 +1,20 @@
 #include <xc.h>
 #include <stdio.h>
+
+#define SPI_TRIS TRISA
+#define SPI_PORT PORTA
+#define SPI_SCK 7
+#define SPI_MOSI 6
+#define SPI_MISO 5
+#define RFID_CS 4
+#define RFID_RESET 3
+
 #include "UART.c"
 #include "SPI.c"
 #include "RFID.c"
 #define _XTAL_FREQ 4000000
+
+
 /*****************************************************************************
  * FUSES
  ****************************************************************************/
@@ -21,6 +32,7 @@ void main()
 {
     UART_init();
     SPI_init(0);
+    RFID_init();
 //    MFRC522_PCD_Init();
     while(1)
     {
