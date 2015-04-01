@@ -2,6 +2,6 @@
 #define SPI_H
 
 inline void SPI_init(unsigned char mode);
-unsigned char SPI_transfer(unsigned char data);
+inline unsigned char SPI_transfer(unsigned char data);
 
 #endif // SPI_H

@@ -64,7 +64,7 @@ inline void RFID_init() {
  * Writes a unsigned char to the specified register in the MFRC522 chip.
  * The interface is described in the datasheet section 8.1.2.
  */
-void PCD_WriteRegister(	unsigned char reg,		///< The register to write to. One of the PCD_Register enums.
+inline void PCD_WriteRegister(	unsigned char reg,		///< The register to write to. One of the PCD_Register enums.
                                     unsigned char value		///< The value to write.
 								) {
 	SPI_PORT&=~(1<<RFID_CS) ;		// Select slave
@@ -77,7 +77,7 @@ void PCD_WriteRegister(	unsigned char reg,		///< The register to write to. One o
  * Writes a number of unsigned chars to the specified register in the MFRC522 chip.
  * The interface is described in the datasheet section 8.1.2.
  */
-void PCD_WriteRegisterVector(	unsigned char reg,		///< The register to write to. One of the PCD_Register enums.
+inline void PCD_WriteRegisterVector(	unsigned char reg,		///< The register to write to. One of the PCD_Register enums.
                                     unsigned char count,		///< The number of unsigned chars to write to the register
                                     unsigned char *values)	///< The values to write. unsigned char array.
 {
@@ -107,7 +107,7 @@ unsigned char PCD_ReadRegister(	unsigned char reg	///< The register to read from
  * Reads a number of unsigned chars from the specified register in the MFRC522 chip.
  * The interface is described in the datasheet section 8.1.2.
  */
-void PCD_ReadRegisterVector(	unsigned char reg,		///< The register to read from. One of the PCD_Register enums.
+inline void PCD_ReadRegisterVector(	unsigned char reg,		///< The register to read from. One of the PCD_Register enums.
                                 unsigned char count,		///< The number of unsigned chars to read
                                 unsigned char *values,	///< unsigned char array to store the values in.
                                 unsigned char rxAlign	///< Only bit positions rxAlign..7 in values[0] are updated.

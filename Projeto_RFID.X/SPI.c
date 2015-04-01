@@ -39,9 +39,9 @@ inline void SPI_init(unsigned char mode)
     else
         SPI_PORT &= ~(1<<SCK_PIN);             //Repouso em baixo
 }
-unsigned char SPI_transfer(unsigned char data)
+inline unsigned char SPI_transfer(unsigned char data)
 {
-    unsigned char ret;
+    unsigned char ret=0;
     if(_mode==1 || _mode==3)
     {
     for(int i=0;i<8;i++)
@@ -62,7 +62,6 @@ unsigned char SPI_transfer(unsigned char data)
     }
     else
     {
-        unsigned char ret;
         for(int i=0;i<8;i++)
         {
 
