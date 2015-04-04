@@ -2,7 +2,8 @@ ___awdiv: CODE, 2336 0 164
 _PCD_SetRegisterBitMask: CODE, 3356 0 24
 _PICC_IsNewCardPresent: CODE, 3094 0 52
 _SPI_init: CODE, 3146 0 36
-__stringdata: MEDIUMCONST, 32280 0 486
+__stringdata: MEDIUMCONST, 32281 0 486
+RFID@FIFO_SIZE: MEDIUMCONST, 32279 0 1
 _PICC_ReadCardSerial: CODE, 3182 0 36
 _PCD_TransceiveData: CODE, 2980 0 60
 _PCD_ReadRegister: CODE, 3278 0 28
@@ -11,7 +12,7 @@ _UART_init: CODE, 3380 0 22
 __ISR: CODE, 8 0 2882
 _PICC_RequestA: CODE, 3332 0 24
 _main: CODE, 3218 0 30
-_FIFO_SIZE: MEDIUMCONST, 32279 0 1
+_FIFO_SIZE: MEDIUMCONST, 32280 0 1
 _PCD_CalculateCRC: CODE, 2500 0 146
 __initialization: CODE, 2890 0 80
 _PCD_WriteRegisterVector: CODE, 3040 0 54
@@ -23,4 +24,4 @@ _PICC_REQA_or_WUPA: CODE, 2646 0 136
 _PCD_CommunicateWithPICC: CODE, 1414 0 548
 _PCD_ReadRegisterVector: CODE, 1962 0 198
 _SPI_transfer: CODE, 2160 0 176
-Total: 6657
+Total: 6658

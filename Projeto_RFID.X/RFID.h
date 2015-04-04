@@ -194,10 +194,10 @@
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Basic interface functions for communicating with the 
 	/////////////////////////////////////////////////////////////////////////////////////
-    inline void PCD_WriteRegister(unsigned char reg, unsigned char value);
-    inline void PCD_WriteRegisterVector(unsigned char reg, unsigned char count, unsigned char *values);
+    void PCD_WriteRegister(unsigned char reg, unsigned char value);
+    void PCD_WriteRegisterVector(unsigned char reg, unsigned char count, unsigned char *values);
     unsigned char PCD_ReadRegister(unsigned char reg);
-    inline void PCD_ReadRegisterVector(unsigned char reg, unsigned char count, unsigned char *values, unsigned char rxAlign);
+    void PCD_ReadRegisterVector(unsigned char reg, unsigned char count, unsigned char *values, unsigned char rxAlign);
     void setBitMask(unsigned char reg, unsigned char mask);
     void PCD_SetRegisterBitMask(unsigned char reg, unsigned char mask);
     void PCD_ClearRegisterBitMask(unsigned char reg, unsigned char mask);
