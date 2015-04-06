@@ -24,8 +24,10 @@ void putch(char data)
 inline void UART_init()
 {
     //Configura??o de pinos
-    TRISBbits.TRISB1 = 1;
-    TRISBbits.TRISB2 = 1;
+//    TRISBbits.TRISB1 = 1;
+//    TRISBbits.TRISB2 = 1;
+	TRISCbits.TRISC7 = 1;	//18F2550
+	TRISCbits.TRISC6 = 1;	//18F2550
 
     TXSTAbits.CSRC = 1;     //Master
     TXSTAbits.TXEN = 1;     //Habilita transmiss?o

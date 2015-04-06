@@ -1,0 +1,239 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.33 build 59893 
+                                                                                               Mon Apr 06 15:55:22 2015
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	18F2550
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+     9                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    10  0000                     _LATC	set	3979
+    11  0000                     _TRISC	set	3988
+    12                           
+    13 ;;
+    14 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+    15 ;;
+    16 ;; *************** function _main *****************
+    17 ;; Defined at:
+    18 ;;		line 75 in file "main.c"
+    19 ;; Parameters:    Size  Location     Type
+    20 ;;		None
+    21 ;; Auto vars:     Size  Location     Type
+    22 ;;		None
+    23 ;; Return value:  Size  Location     Type
+    24 ;;		None               void
+    25 ;; Registers used:
+    26 ;;		wreg, status,2, status,0
+    27 ;; Tracked objects:
+    28 ;;		On entry : 0/0
+    29 ;;		On exit  : 0/0
+    30 ;;		Unchanged: 0/0
+    31 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+    32 ;;      Params:         0       0       0       0       0       0       0       0       0
+    33 ;;      Locals:         0       0       0       0       0       0       0       0       0
+    34 ;;      Temps:          1       0       0       0       0       0       0       0       0
+    35 ;;      Totals:         1       0       0       0       0       0       0       0       0
+    36 ;;Total ram usage:        1 bytes
+    37 ;; This function calls:
+    38 ;;		Nothing
+    39 ;; This function is called by:
+    40 ;;		Startup code after reset
+    41 ;; This function uses a non-reentrant model
+    42 ;;
+    43                           
+    44                           	psect	text0
+    45  007FEA                     __ptext0:
+    46                           	opt stack 0
+    47  007FEA                     _main:
+    48                           	opt stack 31
+    49                           
+    50                           ;main.c: 77: TRISC &= ~(1<<2);
+    51                           
+    52                           ;incstack = 0
+    53  007FEA  9494               	bcf	3988,2,c	;volatile
+    54  007FEC                     l590:
+    55                           
+    56                           ;main.c: 79: {
+    57                           ;main.c: 80: LATC ^=(1<<2);
+    58  007FEC  0E04               	movlw	4
+    59  007FEE  1A8B               	xorwf	3979,f,c	;volatile
+    60                           
+    61                           ;main.c: 81: _delay((unsigned long)((100)*(4000000/4000.0)));
+    62  007FF0  0E82               	movlw	130
+    63  007FF2  6E01               	movwf	??_main& (0+255),c
+    64  007FF4  0EDE               	movlw	222
+    65  007FF6                     u17:
+    66  007FF6  2EE8               	decfsz	wreg,f,c
+    67  007FF8  D7FE               	goto	u17
+    68  007FFA  2E01               	decfsz	??_main& (0+255),f,c
+    69  007FFC  D7FC               	goto	u17
+    70  007FFE  D7F6               	goto	l590
+    71  008000                     __end_of_main:
+    72                           	opt stack 0
+    73  0000                     wreg	equ	0xFE8
+    74                           
+    75                           	psect	cinit
+    76  007FE4                     __pcinit:
+    77                           	opt stack 0
+    78  007FE4                     start_initialization:
+    79                           	opt stack 0
+    80  007FE4                     __initialization:
+    81                           	opt stack 0
+    82  007FE4                     end_of_initialization:
+    83                           	opt stack 0
+    84  007FE4                     __end_of__initialization:
+    85                           	opt stack 0
+    86  007FE4  0100               	movlb	0
+    87  007FE6  EFF5  F03F         	goto	_main	;jump to C main() function
+    88                           wreg	equ	0xFE8
+    89                           
+    90                           	psect	cstackCOMRAM
+    91  000001                     __pcstackCOMRAM:
+    92                           	opt stack 0
+    93  000001                     ??_main:
+    94                           
+    95                           ; 0 bytes @ 0x0
+    96  000001                     	ds	1
+    97                           wreg	equ	0xFE8
+    98                           wreg	equ	0xFE8
+    99                           
+   100                           	psect	rparam
+   101  0000                     wreg	equ	0xFE8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      1       1
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0       0
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      1       1       1        1.1%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Mon Apr 06 15:55:22 2015
+
+                     u17 7FF6              __CFG_BOR$ON 000000              __CFG_BORV$3 000000  
+           __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000  
+           __CFG_CP3$OFF 000000              __CFG_LVP$ON 000000              __CFG_WDT$ON 000000  
+                    l590 7FEC             __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000  
+                    wreg 000FE8                     _LATC 000F8B                     _main 7FEA  
+                   start 0000            __CFG_IESO$OFF 000000            __CFG_PLLDIV$1 000000  
+         __CFG_CCP2MX$ON 000000                    ?_main 0001            __CFG_USBDIV$1 000000  
+                  _TRISC 000F94            __CFG_PWRT$OFF 000000            __CFG_WRT0$OFF 000000  
+          __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000  
+         __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000  
+         __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000  
+          __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000  
+         __CFG_PBADEN$ON 000000           __CFG_MCLRE$OFF 000000          __initialization 7FE4  
+           __end_of_main 8000                   ??_main 0001            __activetblptr 000000  
+         __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000               __accesstop 0060  
+__end_of__initialization 7FE4           __pcstackCOMRAM 0001          __CFG_VREGEN$OFF 000000  
+                __Hparam 0000                  __Lparam 0000                  __pcinit 7FE4  
+                __ramtop 0800                  __ptext0 7FEA     end_of_initialization 7FE4  
+    start_initialization 7FE4         __CFG_LPT1OSC$OFF 000000         __CFG_WDTPS$32768 000000  
+               __Hrparam 0000                 __Lrparam 0000    __CFG_FOSC$INTOSCIO_EC 000000  
+          __size_of_main 0016    __CFG_CPUDIV$OSC1_PLL2 000000  

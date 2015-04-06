@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.33 build 59893 
-                                                                                               Sat Apr 04 10:18:39 2015
+                                                                                               Mon Apr 06 14:18:34 2015
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 59893
      1                           	processor	18F2550
@@ -28,7 +28,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     22 ;;
     23 ;; *************** function _main *****************
     24 ;; Defined at:
-    25 ;;		line 99 in file "main.c"
+    25 ;;		line 100 in file "main.c"
     26 ;; Parameters:    Size  Location     Type
     27 ;;		None
     28 ;; Auto vars:     Size  Location     Type
@@ -62,24 +62,24 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     56  007FE0                     _main:
     57                           	opt stack 30
     58                           
-    59                           ;main.c: 101: MSSP_init();
+    59                           ;main.c: 102: MSSP_init();
     60                           
     61                           ;incstack = 0
     62  007FE0  ECE4  F03F         	call	_MSSP_init	;wreg free
     63  007FE4                     l615:
     64                           
-    65                           ;main.c: 106: {
-    66                           ;main.c: 107: LATAbits.LA5 = 0;
+    65                           ;main.c: 107: {
+    66                           ;main.c: 108: LATAbits.LA5 = 0;
     67  007FE4  9A89               	bcf	3977,5,c	;volatile
     68                           
-    69                           ;main.c: 108: MSSP_transfer(num);
+    69                           ;main.c: 109: MSSP_transfer(num);
     70  007FE6  5003               	movf	main@num,w,c
-    71  007FE8  ECDD  F03F         	call	_MSSP_transfer
+    71  007FE8  ECDC  F03F         	call	_MSSP_transfer
     72                           
-    73                           ;main.c: 109: LATAbits.LA5 = 1;
+    73                           ;main.c: 110: LATAbits.LA5 = 1;
     74  007FEC  8A89               	bsf	3977,5,c	;volatile
     75                           
-    76                           ;main.c: 111: _delay((unsigned long)((100)*(4000000/4000.0)));
+    76                           ;main.c: 112: _delay((unsigned long)((100)*(4000000/4000.0)));
     77  007FEE  0E82               	movlw	130
     78  007FF0  6E02               	movwf	??_main& (0+255),c
     79  007FF2  0EDE               	movlw	222
@@ -89,7 +89,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     83  007FF8  2E02               	decfsz	??_main& (0+255),f,c
     84  007FFA  D7FC               	goto	u27
     85                           
-    86                           ;main.c: 112: num++;
+    86                           ;main.c: 113: num++;
     87  007FFC  2A03               	incf	main@num,f,c
     88  007FFE  D7F2               	goto	l615
     89  008000                     __end_of_main:
@@ -97,18 +97,18 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     91                           wreg	equ	0xFE8
     92                           
     93                           	psect	cinit
-    94  007FB4                     __pcinit:
+    94  007FB2                     __pcinit:
     95                           	opt stack 0
-    96  007FB4                     start_initialization:
+    96  007FB2                     start_initialization:
     97                           	opt stack 0
-    98  007FB4                     __initialization:
+    98  007FB2                     __initialization:
     99                           	opt stack 0
-   100  007FB4                     end_of_initialization:
+   100  007FB2                     end_of_initialization:
    101                           	opt stack 0
-   102  007FB4                     __end_of__initialization:
+   102  007FB2                     __end_of__initialization:
    103                           	opt stack 0
-   104  007FB4  0100               	movlb	0
-   105  007FB6  EFF0  F03F         	goto	_main	;jump to C main() function
+   104  007FB2  0100               	movlb	0
+   105  007FB4  EFF0  F03F         	goto	_main	;jump to C main() function
    106                           wreg	equ	0xFE8
    107                           
    108                           	psect	cstackCOMRAM
@@ -160,99 +160,103 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
    154 ;;
    155                           
    156                           	psect	text1
-   157  007FBA                     __ptext1:
+   157  007FB8                     __ptext1:
    158                           	opt stack 0
-   159  007FBA                     _MSSP_transfer:
+   159  007FB8                     _MSSP_transfer:
    160                           	opt stack 30
    161                           
    162                           ;incstack = 0
    163                           ;MSSP_transfer@data stored from wreg
-   164  007FBA  6E01               	movwf	MSSP_transfer@data,c
+   164  007FB8  6E01               	movwf	MSSP_transfer@data,c
    165                           
    166                           ;main.c: 94: SSPBUF = data;
-   167  007FBC  C001  FFC9         	movff	MSSP_transfer@data,4041	;volatile
-   168  007FC0                     l22:
-   169  007FC0  A0C7               	btfss	4039,0,c	;volatile
-   170  007FC2  D7FE               	goto	l22
+   167  007FBA  C001  FFC9         	movff	MSSP_transfer@data,4041	;volatile
+   168  007FBE                     l22:
+   169  007FBE  A0C7               	btfss	4039,0,c	;volatile
+   170  007FC0  D7FE               	goto	l22
    171                           
    172                           ;main.c: 96: SSPSTATbits.BF = 0;
-   173  007FC4  90C7               	bcf	4039,0,c	;volatile
-   174  007FC6  0012               	return	
-   175  007FC8                     __end_of_MSSP_transfer:
-   176                           	opt stack 0
-   177                           wreg	equ	0xFE8
-   178                           
-   179 ;; *************** function _MSSP_init *****************
-   180 ;; Defined at:
-   181 ;;		line 74 in file "main.c"
-   182 ;; Parameters:    Size  Location     Type
-   183 ;;		None
-   184 ;; Auto vars:     Size  Location     Type
-   185 ;;		None
-   186 ;; Return value:  Size  Location     Type
-   187 ;;                  2   18[COMRAM] int 
-   188 ;; Registers used:
-   189 ;;		wreg, status,2
-   190 ;; Tracked objects:
-   191 ;;		On entry : 0/0
-   192 ;;		On exit  : 0/0
-   193 ;;		Unchanged: 0/0
-   194 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-   195 ;;      Params:         0       0       0       0       0       0       0       0       0
-   196 ;;      Locals:         0       0       0       0       0       0       0       0       0
-   197 ;;      Temps:          0       0       0       0       0       0       0       0       0
-   198 ;;      Totals:         0       0       0       0       0       0       0       0       0
-   199 ;;Total ram usage:        0 bytes
-   200 ;; Hardware stack levels used:    1
-   201 ;; This function calls:
-   202 ;;		Nothing
-   203 ;; This function is called by:
-   204 ;;		_main
-   205 ;; This function uses a non-reentrant model
-   206 ;;
-   207                           
-   208                           	psect	text2
-   209  007FC8                     __ptext2:
-   210                           	opt stack 0
-   211  007FC8                     _MSSP_init:
-   212                           	opt stack 30
-   213                           
-   214                           ;main.c: 77: TRISCbits.TRISC7 = 0;
-   215                           
-   216                           ;incstack = 0
-   217  007FC8  9E94               	bcf	3988,7,c	;volatile
-   218                           
-   219                           ;main.c: 79: TRISBbits.TRISB1 = 0;
-   220  007FCA  9293               	bcf	3987,1,c	;volatile
-   221                           
-   222                           ;main.c: 81: TRISAbits.TRISA5 = 0;
-   223  007FCC  9A92               	bcf	3986,5,c	;volatile
-   224                           
-   225                           ;main.c: 84: SSPSTATbits.SMP = 1;
-   226  007FCE  8EC7               	bsf	4039,7,c	;volatile
-   227                           
-   228                           ;main.c: 85: SSPSTATbits.CKE = 1;
-   229  007FD0  8CC7               	bsf	4039,6,c	;volatile
-   230                           
-   231                           ;main.c: 86: SSPCON1bits.SSPEN = 1;
-   232  007FD2  8AC6               	bsf	4038,5,c	;volatile
-   233                           
-   234                           ;main.c: 88: SSPCON1bits.CKP = 1;
-   235  007FD4  88C6               	bsf	4038,4,c	;volatile
-   236                           
-   237                           ;main.c: 89: SSPCON1bits.SSPM = 0b0010;
-   238  007FD6  50C6               	movf	4038,w,c	;volatile
-   239  007FD8  0BF0               	andlw	-16
-   240  007FDA  0902               	iorlw	2
-   241  007FDC  6EC6               	movwf	4038,c	;volatile
-   242  007FDE  0012               	return	
-   243  007FE0                     __end_of_MSSP_init:
-   244                           	opt stack 0
-   245  0000                     wreg	equ	0xFE8
-   246                           wreg	equ	0xFE8
-   247                           
-   248                           	psect	rparam
+   173  007FC2  90C7               	bcf	4039,0,c	;volatile
+   174                           
+   175                           ;main.c: 97: return SSPBUF;
+   176                           ;	Return value of _MSSP_transfer is never used
+   177  007FC4  50C9               	movf	4041,w,c	;volatile
+   178  007FC6  0012               	return	
+   179  007FC8                     __end_of_MSSP_transfer:
+   180                           	opt stack 0
+   181                           wreg	equ	0xFE8
+   182                           
+   183 ;; *************** function _MSSP_init *****************
+   184 ;; Defined at:
+   185 ;;		line 74 in file "main.c"
+   186 ;; Parameters:    Size  Location     Type
+   187 ;;		None
+   188 ;; Auto vars:     Size  Location     Type
+   189 ;;		None
+   190 ;; Return value:  Size  Location     Type
+   191 ;;		None               void
+   192 ;; Registers used:
+   193 ;;		wreg, status,2
+   194 ;; Tracked objects:
+   195 ;;		On entry : 0/0
+   196 ;;		On exit  : 0/0
+   197 ;;		Unchanged: 0/0
+   198 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   199 ;;      Params:         0       0       0       0       0       0       0       0       0
+   200 ;;      Locals:         0       0       0       0       0       0       0       0       0
+   201 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   202 ;;      Totals:         0       0       0       0       0       0       0       0       0
+   203 ;;Total ram usage:        0 bytes
+   204 ;; Hardware stack levels used:    1
+   205 ;; This function calls:
+   206 ;;		Nothing
+   207 ;; This function is called by:
+   208 ;;		_main
+   209 ;; This function uses a non-reentrant model
+   210 ;;
+   211                           
+   212                           	psect	text2
+   213  007FC8                     __ptext2:
+   214                           	opt stack 0
+   215  007FC8                     _MSSP_init:
+   216                           	opt stack 30
+   217                           
+   218                           ;main.c: 77: TRISCbits.TRISC7 = 0;
+   219                           
+   220                           ;incstack = 0
+   221  007FC8  9E94               	bcf	3988,7,c	;volatile
+   222                           
+   223                           ;main.c: 79: TRISBbits.TRISB1 = 0;
+   224  007FCA  9293               	bcf	3987,1,c	;volatile
+   225                           
+   226                           ;main.c: 81: TRISAbits.TRISA5 = 0;
+   227  007FCC  9A92               	bcf	3986,5,c	;volatile
+   228                           
+   229                           ;main.c: 84: SSPSTATbits.SMP = 1;
+   230  007FCE  8EC7               	bsf	4039,7,c	;volatile
+   231                           
+   232                           ;main.c: 85: SSPSTATbits.CKE = 1;
+   233  007FD0  8CC7               	bsf	4039,6,c	;volatile
+   234                           
+   235                           ;main.c: 86: SSPCON1bits.SSPEN = 1;
+   236  007FD2  8AC6               	bsf	4038,5,c	;volatile
+   237                           
+   238                           ;main.c: 88: SSPCON1bits.CKP = 1;
+   239  007FD4  88C6               	bsf	4038,4,c	;volatile
+   240                           
+   241                           ;main.c: 89: SSPCON1bits.SSPM = 0b0010;
+   242  007FD6  50C6               	movf	4038,w,c	;volatile
+   243  007FD8  0BF0               	andlw	-16
+   244  007FDA  0902               	iorlw	2
+   245  007FDC  6EC6               	movwf	4038,c	;volatile
+   246  007FDE  0012               	return	
+   247  007FE0                     __end_of_MSSP_init:
+   248                           	opt stack 0
    249  0000                     wreg	equ	0xFE8
+   250                           wreg	equ	0xFE8
+   251                           
+   252                           	psect	rparam
+   253  0000                     wreg	equ	0xFE8
 
 
 Data Sizes:
@@ -371,9 +375,9 @@ SFR                  0      0       0      40        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.33 build 59893 
-Symbol Table                                                                                   Sat Apr 04 10:18:39 2015
+Symbol Table                                                                                   Mon Apr 06 14:18:34 2015
 
-            _SSPSTATbits 000FC7                       l22 7FC0                       u27 7FF4  
+            _SSPSTATbits 000FC7                       l22 7FBE                       u27 7FF4  
             __CFG_BOR$ON 000000              __CFG_BORV$3 000000             __CFG_CP0$OFF 000000  
            __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000  
             __CFG_LVP$ON 000000              __CFG_WDT$ON 000000                      l615 7FE4  
@@ -386,18 +390,18 @@ Symbol Table                                                                    
          __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000           __CFG_EBTR3$OFF 000000  
           __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000  
          __CFG_EBTRB$OFF 000000       __size_of_MSSP_init 0018           __CFG_PBADEN$ON 000000  
-         __CFG_MCLRE$OFF 000000          __initialization 7FB4             __end_of_main 8000  
+         __CFG_MCLRE$OFF 000000          __initialization 7FB2             __end_of_main 8000  
                  ??_main 0002            __activetblptr 000000                   _SSPBUF 000FC9  
          __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000        __end_of_MSSP_init 7FE0  
-             __accesstop 0060  __end_of__initialization 7FB4           __pcstackCOMRAM 0001  
+             __accesstop 0060  __end_of__initialization 7FB2           __pcstackCOMRAM 0001  
   __end_of_MSSP_transfer 7FC8          __CFG_VREGEN$OFF 000000                  __Hparam 0000  
-                __Lparam 0000                  __pcinit 7FB4                  __ramtop 0800  
-                __ptext0 7FE0                  __ptext1 7FBA                  __ptext2 7FC8  
-                main@num 0003     end_of_initialization 7FB4        MSSP_transfer@data 0001  
+                __Lparam 0000                  __pcinit 7FB2                  __ramtop 0800  
+                __ptext0 7FE0                  __ptext1 7FB8                  __ptext2 7FC8  
+                main@num 0003     end_of_initialization 7FB2        MSSP_transfer@data 0001  
               _MSSP_init 7FC8                _TRISAbits 000F92                _TRISBbits 000F93  
-              _TRISCbits 000F94               ?_MSSP_init 0001      start_initialization 7FB4  
+              _TRISCbits 000F94               ?_MSSP_init 0001      start_initialization 7FB2  
        __CFG_LPT1OSC$OFF 000000              ??_MSSP_init 0001                 _LATAbits 000F89  
-       __CFG_WDTPS$32768 000000   __size_of_MSSP_transfer 000E                 __Hrparam 0000  
-               __Lrparam 0000    __CFG_FOSC$INTOSCIO_EC 000000            _MSSP_transfer 7FBA  
+       __CFG_WDTPS$32768 000000   __size_of_MSSP_transfer 0010                 __Hrparam 0000  
+               __Lrparam 0000    __CFG_FOSC$INTOSCIO_EC 000000            _MSSP_transfer 7FB8  
           __size_of_main 0020    __CFG_CPUDIV$OSC1_PLL2 000000           ?_MSSP_transfer 0001  
             _SSPCON1bits 000FC6  

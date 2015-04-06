@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"3838 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f2550.h
+"3838 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f2550.h
 [s S271 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S271 . TRISC0 TRISC1 TRISC2 . TRISC6 TRISC7 ]
 "3846
@@ -147,13 +147,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "3078
 [v _LATAbits `VS227 ~T0 @X0 0 e@3977 ]
 [v F4767 `(v ~T0 @X0 1 tf1`ul ]
-"147 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18.h
+"147 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18.h
 [v __delay `JF4767 ~T0 @X0 0 e ]
 [p i __delay ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic18f2550.h: 47: extern volatile unsigned short UFRM @ 0xF66;
-"49 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f2550.h
+"49 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f2550.h
 [; ;pic18f2550.h: 49: asm("UFRM equ 0F66h");
 [; <" UFRM equ 0F66h ;# ">
 [; ;pic18f2550.h: 53: extern volatile unsigned char UFRML @ 0xF66;
@@ -4604,10 +4604,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "70
 [p x EBTRB=OFF ]
 "74
-[v _MSSP_init `(i ~T0 @X0 1 ef ]
+[v _MSSP_init `(v ~T0 @X0 1 ef ]
 "75
 {
-[; ;main.c: 74: MSSP_init()
+[; ;main.c: 74: void MSSP_init()
 [; ;main.c: 75: {
 [e :U _MSSP_init ]
 [f ]
@@ -4663,53 +4663,57 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 96: SSPSTATbits.BF = 0;
 "96
 [e = . . _SSPSTATbits 2 0 -> -> 0 `i `uc ]
-[; ;main.c: 97: }
+[; ;main.c: 97: return SSPBUF;
 "97
+[e ) _SSPBUF ]
+[e $UE 541  ]
+[; ;main.c: 98: }
+"98
 [e :UE 541 ]
 }
-"99
-[v _main `(v ~T0 @X0 1 ef ]
 "100
+[v _main `(v ~T0 @X0 1 ef ]
+"101
 {
-[; ;main.c: 99: void main()
-[; ;main.c: 100: {
+[; ;main.c: 100: void main()
+[; ;main.c: 101: {
 [e :U _main ]
 [f ]
-[; ;main.c: 101: MSSP_init();
-"101
+[; ;main.c: 102: MSSP_init();
+"102
 [e ( _MSSP_init ..  ]
-"103
+"104
 [v _num `uc ~T0 @X0 1 a ]
-[; ;main.c: 103: unsigned char num;
-[; ;main.c: 105: while(1)
-"105
-[e :U 547 ]
-[; ;main.c: 106: {
+[; ;main.c: 104: unsigned char num;
+[; ;main.c: 106: while(1)
 "106
-{
-[; ;main.c: 107: LATAbits.LA5 = 0;
+[e :U 547 ]
+[; ;main.c: 107: {
 "107
-[e = . . _LATAbits 6 1 -> -> 0 `i `uc ]
-[; ;main.c: 108: MSSP_transfer(num);
+{
+[; ;main.c: 108: LATAbits.LA5 = 0;
 "108
-[e ( _MSSP_transfer (1 _num ]
-[; ;main.c: 109: LATAbits.LA5 = 1;
+[e = . . _LATAbits 6 1 -> -> 0 `i `uc ]
+[; ;main.c: 109: MSSP_transfer(num);
 "109
+[e ( _MSSP_transfer (1 _num ]
+[; ;main.c: 110: LATAbits.LA5 = 1;
+"110
 [e = . . _LATAbits 6 1 -> -> 1 `i `uc ]
-[; ;main.c: 111: _delay((unsigned long)((100)*(4000000/4000.0)));
-"111
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main.c: 112: num++;
+[; ;main.c: 112: _delay((unsigned long)((100)*(4000000/4000.0)));
 "112
-[e ++ _num -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 113: num++;
 "113
+[e ++ _num -> -> 1 `i `uc ]
+"114
 }
 [e :U 546 ]
-"105
+"106
 [e $U 547  ]
 [e :U 548 ]
-[; ;main.c: 113: }
 [; ;main.c: 114: }
-"114
+[; ;main.c: 115: }
+"115
 [e :UE 545 ]
 }

@@ -1,13 +1,13 @@
 
 # 1 "main.c"
 
-# 21 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\htc.h"
+# 21 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 47 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f2550.h"
+# 47 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f2550.h"
 extern volatile unsigned short UFRM @ 0xF66;
 
 asm("UFRM equ 0F66h");
@@ -4820,7 +4820,7 @@ extern volatile __bit nW @ (((unsigned) &SSPSTAT)*8) + 2;
 
 extern volatile __bit nWRITE @ (((unsigned) &SSPSTAT)*8) + 2;
 
-# 2008 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\adc.h"
+# 2008 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\adc.h"
 union ADCResult
 {
 int lr;
@@ -4847,11 +4847,11 @@ void SetChanADC(unsigned char );
 # 2100
 void SelChanConvADC( unsigned char );
 
-# 38 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\ancomp.h"
+# 38 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\ancomp.h"
 void Close_ancomp( void );
 void Open_ancomp(unsigned char config);
 
-# 584 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\spi.h"
+# 584 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\spi.h"
 void OpenSPI( unsigned char sync_mode,
 unsigned char bus_mode,
 unsigned char smp_phase );
@@ -4864,7 +4864,7 @@ void putsSPI( unsigned char *wrptr );
 
 unsigned char ReadSPI( void );
 
-# 414 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\can2510.h"
+# 414 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\can2510.h"
 void CAN2510Initialize(  unsigned int configuration,
  unsigned char brp,
  unsigned char interruptFlags,
@@ -4971,7 +4971,7 @@ unsigned char CAN2510DataRead(  unsigned char bufferNum,
  unsigned char *numBytes,
  unsigned char *data );
 
-# 64 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\capture.h"
+# 64 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\capture.h"
 union capstatus
 {
 
@@ -5010,7 +5010,7 @@ void OpenCapture2 ( unsigned char config);
 unsigned int ReadCapture2 (void);
 void CloseCapture2 (void);
 
-# 385 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\compare.h"
+# 385 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\compare.h"
 void OpenCompare1(unsigned char config,unsigned int period);
 void CloseCompare1(void);
 
@@ -5018,12 +5018,12 @@ void CloseCompare1(void);
 void OpenCompare2(unsigned char config, unsigned int period);
 void CloseCompare2(void);
 
-# 36 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\EEP.h"
+# 36 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\EEP.h"
 void Busy_eep ( void );
 unsigned char Read_b_eep( unsigned int badd );
 void Write_b_eep( unsigned int badd, unsigned char bdat );
 
-# 2 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stddef.h"
+# 2 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\stddef.h"
 typedef int ptrdiff_t;
 typedef unsigned size_t;
 typedef unsigned short wchar_t;
@@ -5031,7 +5031,7 @@ typedef unsigned short wchar_t;
 # 13
 extern int errno;
 
-# 65 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\GenericTypeDefs.h"
+# 65 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\GenericTypeDefs.h"
 typedef enum _BOOL { FALSE = 0, TRUE } BOOL;
 
 
@@ -5466,7 +5466,7 @@ struct
 } bits;
 } QWORD_VAL;
 
-# 113 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\flash.h"
+# 113 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\flash.h"
 extern void ReadFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
 
 # 120
@@ -5476,7 +5476,7 @@ extern void WriteBlockFlash(unsigned long startaddr, unsigned char num_blocks, u
 
 extern void WriteBytesFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
 
-# 775 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\i2c.h"
+# 775 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\i2c.h"
 void IdleI2C( void );
 
 void OpenI2C( unsigned char sync_mode, unsigned char slew );
@@ -5514,7 +5514,7 @@ unsigned char address,
 unsigned char *rdptr,
 unsigned char length );
 
-# 325 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\mwire.h"
+# 325 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\mwire.h"
 void OpenMwire( unsigned char sync_mode );
 
 unsigned char ReadMwire( unsigned char high_byte,
@@ -5526,7 +5526,7 @@ signed char WriteMwire( unsigned char data_out );
 # 354
 void getsMwire( unsigned char *rdptr, unsigned char length );
 
-# 126 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\portb.h"
+# 126 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\portb.h"
 void OpenPORTB( unsigned char config);
 
 # 176
@@ -5538,7 +5538,7 @@ void OpenRB1INT( unsigned char config);
 # 211
 void OpenRB2INT( unsigned char config);
 
-# 85 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\pwm.h"
+# 85 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\pwm.h"
 union PWMDC
 {
 unsigned int lpwm;
@@ -5559,7 +5559,7 @@ void SetDCPWM2( unsigned int duty_cycle);
 # 492
 void ClosePWM2 (void);
 
-# 16 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\reset.h"
+# 16 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\reset.h"
 char isMCLR(void);
 void StatusReset(void);
 char isPOR(void);
@@ -5577,12 +5577,12 @@ char isWDTWU(void);
 
 char isLVD(void);
 
-# 687 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\rtcc.h"
+# 687 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\rtcc.h"
 void Open_RTCC(void);
 void Close_RTCC(void);
 unsigned char update_RTCC(void);
 
-# 97 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\sw_i2c.h"
+# 97 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\sw_i2c.h"
 void SWStopI2C ( void );
 void SWStartI2C ( void );
 void SWRestartI2C ( void );
@@ -5595,7 +5595,7 @@ signed char SWWriteI2C(  unsigned char data_out );
 signed char SWGetsI2C(  unsigned char *rdptr,  unsigned char length );
 signed char SWPutsI2C(  unsigned char *wrptr );
 
-# 84 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\sw_spi.h"
+# 84 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\sw_spi.h"
 void OpenSWSPI(void);
 
 
@@ -5607,7 +5607,7 @@ void SetCSSWSPI(void);
 
 void ClearCSSWSPI(void);
 
-# 47 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\sw_uart.h"
+# 47 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\sw_uart.h"
 void OpenUART(void);
 
 unsigned char ReadUART(void);
@@ -5623,7 +5623,7 @@ extern void DelayRXBitUART (void);
 extern void DelayRXHalfBitUART(void);
 extern void DelayTXBitUART (void);
 
-# 36 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\timers.h"
+# 36 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\timers.h"
 union Timers
 {
 unsigned int lt;
@@ -5655,7 +5655,7 @@ void WriteTimer3 ( unsigned int timer3);
 # 1179
 void SetTmrCCPSrc( unsigned char );
 
-# 568 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\usart.h"
+# 568 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\usart.h"
 union USART
 {
 unsigned char val;
@@ -5681,7 +5681,7 @@ void putrsUSART ( const  char *data);
 # 654
 void baudUSART ( unsigned char baudconfig);
 
-# 87 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\xlcd.h"
+# 87 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\xlcd.h"
 void OpenXLCD( unsigned char);
 
 # 92
@@ -5716,7 +5716,7 @@ extern void DelayFor18TCY(void);
 extern void DelayPORXLCD(void);
 extern void DelayXLCD(void);
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\delays.h"
+# 13 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\delays.h"
 void Delay1TCYx(unsigned char);
 
 # 19
@@ -5731,7 +5731,7 @@ void Delay1KTCYx(unsigned char);
 # 37
 void Delay10KTCYx(unsigned char);
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18.h"
+# 18 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18.h"
 __attribute__((__unsupported__("The flash_write routine is no longer supported. Please use the peripheral library functions: WriteBytesFlash, WriteBlockFlash or WriteWordFlash"))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 
 
@@ -5812,7 +5812,7 @@ extern __nonreentrant void _delay3(unsigned char);
 
 
 
-MSSP_init()
+void MSSP_init()
 {
 
 TRISCbits.TRISC7 = 0;
@@ -5835,6 +5835,7 @@ unsigned char MSSP_transfer(unsigned char data)
 SSPBUF = data;
 while(!SSPSTATbits.BF);
 SSPSTATbits.BF = 0;
+return SSPBUF;
 }
 
 void main()

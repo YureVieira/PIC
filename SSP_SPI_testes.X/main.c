@@ -71,13 +71,13 @@
 
 #define _XTAL_FREQ 4000000
 
-MSSP_init()
+void MSSP_init()
 {
     //Pinos(18F2550)
     TRISCbits.TRISC7 = 0;   //SDO
-//    TRISCbits.TRISC7 = 0;   //SDO (18f5420)
+//    TRISCbits.TRISC7 = 0;   //SDO (18f4520)
     TRISBbits.TRISB1 = 0;     //SCK
-//    TRISCbits.TRISC3 = 0;   //SCK (18f5420)
+//    TRISCbits.TRISC3 = 0;   //SCK (18f4520)
     TRISAbits.TRISA5 = 0;       //SS
 
     //Modo SPI
@@ -94,6 +94,7 @@ unsigned char MSSP_transfer(unsigned char data)
     SSPBUF = data;
     while(!SSPSTATbits.BF);
     SSPSTATbits.BF = 0;
+    return SSPBUF;
 }
 
 void main()
