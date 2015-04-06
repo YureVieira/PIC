@@ -37,9 +37,9 @@ inline void UART_init()
     RCSTAbits.SPEN = 1;     //Habilita a porta serial
     RCSTAbits.CREN = 1;     //Habilita recep??o
 
-    //Baudrate de 2400
-    //BAUDCONbits.BRG16 = 0;
-    TXSTAbits.BRGH = 0;
+    //Baudrate de 9600
+    BAUDCONbits.BRG16 = 0;
+    TXSTAbits.BRGH = 1;
     SPBRG = 25;
 }
 int UART_available()
