@@ -25,7 +25,7 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC18F2550</targetDevice>
+        <targetDevice>PIC16F628A</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD3PlatformTool</platformTool>
@@ -136,7 +136,7 @@
         <property key="memories.eeprom" value="true"/>
         <property key="memories.flashdata" value="true"/>
         <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.end" value="0x7fff"/>
+        <property key="memories.programmemory.end" value="0x7ff"/>
         <property key="memories.programmemory.partition2" value="true"/>
         <property key="memories.programmemory.partition2.end"
                   value="${memories.programmemory.partition2.end.value}"/>
@@ -149,7 +149,7 @@
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preserveeeprom" value="false"/>
         <property key="programoptions.preserveprogramrange" value="false"/>
-        <property key="programoptions.preserveprogramrange.end" value="0x7fff"/>
+        <property key="programoptions.preserveprogramrange.end" value="0x7ff"/>
         <property key="programoptions.preserveprogramrange.start" value="0x0"/>
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.programcalmem" value="false"/>
@@ -161,7 +161,7 @@
       </ICD3PlatformTool>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
-        <property key="output-file-format" value="+mcof,-elf"/>
+        <property key="output-file-format" value="-mcof,+elf"/>
         <property key="stack-size-high" value="auto"/>
         <property key="stack-size-low" value="auto"/>
         <property key="stack-size-main" value="auto"/>

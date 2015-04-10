@@ -1,9 +1,30 @@
-#include <SPI.h>
-#define MFRC522_CS 5
-#define MFRC522_RESET 6
-/******************************************************************************/
-/******************************************************************************/
-#define SPI_RST_PIN 3
+#include <xc.h>
+
+// CONFIG
+#pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator: High-speed crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
+#pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
+#pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
+#pragma config MCLRE = OFF      // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD)
+#pragma config BOREN = ON       // Brown-out Detect Enable bit (BOD enabled)
+#pragma config LVP = ON         // Low-Voltage Programming Enable bit (RB4/PGM pin has PGM function, low-voltage programming enabled)
+#pragma config CPD = OFF        // Data EE Memory Code Protection bit (Data memory code protection off)
+#pragma config CP = OFF         // Flash Program Memory Code Protection bit (Code protection off)
+
+
+#include <stdio.h>
+#define _XTAL_FREQ 16000000
+#include "SPI.h"
+#include "UART.h"
+#define MFRC522_CS PORTAbits.RA1
+#define MFRC522_Rst PORTAbits.RA0
+#define MFRC522_CS_Direction TRISAbits.TRISA1
+#define MFRC522_Rst_Direction TRISAbits.TRISA0
+
+#define TRIS_LED1 TRISBbits.TRISB4
+#define TRIS_LED2 TRISBbits.TRISB0
+#define LED1 PORTBbits.RB4
+#define LED2 PORTBbits.RB0
+
 //MF522 Command word
 #define PCD_IDLE              0x00               //NO action; Cancel the current command
 #define PCD_AUTHENT           0x0E               //Authentication Key
@@ -101,18 +122,18 @@
 #define     RESERVED34            0x3F
 static void MFRC522_Wr( char addr, char value )
 {
-  digitalWrite(MFRC522_CS,0);
-  SPI.transfer( ( addr << 1 ) & 0x7E );
-  SPI.transfer( value );
-  digitalWrite(MFRC522_CS,1);
+  MFRC522_CS = 0;
+  SPI_transfer( ( addr << 1 ) & 0x7E );
+  SPI_transfer( value );
+  MFRC522_CS = 1;
 }
 static char MFRC522_Rd( char addr )
 {
   char value;
-  digitalWrite(MFRC522_CS,0);
-  SPI.transfer( (( addr << 1 ) & 0x7E) | 0x80 );
-  value = SPI.transfer( 0x00 );
-digitalWrite(MFRC522_CS,1);
+  MFRC522_CS = 0;
+  SPI_transfer( (( addr << 1 ) & 0x7E) | 0x80 );
+  value = SPI_transfer( 0x00 );
+  MFRC522_CS = 1;
   return value;
 }
 static void MFRC522_Clear_Bit( char addr, char mask )
@@ -137,12 +158,10 @@ void MFRC522_AntennaOff()
 }
 void MFRC522_Init()
 {
-  SPI.setBitOrder(MSBFIRST);
-  SPI.setDataMode(SPI_MODE0);
-  pinMode(MFRC522_CS,OUTPUT);
-  pinMode(MFRC522_RESET,OUTPUT);
-  digitalWrite(MFRC522_CS,1);
-  digitalWrite(MFRC522_RESET,1);
+  MFRC522_CS_Direction = 0;
+  MFRC522_Rst_Direction = 0;
+  MFRC522_CS = 1;
+  MFRC522_Rst = 1;
 
   MFRC522_Reset();
 
@@ -290,7 +309,7 @@ void MFRC522_CRC( char *dataIn, char length, char *dataOut )
   MFRC522_Wr( COMMANDREG, PCD_CALCCRC );
 
   i = 0xFF;
-  //Espera a finalizaÃ§Ã£o do Calculo do CRC
+  //Espera a finalização do Calculo do CRC
   do
   {
     n = MFRC522_Rd( DIVIRQREG );
@@ -470,53 +489,51 @@ char MFRC522_ReadCardSerial( char *str )
     return 0;
 }
 
-/******************************************************************************/
-/******************************************************************************/
-char key[6] = { 
-  0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-char writeData[] = "Microcontrolandos";
-void setup()
+
+//char key[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+//char writeData[] = "Microcontrolandos";
+void main()
 {
-  Serial.begin(9600);
-  // initialize SPI:
-  SPI.begin(); 
-  MFRC522_Init();
-  Serial.print("Programa em funcionamento!\n");
-  SPI.setDataMode(SPI_MODE0);
-}
-char msg[12];
-char UID[6];
-char TagType;
-char size;
-void loop()
-{
-  Serial.println(".");
-  //Verifica se hÃ¡ algum cartÃ£o
-  if( MFRC522_isCard( &TagType ) )
+//  char msg[12];
+//  char UID[6];
+//  unsigned TagType;
+//  char size;
+//  char i;
+//  //Inicializa Soft SPI
+//  SPI_init(0);
+//
+//  //inicializa o modulo RFID
+//  MFRC522_Init();
+
+  UART_init();
+//  printf("Leitor RFID\n");
+//  TRIS_LED1 = 0;
+//  TRIS_LED2 = 0;
+  while(1)
   {
-    //Exibe o tipo do cartÃ£o no display
-    Serial.print("Tipo de Tag: ");
-    Serial.print(TagType);
-    //Faz a leitura do numero de serie
-    if( MFRC522_ReadCardSerial( UID ) )
-    {
-      Serial.print("Codigo: ");
-      for(int i=0; i < 5; i++)
-      {
-        Serial.print((int)UID[i]);
-        Serial.print(" ");
-      }
-      Serial.println();
-      size = MFRC522_SelectTag( UID );
-    }
-    //Estado de hibernaÃ§Ã£o
-    //MFRC522_Halt();
+//    LED2 = ~LED2;
+    printf("Em espera...\n");
+//    if( MFRC522_isCard( &TagType ) )
+//    {
+////        LED1 = ~LED1;
+//      //Exibe o tipo do cartão no display
+//      printf("Tipo de Tag: %u",TagType);
+//      //Faz a leitura do numero de serie
+//      if( MFRC522_ReadCardSerial( UID ) )
+//      {
+//        printf("Codigo: ");
+//        for(int i=0; i < 5; i++)
+//        {
+//          printf("%d",(int)UID[i]);
+//          printf(" ");
+//        }
+//        printf("\n");
+//        size = MFRC522_SelectTag( UID );
+//      }
+//      //Estado de hibernação
+//      //MFRC522_Halt();
+//    }
+    __delay_ms(100);
   }
-  delay(100);
-
 }
-
-
-
-
 
