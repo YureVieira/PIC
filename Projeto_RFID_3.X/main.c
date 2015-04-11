@@ -1,7 +1,7 @@
 #include <xc.h>
 
 // CONFIG
-#pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator: High-speed crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
+#pragma config FOSC = INTOSCIO  // Oscillator Selection bits (INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = OFF      // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD)
@@ -12,18 +12,97 @@
 
 
 #include <stdio.h>
-#define _XTAL_FREQ 16000000
-#include "SPI.h"
-#include "UART.h"
+#define _XTAL_FREQ 4000000
+
+/******************************************************************************/
+#ifndef SPI_TRIS
+#define SPI_TRIS TRISB
+#endif
+#ifndef SPI_PORT
+#define SPI_PORT PORTB
+#endif
+
+#ifndef SCK_PIN
+#define SCK_PIN 7
+#endif
+#ifndef MOSI_PIN
+#define MOSI_PIN 6
+#endif
+#ifndef MISO_PIN
+#define MISO_PIN 5
+#endif
+
+
+#define SPI_MODE0 0
+#define SPI_MODE1 1
+#define SPI_MODE2 2
+#define SPI_MODE3 3
+
+unsigned char _mode;
+void SPI_init(unsigned char mode)
+{
+    _mode = mode;
+    SPI_TRIS &= ~(1<<SCK_PIN | 1<<MOSI_PIN);
+    SPI_TRIS |= (1<<MISO_PIN);
+    if(mode == 2 || mode == 3)
+        SPI_PORT |= (1<<SCK_PIN);             //Repouso em alto
+    else
+        SPI_PORT &= ~(1<<SCK_PIN);             //Repouso em baixo
+}
+unsigned char SPI_transfer(unsigned char data)
+{
+    unsigned char ret;
+    if(_mode==1 || _mode==3)
+    {
+    for(int i=0;i<8;i++)
+    {
+        //Coloca o bit no pino
+        if(data & 0x80)SPI_PORT |= (1<<MOSI_PIN);
+        else SPI_PORT &= ~(1<<MOSI_PIN);
+
+        SPI_PORT ^= (1<<SCK_PIN);
+        if(SPI_PORT & (1<<MISO_PIN))ret|=1;    //LÃª o pino miso
+        __delay_us(10);
+        SPI_PORT ^= (1<<SCK_PIN);
+
+        ret<<=1;
+        data<<=1;
+        __delay_us(10);
+    }
+    }
+    else
+    {
+        unsigned char ret;
+        for(int i=0;i<8;i++)
+        {
+
+           if(SPI_PORT & (1<<MISO_PIN))ret|=1;    //LÃª o pino miso
+           SPI_PORT ^= (1<<SCK_PIN);
+
+           //Coloca o bit no pino
+           if(data & 0x80)SPI_PORT |= (1<<MOSI_PIN);
+           else SPI_PORT &= ~(1<<MOSI_PIN);
+           __delay_us(10);
+           SPI_PORT ^= (1<<SCK_PIN);
+
+           ret<<=1;
+           data<<=1;
+          __delay_us(10);
+            }
+    }
+    return ret;
+}
+/******************************************************************************/
+
+/******************************************************************************/
 #define MFRC522_CS PORTAbits.RA1
 #define MFRC522_Rst PORTAbits.RA0
 #define MFRC522_CS_Direction TRISAbits.TRISA1
 #define MFRC522_Rst_Direction TRISAbits.TRISA0
 
-#define TRIS_LED1 TRISBbits.TRISB4
-#define TRIS_LED2 TRISBbits.TRISB0
-#define LED1 PORTBbits.RB4
-#define LED2 PORTBbits.RB0
+#define TRIS_LED1 TRISBbits.TRISB3
+#define LED1 PORTBbits.RB3
+//#define LED2 PORTBbits.RB0
 
 //MF522 Command word
 #define PCD_IDLE              0x00               //NO action; Cancel the current command
@@ -494,33 +573,35 @@ char MFRC522_ReadCardSerial( char *str )
 //char writeData[] = "Microcontrolandos";
 void main()
 {
-//  char msg[12];
-//  char UID[6];
-//  unsigned TagType;
-//  char size;
-//  char i;
-//  //Inicializa Soft SPI
-//  SPI_init(0);
-//
-//  //inicializa o modulo RFID
-//  MFRC522_Init();
+  char UID[6];
+  unsigned TagType;
+  char size;
+  char i;
+  //Inicializa Soft SPI
+  SPI_init(0);
 
-  UART_init();
-//  printf("Leitor RFID\n");
-//  TRIS_LED1 = 0;
-//  TRIS_LED2 = 0;
+  //inicializa o modulo RFID
+  MFRC522_Init();
+
+//  UART_init();
+  TRIS_LED1 = 0;
+  for(int i=0;i<10;i++)
+  {
+      LED1 = 1;
+      __delay_ms(500);
+      LED1 = 0;
+      __delay_ms(500);
+  }
   while(1)
   {
-//    LED2 = ~LED2;
-    printf("Em espera...\n");
-//    if( MFRC522_isCard( &TagType ) )
-//    {
-////        LED1 = ~LED1;
-//      //Exibe o tipo do cartão no display
+    if( MFRC522_isCard( &TagType ) )
+    {
+      //Exibe o tipo do cartão no display
 //      printf("Tipo de Tag: %u",TagType);
-//      //Faz a leitura do numero de serie
-//      if( MFRC522_ReadCardSerial( UID ) )
-//      {
+      //Faz a leitura do numero de serie
+      if( MFRC522_ReadCardSerial( UID ) )
+      {
+          LED1 = 0;
 //        printf("Codigo: ");
 //        for(int i=0; i < 5; i++)
 //        {
@@ -528,11 +609,12 @@ void main()
 //          printf(" ");
 //        }
 //        printf("\n");
-//        size = MFRC522_SelectTag( UID );
-//      }
-//      //Estado de hibernação
-//      //MFRC522_Halt();
-//    }
+        size = MFRC522_SelectTag( UID );
+      }
+      //Estado de hibernação
+      //MFRC522_Halt();
+    }
+    LED1 = 1;
     __delay_ms(100);
   }
 }
