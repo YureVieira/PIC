@@ -810,12 +810,12 @@ extern __nonreentrant void _delay(unsigned long);
 
 
 # 4 "main.c"
-#pragma config FOSC = INTOSCIO
+#pragma config FOSC = HS
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config BOREN = ON
-#pragma config LVP = ON
+#pragma config MCLRE = ON
+#pragma config BOREN = OFF
+#pragma config LVP = OFF
 #pragma config CPD = OFF
 #pragma config CP = OFF
 
@@ -887,7 +887,79 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 41 "main.c"
+# 6 "UART.c"
+char buffer[16];
+int count=0;
+void putch(char data)
+{
+if(data == 10)
+{
+while(!TXIF)
+continue;
+TXREG = 10;
+while(!TXIF)
+continue;
+TXREG = 13;
+return;
+}
+while(!TXIF)
+continue;
+TXREG = data;
+}
+inline void UART_init()
+{
+
+TRISBbits.TRISB1 = 1;
+TRISBbits.TRISB2 = 1;
+
+
+
+TXSTAbits.CSRC = 1;
+TXSTAbits.TXEN = 1;
+TXSTAbits.SYNC = 0;
+
+
+RCSTAbits.SPEN = 1;
+RCSTAbits.CREN = 1;
+
+
+TXSTAbits.BRGH = 0;
+SPBRG = 25;
+}
+int UART_available()
+{
+return count;
+}
+char UART_read_byte()
+{
+char data = buffer[0];
+count--;
+
+
+for(int i=0;i<count;i++)
+{
+buffer[i]=buffer[i+1];
+}
+return data;
+}
+
+inline void _ISR_UART()
+{
+if(RCIF)
+{
+buffer[count] = RCREG;
+count++;
+}
+}
+
+# 4 "UART.h"
+void putch(char data);
+inline void UART_init();
+int UART_available();
+char UART_read_byte();
+inline void _ISR_UART();
+
+# 31 "SPI.c"
 unsigned char _mode;
 void SPI_init(unsigned char mode)
 {
@@ -912,12 +984,12 @@ else PORTB &= ~(1<<6);
 
 PORTB ^= (1<<7);
 if(PORTB & (1<<5))ret|=1;
-_delay((unsigned long)((10)*(4000000/4000000.0)));
+_delay((unsigned long)((10)*(16000000/4000000.0)));
 PORTB ^= (1<<7);
 
 ret<<=1;
 data<<=1;
-_delay((unsigned long)((10)*(4000000/4000000.0)));
+_delay((unsigned long)((10)*(16000000/4000000.0)));
 }
 }
 else
@@ -932,18 +1004,22 @@ PORTB ^= (1<<7);
 
 if(data & 0x80)PORTB |= (1<<6);
 else PORTB &= ~(1<<6);
-_delay((unsigned long)((10)*(4000000/4000000.0)));
+_delay((unsigned long)((10)*(16000000/4000000.0)));
 PORTB ^= (1<<7);
 
 ret<<=1;
 data<<=1;
-_delay((unsigned long)((10)*(4000000/4000000.0)));
+_delay((unsigned long)((10)*(16000000/4000000.0)));
 }
 }
 return ret;
 }
 
-# 202
+# 5 "SPI.h"
+void SPI_init(unsigned char mode);
+unsigned char SPI_transfer(unsigned char data);
+
+# 124 "main.c"
 static void MFRC522_Wr( char addr, char value )
 {
 PORTAbits.RA1 = 0;
@@ -1112,6 +1188,7 @@ unsigned backBits;
 MFRC522_Wr( 0x0D, 0x07 );
 TagType[0] = reqMode;
 _status = MFRC522_ToCard( 0x0C, TagType, 1, TagType, &backBits );
+printf("Ok\n");
 if ( (_status != 0) || (backBits != 0x10) )
 {
 _status = 2;
@@ -1291,7 +1368,7 @@ _status = 2;
 return _status;
 }
 
-# 553
+# 476
 char MFRC522_isCard( char *TagType )
 {
 if (MFRC522_Request( 0x26, TagType ) == 0)
@@ -1316,43 +1393,52 @@ return 0;
 void main()
 {
 char UID[6];
-unsigned TagType;
+unsigned char TagType;
 char size;
-char i;
 
-SPI_init(0);
+
+SPI_init(1);
 
 
 MFRC522_Init();
 
-
+UART_init();
 TRISBbits.TRISB3 = 0;
 for(int i=0;i<10;i++)
 {
+printf("Ola mundo!");
 PORTBbits.RB3 = 1;
-_delay((unsigned long)((500)*(4000000/4000.0)));
+_delay((unsigned long)((100)*(16000000/4000.0)));
 PORTBbits.RB3 = 0;
-_delay((unsigned long)((500)*(4000000/4000.0)));
+_delay((unsigned long)((100)*(16000000/4000.0)));
 }
 while(1)
 {
+printf(".");
+
+
 if( MFRC522_isCard( &TagType ) )
 {
 
-
+printf("Tipo de Tag: %u",TagType);
 
 if( MFRC522_ReadCardSerial( UID ) )
 {
 PORTBbits.RB3 = 0;
-
-# 612
+printf("Codigo: ");
+for(int i=0; i < 5; i++)
+{
+printf("%d",(int)UID[i]);
+printf(" ");
+}
+printf("\n");
 size = MFRC522_SelectTag( UID );
 }
 
 
 }
 PORTBbits.RB3 = 1;
-_delay((unsigned long)((100)*(4000000/4000.0)));
+_delay((unsigned long)((250)*(16000000/4000.0)));
 }
 }
 
