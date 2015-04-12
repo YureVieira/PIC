@@ -281,6 +281,12 @@ const static unsigned int dpowers[] = {1, 10, 100, 1000, 10000,
 # 359
 };
 
+
+const static unsigned int hexpowers[] = {1, 0x10, 0x100, 0x1000,
+
+# 366
+};
+
 # 455
 int
 
@@ -328,9 +334,15 @@ switch(c = *f++) {
 case 0:
 goto alldone;
 
-# 706
-case 'd':
-case 'i':
+# 721
+case 'X':
+
+# 727
+case 'x':
+
+
+flag |= 0x80;
+
 break;
 
 # 811
@@ -342,49 +354,48 @@ continue;
 
 
 case 'u':
-flag |= 0x40;
+flag |= 0xC0;
 break;
 
 
 }
 
-# 1260
-if((flag & 0x40) == 0x00)
-
-{
-
-# 1268
-_val._val = (int)(*(int *)__va_arg((*(int **)ap), (int)0));
-
-if((int)_val._val < 0) {
-flag |= 0x03;
-_val._val = -_val._val;
-}
-
-}
-
-else
-
-
-
-
+# 1282
 {
 
 # 1295
 _val._val = (*(unsigned *)__va_arg((*(unsigned **)ap), (unsigned)0));
 }
 
-# 1314
+# 1303
+switch((unsigned char)(flag & (0xC0))) {
+
+# 1311
+case 0xC0:
+
+
 for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
 if(_val._val < dpowers[c])
 break;
 
+break;
+
+
+
+
+case 0x80:
+
+for(c = 1 ; c != sizeof hexpowers/sizeof hexpowers[0] ; c++)
+if(_val._val < hexpowers[c])
+break;
+
+break;
+
+# 1345
+}
+
 # 1431
 {
-
-# 1447
-if(flag & 0x03)
-(putch('-') );
 
 # 1478
 }
@@ -394,11 +405,32 @@ prec = c;
 
 while(prec--) {
 
-# 1487
+switch((unsigned char)(flag & (0xC0)))
+
 {
 
-# 1498
+# 1495
+case 0xC0:
+
+
 c = (_val._val / dpowers[prec]) % 10 + '0';
+
+break;
+
+# 1506
+case 0x80:
+
+{
+unsigned char idx = (_val._val / hexpowers[prec]) & 0xF;
+
+
+
+c = "0123456789ABCDEF"[idx];
+
+# 1517
+}
+
+break;
 
 # 1532
 }

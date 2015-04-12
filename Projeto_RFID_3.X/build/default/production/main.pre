@@ -892,16 +892,6 @@ char buffer[16];
 int count=0;
 void putch(char data)
 {
-if(data == 10)
-{
-while(!TXIF)
-continue;
-TXREG = 10;
-while(!TXIF)
-continue;
-TXREG = 13;
-return;
-}
 while(!TXIF)
 continue;
 TXREG = data;
@@ -971,48 +961,40 @@ PORTB |= (1<<7);
 else
 PORTB &= ~(1<<7);
 }
+
 unsigned char SPI_transfer(unsigned char data)
 {
-unsigned char ret;
+unsigned char byte;
+byte = data;
 if(_mode==1 || _mode==3)
 {
 for(int i=0;i<8;i++)
 {
-
-if(data & 0x80)PORTB |= (1<<6);
+if(byte & 0x80) PORTB |= (1<<6);
 else PORTB &= ~(1<<6);
-
-PORTB ^= (1<<7);
-if(PORTB & (1<<5))ret|=1;
 _delay((unsigned long)((10)*(16000000/4000000.0)));
 PORTB ^= (1<<7);
-
-ret<<=1;
-data<<=1;
+byte <<= 1;
+if((PORTB & (1<<5))) byte |= 0x01;
 _delay((unsigned long)((10)*(16000000/4000000.0)));
+PORTB ^= (1<<7);
 }
 }
 else
 {
-unsigned char ret;
 for(int i=0;i<8;i++)
 {
-
-if(PORTB & (1<<5))ret|=1;
-PORTB ^= (1<<7);
-
-
-if(data & 0x80)PORTB |= (1<<6);
+if(byte & 0x80)PORTB |= (1<<6);
 else PORTB &= ~(1<<6);
+byte <<= 1;
 _delay((unsigned long)((10)*(16000000/4000000.0)));
 PORTB ^= (1<<7);
-
-ret<<=1;
-data<<=1;
+if((PORTB & (1<<5))) byte |= 0x01;
 _delay((unsigned long)((10)*(16000000/4000000.0)));
+PORTB ^= (1<<7);
 }
 }
-return ret;
+return byte;
 }
 
 # 5 "SPI.h"
@@ -1020,14 +1002,14 @@ void SPI_init(unsigned char mode);
 unsigned char SPI_transfer(unsigned char data);
 
 # 124 "main.c"
-static void MFRC522_Wr( char addr, char value )
+void MFRC522_Wr( char addr, char value )
 {
 PORTAbits.RA1 = 0;
 SPI_transfer( ( addr << 1 ) & 0x7E );
 SPI_transfer( value );
 PORTAbits.RA1 = 1;
 }
-static char MFRC522_Rd( char addr )
+char MFRC522_Rd( char addr )
 {
 char value;
 PORTAbits.RA1 = 0;
@@ -1036,11 +1018,11 @@ value = SPI_transfer( 0x00 );
 PORTAbits.RA1 = 1;
 return value;
 }
-static void MFRC522_Clear_Bit( char addr, char mask )
+void MFRC522_Clear_Bit( char addr, char mask )
 {
 MFRC522_Wr( addr, MFRC522_Rd( addr ) & (~mask) );
 }
-static void MFRC522_Set_Bit( char addr, char mask )
+void MFRC522_Set_Bit( char addr, char mask )
 {
 MFRC522_Wr( addr, MFRC522_Rd( addr ) | mask );
 }
@@ -1188,7 +1170,6 @@ unsigned backBits;
 MFRC522_Wr( 0x0D, 0x07 );
 TagType[0] = reqMode;
 _status = MFRC522_ToCard( 0x0C, TagType, 1, TagType, &backBits );
-printf("Ok\n");
 if ( (_status != 0) || (backBits != 0x10) )
 {
 _status = 2;
@@ -1368,7 +1349,7 @@ _status = 2;
 return _status;
 }
 
-# 476
+# 475
 char MFRC522_isCard( char *TagType )
 {
 if (MFRC522_Request( 0x26, TagType ) == 0)
@@ -1396,48 +1377,46 @@ char UID[6];
 unsigned char TagType;
 char size;
 
+UART_init();
 
-SPI_init(1);
+SPI_init(0);
 
 
 MFRC522_Init();
 
-UART_init();
 TRISBbits.TRISB3 = 0;
 for(int i=0;i<10;i++)
 {
-printf("Ola mundo!");
 PORTBbits.RB3 = 1;
-_delay((unsigned long)((100)*(16000000/4000.0)));
+_delay((unsigned long)((250)*(16000000/4000.0)));
 PORTBbits.RB3 = 0;
-_delay((unsigned long)((100)*(16000000/4000.0)));
+_delay((unsigned long)((250)*(16000000/4000.0)));
 }
 while(1)
 {
-printf(".");
+
 
 
 if( MFRC522_isCard( &TagType ) )
 {
 
-printf("Tipo de Tag: %u",TagType);
+printf("Tipo de Tag: %u\n\r",TagType);
 
 if( MFRC522_ReadCardSerial( UID ) )
 {
-PORTBbits.RB3 = 0;
+PORTBbits.RB3 = 1;
 printf("Codigo: ");
 for(int i=0; i < 5; i++)
 {
-printf("%d",(int)UID[i]);
-printf(" ");
+printf("%X ",UID[i]);
 }
-printf("\n");
+printf("\n\r");
 size = MFRC522_SelectTag( UID );
 }
 
 
 }
-PORTBbits.RB3 = 1;
+PORTBbits.RB3 = 0;
 _delay((unsigned long)((250)*(16000000/4000.0)));
 }
 }

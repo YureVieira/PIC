@@ -39,46 +39,38 @@ void SPI_init(unsigned char mode)
     else
         SPI_PORT &= ~(1<<SCK_PIN);             //Repouso em baixo
 }
+
 unsigned char SPI_transfer(unsigned char data)
 {
-    unsigned char ret;
+    unsigned char byte;
+    byte = data;
     if(_mode==1 || _mode==3)
     {
-    for(int i=0;i<8;i++)
-    {
-        //Coloca o bit no pino
-        if(data & 0x80)SPI_PORT |= (1<<MOSI_PIN);
-        else SPI_PORT &= ~(1<<MOSI_PIN);
-
-        SPI_PORT ^= (1<<SCK_PIN);
-        if(SPI_PORT & (1<<MISO_PIN))ret|=1;    //Lê o pino miso
-        __delay_us(10);
-        SPI_PORT ^= (1<<SCK_PIN);
-
-        ret<<=1;
-        data<<=1;
-        __delay_us(10);
-    }
+        for(int i=0;i<8;i++)
+        {
+            if(byte & 0x80) SPI_PORT |= (1<<MOSI_PIN);
+            else SPI_PORT &= ~(1<<MOSI_PIN);
+            __delay_us(10);
+            SPI_PORT ^= (1<<SCK_PIN); /* a slave shifts out output data bit */
+            byte <<= 1;
+            if((SPI_PORT & (1<<MISO_PIN))) byte |= 0x01;
+            __delay_us(10);
+            SPI_PORT ^= (1<<SCK_PIN); /* a slave latches input data bit */
+        }
     }
     else
     {
-        unsigned char ret;
         for(int i=0;i<8;i++)
         {
-
-           if(SPI_PORT & (1<<MISO_PIN))ret|=1;    //Lê o pino miso
-           SPI_PORT ^= (1<<SCK_PIN);
-
-           //Coloca o bit no pino
-           if(data & 0x80)SPI_PORT |= (1<<MOSI_PIN);
-           else SPI_PORT &= ~(1<<MOSI_PIN);
-           __delay_us(10);
-           SPI_PORT ^= (1<<SCK_PIN);
-
-           ret<<=1;
-           data<<=1;
-          __delay_us(10);
-            }
+            if(byte & 0x80)SPI_PORT |= (1<<MOSI_PIN);
+            else SPI_PORT &= ~(1<<MOSI_PIN);
+            byte <<= 1;
+            __delay_us(10);
+            SPI_PORT ^= (1<<SCK_PIN); /* a slave latches input data bit */
+            if((SPI_PORT & (1<<MISO_PIN))) byte |= 0x01;
+            __delay_us(10);
+            SPI_PORT ^= (1<<SCK_PIN);
+        }
     }
-    return ret;
+    return byte;
 }

@@ -7,16 +7,6 @@ char buffer[16];    //Buffer
 int count=0;          //Quantidade de bytes do buffer
 void putch(char data)
 {
-    if(data == 10)
-    {
-        while(!TXIF)
-        continue;
-        TXREG = 10;
-        while(!TXIF)
-        continue;
-        TXREG = 13;
-        return;
-    }
     while(!TXIF)
         continue;
     TXREG = data;

@@ -121,14 +121,14 @@
 #define     RESERVED32            0x3D
 #define     RESERVED33            0x3E
 #define     RESERVED34            0x3F
-static void MFRC522_Wr( char addr, char value )
+void MFRC522_Wr( char addr, char value )
 {
   MFRC522_CS = 0;
   SPI_transfer( ( addr << 1 ) & 0x7E );
   SPI_transfer( value );
   MFRC522_CS = 1;
 }
-static char MFRC522_Rd( char addr )
+char MFRC522_Rd( char addr )
 {
   char value;
   MFRC522_CS = 0;
@@ -137,11 +137,11 @@ static char MFRC522_Rd( char addr )
   MFRC522_CS = 1;
   return value;
 }
-static void MFRC522_Clear_Bit( char addr, char mask )
+void MFRC522_Clear_Bit( char addr, char mask )
 {
   MFRC522_Wr( addr, MFRC522_Rd( addr ) & (~mask) );
 }
-static void MFRC522_Set_Bit( char addr, char mask )
+void MFRC522_Set_Bit( char addr, char mask )
 {
   MFRC522_Wr( addr, MFRC522_Rd( addr ) | mask );
 }
@@ -289,7 +289,6 @@ char MFRC522_Request( char reqMode, char *TagType )
   MFRC522_Wr( BITFRAMINGREG, 0x07 ); //TxLastBists = BitFramingReg[2..0]   ???
   TagType[0] = reqMode;
   _status = MFRC522_ToCard( PCD_TRANSCEIVE, TagType, 1, TagType, &backBits );
-  printf("Ok\n");
   if ( (_status != MI_OK) || (backBits != 0x10) )
   {
     _status = MI_ERR;
@@ -500,48 +499,46 @@ void main()
   unsigned char TagType;
   char size;
 //  char i;
+  UART_init();
   //Inicializa Soft SPI
-   SPI_init(1);
+   SPI_init(0);
 
   //inicializa o modulo RFID
   MFRC522_Init();
-
-  UART_init();
+  
   TRIS_LED1 = 0;
   for(int i=0;i<10;i++)
   {
-      printf("Ola mundo!");
       LED1 = 1;
-      __delay_ms(100);
+      __delay_ms(250);
       LED1 = 0;
-      __delay_ms(100);
+      __delay_ms(250);
   }
   while(1)
   {
-      printf(".");
+//      printf(".");
 //      LED1 = ~LED1;
 //      for(int i = 0;i<10;i++)__delay_ms(250);
     if( MFRC522_isCard( &TagType ) )
     {
       //Exibe o tipo do cartão no display
-      printf("Tipo de Tag: %u",TagType);
+      printf("Tipo de Tag: %u\n\r",TagType);
       //Faz a leitura do numero de serie
       if( MFRC522_ReadCardSerial( UID ) )
       {
-          LED1 = 0;
+          LED1 = 1;
         printf("Codigo: ");
         for(int i=0; i < 5; i++)
         {
-          printf("%d",(int)UID[i]);
-          printf(" ");
+          printf("%X ",UID[i]);
         }
-        printf("\n");
+        printf("\n\r");
         size = MFRC522_SelectTag( UID );
       }
       //Estado de hibernação
       //MFRC522_Halt();
     }
-    LED1 = 1;
+    LED1 = 0;
     __delay_ms(250);
   }
 }
