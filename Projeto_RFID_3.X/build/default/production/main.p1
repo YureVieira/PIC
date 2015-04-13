@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"1520 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
+"1520 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
 [v _TXIF `Vb ~T0 @X0 0 e@100 ]
 "729
 [v _TXREG `Vuc ~T0 @X0 0 e@25 ]
@@ -41,10 +41,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "219
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 [v F599 `(v ~T0 @X0 1 tf1`ul ]
-"154 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
+"154 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
 [v __delay `JF599 ~T0 @X0 0 e ]
 [p i __delay ]
-"164 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
+"164 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
 [s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S7 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
 "163
@@ -60,8 +60,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S35 . . ]
 "896
 [v _TRISAbits `VS35 ~T0 @X0 0 e@133 ]
+"42 D:\Program Files (x86)\Microchip\xc8\v1.33\include\eeprom_routines.h
+[v _eeprom_read `(uc ~T0 @X0 0 ef1`uc ]
+"41
+[v _eeprom_write `(v ~T0 @X0 0 ef2`uc`uc ]
 [p mainexit ]
-"225
+"225 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
 [s S9 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S9 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
 "224
@@ -69,12 +73,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S8 . . ]
 "236
 [v _PORTBbits `VS8 ~T0 @X0 0 e@6 ]
-"206 C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h
+"206 D:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16f628a.h: 47: extern volatile unsigned char INDF @ 0x000;
-"49 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
+"49 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
 [; ;pic16f628a.h: 49: asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
 [; ;pic16f628a.h: 53: extern volatile unsigned char TMR0 @ 0x001;
@@ -2238,150 +2242,362 @@ Version 3.2 HI-TECH Software Intermediate Code
 "491
 [e :UE 162 ]
 }
-"496
-[v _main `(v ~T0 @X0 1 ef ]
-"497
-{
-[; ;main.c: 496: void main()
-[; ;main.c: 497: {
-[e :U _main ]
-[f ]
-"498
-[v _UID `uc ~T0 @X0 -> 6 `i a ]
-"499
-[v _TagType `uc ~T0 @X0 1 a ]
-"500
-[v _size `uc ~T0 @X0 1 a ]
-[; ;main.c: 498: char UID[6];
-[; ;main.c: 499: unsigned char TagType;
-[; ;main.c: 500: char size;
-[; ;main.c: 502: UART_init();
-"502
-[e ( _UART_init ..  ]
-[; ;main.c: 504: SPI_init(0);
-"504
-[e ( _SPI_init (1 -> -> 0 `i `uc ]
-[; ;main.c: 507: MFRC522_Init();
-"507
-[e ( _MFRC522_Init ..  ]
-[; ;main.c: 509: TRISBbits.TRISB3 = 0;
-"509
-[e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 510: for(int i=0;i<10;i++)
-"510
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 10 `i 166  ]
-[e $U 167  ]
-"511
-[e :U 166 ]
-[; ;main.c: 511: {
-{
-[; ;main.c: 512: PORTBbits.RB3 = 1;
-"512
-[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 513: _delay((unsigned long)((250)*(16000000/4000.0)));
-"513
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;main.c: 514: PORTBbits.RB3 = 0;
-"514
-[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 515: _delay((unsigned long)((250)*(16000000/4000.0)));
 "515
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[v _compare_card `(uc ~T0 @X0 1 ef1`*uc ]
 "516
-}
-"510
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 10 `i 166  ]
-[e :U 167 ]
+{
+[; ;main.c: 515: char compare_card(char *card)
+[; ;main.c: 516: {
+[e :U _compare_card ]
+"515
+[v _card `*uc ~T0 @X0 1 r1 ]
 "516
-}
-[; ;main.c: 516: }
-[; ;main.c: 517: while(1)
-"517
-[e :U 170 ]
-[; ;main.c: 518: {
+[f ]
 "518
+[v _index `uc ~T0 @X0 1 a ]
+[; ;main.c: 518: char index = eeprom_read(0);
+[e = _index ( _eeprom_read (1 -> -> 0 `i `uc ]
+[; ;main.c: 519: if(index == 0x01 || index == 0xff) return 0;
+"519
+[e $ ! || == -> _index `i -> 1 `i == -> _index `i -> 255 `i 166  ]
+[e ) -> -> 0 `i `uc ]
+[e $UE 165  ]
+[e :U 166 ]
+[; ;main.c: 520: for(char i=1;i<index;i+=4)
+"520
 {
-[; ;main.c: 522: if( MFRC522_isCard( &TagType ) )
-"522
-[e $ ! != -> ( _MFRC522_isCard (1 &U _TagType `i -> -> -> 0 `i `uc `i 172  ]
-[; ;main.c: 523: {
-"523
-{
-[; ;main.c: 525: printf("Tipo de Tag: %u\n\r",TagType);
-"525
-[e ( _printf , (. :s 1C -> _TagType `i ]
-[; ;main.c: 527: if( MFRC522_ReadCardSerial( UID ) )
-"527
-[e $ ! != -> ( _MFRC522_ReadCardSerial (1 &U _UID `i -> -> -> 0 `i `uc `i 173  ]
-[; ;main.c: 528: {
-"528
-{
-[; ;main.c: 529: PORTBbits.RB3 = 1;
-"529
-[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 530: printf("Codigo: ");
-"530
-[e ( _printf :s 2C ]
-[; ;main.c: 531: for(int i=0; i < 5; i++)
-"531
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 5 `i 174  ]
-[e $U 175  ]
-"532
-[e :U 174 ]
-[; ;main.c: 532: {
-{
-[; ;main.c: 533: printf("%X ",UID[i]);
-"533
-[e ( _printf , (. :s 3C -> *U + &U _UID * -> -> _i `ui `ux -> -> # *U &U _UID `ui `ux `i ]
-"534
-}
-"531
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 5 `i 174  ]
-[e :U 175 ]
-"534
-}
-[; ;main.c: 534: }
-[; ;main.c: 535: printf("\n\r");
-"535
-[e ( _printf :s 4C ]
-[; ;main.c: 536: size = MFRC522_SelectTag( UID );
-"536
-[e = _size ( _MFRC522_SelectTag (1 &U _UID ]
-"537
-}
-[e :U 173 ]
-"540
-}
-[e :U 172 ]
-[; ;main.c: 537: }
-[; ;main.c: 540: }
-[; ;main.c: 541: PORTBbits.RB3 = 0;
-"541
-[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 542: _delay((unsigned long)((250)*(16000000/4000.0)));
-"542
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"543
-}
-[e :U 169 ]
-"517
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 1 `i `uc ]
 [e $U 170  ]
+"521
+[e :U 167 ]
+[; ;main.c: 521: {
+{
+[; ;main.c: 522: if(*card == eeprom_read(i) &&
+[; ;main.c: 523: *(card+1) == eeprom_read(i+1) &&
+[; ;main.c: 524: *(card+2) == eeprom_read(i+2) &&
+[; ;main.c: 525: *(card+3) == eeprom_read(i+3))
+"525
+[e $ ! && && && == -> *U _card `i -> ( _eeprom_read (1 _i `i == -> *U + _card * -> -> 1 `i `x -> -> # *U _card `i `x `i -> ( _eeprom_read (1 -> + -> _i `i -> 1 `i `uc `i == -> *U + _card * -> -> 2 `i `x -> -> # *U _card `i `x `i -> ( _eeprom_read (1 -> + -> _i `i -> 2 `i `uc `i == -> *U + _card * -> -> 3 `i `x -> -> # *U _card `i `x `i -> ( _eeprom_read (1 -> + -> _i `i -> 3 `i `uc `i 171  ]
+[; ;main.c: 526: {
+"526
+{
+[; ;main.c: 527: return 1;
+"527
+[e ) -> -> 1 `i `uc ]
+[e $UE 165  ]
+"528
+}
 [e :U 171 ]
-[; ;main.c: 543: }
-[; ;main.c: 544: }
-"544
+"529
+}
+"520
+[e =+ _i -> -> 4 `i `uc ]
+[e :U 170 ]
+[e $ < -> _i `i -> _index `i 167  ]
+[e :U 168 ]
+"529
+}
+[; ;main.c: 528: }
+[; ;main.c: 529: }
+[; ;main.c: 530: return 0;
+"530
+[e ) -> -> 0 `i `uc ]
+[e $UE 165  ]
+[; ;main.c: 531: }
+"531
 [e :UE 165 ]
 }
+"532
+[v _record_card `(v ~T0 @X0 1 ef1`*uc ]
+"533
+{
+[; ;main.c: 532: void record_card(char *card)
+[; ;main.c: 533: {
+[e :U _record_card ]
+"532
+[v _card `*uc ~T0 @X0 1 r1 ]
+"533
+[f ]
+"534
+[v _index `uc ~T0 @X0 1 a ]
+[; ;main.c: 534: char index = eeprom_read(0);
+[e = _index ( _eeprom_read (1 -> -> 0 `i `uc ]
+[; ;main.c: 535: if(index == 0xff)
+"535
+[e $ ! == -> _index `i -> 255 `i 173  ]
+[; ;main.c: 536: {
+"536
+{
+[; ;main.c: 537: eeprom_write(0,1);
+"537
+[e ( _eeprom_write (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 538: index = 1;
+"538
+[e = _index -> -> 1 `i `uc ]
+"539
+}
+[e :U 173 ]
+[; ;main.c: 539: }
+[; ;main.c: 540: eeprom_write(index,*card);
+"540
+[e ( _eeprom_write (2 , _index *U _card ]
+[; ;main.c: 541: eeprom_write(index+1,*(card+1));
+"541
+[e ( _eeprom_write (2 , -> + -> _index `i -> 1 `i `uc *U + _card * -> -> 1 `i `x -> -> # *U _card `i `x ]
+[; ;main.c: 542: eeprom_write(index+2,*(card+2));
+"542
+[e ( _eeprom_write (2 , -> + -> _index `i -> 2 `i `uc *U + _card * -> -> 2 `i `x -> -> # *U _card `i `x ]
+[; ;main.c: 543: eeprom_write(index+3,*(card+3));
+"543
+[e ( _eeprom_write (2 , -> + -> _index `i -> 3 `i `uc *U + _card * -> -> 3 `i `x -> -> # *U _card `i `x ]
+[; ;main.c: 544: eeprom_write(0,index+4);
+"544
+[e ( _eeprom_write (2 , -> -> 0 `i `uc -> + -> _index `i -> 4 `i `uc ]
+[; ;main.c: 545: }
+"545
+[e :UE 172 ]
+}
+"546
+[v _clear_reg_cards `(v ~T0 @X0 1 ef ]
+"547
+{
+[; ;main.c: 546: void clear_reg_cards()
+[; ;main.c: 547: {
+[e :U _clear_reg_cards ]
+[f ]
+[; ;main.c: 548: eeprom_write(0,1);
+"548
+[e ( _eeprom_write (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 549: }
+"549
+[e :UE 174 ]
+}
+[v F782 `(v ~T0 @X0 1 tf ]
+"551
+[v __ISR `IF782 ~T0 @X0 1 e ]
+"552
+{
+[; ;main.c: 551: void interrupt _ISR()
+[; ;main.c: 552: {
+[e :U __ISR ]
+[f ]
+[; ;main.c: 553: _ISR_UART();
+"553
+[e ( __ISR_UART ..  ]
+[; ;main.c: 554: }
+"554
+[e :UE 175 ]
+}
+"558
+[v _main `(v ~T0 @X0 1 ef ]
+"559
+{
+[; ;main.c: 558: void main()
+[; ;main.c: 559: {
+[e :U _main ]
+[f ]
+"560
+[v _UID `uc ~T0 @X0 -> 6 `i a ]
+"561
+[v _TagType `uc ~T0 @X0 1 a ]
+"562
+[v _size `uc ~T0 @X0 1 a ]
+[; ;main.c: 560: char UID[6];
+[; ;main.c: 561: unsigned char TagType;
+[; ;main.c: 562: char size;
+[; ;main.c: 564: UART_init();
+"564
+[e ( _UART_init ..  ]
+[; ;main.c: 566: SPI_init(0);
+"566
+[e ( _SPI_init (1 -> -> 0 `i `uc ]
+[; ;main.c: 569: MFRC522_Init();
+"569
+[e ( _MFRC522_Init ..  ]
+[; ;main.c: 571: TRISBbits.TRISB3 = 0;
+"571
+[e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 572: for(int i=0;i<10;i++)
+"572
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 10 `i 177  ]
+[e $U 178  ]
+"573
+[e :U 177 ]
+[; ;main.c: 573: {
+{
+[; ;main.c: 574: PORTBbits.RB3 = 1;
+"574
+[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 575: _delay((unsigned long)((250)*(16000000/4000.0)));
+"575
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 576: PORTBbits.RB3 = 0;
+"576
+[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 577: _delay((unsigned long)((250)*(16000000/4000.0)));
+"577
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"578
+}
+"572
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 177  ]
+[e :U 178 ]
+"578
+}
+[; ;main.c: 578: }
+[; ;main.c: 579: while(1)
+"579
+[e :U 181 ]
+[; ;main.c: 580: {
+"580
+{
+[; ;main.c: 582: if(UART_available())
+"582
+[e $ ! != ( _UART_available ..  -> 0 `i 183  ]
+[; ;main.c: 583: {
+"583
+{
+"584
+[v _data `uc ~T0 @X0 1 a ]
+[; ;main.c: 584: char data = UART_read_byte();
+[e = _data ( _UART_read_byte ..  ]
+[; ;main.c: 585: if(data == 'c')
+"585
+[e $ ! == -> _data `ui -> 99 `ui 184  ]
+[; ;main.c: 586: {
+"586
+{
+[; ;main.c: 587: PORTBbits.RB3 = 1;
+"587
+[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 588: record_card(UID);
+"588
+[e ( _record_card (1 &U _UID ]
+[; ;main.c: 589: printf("Cadastro feito\r\n");
+"589
+[e ( _printf :s 1C ]
+[; ;main.c: 590: _delay((unsigned long)((250)*(16000000/4000.0)));
+"590
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;main.c: 591: PORTBbits.RB3 = 0;
+"591
+[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+"592
+}
+[e :U 184 ]
+"593
+}
+[e :U 183 ]
+[; ;main.c: 592: }
+[; ;main.c: 593: }
+[; ;main.c: 595: if( MFRC522_isCard( &TagType ) )
+"595
+[e $ ! != -> ( _MFRC522_isCard (1 &U _TagType `i -> -> -> 0 `i `uc `i 185  ]
+[; ;main.c: 596: {
+"596
+{
+[; ;main.c: 598: printf("Tipo de Tag: %u\n\r",TagType);
+"598
+[e ( _printf , (. :s 2C -> _TagType `i ]
+[; ;main.c: 600: if( MFRC522_ReadCardSerial( UID ) )
+"600
+[e $ ! != -> ( _MFRC522_ReadCardSerial (1 &U _UID `i -> -> -> 0 `i `uc `i 186  ]
+[; ;main.c: 601: {
+"601
+{
+[; ;main.c: 603: PORTBbits.RB3 = 1;
+"603
+[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 604: printf("Codigo: ");
+"604
+[e ( _printf :s 3C ]
+[; ;main.c: 605: for(int i=0; i < 5; i++)
+"605
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 5 `i 187  ]
+[e $U 188  ]
+"606
+[e :U 187 ]
+[; ;main.c: 606: {
+{
+[; ;main.c: 607: printf("%X ",UID[i]);
+"607
+[e ( _printf , (. :s 4C -> *U + &U _UID * -> -> _i `ui `ux -> -> # *U &U _UID `ui `ux `i ]
+"608
+}
+"605
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 5 `i 187  ]
+[e :U 188 ]
+"608
+}
+[; ;main.c: 608: }
+[; ;main.c: 609: printf("\n\r");
+"609
+[e ( _printf :s 5C ]
+[; ;main.c: 612: if(compare_card(UID))
+"612
+[e $ ! != -> ( _compare_card (1 &U _UID `i -> -> -> 0 `i `uc `i 190  ]
+[; ;main.c: 613: {
+"613
+{
+[; ;main.c: 614: printf("Cartão reconhecido!\n\r");
+"614
+[e ( _printf :s 6C ]
+"615
+}
+[; ;main.c: 615: }
+[e $U 191  ]
+"616
+[e :U 190 ]
+[; ;main.c: 616: else
+[; ;main.c: 617: {
+"617
+{
+[; ;main.c: 618: printf("Cadastre o cartão\n\r");
+"618
+[e ( _printf :s 7C ]
+"619
+}
+[e :U 191 ]
+"621
+}
+[e :U 186 ]
+"624
+}
+[e :U 185 ]
+[; ;main.c: 619: }
+[; ;main.c: 621: }
+[; ;main.c: 624: }
+[; ;main.c: 625: PORTBbits.RB3 = 0;
+"625
+[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 626: _delay((unsigned long)((250)*(16000000/4000.0)));
+"626
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"627
+}
+[e :U 180 ]
+"579
+[e $U 181  ]
+[e :U 182 ]
+[; ;main.c: 627: }
+[; ;main.c: 628: }
+"628
+[e :UE 176 ]
+}
 [p f _printf 10486784 ]
-[a 3C 37 88 32 0 ]
-[a 2C 67 111 100 105 103 111 58 32 0 ]
-[a 1C 84 105 112 111 32 100 101 32 84 97 103 58 32 37 117 10 13 0 ]
-[a 4C 10 13 0 ]
+[a 4C 37 88 32 0 ]
+[a 3C 67 111 100 105 103 111 58 32 0 ]
+[a 2C 84 105 112 111 32 100 101 32 84 97 103 58 32 37 117 10 13 0 ]
+[a 7C 67 97 100 97 115 116 114 101 32 111 32 99 97 114 116 227 111 10 13 0 ]
+[a 6C 67 97 114 116 227 111 32 114 101 99 111 110 104 101 99 105 100 111 33 10 13 0 ]
+[a 5C 10 13 0 ]
+[a 1C 67 97 100 97 115 116 114 111 32 102 101 105 116 111 13 10 0 ]

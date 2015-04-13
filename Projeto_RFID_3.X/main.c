@@ -490,7 +490,69 @@ char MFRC522_ReadCardSerial( char *str )
     return 0;
 }
 
-
+/******************************************************************************/
+//unsigned char EEPROM_write(unsigned char address,unsigned char data)
+//{
+//    address &= ~(0x80);
+//    EEADR = address;
+//    EEDATA = data;
+//
+//    EECON1bits.WREN = 1;
+//    EECON1bits.WR = 1;
+//    while(EECON1bits.WR);
+//
+//    return EECON1bits.WRERR;
+//}
+//unsigned char EEPROM_read(unsigned char address)
+//{
+//   address &= ~(0x80);
+//   EEADR = address;
+//   EECON1bits.RD = 1;
+//   while(EECON1bits.RD);
+//   return EEDATA;
+//}
+/******************************************************************************/
+char compare_card(char *card)
+{
+    //Primeiro byte da eeprom guarda o endereço do ultimo byte valido de nº de cartões
+    char index = eeprom_read(0);
+    if(index == 0x01 || index == 0xff) return 0;//Sem cartões cadastrados
+    for(char i=1;i<index;i+=4)
+    {
+        if(*card == eeprom_read(i) &&
+           *(card+1) == eeprom_read(i+1) &&
+           *(card+2) == eeprom_read(i+2) &&
+           *(card+3) == eeprom_read(i+3))
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+void record_card(char *card)
+{
+    char index = eeprom_read(0);
+    if(index == 0xff)
+    {
+        eeprom_write(0,1);
+        index = 1;
+    }
+        eeprom_write(index,*card);
+        eeprom_write(index+1,*(card+1));
+        eeprom_write(index+2,*(card+2));
+        eeprom_write(index+3,*(card+3));
+        eeprom_write(0,index+4);
+}
+void clear_reg_cards()
+{
+    eeprom_write(0,1);
+}
+/******************************************************************************/
+void interrupt _ISR()
+{
+    _ISR_UART();
+}
+/******************************************************************************/
 //char key[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 //char writeData[] = "Microcontrolandos";
 void main()
@@ -516,9 +578,20 @@ void main()
   }
   while(1)
   {
-//      printf(".");
-//      LED1 = ~LED1;
-//      for(int i = 0;i<10;i++)__delay_ms(250);
+      //Cadastro
+      if(UART_available())
+      {
+          char data = UART_read_byte();
+          if(data == 'c')
+          {
+          LED1 = 1;
+          record_card(UID);
+          printf("Cadastro feito\r\n");
+          __delay_ms(250);
+          LED1 = 0;
+          }
+      }
+      //Letura
     if( MFRC522_isCard( &TagType ) )
     {
       //Exibe o tipo do cartão no display
@@ -526,14 +599,25 @@ void main()
       //Faz a leitura do numero de serie
       if( MFRC522_ReadCardSerial( UID ) )
       {
-          LED1 = 1;
+        //Só mostra que um cartão foi lido
+        LED1 = 1;
         printf("Codigo: ");
         for(int i=0; i < 5; i++)
         {
-          printf("%X ",UID[i]);
+            printf("%X ",UID[i]);
         }
         printf("\n\r");
-        size = MFRC522_SelectTag( UID );
+
+        //Comparação
+        if(compare_card(UID))
+        {
+            printf("Cartão reconhecido!\n\r");
+        }
+        else
+        {
+            printf("Cadastre o cartão\n\r");
+        }
+//        size = MFRC522_SelectTag( UID );
       }
       //Estado de hibernação
       //MFRC522_Halt();
