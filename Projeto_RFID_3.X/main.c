@@ -19,6 +19,9 @@
 
 #define TRIS_LED1 TRISBbits.TRISB3
 #define LED1 PORTBbits.RB3
+#define TRIS_BUTTON TRISBbits.TRISB4
+#define BUTTON PORTBbits.RB4
+
 
 //******************************************************************************/
 #define MFRC522_CS PORTAbits.RA1
@@ -543,18 +546,17 @@ void record_card(char *card)
         eeprom_write(index+3,*(card+3));
         eeprom_write(0,index+4);
 }
-void clear_reg_cards()
+void clear_list_cards()
 {
     eeprom_write(0,1);
 }
 /******************************************************************************/
-void interrupt _ISR()
-{
-    _ISR_UART();
-}
+//void interrupt _ISR()
+//{
+//    _ISR_UART();
+//}
 /******************************************************************************/
-//char key[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-//char writeData[] = "Microcontrolandos";
+char num=0;
 void main()
 {
   char UID[6];
@@ -569,6 +571,7 @@ void main()
   MFRC522_Init();
   
   TRIS_LED1 = 0;
+  TRIS_BUTTON = 1;
   for(int i=0;i<10;i++)
   {
       LED1 = 1;
@@ -578,18 +581,15 @@ void main()
   }
   while(1)
   {
-      //Cadastro
-      if(UART_available())
+      if(BUTTON == 0)
       {
-          char data = UART_read_byte();
-          if(data == 'c')
-          {
-          LED1 = 1;
-          record_card(UID);
-          printf("Cadastro feito\r\n");
-          __delay_ms(250);
-          LED1 = 0;
-          }
+          num++;
+      }
+      if(num==8)
+      {
+          clear_list_cards();
+          printf("Lista apagada\n\r");
+          num=0;
       }
       //Letura
     if( MFRC522_isCard( &TagType ) )
@@ -608,6 +608,13 @@ void main()
         }
         printf("\n\r");
 
+        //Gravação
+        if(BUTTON == 0)
+        {
+            record_card(UID);
+            num = 0;
+            printf("Cartão cadastrado\n\r");
+        }
         //Comparação
         if(compare_card(UID))
         {

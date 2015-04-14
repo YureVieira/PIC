@@ -1,13 +1,15 @@
 
 # 1 "main.c"
 
-# 21 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\htc.h"
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 47 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h"
+# 49 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f628a.h"
 extern volatile unsigned char INDF @ 0x000;
 
 asm("INDF equ 00h");
@@ -56,7 +58,7 @@ unsigned ZERO :1;
 } STATUSbits_t;
 extern volatile STATUSbits_t STATUSbits @ 0x003;
 
-# 152
+# 154
 extern volatile unsigned char FSR @ 0x004;
 
 asm("FSR equ 04h");
@@ -82,7 +84,7 @@ unsigned RA7 :1;
 } PORTAbits_t;
 extern volatile PORTAbits_t PORTAbits @ 0x005;
 
-# 219
+# 221
 extern volatile unsigned char PORTB @ 0x006;
 
 asm("PORTB equ 06h");
@@ -102,7 +104,7 @@ unsigned RB7 :1;
 } PORTBbits_t;
 extern volatile PORTBbits_t PORTBbits @ 0x006;
 
-# 280
+# 282
 extern volatile unsigned char PCLATH @ 0x00A;
 
 asm("PCLATH equ 0Ah");
@@ -115,7 +117,7 @@ unsigned PCLATH :5;
 } PCLATHbits_t;
 extern volatile PCLATHbits_t PCLATHbits @ 0x00A;
 
-# 299
+# 301
 extern volatile unsigned char INTCON @ 0x00B;
 
 asm("INTCON equ 0Bh");
@@ -141,7 +143,7 @@ unsigned TMR0IE :1;
 } INTCONbits_t;
 extern volatile INTCONbits_t INTCONbits @ 0x00B;
 
-# 376
+# 378
 extern volatile unsigned char PIR1 @ 0x00C;
 
 asm("PIR1 equ 0Ch");
@@ -161,7 +163,7 @@ unsigned EEIF :1;
 } PIR1bits_t;
 extern volatile PIR1bits_t PIR1bits @ 0x00C;
 
-# 432
+# 434
 extern volatile unsigned short TMR1 @ 0x00E;
 
 asm("TMR1 equ 0Eh");
@@ -201,7 +203,7 @@ unsigned T1CKPS1 :1;
 } T1CONbits_t;
 extern volatile T1CONbits_t T1CONbits @ 0x010;
 
-# 508
+# 510
 extern volatile unsigned char TMR2 @ 0x011;
 
 asm("TMR2 equ 011h");
@@ -231,7 +233,7 @@ unsigned TOUTPS3 :1;
 } T2CONbits_t;
 extern volatile T2CONbits_t T2CONbits @ 0x012;
 
-# 584
+# 586
 extern volatile unsigned short CCPR1 @ 0x015;
 
 asm("CCPR1 equ 015h");
@@ -270,7 +272,7 @@ unsigned CCP1M3 :1;
 } CCP1CONbits_t;
 extern volatile CCP1CONbits_t CCP1CONbits @ 0x017;
 
-# 659
+# 661
 extern volatile unsigned char RCSTA @ 0x018;
 
 asm("RCSTA equ 018h");
@@ -294,7 +296,7 @@ unsigned ADDEN :1;
 } RCSTAbits_t;
 extern volatile RCSTAbits_t RCSTAbits @ 0x018;
 
-# 729
+# 731
 extern volatile unsigned char TXREG @ 0x019;
 
 asm("TXREG equ 019h");
@@ -329,7 +331,7 @@ unsigned CM2 :1;
 } CMCONbits_t;
 extern volatile CMCONbits_t CMCONbits @ 0x01F;
 
-# 810
+# 812
 extern volatile unsigned char OPTION_REG @ 0x081;
 
 asm("OPTION_REG equ 081h");
@@ -352,7 +354,7 @@ unsigned PS2 :1;
 } OPTION_REGbits_t;
 extern volatile OPTION_REGbits_t OPTION_REGbits @ 0x081;
 
-# 879
+# 881
 extern volatile unsigned char TRISA @ 0x085;
 
 asm("TRISA equ 085h");
@@ -372,7 +374,7 @@ unsigned TRISA7 :1;
 } TRISAbits_t;
 extern volatile TRISAbits_t TRISAbits @ 0x085;
 
-# 940
+# 942
 extern volatile unsigned char TRISB @ 0x086;
 
 asm("TRISB equ 086h");
@@ -392,7 +394,7 @@ unsigned TRISB7 :1;
 } TRISBbits_t;
 extern volatile TRISBbits_t TRISBbits @ 0x086;
 
-# 1001
+# 1003
 extern volatile unsigned char PIE1 @ 0x08C;
 
 asm("PIE1 equ 08Ch");
@@ -412,7 +414,7 @@ unsigned EEIE :1;
 } PIE1bits_t;
 extern volatile PIE1bits_t PIE1bits @ 0x08C;
 
-# 1057
+# 1059
 extern volatile unsigned char PCON @ 0x08E;
 
 asm("PCON equ 08Eh");
@@ -434,7 +436,7 @@ unsigned nBOD :1;
 } PCONbits_t;
 extern volatile PCONbits_t PCONbits @ 0x08E;
 
-# 1105
+# 1107
 extern volatile unsigned char PR2 @ 0x092;
 
 asm("PR2 equ 092h");
@@ -460,7 +462,7 @@ unsigned CSRC :1;
 } TXSTAbits_t;
 extern volatile TXSTAbits_t TXSTAbits @ 0x098;
 
-# 1167
+# 1169
 extern volatile unsigned char SPBRG @ 0x099;
 
 asm("SPBRG equ 099h");
@@ -494,7 +496,7 @@ unsigned WRERR :1;
 } EECON1bits_t;
 extern volatile EECON1bits_t EECON1bits @ 0x09C;
 
-# 1222
+# 1224
 extern volatile unsigned char EECON2 @ 0x09D;
 
 asm("EECON2 equ 09Dh");
@@ -523,7 +525,7 @@ unsigned VR3 :1;
 } VRCONbits_t;
 extern volatile VRCONbits_t VRCONbits @ 0x09F;
 
-# 1298
+# 1300
 extern volatile __bit ADDEN @ (((unsigned) &RCSTA)*8) + 3;
 
 extern volatile __bit ADEN @ (((unsigned) &RCSTA)*8) + 3;
@@ -787,26 +789,31 @@ extern volatile __bit nT1SYNC @ (((unsigned) &T1CON)*8) + 2;
 extern volatile __bit nTO @ (((unsigned) &STATUS)*8) + 4;
 
 
-# 27 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h"
+# 27 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
-# 80
+# 76
 extern unsigned int flash_read(unsigned short addr);
 
-# 144
+# 140
 extern void flash_erase(unsigned short addr);
 
-# 41 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\eeprom_routines.h"
+# 41 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 
 
-# 153 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h"
+# 149 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic.h"
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
+
+# 184
+extern unsigned char __resetbits;
+extern __bit __powerdown;
+extern __bit __timeout;
 
 
 # 4 "main.c"
@@ -819,12 +826,12 @@ extern __nonreentrant void _delay(unsigned long);
 #pragma config CPD = OFF
 #pragma config CP = OFF
 
-# 8 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
+# 8 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdio.h"
 typedef int ptrdiff_t;
 typedef unsigned size_t;
 typedef unsigned short wchar_t;
 
-# 7 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\stdarg.h"
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -833,17 +840,17 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 23 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
+# 24 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdio.h"
 extern int errno;
 
-# 54
+# 55
 struct __prbuf
 {
 char * ptr;
 void (* func)(char);
 };
 
-# 17 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\conio.h"
+# 17 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\conio.h"
 extern int errno;
 
 
@@ -860,7 +867,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 99 "D:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
+# 100 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -869,7 +876,7 @@ extern int cprintf(char *, ...);
 extern int _doprnt(struct __prbuf *, const register char *, register va_list);
 
 
-# 191
+# 192
 #pragma printf_check(vprintf) const
 #pragma printf_check(vsprintf) const
 
@@ -1001,7 +1008,7 @@ return byte;
 void SPI_init(unsigned char mode);
 unsigned char SPI_transfer(unsigned char data);
 
-# 124 "main.c"
+# 127 "main.c"
 void MFRC522_Wr( char addr, char value )
 {
 PORTAbits.RA1 = 0;
@@ -1349,7 +1356,7 @@ _status = 2;
 return _status;
 }
 
-# 475
+# 478
 char MFRC522_isCard( char *TagType )
 {
 if (MFRC522_Request( 0x26, TagType ) == 0)
@@ -1368,7 +1375,7 @@ else
 return 0;
 }
 
-# 515
+# 518
 char compare_card(char *card)
 {
 
@@ -1400,18 +1407,13 @@ eeprom_write(index+2,*(card+2));
 eeprom_write(index+3,*(card+3));
 eeprom_write(0,index+4);
 }
-void clear_reg_cards()
+void clear_list_cards()
 {
 eeprom_write(0,1);
 }
 
-void interrupt _ISR()
-{
-_ISR_UART();
-}
-
-
-
+# 559
+char num=0;
 void main()
 {
 char UID[6];
@@ -1426,6 +1428,7 @@ SPI_init(0);
 MFRC522_Init();
 
 TRISBbits.TRISB3 = 0;
+TRISBbits.TRISB4 = 1;
 for(int i=0;i<10;i++)
 {
 PORTBbits.RB3 = 1;
@@ -1435,18 +1438,15 @@ _delay((unsigned long)((250)*(16000000/4000.0)));
 }
 while(1)
 {
-
-if(UART_available())
+if(PORTBbits.RB4 == 0)
 {
-char data = UART_read_byte();
-if(data == 'c')
-{
-PORTBbits.RB3 = 1;
-record_card(UID);
-printf("Cadastro feito\r\n");
-_delay((unsigned long)((250)*(16000000/4000.0)));
-PORTBbits.RB3 = 0;
+num++;
 }
+if(num==8)
+{
+clear_list_cards();
+printf("Lista apagada\n\r");
+num=0;
 }
 
 if( MFRC522_isCard( &TagType ) )
@@ -1465,6 +1465,13 @@ printf("%X ",UID[i]);
 }
 printf("\n\r");
 
+
+if(PORTBbits.RB4 == 0)
+{
+record_card(UID);
+num = 0;
+printf("Cartão cadastrado\n\r");
+}
 
 if(compare_card(UID))
 {

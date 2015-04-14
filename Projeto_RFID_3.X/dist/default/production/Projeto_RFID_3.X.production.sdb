@@ -3,190 +3,92 @@
 [d edition pro ]
 [d chip 16F628A ]
 [d frameptr 6 ]
-"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abdiv.c
-[v ___abdiv __abdiv `(c  1 e 1 0 ]
-"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abmod.c
-[v ___abmod __abmod `(c  1 e 1 0 ]
-"33 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\abtoft.c
-[v ___abtoft __abtoft `(f  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\aldiv.c
-[v ___aldiv __aldiv `(l  1 e 4 0 ]
-"5 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\almod.c
-[v ___almod __almod `(l  1 e 4 0 ]
-"42 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\altoft.c
-[v ___altoft __altoft `(f  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\atdiv.c
-[v ___atdiv __atdiv `(m  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\atmod.c
-[v ___atmod __atmod `(m  1 e 3 0 ]
-"37 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\attoft.c
-[v ___attoft __attoft `(f  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-"32 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awtoft.c
-[v ___awtoft __awtoft `(f  1 e 3 0 ]
-"464 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
+"464 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
-"62 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\float.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"86 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftadd.c
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftge.c
-[v ___ftge __ftge `(b  1 e 0 0 ]
-"62 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftmul.c
-[v ___ftmul __ftmul `(f  1 e 3 0 ]
-"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftneg.c
-[v ___ftneg __ftneg `(f  1 e 3 0 ]
-"18 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ftsub.c
-[v ___ftsub __ftsub `(f  1 e 3 0 ]
-"44 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
-"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbdiv.c
-[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
-"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbmod.c
-[v ___lbmod __lbmod `(uc  1 e 1 0 ]
-"27 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lbtoft.c
-[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\llmod.c
-[v ___llmod __llmod `(ul  1 e 4 0 ]
-"35 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lltoft.c
-[v ___lltoft __lltoft `(f  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ltdiv.c
-[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\ltmod.c
-[v ___ltmod __ltmod `(um  1 e 3 0 ]
-"30 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lttoft.c
-[v ___lttoft __lttoft `(f  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"28 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwtoft.c
-[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul24.c
-[v ___tmul __tmul `(um  1 e 3 0 ]
-"15 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul32.c
-[v ___lmul __lmul `(ul  1 e 4 0 ]
-"4 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\Umul8.c
-[v ___bmul __bmul `(uc  1 e 1 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\eeprom.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic\eeprom.c
 [v _eecpymem eecpymem `(v  1 e 0 0 ]
 "24
 [v _memcpyee memcpyee `(v  1 e 0 0 ]
-"48
-[v ___eetoc __eetoc `(uc  1 e 1 0 ]
-"56
-[v ___eetoi __eetoi `(ui  1 e 2 0 ]
-"64
-[v ___eetom __eetom `(um  1 e 3 0 ]
-"72
-[v ___eetol __eetol `(ul  1 e 4 0 ]
-"80
-[v ___ctoee __ctoee `(uc  1 e 1 0 ]
-"87
-[v ___itoee __itoee `(ui  1 e 2 0 ]
-"94
-[v ___mtoee __mtoee `(um  1 e 3 0 ]
-"101
-[v ___ltoee __ltoee `(ul  1 e 4 0 ]
-"108
-[v ___eetoft __eetoft `(f  1 e 3 0 ]
-"116
-[v ___eetofl __eetofl `(d  1 e 3 0 ]
-"124
-[v ___fttoee __fttoee `(f  1 e 3 0 ]
-"131
-[v ___fltoee __fltoee `(d  1 e 3 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\eeread.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic\eeread.c
 [v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\eewrite.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic\eewrite.c
 [v _eeprom_write eeprom_write `(v  1 e 0 0 ]
-"49 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\ftdiv.c
-[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"124 D:\PIC\PIC\Projeto_RFID_3.X\main.c
+"127 E:\PIC\Projeto_RFID_3.X\main.c
 [v _MFRC522_Wr MFRC522_Wr `(v  1 e 0 0 ]
-"131
+"134
 [v _MFRC522_Rd MFRC522_Rd `(uc  1 e 1 0 ]
-"140
+"143
 [v _MFRC522_Clear_Bit MFRC522_Clear_Bit `(v  1 e 0 0 ]
-"144
+"147
 [v _MFRC522_Set_Bit MFRC522_Set_Bit `(v  1 e 0 0 ]
-"148
+"151
 [v _MFRC522_Reset MFRC522_Reset `(v  1 e 0 0 ]
-"152
+"155
 [v _MFRC522_AntennaOn MFRC522_AntennaOn `(v  1 e 0 0 ]
-"156
-[v _MFRC522_AntennaOff MFRC522_AntennaOff `(v  1 e 0 0 ]
-"160
+"163
 [v _MFRC522_Init MFRC522_Init `(v  1 e 0 0 ]
-"182
+"185
 [v _MFRC522_ToCard MFRC522_ToCard `(uc  1 e 1 0 ]
-"285
+"288
 [v _MFRC522_Request MFRC522_Request `(uc  1 e 1 0 ]
-"298
+"301
 [v _MFRC522_CRC MFRC522_CRC `(v  1 e 0 0 ]
-"324
-[v _MFRC522_SelectTag MFRC522_SelectTag `(uc  1 e 1 0 ]
-"356
-[v _MFRC522_Halt MFRC522_Halt `(v  1 e 0 0 ]
-"368
-[v _MFRC522_Auth MFRC522_Auth `(uc  1 e 1 0 ]
-"398
-[v _MFRC522_Write MFRC522_Write `(uc  1 e 1 0 ]
-"429
-[v _MFRC522_Read MFRC522_Read `(uc  1 e 1 0 ]
-"445
+"448
 [v _MFRC522_AntiColl MFRC522_AntiColl `(uc  1 e 1 0 ]
-"475
+"478
 [v _MFRC522_isCard MFRC522_isCard `(uc  1 e 1 0 ]
-"482
+"485
 [v _MFRC522_ReadCardSerial MFRC522_ReadCardSerial `(uc  1 e 1 0 ]
-"515
+"518
 [v _compare_card compare_card `(uc  1 e 1 0 ]
-"532
+"535
 [v _record_card record_card `(v  1 e 0 0 ]
-"546
-[v _clear_reg_cards clear_reg_cards `(v  1 e 0 0 ]
-"551
-[v __ISR _ISR `II(v  1 e 0 0 ]
-"558
+"549
+[v _clear_list_cards clear_list_cards `(v  1 e 0 0 ]
+"560
 [v _main main `(v  1 e 0 0 ]
-"32 D:\PIC\PIC\Projeto_RFID_3.X\SPI.c
+"32 E:\PIC\Projeto_RFID_3.X\SPI.c
 [v _SPI_init SPI_init `(v  1 e 0 0 ]
 "43
 [v _SPI_transfer SPI_transfer `(uc  1 e 1 0 ]
-"8 D:\PIC\PIC\Projeto_RFID_3.X\UART.c
+"8 E:\PIC\Projeto_RFID_3.X\UART.c
 [v _putch putch `(v  1 e 0 0 ]
 "14
 [v _UART_init UART_init `T(v  1 e 0 0 ]
-"34
-[v _UART_available UART_available `(i  1 e 2 0 ]
-"38
-[v _UART_read_byte UART_read_byte `(uc  1 e 1 0 ]
-"51
-[v __ISR_UART _ISR_UART `T(v  1 e 0 0 ]
-[s S21 . 1 `uc 1 TRISB0 1 0 :1:0 
-`uc 1 TRISB1 1 0 :1:1 
-`uc 1 TRISB2 1 0 :1:2 
-`uc 1 TRISB3 1 0 :1:3 
-`uc 1 TRISB4 1 0 :1:4 
-`uc 1 TRISB5 1 0 :1:5 
-`uc 1 TRISB6 1 0 :1:6 
-`uc 1 TRISB7 1 0 :1:7 
+[s S102 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
 ]
-"175 D:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f628a.h
-[u S30 . 1 `S21 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES30  1 e 1 @5 ]
-"219
+"177 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic16f628a.h
+[u S111 . 1 `S102 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES111  1 e 1 @5 ]
+"221
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-"236
-[v _PORTBbits PORTBbits `VES30  1 e 1 @6 ]
+[s S155 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"238
+[u S164 . 1 `S155 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES164  1 e 1 @6 ]
 [s S63 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
@@ -196,359 +98,368 @@
 `uc 1 RX9 1 0 :1:6 
 `uc 1 SPEN 1 0 :1:7 
 ]
-"680
+"682
 [s S72 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADDEN 1 0 :1:3 
 ]
 [u S75 . 1 `S63 1 . 1 0 `S72 1 . 1 0 ]
 [v _RCSTAbits RCSTAbits `VES75  1 e 1 @24 ]
-"729
+"731
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
-"735
+"737
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
-"896
-[v _TRISAbits TRISAbits `VES30  1 e 1 @133 ]
-"940
+[s S123 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"898
+[u S132 . 1 `S123 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES132  1 e 1 @133 ]
+"942
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-"957
+[s S21 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"959
+[u S30 . 1 `S21 1 . 1 0 ]
 [v _TRISBbits TRISBbits `VES30  1 e 1 @134 ]
-"1128
-[v _TXSTAbits TXSTAbits `VES30  1 e 1 @152 ]
-"1167
+[s S42 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"1130
+[u S51 . 1 `S42 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES51  1 e 1 @152 ]
+"1169
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
-"1173
+"1175
 [v _EEDATA EEDATA `VEuc  1 e 1 @154 ]
-"1179
+"1181
 [v _EEADR EEADR `VEuc  1 e 1 @155 ]
-"1185
+"1187
 [v _EECON1 EECON1 `VEuc  1 e 1 @156 ]
-"1222
+"1224
 [v _EECON2 EECON2 `VEuc  1 e 1 @157 ]
-"1312
+"1314
 [v _CARRY CARRY `VEb  1 e 0 @24 ]
-"1354
+"1356
 [v _GIE GIE `VEb  1 e 0 @95 ]
-"1416
-[v _RCIF RCIF `VEb  1 e 0 @101 ]
 "1418
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"1420
 [v _RD RD `VEb  1 e 0 @1248 ]
-"1520
+"1522
 [v _TXIF TXIF `VEb  1 e 0 @100 ]
-"1536
-[v _WR WR `VEb  1 e 0 @1249 ]
 "1538
+[v _WR WR `VEb  1 e 0 @1249 ]
+"1540
 [v _WREN WREN `VEb  1 e 0 @1250 ]
-"354 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
+"354 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
 "362
 [v _hexpowers hexpowers `DCC[4]ui  1 s 8 hexpowers ]
-"31 D:\PIC\PIC\Projeto_RFID_3.X\SPI.c
+"559 E:\PIC\Projeto_RFID_3.X\main.c
+[v _num num `uc  1 e 1 0 ]
+"31 E:\PIC\Projeto_RFID_3.X\SPI.c
 [v __mode _mode `uc  1 e 1 0 ]
-"6 D:\PIC\PIC\Projeto_RFID_3.X\UART.c
+"6 E:\PIC\Projeto_RFID_3.X\UART.c
 [v _buffer buffer `[16]uc  1 e 16 0 ]
 "7
 [v _count count `i  1 e 2 0 ]
-"558 D:\PIC\PIC\Projeto_RFID_3.X\main.c
+"560 E:\PIC\Projeto_RFID_3.X\main.c
 [v _main main `(v  1 e 0 0 ]
 {
 "605
-[v main@i_369 i `i  1 a 2 59 ]
-"584
-[v main@data data `uc  1 a 1 50 ]
-"572
-[v main@i i `i  1 a 2 57 ]
-"560
-[v main@UID UID `[6]uc  1 a 6 51 ]
-"561
-[v main@TagType TagType `uc  1 a 1 61 ]
-"628
+[v main@i_364 i `i  1 a 2 46 ]
+"575
+[v main@i i `i  1 a 2 44 ]
+"562
+[v main@UID UID `[6]uc  1 a 6 38 ]
+"563
+[v main@TagType TagType `uc  1 a 1 48 ]
+"635
 } 0
-"532
+"535
 [v _record_card record_card `(v  1 e 0 0 ]
 {
 [v record_card@card card `*.4uc  1 a 1 wreg ]
-"534
-[v record_card@index index `uc  1 a 1 3 ]
-"532
+"537
+[v record_card@index index `uc  1 a 1 5 ]
+"535
 [v record_card@card card `*.4uc  1 a 1 wreg ]
-"534
-[v record_card@card card `*.4uc  1 a 1 2 ]
-"545
+"537
+[v record_card@card card `*.4uc  1 a 1 4 ]
+"548
 } 0
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\eewrite.c
-[v _eeprom_write eeprom_write `(v  1 e 0 0 ]
-{
-[v eeprom_write@addr addr `uc  1 a 1 wreg ]
-[v eeprom_write@addr addr `uc  1 a 1 wreg ]
-[v eeprom_write@value value `uc  1 p 1 5 ]
-[v eeprom_write@addr addr `uc  1 a 1 0 ]
-"9
-} 0
-"464 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
+"464 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 [v printf@f f `*.24DCCuc  1 a 1 wreg ]
-"1509
-[v printf@idx idx `uc  1 a 1 17 ]
-[s S393 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
-"533
-[u S396 . 4 `ui 1 _val 2 0 `S393 1 _str 4 0 ]
-[v printf@_val _val `S396  1 a 4 21 ]
+"1500
+[v printf@idx idx `uc  1 a 1 5 ]
+"528
+[v printf@val val `ui  1 a 2 9 ]
 "499
-[v printf@c c `c  1 a 1 26 ]
+[v printf@c c `c  1 a 1 12 ]
 "506
-[v printf@prec prec `c  1 a 1 20 ]
+[v printf@prec prec `c  1 a 1 8 ]
 "508
-[v printf@flag flag `uc  1 a 1 19 ]
+[v printf@flag flag `uc  1 a 1 7 ]
 "466
-[v printf@ap ap `[1]*.4v  1 a 1 18 ]
+[v printf@ap ap `[1]*.4v  1 a 1 6 ]
 "464
 [v printf@f f `*.24DCCuc  1 a 1 wreg ]
-"542
-[v printf@f f `*.24DCCuc  1 a 1 25 ]
-"1550
+"533
+[v printf@f f `*.24DCCuc  1 a 1 11 ]
+"1541
 } 0
-"8 D:\PIC\PIC\Projeto_RFID_3.X\UART.c
+"8 E:\PIC\Projeto_RFID_3.X\UART.c
 [v _putch putch `(v  1 e 0 0 ]
 {
 [v putch@data data `uc  1 a 1 wreg ]
 [v putch@data data `uc  1 a 1 wreg ]
-[v putch@data data `uc  1 a 1 5 ]
+[v putch@data data `uc  1 a 1 0 ]
 "13
 } 0
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwmod@counter counter `uc  1 a 1 11 ]
+[v ___lwmod@counter counter `uc  1 a 1 13 ]
 "6
-[v ___lwmod@divisor divisor `ui  1 p 2 7 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 9 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 8 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "26
 } 0
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "11
 [v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
 "12
-[v ___lwdiv@counter counter `uc  1 a 1 4 ]
+[v ___lwdiv@counter counter `uc  1 a 1 7 ]
 "6
 [v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "31
 } 0
-"515 D:\PIC\PIC\Projeto_RFID_3.X\main.c
+"518 E:\PIC\Projeto_RFID_3.X\main.c
 [v _compare_card compare_card `(uc  1 e 1 0 ]
 {
 [v compare_card@card card `*.4uc  1 a 1 wreg ]
-"520
-[v compare_card@i i `uc  1 a 1 3 ]
+"523
+[v compare_card@i i `uc  1 a 1 5 ]
+"521
+[v compare_card@index index `uc  1 a 1 3 ]
 "518
-[v compare_card@index index `uc  1 a 1 1 ]
-"515
 [v compare_card@card card `*.4uc  1 a 1 wreg ]
-"518
-[v compare_card@card card `*.4uc  1 a 1 2 ]
-"531
+"521
+[v compare_card@card card `*.4uc  1 a 1 4 ]
+"534
 } 0
-"6 D:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic\eeread.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic\eeread.c
 [v _eeprom_read eeprom_read `(uc  1 e 1 0 ]
 {
 [v eeprom_read@addr addr `uc  1 a 1 wreg ]
 [v eeprom_read@addr addr `uc  1 a 1 wreg ]
 "9
-[v eeprom_read@addr addr `uc  1 a 1 6 ]
+[v eeprom_read@addr addr `uc  1 a 1 1 ]
 "12
 } 0
-"38 D:\PIC\PIC\Projeto_RFID_3.X\UART.c
-[v _UART_read_byte UART_read_byte `(uc  1 e 1 0 ]
+"549 E:\PIC\Projeto_RFID_3.X\main.c
+[v _clear_list_cards clear_list_cards `(v  1 e 0 0 ]
 {
-"44
-[v UART_read_byte@i i `i  1 a 2 1 ]
-"40
-[v UART_read_byte@data data `uc  1 a 1 0 ]
-"49
+"552
 } 0
-"14
+"6 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic\eewrite.c
+[v _eeprom_write eeprom_write `(v  1 e 0 0 ]
+{
+[v eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v eeprom_write@addr addr `uc  1 a 1 wreg ]
+[v eeprom_write@value value `uc  1 p 1 0 ]
+[v eeprom_write@addr addr `uc  1 a 1 2 ]
+"9
+} 0
+"14 E:\PIC\Projeto_RFID_3.X\UART.c
 [v _UART_init UART_init `T(v  1 e 0 0 ]
 {
 "33
 } 0
-"34
-[v _UART_available UART_available `(i  1 e 2 0 ]
-{
-"37
-} 0
-"32 D:\PIC\PIC\Projeto_RFID_3.X\SPI.c
+"32 E:\PIC\Projeto_RFID_3.X\SPI.c
 [v _SPI_init SPI_init `(v  1 e 0 0 ]
 {
 [v SPI_init@mode mode `uc  1 a 1 wreg ]
 [v SPI_init@mode mode `uc  1 a 1 wreg ]
 "34
-[v SPI_init@mode mode `uc  1 a 1 6 ]
+[v SPI_init@mode mode `uc  1 a 1 1 ]
 "41
 } 0
-"475 D:\PIC\PIC\Projeto_RFID_3.X\main.c
+"478 E:\PIC\Projeto_RFID_3.X\main.c
 [v _MFRC522_isCard MFRC522_isCard `(uc  1 e 1 0 ]
 {
 [v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 wreg ]
 [v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 wreg ]
-"477
-[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 43 ]
-"481
+"480
+[v MFRC522_isCard@TagType TagType `*.4uc  1 a 1 31 ]
+"484
 } 0
-"285
+"288
 [v _MFRC522_Request MFRC522_Request `(uc  1 e 1 0 ]
 {
 [v MFRC522_Request@reqMode reqMode `uc  1 a 1 wreg ]
+"291
+[v MFRC522_Request@backBits backBits `ui  1 a 2 28 ]
+"290
+[v MFRC522_Request@_status _status `uc  1 a 1 27 ]
 "288
-[v MFRC522_Request@backBits backBits `ui  1 a 2 40 ]
-"287
-[v MFRC522_Request@_status _status `uc  1 a 1 39 ]
-"285
 [v MFRC522_Request@reqMode reqMode `uc  1 a 1 wreg ]
-[v MFRC522_Request@TagType TagType `*.4uc  1 p 1 33 ]
-"289
-[v MFRC522_Request@reqMode reqMode `uc  1 a 1 38 ]
-"297
+[v MFRC522_Request@TagType TagType `*.4uc  1 p 1 21 ]
+"292
+[v MFRC522_Request@reqMode reqMode `uc  1 a 1 26 ]
+"300
 } 0
-"482
+"485
 [v _MFRC522_ReadCardSerial MFRC522_ReadCardSerial `(uc  1 e 1 0 ]
 {
 [v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 wreg ]
-"484
-[v MFRC522_ReadCardSerial@_status _status `uc  1 a 1 45 ]
-"482
-[v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 wreg ]
+"487
+[v MFRC522_ReadCardSerial@_status _status `uc  1 a 1 33 ]
 "485
-[v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 46 ]
-"491
+[v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 wreg ]
+"488
+[v MFRC522_ReadCardSerial@str str `*.4uc  1 a 1 34 ]
+"494
 } 0
-"445
+"448
 [v _MFRC522_AntiColl MFRC522_AntiColl `(uc  1 e 1 0 ]
 {
 [v MFRC522_AntiColl@serNum serNum `*.4uc  1 a 1 wreg ]
+"453
+[v MFRC522_AntiColl@unLen unLen `ui  1 a 2 27 ]
+"451
+[v MFRC522_AntiColl@i i `uc  1 a 1 30 ]
 "450
-[v MFRC522_AntiColl@unLen unLen `ui  1 a 2 39 ]
+[v MFRC522_AntiColl@_status _status `uc  1 a 1 29 ]
+"452
+[v MFRC522_AntiColl@serNumCheck serNumCheck `uc  1 a 1 26 ]
 "448
-[v MFRC522_AntiColl@i i `uc  1 a 1 42 ]
-"447
-[v MFRC522_AntiColl@_status _status `uc  1 a 1 41 ]
-"449
-[v MFRC522_AntiColl@serNumCheck serNumCheck `uc  1 a 1 38 ]
-"445
 [v MFRC522_AntiColl@serNum serNum `*.4uc  1 a 1 wreg ]
-"449
-[v MFRC522_AntiColl@serNum serNum `*.4uc  1 a 1 43 ]
-"469
+"452
+[v MFRC522_AntiColl@serNum serNum `*.4uc  1 a 1 31 ]
+"472
 } 0
-"182
+"185
 [v _MFRC522_ToCard MFRC522_ToCard `(uc  1 e 1 0 ]
 {
 [v MFRC522_ToCard@command command `uc  1 a 1 wreg ]
-"189
-[v MFRC522_ToCard@i i `ui  1 a 2 30 ]
+"192
+[v MFRC522_ToCard@i i `ui  1 a 2 18 ]
+"191
+[v MFRC522_ToCard@n n `uc  1 a 1 20 ]
 "188
-[v MFRC522_ToCard@n n `uc  1 a 1 32 ]
-"185
-[v MFRC522_ToCard@irqEn irqEn `uc  1 a 1 28 ]
+[v MFRC522_ToCard@irqEn irqEn `uc  1 a 1 16 ]
+"190
+[v MFRC522_ToCard@lastBits lastBits `uc  1 a 1 15 ]
 "187
-[v MFRC522_ToCard@lastBits lastBits `uc  1 a 1 27 ]
-"184
-[v MFRC522_ToCard@_status _status `uc  1 a 1 26 ]
-"186
-[v MFRC522_ToCard@waitIRq waitIRq `uc  1 a 1 25 ]
-"182
+[v MFRC522_ToCard@_status _status `uc  1 a 1 14 ]
+"189
+[v MFRC522_ToCard@waitIRq waitIRq `uc  1 a 1 13 ]
+"185
 [v MFRC522_ToCard@command command `uc  1 a 1 wreg ]
-[v MFRC522_ToCard@sendData sendData `*.4uc  1 p 1 15 ]
-[v MFRC522_ToCard@sendLen sendLen `uc  1 p 1 16 ]
-[v MFRC522_ToCard@backData backData `*.4uc  1 p 1 17 ]
-[v MFRC522_ToCard@backLen backLen `*.4ui  1 p 1 18 ]
-"184
-[v MFRC522_ToCard@command command `uc  1 a 1 29 ]
-"284
+[v MFRC522_ToCard@sendData sendData `*.4uc  1 p 1 3 ]
+[v MFRC522_ToCard@sendLen sendLen `uc  1 p 1 4 ]
+[v MFRC522_ToCard@backData backData `*.4uc  1 p 1 5 ]
+[v MFRC522_ToCard@backLen backLen `*.4ui  1 p 1 6 ]
+"187
+[v MFRC522_ToCard@command command `uc  1 a 1 17 ]
+"287
 } 0
-"140
+"143
 [v _MFRC522_Clear_Bit MFRC522_Clear_Bit `(v  1 e 0 0 ]
 {
 [v MFRC522_Clear_Bit@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Clear_Bit@addr addr `uc  1 a 1 wreg ]
-[v MFRC522_Clear_Bit@mask mask `uc  1 p 1 11 ]
-"142
-[v MFRC522_Clear_Bit@addr addr `uc  1 a 1 14 ]
-"143
+[v MFRC522_Clear_Bit@mask mask `uc  1 p 1 13 ]
+"145
+[v MFRC522_Clear_Bit@addr addr `uc  1 a 1 2 ]
+"146
 } 0
-"160
+"163
 [v _MFRC522_Init MFRC522_Init `(v  1 e 0 0 ]
 {
-"181
+"184
 } 0
-"148
+"151
 [v _MFRC522_Reset MFRC522_Reset `(v  1 e 0 0 ]
 {
-"151
+"154
 } 0
-"152
+"155
 [v _MFRC522_AntennaOn MFRC522_AntennaOn `(v  1 e 0 0 ]
 {
-"155
+"158
 } 0
-"144
+"147
 [v _MFRC522_Set_Bit MFRC522_Set_Bit `(v  1 e 0 0 ]
 {
 [v MFRC522_Set_Bit@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Set_Bit@addr addr `uc  1 a 1 wreg ]
-[v MFRC522_Set_Bit@mask mask `uc  1 p 1 11 ]
-"146
-[v MFRC522_Set_Bit@addr addr `uc  1 a 1 13 ]
-"147
+[v MFRC522_Set_Bit@mask mask `uc  1 p 1 13 ]
+"149
+[v MFRC522_Set_Bit@addr addr `uc  1 a 1 1 ]
+"150
 } 0
-"124
+"127
 [v _MFRC522_Wr MFRC522_Wr `(v  1 e 0 0 ]
 {
 [v MFRC522_Wr@addr addr `uc  1 a 1 wreg ]
 [v MFRC522_Wr@addr addr `uc  1 a 1 wreg ]
-[v MFRC522_Wr@value value `uc  1 p 1 8 ]
-"126
-[v MFRC522_Wr@addr addr `uc  1 a 1 10 ]
-"130
+[v MFRC522_Wr@value value `uc  1 p 1 10 ]
+"129
+[v MFRC522_Wr@addr addr `uc  1 a 1 12 ]
+"133
 } 0
-"131
+"134
 [v _MFRC522_Rd MFRC522_Rd `(uc  1 e 1 0 ]
 {
 [v MFRC522_Rd@addr addr `uc  1 a 1 wreg ]
-"133
-[v MFRC522_Rd@value value `uc  1 a 1 7 ]
-"131
-[v MFRC522_Rd@addr addr `uc  1 a 1 wreg ]
+"136
+[v MFRC522_Rd@value value `uc  1 a 1 9 ]
 "134
-[v MFRC522_Rd@addr addr `uc  1 a 1 6 ]
-"139
+[v MFRC522_Rd@addr addr `uc  1 a 1 wreg ]
+"137
+[v MFRC522_Rd@addr addr `uc  1 a 1 8 ]
+"142
 } 0
-"43 D:\PIC\PIC\Projeto_RFID_3.X\SPI.c
+"43 E:\PIC\Projeto_RFID_3.X\SPI.c
 [v _SPI_transfer SPI_transfer `(uc  1 e 1 0 ]
 {
 [v SPI_transfer@data data `uc  1 a 1 wreg ]
 "63
-[v SPI_transfer@i_224 i `i  1 a 2 3 ]
+[v SPI_transfer@i_224 i `i  1 a 2 4 ]
 "49
-[v SPI_transfer@i i `i  1 a 2 1 ]
+[v SPI_transfer@i i `i  1 a 2 2 ]
 "45
-[v SPI_transfer@byte byte `uc  1 a 1 5 ]
+[v SPI_transfer@byte byte `uc  1 a 1 6 ]
 "43
 [v SPI_transfer@data data `uc  1 a 1 wreg ]
 "46
-[v SPI_transfer@data data `uc  1 a 1 0 ]
+[v SPI_transfer@data data `uc  1 a 1 1 ]
 "76
-} 0
-"551 D:\PIC\PIC\Projeto_RFID_3.X\main.c
-[v __ISR _ISR `II(v  1 e 0 0 ]
-{
-"554
-} 0
-"51 D:\PIC\PIC\Projeto_RFID_3.X\UART.c
-[v __ISR_UART _ISR_UART `T(v  1 e 0 0 ]
-{
-"58
 } 0
